@@ -1,0 +1,19 @@
+{
+	"name": "lsl-secondlife-language-server",
+	"description": "LSL scripting language",
+	"version": "1.0.0",
+	"author": "Minuit",
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"dependencies": {
+		"vscode-languageserver": "^7.0.0",
+		"vscode-languageserver-textdocument": "^1.0.4"
+	},
+	"scripts": {}
+}

@@ -1,0 +1,133 @@
+{
+	"do...while loop": {
+		"prefix": "do",
+		"body": [
+			"do",
+			"{",
+			"\t$0",
+			"} while (${true});"
+		],
+		"description": "do...while loop"
+    },    
+    "for loop": {
+        "prefix": "for",
+        "body": [
+            "integer ${i};",
+            "for (${i} = 0; ${i} < ${length}; ${i}++)",
+            "{",
+            "\t$0",
+            "}"
+        ],
+        "description": "for loop"
+    },
+    "Reverse for loop": {
+        "prefix": "forr",
+        "body": [
+            "integer ${i};",
+            "for ({i} = ${length} - 1; {i} >= 0; {i}--)",
+            "{",
+            "\t$0",
+            "}"
+        ],
+        "description": "Reverse for loop"
+    },    
+    "if statement": {
+		"prefix": "if",
+		"body": [
+			"if (${true})",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "if statement"
+    },    
+	"else statement": {
+		"prefix": "else",
+		"body": [
+			"else",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "else statement"
+    },
+    "while loop": {
+		"prefix": "while",
+		"body": [
+			"while (${true})",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "while loop"
+    },
+    "named state": {
+        "prefix": "state",
+        "body": [
+            "state ${name}",
+            "{",
+            "\tstate_entry()",
+            "\t{",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ],
+        "description": "named state"
+    },
+    "default state": {
+        "prefix": "default",
+        "body": [
+            "default",
+            "{",
+            "\tstate_entry()",
+            "\t{",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ],
+        "description": "default state"
+    },
+    "run_time_permissions event": {
+        "prefix": "run_time_permissions",
+        "body": [
+            "run_time_permissions(integer perm)",
+            "{",
+            "\tif (perm & ${PERMISSION_})",
+            "\t{",
+            "\t\t${0}",
+            "\t}",
+            "}"
+        ],
+        "description": "run_time_permissions event"
+    },
+    "touch_start event": {
+        "prefix": "touch_start",
+        "body": [
+            "touch_start(integer num_detected)",
+            "{",            
+            "\tinteger i;",
+            "\tfor (i = 0; i < num_detected; i++)",
+            "\t{",
+            "\t\tkey avatar = llDetectedKey(i);",
+            "\t\t${0}",
+            "\t}",
+            "}"
+        ],
+        "description": "touch_start event"
+    },
+    "touch_end event": {
+        "prefix": "touch_end",
+        "body": [
+            "touch_end(integer num_detected)",
+            "{",            
+            "\tinteger i;",
+            "\tfor (i = 0; i < num_detected; i++)",
+            "\t{",
+            "\t\tkey avatar = llDetectedKey(i);",
+            "\t\t${0}",
+            "\t}",
+            "}"
+        ],
+        "description": "touch_end event"
+    }
+}
