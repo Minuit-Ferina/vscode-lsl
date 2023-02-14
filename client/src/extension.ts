@@ -147,7 +147,7 @@ for (let c = 0; c < Functions.length; c++) {
 	item.sortText = Functions[c]["name"]
 	item.kind = vscode.CompletionItemKind.Function
 	item.insertText = Functions[c]["name"] + ""
-	item.detail = Functions[c]["name"]
+	item.detail = getFunctionSignature(Functions[c]);
 	item.documentation = Functions[c]["descrition"]
 	// item.command = [moveofterinsert];
 	list.items.push(item)
