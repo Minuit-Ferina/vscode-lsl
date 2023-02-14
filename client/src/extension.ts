@@ -5,6 +5,8 @@
 
 import * as path from 'path';
 import * as vscode from 'vscode';
+
+import * as semanticProvider from './DocumentSemanticTokensProvider'
 import { Functions } from './Functions'
 import { Constants } from './Constants'
 
@@ -53,6 +55,9 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	// Start the client. This will also launch the server
 	// client.start();
+
+	// semanticProvider.register();
+
 	vscode.languages.registerHoverProvider("lsl", {
 		provideHover(document, position) {
 			const word = document.getText(
