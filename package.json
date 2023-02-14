@@ -40,7 +40,7 @@
 			{
 				"language": "lsl",
 				"scopeName": "source.lsl",
-				"path": "./syntaxes/hello.tmLanguage.json"
+				"path": "./syntaxes/lsl.tmLanguage.json"
 			}
 		],
 		"configuration": {
