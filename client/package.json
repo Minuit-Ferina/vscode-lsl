@@ -1,14 +1,5 @@
 {
 	"name": "lsl-secondlife-language-client",
-	"description": "LSL scripting language",
-	"author": "Minuit",
-	"license": "MIT",
-	"version": "0.0.1",
-	"publisher": "",
-	"repository": {
-		"type": "git",
-		"url": ""
-	},
 	"engines": {
 		"vscode": "^1.65.0"
 	},

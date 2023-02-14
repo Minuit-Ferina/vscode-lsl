@@ -1,14 +1,16 @@
 {
 	"name": "lsl-secondlife-language",
 	"description": "LSL scripting language",
-	"author": "Minuit",
+	"author": {
+		"name": "Minuit Ferina"
+	},
 	"license": "MIT",
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"repository": {
 		"type": "git",
-		"url": ""
+		"url": "https://github.com/Minuit-Ferina/vscode-lsl.git"
 	},
-	"publisher": "",
+	"publisher": "Minuit Ferina",
 	"categories": [
 		"Programming Languages"
 	],
@@ -25,6 +27,7 @@
 				"id": "lsl",
 				"aliases": [
 					"LSL",
+					"lsl",
 					"Linden Scripting Language"
 				],
 				"extensions": [
