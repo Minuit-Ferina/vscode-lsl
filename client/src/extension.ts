@@ -148,7 +148,7 @@ for (let c = 0; c < Functions.length; c++) {
 	item.kind = vscode.CompletionItemKind.Function;
 	item.insertText = Functions[c]["name"] + "";
 	item.detail = getFunctionSignature(Functions[c]);
-	item.documentation = Functions[c]["descrition"]
+	item.documentation = new vscode.MarkdownString(Functions[c]["descrition"]);
 	// item.command = [moveofterinsert];
 	list.items.push(item);
 	item.range;
@@ -160,7 +160,7 @@ for (let c = 0; c < Constants.length; c++) {
 	item.kind = vscode.CompletionItemKind.Constant;
 	item.insertText = Constants[c]["name"] + " ";
 	item.detail = Constants[c]["name"];
-	item.documentation = Constants[c]["descrition"]
+	item.documentation = new vscode.MarkdownString(Constants[c]["descrition"]);
 	list.items.push(item);
 }
 
