@@ -128,6 +128,44 @@ export function activate(context: ExtensionContext) {
 		}
 	});
 
+
+
+
+
+}
+
+let list = new vscode.CompletionList;
+
+for (let c = 0; c < Functions.length; c++) {
+	let item: vscode.CompletionItem = { label: Functions[c]["name"] };
+	item.sortText = Functions[c]["name"]
+	item.kind = vscode.CompletionItemKind.Function
+	item.insertText = Functions[c]["name"] + ""
+	item.detail = Functions[c]["name"]
+	item.documentation = Functions[c]["descrition"]
+	// item.command = [moveofterinsert];
+	list.items.push(item)
+	item.range
+}
+
+for (let c = 0; c < Constants.length; c++) {
+	let item: vscode.CompletionItem = { label: Constants[c]["name"] };
+	item.sortText = Constants[c]["name"]
+	item.kind = vscode.CompletionItemKind.Constant
+	item.insertText = Constants[c]["name"] + " "
+	item.detail = Constants[c]["name"]
+	item.documentation = Constants[c]["descrition"]
+	list.items.push(item)
+}
+
+vscode.languages.registerCompletionItemProvider("lsl", {
+	provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+		// const word = document.getWordRangeAtPosition(position);
+
+		return list;
+	}
+})
+
 export function deactivate(): Thenable<void> | undefined {
 	if (!client) {
 		return undefined;
