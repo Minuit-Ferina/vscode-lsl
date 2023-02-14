@@ -52,7 +52,81 @@ export function activate(context: ExtensionContext) {
 
 	// Start the client. This will also launch the server
 	// client.start();
-}
+	vscode.languages.registerHoverProvider("lsl", {
+		provideHover(document, position) {
+			const word = document.getText(
+				document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
+			);
+
+			let e = Functions.filter(function (el) {
+				return el.name === word;
+
+			})
+
+			if (e.length > 0) {
+				let ret = new vscode.MarkdownString();
+				let paramDesc = "";
+				let param = "";
+				for (let c = 0; c < e[0].param.length; c++) {
+					paramDesc += "_@param_ "
+					paramDesc += e[0].param[c]["type"]
+					paramDesc += " `" + e[0].param[c].name + "`"
+					paramDesc += " — " + e[0].param[c].description + "\n";
+
+					param += e[0].param[c]["type"] + " " + e[0].param[c].name;
+					param += c == e[0].param.length - 1 ? "" : ", "
+				}
+				let fname = e[0]["returnType"]
+				fname += e[0]["returnType"] == "" ? "" : " "
+				fname += e[0]["name"]
+				fname += "( " + param + " )"
+				return new vscode.Hover(
+					new vscode.MarkdownString(
+						[
+							'```lsl',
+							fname,
+							'```',
+
+							'___',
+							e[0]["descrition"],
+							'',
+							paramDesc
+
+						].join('\n')
+					))
+			}
+			else {
+				let e2 = Constants.filter(function (el) {
+					return el.name === word;
+				})
+				if (e2.length > 0) {
+
+					let fname = "";
+					fname += e2[0]["type"]
+					fname += " "
+					fname += e2[0]["name"]
+					fname += " = "
+					fname += e2[0]["value"]
+					return new vscode.Hover(
+						new vscode.MarkdownString(
+							[
+								'```lsl',
+								fname,
+								'```',
+								'___',
+								e2[0]["description"],
+								'',
+							].join('\n')
+						))
+				}
+			}
+
+
+
+
+			return null;
+		}
+	});
 
 export function deactivate(): Thenable<void> | undefined {
 	if (!client) {
