@@ -6,9 +6,9 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 
-import * as semanticProvider from './DocumentSemanticTokensProvider'
-import { Functions } from './Functions'
-import { Constants } from './Constants'
+import * as semanticProvider from './DocumentSemanticTokensProvider';
+import { Functions } from './Functions';
+import { Constants } from './Constants';
 
 import {
 	LanguageClient,
@@ -64,28 +64,28 @@ export async function activate(context: vscode.ExtensionContext) {
 				document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
 			);
 
-			let e = Functions.filter(function (el) {
+			const e = Functions.filter(function (el) {
 				return el.name === word;
 
-			})
+			});
 
 			if (e.length > 0) {
-				let ret = new vscode.MarkdownString();
+				const ret = new vscode.MarkdownString();
 				let paramDesc = "";
 				let param = "";
 				for (let c = 0; c < e[0].param.length; c++) {
-					paramDesc += "_@param_ "
-					paramDesc += e[0].param[c]["type"]
-					paramDesc += " `" + e[0].param[c].name + "`"
+					paramDesc += "_@param_ ";
+					paramDesc += e[0].param[c]["type"];
+					paramDesc += " `" + e[0].param[c].name + "`";
 					paramDesc += " — " + e[0].param[c].description + "\n\n";
 
 					param += e[0].param[c]["type"] + " " + e[0].param[c].name;
-					param += c == e[0].param.length - 1 ? "" : ", "
+					param += c == e[0].param.length - 1 ? "" : ", ";
 				}
-				let fname = e[0]["returnType"]
-				fname += e[0]["returnType"] == "" ? "" : " "
-				fname += e[0]["name"]
-				fname += "( " + param + " )"
+				let fname = e[0]["returnType"];
+				fname += e[0]["returnType"] == "" ? "" : " ";
+				fname += e[0]["name"];
+				fname += "( " + param + " )";
 				return new vscode.Hover(
 					new vscode.MarkdownString(
 						[
@@ -99,20 +99,20 @@ export async function activate(context: vscode.ExtensionContext) {
 							paramDesc
 
 						].join('\n')
-					))
+					));
 			}
 			else {
-				let e2 = Constants.filter(function (el) {
+				const e2 = Constants.filter(function (el) {
 					return el.name === word;
-				})
+				});
 				if (e2.length > 0) {
 
 					let fname = "";
-					fname += e2[0]["type"]
-					fname += " "
-					fname += e2[0]["name"]
-					fname += " = "
-					fname += e2[0]["value"]
+					fname += e2[0]["type"];
+					fname += " ";
+					fname += e2[0]["name"];
+					fname += " = ";
+					fname += e2[0]["value"];
 					return new vscode.Hover(
 						new vscode.MarkdownString(
 							[
@@ -123,7 +123,7 @@ export async function activate(context: vscode.ExtensionContext) {
 								e2[0]["description"],
 								'',
 							].join('\n')
-						))
+						));
 				}
 			}
 
@@ -140,28 +140,28 @@ export async function activate(context: vscode.ExtensionContext) {
 
 }
 
-let list = new vscode.CompletionList;
+const list = new vscode.CompletionList;
 
 for (let c = 0; c < Functions.length; c++) {
-	let item: vscode.CompletionItem = { label: Functions[c]["name"] };
-	item.sortText = Functions[c]["name"]
-	item.kind = vscode.CompletionItemKind.Function
-	item.insertText = Functions[c]["name"] + ""
+	const item: vscode.CompletionItem = { label: Functions[c]["name"] };
+	item.sortText = Functions[c]["name"];
+	item.kind = vscode.CompletionItemKind.Function;
+	item.insertText = Functions[c]["name"] + "";
 	item.detail = getFunctionSignature(Functions[c]);
 	item.documentation = Functions[c]["descrition"]
 	// item.command = [moveofterinsert];
-	list.items.push(item)
-	item.range
+	list.items.push(item);
+	item.range;
 }
 
 for (let c = 0; c < Constants.length; c++) {
-	let item: vscode.CompletionItem = { label: Constants[c]["name"] };
-	item.sortText = Constants[c]["name"]
-	item.kind = vscode.CompletionItemKind.Constant
-	item.insertText = Constants[c]["name"] + " "
-	item.detail = Constants[c]["name"]
+	const item: vscode.CompletionItem = { label: Constants[c]["name"] };
+	item.sortText = Constants[c]["name"];
+	item.kind = vscode.CompletionItemKind.Constant;
+	item.insertText = Constants[c]["name"] + " ";
+	item.detail = Constants[c]["name"];
 	item.documentation = Constants[c]["descrition"]
-	list.items.push(item)
+	list.items.push(item);
 }
 
 vscode.languages.registerCompletionItemProvider("lsl", {
@@ -170,12 +170,12 @@ vscode.languages.registerCompletionItemProvider("lsl", {
 
 		return list;
 	}
-})
+});
 
 vscode.languages.registerSignatureHelpProvider('lsl', {
 	provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
 
-		let resource = document.uri;
+		const resource = document.uri;
 
 		const line = document.lineAt(position).text;
 		const lineTrimmed = line.substring(0, position.character);
@@ -236,58 +236,58 @@ vscode.languages.registerSignatureHelpProvider('lsl', {
 		const countColons = afterLine.split(',').length - 1;
 
 
-		let e = Functions.filter(function (el) {
+		const e = Functions.filter(function (el) {
 			return el.name === funcName;
 
-		})
+		});
 
-		let ret: vscode.SignatureHelp = {
+		const ret: vscode.SignatureHelp = {
 			activeSignature: 0,
 			activeParameter: countColons,
 			signatures: []
 		};
 
 		if (e.length > 0) {
-			let a = e[0]
-			let signature = getFunctionSignature(a)
+			const a = e[0];
+			const signature = getFunctionSignature(a);
 
-			let param = []
+			const param = [];
 
-			for (let e of a.param) {
+			for (const e of a.param) {
 				param.push(
 					{
 						label: `${e["type"]} ${e["name"]}`,
 						documentation: e["description"]
 					}
-				)
+				);
 			}
 
 
 			ret.signatures = [{
 				label: signature,
 				parameters: param
-			}]
+			}];
 		}
 
 		return ret;
 
 	}
 },
-	'(', ',')
+	'(', ',');
 
 
 function getFunctionSignature(fn: object): string {
-	let ret = `${fn["returnType"]}`
+	let ret = `${fn["returnType"]}`;
 	if (fn["returnType"] != "")
-		ret += " "
-	ret += `${fn["name"]}(`
+		ret += " ";
+	ret += `${fn["name"]}(`;
 	for (let c = 0; c < fn["param"].length; c++) {
-		ret += `${fn["param"][c]["type"]} ${fn["param"][c]["name"]}`
+		ret += `${fn["param"][c]["type"]} ${fn["param"][c]["name"]}`;
 		if (c < fn["param"].length - 1)
-			ret += ", "
+			ret += ", ";
 	}
-	ret += `)`
-	return ret
+	ret += `)`;
+	return ret;
 }
 
 export function deactivate(): Thenable<void> | undefined {
