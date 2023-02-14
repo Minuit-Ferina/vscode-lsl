@@ -1,18 +1,20 @@
 {
-	"name": "lsl-secondlife-language",
-	"description": "LSL scripting language",
+	"name": "lsl-tools",
+	"displayName": "LSL Tools",
+	"description": "Extended LSL support in Visual Studio Code",
 	"author": {
 		"name": "Minuit Ferina"
 	},
 	"license": "MIT",
-	"version": "0.0.0",
+	"version": "0.0.2",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Minuit-Ferina/vscode-lsl.git"
 	},
-	"publisher": "Minuit Ferina",
+	"publisher": "MinuitFerina",
 	"categories": [
-		"Programming Languages"
+		"Programming Languages",
+		"Snippets"
 	],
 	"keywords": [
 		"multi-root ready"
