@@ -77,7 +77,7 @@ export async function activate(context: vscode.ExtensionContext) {
 					paramDesc += "_@param_ "
 					paramDesc += e[0].param[c]["type"]
 					paramDesc += " `" + e[0].param[c].name + "`"
-					paramDesc += " — " + e[0].param[c].description + "\n";
+					paramDesc += " — " + e[0].param[c].description + "\n\n";
 
 					param += e[0].param[c]["type"] + " " + e[0].param[c].name;
 					param += c == e[0].param.length - 1 ? "" : ", "
