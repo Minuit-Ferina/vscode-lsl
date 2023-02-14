@@ -1,5 +1,5 @@
 {
-	"name": "lsl-secondlife-language-server",
+	"name": "vscode-lsl-server",
 	"engines": {
 		"node": "*"
 	},

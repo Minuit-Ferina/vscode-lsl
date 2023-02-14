@@ -1,5 +1,5 @@
 {
-	"name": "lsl-secondlife-language-client",
+	"name": "vscode-lsl-client",
 	"engines": {
 		"vscode": "^1.65.0"
 	},
