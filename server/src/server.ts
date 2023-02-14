@@ -1,3 +1,4 @@
+
 /* --------------------------------------------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
@@ -16,15 +17,22 @@ import {
 	TextDocumentSyncKind,
 	InitializeResult,
 	Hover,
-	MarkupKind
+	MarkupKind,
+	DocumentHighlight,
+	DocumentHighlightKind
 } from 'vscode-languageserver/node';
+
+import * as vscode from 'vscode';
+
+
+// import { getHover } from 'vs/editor/contrib/hover/browser/getHover';
+
+import { Proposed } from 'vscode-languageserver-protocol';
 
 import { ActionContext } from './fun';
 
 
-import {
-	TextDocument
-} from 'vscode-languageserver-textdocument';
+import {TextDocument} from 'vscode-languageserver-textdocument';
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -61,7 +69,10 @@ connection.onInitialize((params: InitializeParams) => {
 			completionProvider: {
 				resolveProvider: true
 			},
-			hoverProvider: true
+			hoverProvider: true,
+			// documentHighlightProvider: true,
+			
+
 		}
 	};
 	if (hasWorkspaceFolderCapability) {
@@ -233,8 +244,12 @@ connection.onHover((textDocumentPosition, token): Hover | null => {
 	// ActionContext.getHoverInfo(docPos)
 
 	const document = documents.get(textDocumentPosition.textDocument.uri);
+
+	// textDocumentPosition.textDocument.uri.
 	if (document) {
 		const data = document.getText({ start: { character: 0, line: textDocumentPosition.position.line }, end: { character: 255., line: textDocumentPosition.position.line } });
+		// const vsdocument = vscode.TextDocument.get(textDocumentPosition.textDocument.uri)
+		// const word = document.
 		return {
 			contents: {
 				// language: 'lsl',
@@ -254,7 +269,16 @@ connection.onHover((textDocumentPosition, token): Hover | null => {
 	}
 	return null;
 });
+connection.onDocumentHighlight((textPosition) => {
+	const position = textPosition.position;
+	return [
+		DocumentHighlight.create({
+			start: { line: position.line + 1, character: position.character },
+			end: { line: position.line + 1, character: position.character + 5 }
+		}, DocumentHighlightKind.Write)
+	];
 
+} );
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events
