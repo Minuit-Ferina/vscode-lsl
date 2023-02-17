@@ -9,6 +9,7 @@ import * as vscode from 'vscode';
 import * as semanticProvider from './DocumentSemanticTokensProvider';
 import { Functions } from './Functions';
 import { Constants } from './Constants';
+import { Events } from './Events';
 
 import {
 	LanguageClient,
@@ -64,10 +65,17 @@ export async function activate(context: vscode.ExtensionContext) {
 				document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
 			);
 
-			const e = Functions.filter(function (el) {
+			let e;
+
+			e = Functions.filter(function (el) {
 				return el.name === word;
 
 			});
+			if (e.length == 0)
+				e = Events.filter(function (el) {
+					return el.name === word;
+
+				});
 
 			if (e.length > 0) {
 				const ret = new vscode.MarkdownString();
@@ -161,6 +169,19 @@ for (let c = 0; c < Constants.length; c++) {
 	item.insertText = Constants[c]["name"] + " ";
 	item.detail = Constants[c]["name"];
 	item.documentation = new vscode.MarkdownString(Constants[c]["descrition"]);
+	list.items.push(item);
+}
+
+for (let c = 0; c < Events.length; c++) {
+	const item: vscode.CompletionItem = { label: Events[c]["name"] };
+	item.sortText = Events[c]["name"];
+	item.kind = vscode.CompletionItemKind.Event;
+	item.insertText = Events[c]["name"] + "(";
+
+	item.insertText = getFunctionSignature(Events[c]);
+
+	item.detail = Events[c]["name"];
+	item.documentation = new vscode.MarkdownString(Events[c]["descrition"]);
 	list.items.push(item);
 }
 
