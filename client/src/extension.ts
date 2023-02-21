@@ -10,6 +10,7 @@ import * as semanticProvider from './DocumentSemanticTokensProvider';
 import { Functions } from './Functions';
 import { Constants } from './Constants';
 import { Events } from './Events';
+import { Types } from './Types';
 
 import {
 	LanguageClient,
@@ -67,6 +68,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 			let e;
 
+			// function functions and events
 			e = Functions.filter(function (el) {
 				return el.name === word;
 
@@ -109,30 +111,51 @@ export async function activate(context: vscode.ExtensionContext) {
 						].join('\n')
 					));
 			}
-			else {
-				const e2 = Constants.filter(function (el) {
-					return el.name === word;
-				});
-				if (e2.length > 0) {
 
-					let fname = "";
-					fname += e2[0]["type"];
-					fname += " ";
-					fname += e2[0]["name"];
-					fname += " = ";
-					fname += e2[0]["value"];
-					return new vscode.Hover(
-						new vscode.MarkdownString(
-							[
-								'```lsl',
-								fname,
-								'```',
-								'___',
-								e2[0]["description"],
-								'',
-							].join('\n')
-						));
-				}
+			// Constants
+			const e2 = Constants.filter(function (el) {
+				return el.name === word;
+			});
+			if (e2.length > 0) {
+
+				let fname = "";
+				fname += e2[0]["type"];
+				fname += " ";
+				fname += e2[0]["name"];
+				fname += " = ";
+				fname += e2[0]["value"];
+				return new vscode.Hover(
+					new vscode.MarkdownString(
+						[
+							'```lsl',
+							fname,
+							'```',
+							'___',
+							e2[0]["description"],
+							'',
+						].join('\n')
+					));
+			}
+
+			// Types
+			const e3 = Types.filter(function (el) {
+				return el.name === word;
+			});
+			if (e3.length > 0) {
+
+				let fname = "";
+				fname += e3[0]["name"];
+				return new vscode.Hover(
+					new vscode.MarkdownString(
+						[
+							'```lsl',
+							fname,
+							'```',
+							'___',
+							e3[0]["description"],
+							'',
+						].join('\n')
+					));
 			}
 
 
@@ -182,6 +205,19 @@ for (let c = 0; c < Events.length; c++) {
 
 	item.detail = Events[c]["name"];
 	item.documentation = new vscode.MarkdownString(Events[c]["description"]);
+	list.items.push(item);
+}
+
+for (let c = 0; c < Types.length; c++) {
+	const item: vscode.CompletionItem = { label: Types[c]["name"] };
+	item.sortText = Types[c]["name"];
+	item.kind = vscode.CompletionItemKind.Class;
+	item.insertText = Types[c]["name"] + "";
+
+	// item.insertText = getFunctionSignature(Types[c]);
+
+	item.detail = Types[c]["name"];
+	item.documentation = new vscode.MarkdownString(Types[c]["description"]);
 	list.items.push(item);
 }
 
