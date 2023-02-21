@@ -6,7 +6,7 @@
 		"name": "Minuit Ferina"
 	},
 	"license": "MIT",
-	"version": "0.0.3",
+	"version": "0.0.5",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Minuit-Ferina/vscode-lsl.git"
@@ -43,6 +43,159 @@
 				"language": "lsl",
 				"scopeName": "source.lsl",
 				"path": "./syntaxes/lsl.tmLanguage.json"
+			}
+		],
+		"semanticTokenTypes": [
+			{
+				"id": "referenceType",
+				"superType": "class",
+				"description": "%c_cpp.semanticTokenTypes.referenceType.description%"
+			},
+			{
+				"id": "cliProperty",
+				"superType": "property",
+				"description": "%c_cpp.semanticTokenTypes.cliProperty.description%"
+			},
+			{
+				"id": "genericType",
+				"superType": "class",
+				"description": "%c_cpp.semanticTokenTypes.genericType.description%"
+			},
+			{
+				"id": "valueType",
+				"superType": "class",
+				"description": "%c_cpp.semanticTokenTypes.valueType.description%"
+			},
+			{
+				"id": "templateFunction",
+				"superType": "function",
+				"description": "%c_cpp.semanticTokenTypes.templateFunction.description%"
+			},
+			{
+				"id": "templateType",
+				"superType": "class",
+				"description": "%c_cpp.semanticTokenTypes.templateType.description%"
+			},
+			{
+				"id": "operatorOverload",
+				"superType": "operator",
+				"description": "%c_cpp.semanticTokenTypes.operatorOverload.description%"
+			},
+			{
+				"id": "memberOperatorOverload",
+				"superType": "operator",
+				"description": "%c_cpp.semanticTokenTypes.memberOperatorOverload.description%"
+			},
+			{
+				"id": "newOperator",
+				"superType": "operator",
+				"description": "%c_cpp.semanticTokenTypes.newOperator.description%"
+			},
+			{
+				"id": "customLiteral",
+				"superType": "number",
+				"description": "%c_cpp.semanticTokenTypes.customLiteral.description%"
+			},
+			{
+				"id": "numberLiteral",
+				"superType": "number",
+				"description": "%c_cpp.semanticTokenTypes.numberLiteral.description%"
+			},
+			{
+				"id": "stringLiteral",
+				"superType": "string",
+				"description": "%c_cpp.semanticTokenTypes.stringLiteral.description%"
+			}
+		],
+		"semanticTokenModifiers": [
+			{
+				"id": "global",
+				"description": "%c_cpp.semanticTokenModifiers.global.description%"
+			},
+			{
+				"id": "local",
+				"description": "%c_cpp.semanticTokenModifiers.local.description%"
+			}
+		],
+		"semanticTokenScopes": [
+			{
+				"language": "lsl",
+				"scopes": {
+					"type": [
+						"entity.name.type.c"
+					],
+					"function": [
+						"entity.name.function.c"
+					],
+					"function.defaultLibrary": [
+						"support.function.c"
+					],
+					"variable": [
+						"variable.other.readwrite.c",
+						"entity.name.variable.c"
+					],
+					"parameter": [
+						"variable.parameter.c"
+					],
+					"event": [
+						"variable.other.event.c"
+					],
+					"label": [
+						"entity.name.label.c"
+					],
+					"variable.global": [
+						"variable.other.global.c"
+					],
+					"variable.local": [
+						"variable.other.local.c"
+					],
+					"property.static": [
+						"variable.other.property.static.c"
+					],
+					"method.static": [
+						"entity.name.function.member.static.c"
+					],
+					"macro": [
+						"entity.name.function.preprocessor.c",
+						"entity.name.function.macro.c"
+					],
+					"referenceType": [
+						"entity.name.type.class.reference.c"
+					],
+					"cliProperty": [
+						"variable.other.property.cli.c"
+					],
+					"genericType": [
+						"entity.name.type.class.generic.c"
+					],
+					"valueType": [
+						"entity.name.type.class.value.c"
+					],
+					"templateFunction": [
+						"entity.name.function.templated.c"
+					],
+					"templateType": [
+						"entity.name.type.class.templated.c"
+					],
+					"operatorOverload": [
+						"entity.name.function.operator.c"
+					],
+					"memberOperatorOverload": [
+						"entity.name.function.operator.member.c"
+					],
+					"newOperator": [
+						"keyword.operator.new.c"
+					],
+					"numberLiteral": [
+						"entity.name.operator.custom-literal.number.c"
+					],
+					"customLiteral": [
+						"entity.name.operator.custom-literal.c"
+					],
+					"stringLiteral": [
+						"entity.name.operator.custom-literal.string.c"
+					]
+				}
 			}
 		],
 		"configuration": {
