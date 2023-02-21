@@ -1,7 +1,7 @@
 export const Functions = [
     {
         "name": "llAbs",
-        "descrition": "Returns an integer that is the positive version of val.",
+        "description": "Returns an integer that is the positive version of val.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlAbs",
         "param": [
@@ -14,7 +14,7 @@ export const Functions = [
     },
     {
         "name": "llAcos",
-        "descrition": "Returns a float that is the arccosine in radians of val",
+        "description": "Returns a float that is the arccosine in radians of val",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlAcos",
         "param": [
@@ -27,7 +27,7 @@ export const Functions = [
     },
     {
         "name": "llAddToLandBanList",
-        "descrition": "Add avatar to the land ban list for hours, or indefinitely if hours is zero.",
+        "description": "Add avatar to the land ban list for hours, or indefinitely if hours is zero.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlAddToLandBanList",
         "param": [
@@ -45,7 +45,7 @@ export const Functions = [
     },
     {
         "name": "llAddToLandPassList",
-        "descrition": "Add avatar to the land pass list for hours, or indefinitely if hours is zero.",
+        "description": "Add avatar to the land pass list for hours, or indefinitely if hours is zero.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlAddToLandPassList",
         "param": [
@@ -63,7 +63,7 @@ export const Functions = [
     },
     {
         "name": "llAdjustSoundVolume",
-        "descrition": "Adjusts volume of attached sound.",
+        "description": "Adjusts volume of attached sound.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlAdjustSoundVolume",
         "param": [
@@ -76,7 +76,7 @@ export const Functions = [
     },
     {
         "name": "llLinkAdjustSoundVolume",
-        "descrition": "Adjusts volume of attached sound.",
+        "description": "Adjusts volume of attached sound.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlAdjustSoundVolume",
         "param": [
@@ -94,7 +94,7 @@ export const Functions = [
     },
     {
         "name": "llAgentInExperience",
-        "descrition": "Determines whether or not the specified agent is in the script's experience.\n\nReturns a boolean (an integer) that is TRUE if the agent is in the experience and the experience can run in the current region.",
+        "description": "Determines whether or not the specified agent is in the script's experience.\n\nReturns a boolean (an integer) that is TRUE if the agent is in the experience and the experience can run in the current region.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlAgentInExperience",
         "param": [
@@ -107,7 +107,7 @@ export const Functions = [
     },
     {
         "name": "llAllowInventoryDrop",
-        "descrition": "Allows for all users without modify permissions to add inventory items to a prim.",
+        "description": "Allows for all users without modify permissions to add inventory items to a prim.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlAllowInventoryDrop",
         "param": [
@@ -120,7 +120,7 @@ export const Functions = [
     },
     {
         "name": "llAngleBetween",
-        "descrition": "Returns a float that is the angle in radians between rotation a and rotation b.",
+        "description": "Returns a float that is the angle in radians between rotation a and rotation b.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlAngleBetween",
         "param": [
@@ -138,7 +138,7 @@ export const Functions = [
     },
     {
         "name": "llApplyImpulse",
-        "descrition": "Applies impulse to object",
+        "description": "Applies impulse to object",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlApplyImpulse",
         "param": [
@@ -156,7 +156,7 @@ export const Functions = [
     },
     {
         "name": "llApplyRotationalImpulse",
-        "descrition": "Applies rotational impulse to object.",
+        "description": "Applies rotational impulse to object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlApplyRotationalImpulse",
         "param": [
@@ -174,7 +174,7 @@ export const Functions = [
     },
     {
         "name": "llAsin",
-        "descrition": "Returns a float that is the arcsine in radians of val",
+        "description": "Returns a float that is the arcsine in radians of val",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlAsin",
         "param": [
@@ -187,7 +187,7 @@ export const Functions = [
     },
     {
         "name": "llAtan2",
-        "descrition": "Returns a float that is the  arctangent2 of y, x.",
+        "description": "Returns a float that is the  arctangent2 of y, x.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlAtan2",
         "param": [
@@ -205,7 +205,7 @@ export const Functions = [
     },
     {
         "name": "llAttachToAvatar",
-        "descrition": "Attaches the object to the avatar who has granted permission to the script. The object is taken into the users inventory and attached to attach_point.",
+        "description": "Attaches the object to the avatar who has granted permission to the script. The object is taken into the users inventory and attached to attach_point.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlAttachToAvatar",
         "param": [
@@ -218,7 +218,7 @@ export const Functions = [
     },
     {
         "name": "llAttachToAvatarTemp",
-        "descrition": "Follows the same convention as llAttachToAvatar, with the exception that the object will not create new inventory for the user, and will disappear on detach or disconnect. Also, this function can be used on avis other than the owner (if granted permission) in which case the ownership is changed to the new wearer.",
+        "description": "Follows the same convention as llAttachToAvatar, with the exception that the object will not create new inventory for the user, and will disappear on detach or disconnect. Also, this function can be used on avis other than the owner (if granted permission) in which case the ownership is changed to the new wearer.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlAttachToAvatarTemp",
         "param": [
@@ -231,7 +231,7 @@ export const Functions = [
     },
     {
         "name": "llAvatarOnLinkSitTarget",
-        "descrition": "Returns a key that is the UUID of the user seated on the prim.",
+        "description": "Returns a key that is the UUID of the user seated on the prim.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlAvatarOnLinkSitTarget",
         "param": [
@@ -244,14 +244,14 @@ export const Functions = [
     },
     {
         "name": "llAvatarOnSitTarget",
-        "descrition": "Returns a key that is the UUID of the user seated on the prim.",
+        "description": "Returns a key that is the UUID of the user seated on the prim.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlAvatarOnSitTarget",
         "param": []
     },
     {
         "name": "llAxes2Rot",
-        "descrition": "Returns a rotation that is defined by the 3 coordinate axes",
+        "description": "Returns a rotation that is defined by the 3 coordinate axes",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlAxes2Rot",
         "param": [
@@ -274,7 +274,7 @@ export const Functions = [
     },
     {
         "name": "llAxisAngle2Rot",
-        "descrition": "Returns a rotation that is a generated angle about axis",
+        "description": "Returns a rotation that is a generated angle about axis",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlAxisAngle2Rot",
         "param": [
@@ -292,7 +292,7 @@ export const Functions = [
     },
     {
         "name": "llBase64ToInteger",
-        "descrition": "Returns an integer that is str Base64 decoded as a big endian integer.",
+        "description": "Returns an integer that is str Base64 decoded as a big endian integer.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlBase64ToInteger",
         "param": [
@@ -305,7 +305,7 @@ export const Functions = [
     },
     {
         "name": "llBase64ToString",
-        "descrition": "Returns a string that is the Base64 str decoded into a conventional string.",
+        "description": "Returns a string that is the Base64 str decoded into a conventional string.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlBase64ToString",
         "param": [
@@ -318,14 +318,14 @@ export const Functions = [
     },
     {
         "name": "llBreakAllLinks",
-        "descrition": "Delinks all prims in the link set.",
+        "description": "Delinks all prims in the link set.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlBreakAllLinks",
         "param": []
     },
     {
         "name": "llBreakLink",
-        "descrition": "Delinks the prim with the given link number in a linked object set",
+        "description": "Delinks the prim with the given link number in a linked object set",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlBreakLink",
         "param": [
@@ -338,7 +338,7 @@ export const Functions = [
     },
     {
         "name": "llCastRay",
-        "descrition": "Cast a line from start to end and report collision data for intersections with objects.\n\nReturns a list of strided values on a successful hit, with an additional integer status_code on the end.",
+        "description": "Cast a line from start to end and report collision data for intersections with objects.\n\nReturns a list of strided values on a successful hit, with an additional integer status_code on the end.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlCastRay",
         "param": [
@@ -361,7 +361,7 @@ export const Functions = [
     },
     {
         "name": "llCeil",
-        "descrition": "Returns an integer that is the integer value of val rounded towards positive infinity (return >= val).",
+        "description": "Returns an integer that is the integer value of val rounded towards positive infinity (return >= val).",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlCeil",
         "param": [
@@ -374,7 +374,7 @@ export const Functions = [
     },
     {
         "name": "llChar",
-        "descrition": "Construct a single character string from the supplied Unicode value.\n\nReturns a string ",
+        "description": "Construct a single character string from the supplied Unicode value.\n\nReturns a string ",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlChar",
         "param": [
@@ -387,14 +387,14 @@ export const Functions = [
     },
     {
         "name": "llClearCameraParams",
-        "descrition": "Resets all camera parameters to default values and turns off scripted camera control.",
+        "description": "Resets all camera parameters to default values and turns off scripted camera control.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlClearCameraParams",
         "param": []
     },
     {
         "name": "llClearLinkMedia",
-        "descrition": "Clears (deletes) the media and all params from the given face on the linked prim(s).\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation.",
+        "description": "Clears (deletes) the media and all params from the given face on the linked prim(s).\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlClearLinkMedia",
         "param": [
@@ -412,7 +412,7 @@ export const Functions = [
     },
     {
         "name": "llClearPrimMedia",
-        "descrition": "Clears (deletes) the media and all params from the given face.\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation.",
+        "description": "Clears (deletes) the media and all params from the given face.\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlClearPrimMedia",
         "param": [
@@ -425,7 +425,7 @@ export const Functions = [
     },
     {
         "name": "llCloseRemoteDataChannel",
-        "descrition": "Closes XML-RPC channel.",
+        "description": "Closes XML-RPC channel.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlCloseRemoteDataChannel",
         "param": [
@@ -438,7 +438,7 @@ export const Functions = [
     },
     {
         "name": "llCollisionFilter",
-        "descrition": "Sets the collision filter, exclusively or inclusively.",
+        "description": "Sets the collision filter, exclusively or inclusively.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlCollisionFilter",
         "param": [
@@ -461,7 +461,7 @@ export const Functions = [
     },
     {
         "name": "llCollisionSound",
-        "descrition": "Suppress default collision sounds, replace default impact sounds with impact_sound at the volume impact_volume",
+        "description": "Suppress default collision sounds, replace default impact sounds with impact_sound at the volume impact_volume",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlCollisionSound",
         "param": [
@@ -479,7 +479,7 @@ export const Functions = [
     },
     {
         "name": "llCollisionSprite",
-        "descrition": "Suppress default collision sprites, replace default impact sprite with impact_sprite",
+        "description": "Suppress default collision sprites, replace default impact sprite with impact_sprite",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlCollisionSprite",
         "param": [
@@ -492,7 +492,7 @@ export const Functions = [
     },
     {
         "name": "llCos",
-        "descrition": "Returns a float that is the cosine of theta.",
+        "description": "Returns a float that is the cosine of theta.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlCos",
         "param": [
@@ -505,7 +505,7 @@ export const Functions = [
     },
     {
         "name": "llCreateCharacter",
-        "descrition": "Creates a pathfinding entity, known as a \"character\", from the object containing the script.  Required to activate use of pathfinding functions.",
+        "description": "Creates a pathfinding entity, known as a \"character\", from the object containing the script.  Required to activate use of pathfinding functions.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlCreateCharacter",
         "param": [
@@ -518,7 +518,7 @@ export const Functions = [
     },
     {
         "name": "llCreateKeyValue",
-        "descrition": "Start an asynchronous transaction to create a key-value pair associated with the script's Experience using the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.",
+        "description": "Start an asynchronous transaction to create a key-value pair associated with the script's Experience using the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlCreateKeyValue",
         "param": [
@@ -536,7 +536,7 @@ export const Functions = [
     },
     {
         "name": "llCreateLink",
-        "descrition": "Attempt to link the script's object with target.",
+        "description": "Attempt to link the script's object with target.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlCreateLink",
         "param": [
@@ -554,7 +554,7 @@ export const Functions = [
     },
     {
         "name": "llCSV2List",
-        "descrition": "This function takes a string of values separated by commas, and turns it into a list.\n\nReturns a list made by parsing src, a string of comma separated values.",
+        "description": "This function takes a string of values separated by commas, and turns it into a list.\n\nReturns a list made by parsing src, a string of comma separated values.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlCSV2List",
         "param": [
@@ -567,21 +567,21 @@ export const Functions = [
     },
     {
         "name": "llDataSizeKeyValue",
-        "descrition": "Start an asynchronous transaction to request the used and total amount of data allocated for the Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to request the used and total amount of data allocated for the Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlDataSizeKeyValue",
         "param": []
     },
     {
         "name": "llDeleteCharacter",
-        "descrition": "Convert the object back to a standard object, removing all pathfinding properties.",
+        "description": "Convert the object back to a standard object, removing all pathfinding properties.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlDeleteCharacter",
         "param": []
     },
     {
         "name": "llDeleteKeyValue",
-        "descrition": "Start an asynchronous transaction to delete a key-value pair associated with the script's Experience with the given key (k).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to delete a key-value pair associated with the script's Experience with the given key (k).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlDeleteKeyValue",
         "param": [
@@ -594,7 +594,7 @@ export const Functions = [
     },
     {
         "name": "llDeleteSubList",
-        "descrition": "Returns a list that is a copy of src but with the slice from start to end removed.",
+        "description": "Returns a list that is a copy of src but with the slice from start to end removed.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlDeleteSubList",
         "param": [
@@ -617,7 +617,7 @@ export const Functions = [
     },
     {
         "name": "llDeleteSubString",
-        "descrition": "Returns a string that is the result of removing characters from src from start to end.",
+        "description": "Returns a string that is the result of removing characters from src from start to end.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlDeleteSubString",
         "param": [
@@ -640,14 +640,14 @@ export const Functions = [
     },
     {
         "name": "llDetachFromAvatar",
-        "descrition": "Detach object from avatar.",
+        "description": "Detach object from avatar.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlDetachFromAvatar",
         "param": []
     },
     {
         "name": "llDetectedGrab",
-        "descrition": "Returns a vector that is the grab offset of the user touching the object; only works in the touch event.",
+        "description": "Returns a vector that is the grab offset of the user touching the object; only works in the touch event.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedGrab",
         "param": [
@@ -660,7 +660,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedGroup",
-        "descrition": "Returns an integer that is TRUE if the detected object or agent has the same active group as the prim containing the script. Otherwise FALSE is returned.",
+        "description": "Returns an integer that is TRUE if the detected object or agent has the same active group as the prim containing the script. Otherwise FALSE is returned.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedGroup",
         "param": [
@@ -673,7 +673,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedKey",
-        "descrition": "Returns a key that is the UUID of the detected object or avatar number.",
+        "description": "Returns a key that is the UUID of the detected object or avatar number.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedKey",
         "param": [
@@ -686,7 +686,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedLinkNumber",
-        "descrition": "Returns the link_number (an integer) of the triggered event. If not supported by the event, returns zero.",
+        "description": "Returns the link_number (an integer) of the triggered event. If not supported by the event, returns zero.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedLinkNumber",
         "param": [
@@ -699,7 +699,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedName",
-        "descrition": "Returns a string that is the name of the detected item.",
+        "description": "Returns a string that is the name of the detected item.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedName",
         "param": [
@@ -712,7 +712,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedOwner",
-        "descrition": "Returns the key (UUID) of the owner of the object.",
+        "description": "Returns the key (UUID) of the owner of the object.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedOwner",
         "param": [
@@ -725,7 +725,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedPos",
-        "descrition": "Returns a vector that is the position (in region coordinates) of detected object number.",
+        "description": "Returns a vector that is the position (in region coordinates) of detected object number.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedPos",
         "param": [
@@ -738,7 +738,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedRot",
-        "descrition": "Returns the rotation of detected object number.",
+        "description": "Returns the rotation of detected object number.",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedRot",
         "param": [
@@ -751,7 +751,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedTouchBinormal",
-        "descrition": "Returns a vector that is the surface binormal (tangent to the surface, pointing along the positive T (V) direction of tangent space) where the touch event was triggered.  Along with llDetectedTouchNormal, this information can be used to find the tangent space at the touch location.",
+        "description": "Returns a vector that is the surface binormal (tangent to the surface, pointing along the positive T (V) direction of tangent space) where the touch event was triggered.  Along with llDetectedTouchNormal, this information can be used to find the tangent space at the touch location.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedTouchBinormal",
         "param": [
@@ -764,7 +764,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedTouchFace",
-        "descrition": "Returns an integer that is the index of the face the avatar clicked on.",
+        "description": "Returns an integer that is the index of the face the avatar clicked on.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedTouchFace",
         "param": [
@@ -777,7 +777,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedTouchNormal",
-        "descrition": "Returns a vector that is the surface normal (perpendicular to the surface) where the touch event was triggered.  Along with llDetectedTouchBinormal, this information can be used to find the tangent space at the touch location.",
+        "description": "Returns a vector that is the surface normal (perpendicular to the surface) where the touch event was triggered.  Along with llDetectedTouchBinormal, this information can be used to find the tangent space at the touch location.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedTouchNormal",
         "param": [
@@ -790,7 +790,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedTouchPos",
-        "descrition": "Returns the vector position where the object was touched in region coordinates, unless it is attached to the HUD, in which case it returns the position in screen space coordinates.",
+        "description": "Returns the vector position where the object was touched in region coordinates, unless it is attached to the HUD, in which case it returns the position in screen space coordinates.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedTouchPos",
         "param": [
@@ -803,7 +803,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedTouchST",
-        "descrition": "Returns a vector that is the surface coordinates for where the prim was touched. The x & y vector positions contain the horizontal (s) & vertical (t) face coordinates respectively (<s, t, 0.0>). Each component is usually in the interval [0.0, 1.0] with the origin in the bottom left corner.[1] With some mesh objects, values of less than 0.0 and higher than 1.0 have been observed.",
+        "description": "Returns a vector that is the surface coordinates for where the prim was touched. The x & y vector positions contain the horizontal (s) & vertical (t) face coordinates respectively (<s, t, 0.0>). Each component is usually in the interval [0.0, 1.0] with the origin in the bottom left corner.[1] With some mesh objects, values of less than 0.0 and higher than 1.0 have been observed.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedTouchST",
         "param": [
@@ -816,7 +816,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedTouchUV",
-        "descrition": "Returns a vector that is the texture coordinates for where the prim was touched. The x & y vector positions contain the horizontal (u) & vertical (v) texture coordinates respectively (<u, v, 0.0>). Like llDetectedTouchST, the interval of each component will be [0.0, 1.0] unless the texture repeats are set to a non-default value. Increasing or decreasing the texture repeats of the face will change this interval accordingly. Additionally,  unlike with llDetectedTouchST, changing a texture's rotation will change the results of this function.",
+        "description": "Returns a vector that is the texture coordinates for where the prim was touched. The x & y vector positions contain the horizontal (u) & vertical (v) texture coordinates respectively (<u, v, 0.0>). Like llDetectedTouchST, the interval of each component will be [0.0, 1.0] unless the texture repeats are set to a non-default value. Increasing or decreasing the texture repeats of the face will change this interval accordingly. Additionally,  unlike with llDetectedTouchST, changing a texture's rotation will change the results of this function.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedTouchUV",
         "param": [
@@ -829,7 +829,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedType",
-        "descrition": "Returns an integer mask that is the types of detected object or avatar.",
+        "description": "Returns an integer mask that is the types of detected object or avatar.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedType",
         "param": [
@@ -842,7 +842,7 @@ export const Functions = [
     },
     {
         "name": "llDetectedVel",
-        "descrition": "Returns the vector velocity of detected object or avatar number.",
+        "description": "Returns the vector velocity of detected object or avatar number.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlDetectedVel",
         "param": [
@@ -855,7 +855,7 @@ export const Functions = [
     },
     {
         "name": "llDialog",
-        "descrition": "Shows a dialog box in the lower right corner of the avatar's screen (upper right in Viewer 1.x) with a message and choice buttons, as well as an ignore button. This has many uses ranging from simple message delivery to complex menu systems.",
+        "description": "Shows a dialog box in the lower right corner of the avatar's screen (upper right in Viewer 1.x) with a message and choice buttons, as well as an ignore button. This has many uses ranging from simple message delivery to complex menu systems.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlDialog",
         "param": [
@@ -883,14 +883,14 @@ export const Functions = [
     },
     {
         "name": "llDie",
-        "descrition": "Deletes the object. The object does not go to the owners Inventory:Trash.",
+        "description": "Deletes the object. The object does not go to the owners Inventory:Trash.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlDie",
         "param": []
     },
     {
         "name": "llDumpList2String",
-        "descrition": "Returns a string that is the list src converted to a string with separator between the entries.",
+        "description": "Returns a string that is the list src converted to a string with separator between the entries.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlDumpList2String",
         "param": [
@@ -908,7 +908,7 @@ export const Functions = [
     },
     {
         "name": "llEdgeOfWorld",
-        "descrition": "Checks to see whether the border hit by dir from pos is the edge of the world (has no neighboring simulator).\n\nReturns a boolean (an integer) value. FALSE indicating there is a simulator in the direction indicated.",
+        "description": "Checks to see whether the border hit by dir from pos is the edge of the world (has no neighboring simulator).\n\nReturns a boolean (an integer) value. FALSE indicating there is a simulator in the direction indicated.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlEdgeOfWorld",
         "param": [
@@ -926,7 +926,7 @@ export const Functions = [
     },
     {
         "name": "llEjectFromLand",
-        "descrition": "Ejects avatar from the parcel.",
+        "description": "Ejects avatar from the parcel.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlEjectFromLand",
         "param": [
@@ -939,7 +939,7 @@ export const Functions = [
     },
     {
         "name": "llEmail",
-        "descrition": "Sends an email to address with subject and message.",
+        "description": "Sends an email to address with subject and message.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlEmail",
         "param": [
@@ -962,7 +962,7 @@ export const Functions = [
     },
     {
         "name": "llEscapeURL",
-        "descrition": "Returns a string that is the escaped/encoded version of url, replacing spaces with \"%20\" etc. The function will escape any character not in [a-zA-Z0-9] to \"%xx\" where \"xx\" is the  hexadecimal value of the character in  UTF-8  byte form.",
+        "description": "Returns a string that is the escaped/encoded version of url, replacing spaces with \"%20\" etc. The function will escape any character not in [a-zA-Z0-9] to \"%xx\" where \"xx\" is the  hexadecimal value of the character in  UTF-8  byte form.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlEscapeURL",
         "param": [
@@ -975,7 +975,7 @@ export const Functions = [
     },
     {
         "name": "llEuler2Rot",
-        "descrition": "Returns a rotation representation of the  Euler Angles v.",
+        "description": "Returns a rotation representation of the  Euler Angles v.",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlEuler2Rot",
         "param": [
@@ -988,7 +988,7 @@ export const Functions = [
     },
     {
         "name": "llEvade",
-        "descrition": "Characters will (roughly) try to hide from their pursuers if there is a good hiding spot along their fleeing path. Hiding means no direct line of sight from the head of the character (center of the top of its physics bounding box) to the head of its pursuer and no direct path between the two on the navmesh.",
+        "description": "Characters will (roughly) try to hide from their pursuers if there is a good hiding spot along their fleeing path. Hiding means no direct line of sight from the head of the character (center of the top of its physics bounding box) to the head of its pursuer and no direct path between the two on the navmesh.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlEvade",
         "param": [
@@ -1006,7 +1006,7 @@ export const Functions = [
     },
     {
         "name": "llExecCharacterCmd",
-        "descrition": "Send a command to the pathing system.",
+        "description": "Send a command to the pathing system.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlExecCharacterCmd",
         "param": [
@@ -1024,7 +1024,7 @@ export const Functions = [
     },
     {
         "name": "llFabs",
-        "descrition": "Returns a float that is the positive version of val.",
+        "description": "Returns a float that is the positive version of val.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlFabs",
         "param": [
@@ -1037,7 +1037,7 @@ export const Functions = [
     },
     {
         "name": "llFleeFrom",
-        "descrition": "Directs a character to keep a specific distance from a specific position in the region or adjacent regions.",
+        "description": "Directs a character to keep a specific distance from a specific position in the region or adjacent regions.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlFleeFrom",
         "param": [
@@ -1060,7 +1060,7 @@ export const Functions = [
     },
     {
         "name": "llFloor",
-        "descrition": "Returns an integer that is the integer value of val rounded towards negative infinity (return <= val).",
+        "description": "Returns an integer that is the integer value of val rounded towards negative infinity (return <= val).",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlFloor",
         "param": [
@@ -1073,7 +1073,7 @@ export const Functions = [
     },
     {
         "name": "llForceMouselook",
-        "descrition": "Sets if a sitting avatar should be forced into mouselook when they sit on this prim.",
+        "description": "Sets if a sitting avatar should be forced into mouselook when they sit on this prim.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlForceMouselook",
         "param": [
@@ -1086,7 +1086,7 @@ export const Functions = [
     },
     {
         "name": "llFrand",
-        "descrition": "Returns a float that is pseudo random in the range [0.0, mag) or (mag, 0.0].[1]\n\n This means that the returned value can be any value in the range 0.0 to mag including 0.0, but not including the value of mag itself. The sign of mag matches the return.",
+        "description": "Returns a float that is pseudo random in the range [0.0, mag) or (mag, 0.0].[1]\n\n This means that the returned value can be any value in the range 0.0 to mag including 0.0, but not including the value of mag itself. The sign of mag matches the return.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlFrand",
         "param": [
@@ -1099,21 +1099,21 @@ export const Functions = [
     },
     {
         "name": "llGenerateKey",
-        "descrition": "Generates a key using Version 5 (SHA-1 hash) UUID generation to create a unique key.\n\nReturns the key generated.",
+        "description": "Generates a key using Version 5 (SHA-1 hash) UUID generation to create a unique key.\n\nReturns the key generated.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGenerateKey",
         "param": []
     },
     {
         "name": "llGetAccel",
-        "descrition": "Returns a vector that is the acceleration of the object in the region frame of reference.",
+        "description": "Returns a vector that is the acceleration of the object in the region frame of reference.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetAccel",
         "param": []
     },
     {
         "name": "llGetAgentInfo",
-        "descrition": "Returns a bit field (an integer) containing the agent information about id.",
+        "description": "Returns a bit field (an integer) containing the agent information about id.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetAgentInfo",
         "param": [
@@ -1126,7 +1126,7 @@ export const Functions = [
     },
     {
         "name": "llGetAgentLanguage",
-        "descrition": "Returns a string that is the language code of the preferred interface language of the user avatar.",
+        "description": "Returns a string that is the language code of the preferred interface language of the user avatar.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetAgentLanguage",
         "param": [
@@ -1139,7 +1139,7 @@ export const Functions = [
     },
     {
         "name": "llGetAgentList",
-        "descrition": "Requests a list of agents currently in the region, limited by the scope parameter.\n\nReturns a list [key id0, key id1, ..., key idn] or [string error_msg] -  returns avatar keys for all agents in the region limited to the area(s) specified by scope",
+        "description": "Requests a list of agents currently in the region, limited by the scope parameter.\n\nReturns a list [key id0, key id1, ..., key idn] or [string error_msg] -  returns avatar keys for all agents in the region limited to the area(s) specified by scope",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetAgentList",
         "param": [
@@ -1157,7 +1157,7 @@ export const Functions = [
     },
     {
         "name": "llGetAgentSize",
-        "descrition": "Returns a vector that is an estimated size of the requested avatar.",
+        "description": "Returns a vector that is an estimated size of the requested avatar.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetAgentSize",
         "param": [
@@ -1170,7 +1170,7 @@ export const Functions = [
     },
     {
         "name": "llGetAlpha",
-        "descrition": "Returns a float that is the alpha of face.",
+        "description": "Returns a float that is the alpha of face.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetAlpha",
         "param": [
@@ -1183,14 +1183,14 @@ export const Functions = [
     },
     {
         "name": "llGetAndResetTime",
-        "descrition": "Returns a float that is script time in seconds and then resets the script time to zero.",
+        "description": "Returns a float that is script time in seconds and then resets the script time to zero.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetAndResetTime",
         "param": []
     },
     {
         "name": "llGetAnimation",
-        "descrition": "Returns a string that is the name of the currently playing locomotion animation for avatar id. See the table below.",
+        "description": "Returns a string that is the name of the currently playing locomotion animation for avatar id. See the table below.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetAnimation",
         "param": [
@@ -1203,7 +1203,7 @@ export const Functions = [
     },
     {
         "name": "llGetAnimationList",
-        "descrition": "Returns a list of keys of playing animations for avatar.",
+        "description": "Returns a list of keys of playing animations for avatar.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetAnimationList",
         "param": [
@@ -1216,7 +1216,7 @@ export const Functions = [
     },
     {
         "name": "llGetAnimationOverride",
-        "descrition": "Returns a string that is the name of the animation that is being used for the specified animation state (anim_state).",
+        "description": "Returns a string that is the name of the animation that is being used for the specified animation state (anim_state).",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetAnimationOverride",
         "param": [
@@ -1229,14 +1229,14 @@ export const Functions = [
     },
     {
         "name": "llGetAttached",
-        "descrition": "Returns the attach_point (an integer) the object is attached to or zero if it is either not attached or is pending detachment.",
+        "description": "Returns the attach_point (an integer) the object is attached to or zero if it is either not attached or is pending detachment.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetAttached",
         "param": []
     },
     {
         "name": "llGetAttachedList",
-        "descrition": "Returns a list of object keys corresponding to public attachments worn by an avatar.",
+        "description": "Returns a list of object keys corresponding to public attachments worn by an avatar.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetAttachedList",
         "param": [
@@ -1249,7 +1249,7 @@ export const Functions = [
     },
     {
         "name": "llGetBoundingBox",
-        "descrition": "Returns a list that is the bounding box of object relative to its root prim, in local coordinates.\n\nFormat: [ (vector) min_corner, (vector) max_corner ]",
+        "description": "Returns a list that is the bounding box of object relative to its root prim, in local coordinates.\n\nFormat: [ (vector) min_corner, (vector) max_corner ]",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetBoundingBox",
         "param": [
@@ -1262,28 +1262,28 @@ export const Functions = [
     },
     {
         "name": "llGetCameraPos",
-        "descrition": "Returns a vector that is the current camera position for the agent the task has permissions for.",
+        "description": "Returns a vector that is the current camera position for the agent the task has permissions for.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetCameraPos",
         "param": []
     },
     {
         "name": "llGetCameraRot",
-        "descrition": "Returns a rotation that is the current camera orientation for the agent the task has permissions for.",
+        "description": "Returns a rotation that is the current camera orientation for the agent the task has permissions for.",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetCameraRot",
         "param": []
     },
     {
         "name": "llGetCenterOfMass",
-        "descrition": "Returns the vector position of the object's center of mass in region coordinates.",
+        "description": "Returns the vector position of the object's center of mass in region coordinates.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetCenterOfMass",
         "param": []
     },
     {
         "name": "llGetClosestNavPoint",
-        "descrition": "Used to get a point on the navmesh that is the closest point to point.\n\nReturns a list containing a single vector which is the closest point on the navmesh to the point provided or an empty list.",
+        "description": "Used to get a point on the navmesh that is the closest point to point.\n\nReturns a list containing a single vector which is the closest point on the navmesh to the point provided or an empty list.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetClosestNavPoint",
         "param": [
@@ -1301,7 +1301,7 @@ export const Functions = [
     },
     {
         "name": "llGetColor",
-        "descrition": "Returns a vector that is the color on face.",
+        "description": "Returns a vector that is the color on face.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetColor",
         "param": [
@@ -1314,35 +1314,35 @@ export const Functions = [
     },
     {
         "name": "llGetCreator",
-        "descrition": "Returns a key for the creator of the prim.",
+        "description": "Returns a key for the creator of the prim.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetCreator",
         "param": []
     },
     {
         "name": "llGetDate",
-        "descrition": "Returns a string that is the current date in the UTC time zone in the format \"YYYY-MM-DD\".",
+        "description": "Returns a string that is the current date in the UTC time zone in the format \"YYYY-MM-DD\".",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetDate",
         "param": []
     },
     {
         "name": "llGetDayLength",
-        "descrition": "Return the number of seconds in the day cycle applied to the current parcel. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds in the day cycle applied to the current parcel. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.\n\nReturns an integer ",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetDayLength",
         "param": []
     },
     {
         "name": "llGetDayOffset",
-        "descrition": "Return the number of seconds added to the current time before calculating the current environmental time for the parcel.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds added to the current time before calculating the current environmental time for the parcel.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.\n\nReturns an integer ",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetDayOffset",
         "param": []
     },
     {
         "name": "llGetDisplayName",
-        "descrition": "Returns a string that is the non-unique display name of the avatar specified by id.",
+        "description": "Returns a string that is the non-unique display name of the avatar specified by id.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetDisplayName",
         "param": [
@@ -1355,14 +1355,14 @@ export const Functions = [
     },
     {
         "name": "llGetEnergy",
-        "descrition": "Returns a float that is how much energy is in the object as a percentage of maximum",
+        "description": "Returns a float that is how much energy is in the object as a percentage of maximum",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetEnergy",
         "param": []
     },
     {
         "name": "llGetEnv",
-        "descrition": "Returns a string with the requested data about the region.",
+        "description": "Returns a string with the requested data about the region.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetEnv",
         "param": [
@@ -1375,7 +1375,7 @@ export const Functions = [
     },
     {
         "name": "llGetEnvironment",
-        "descrition": "Returns a list containing the current environment values for the parcel or region as a list of attributes. Takes a list of attributes to retrieve in params and returns them in the order requested.",
+        "description": "Returns a list containing the current environment values for the parcel or region as a list of attributes. Takes a list of attributes to retrieve in params and returns them in the order requested.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetEnvironment",
         "param": [
@@ -1393,7 +1393,7 @@ export const Functions = [
     },
     {
         "name": "llGetExperienceDetails",
-        "descrition": "Returns a list of details about the experience. This list has 6 components: [string experience_name, key owner_id, key experience_id, integer state, string state_message, key group_id]",
+        "description": "Returns a list of details about the experience. This list has 6 components: [string experience_name, key owner_id, key experience_id, integer state, string state_message, key group_id]",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetExperienceDetails",
         "param": [
@@ -1406,7 +1406,7 @@ export const Functions = [
     },
     {
         "name": "llGetExperienceErrorMessage",
-        "descrition": "Returns a text description of a particular Experience LSL error constant.\n\nReturns a string describing the error code passed or the string corresponding to error. Returns XP_ERROR_UNKNOWN_ERROR if the error is not a valid error code.",
+        "description": "Returns a text description of a particular Experience LSL error constant.\n\nReturns a string describing the error code passed or the string corresponding to error. Returns XP_ERROR_UNKNOWN_ERROR if the error is not a valid error code.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetExperienceErrorMessage",
         "param": [
@@ -1419,42 +1419,42 @@ export const Functions = [
     },
     {
         "name": "llGetForce",
-        "descrition": "Returns a vector that is the force (if the script is physical)",
+        "description": "Returns a vector that is the force (if the script is physical)",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetForce",
         "param": []
     },
     {
         "name": "llGetFreeMemory",
-        "descrition": "Returns the integer of the number of free bytes of memory the script can use.",
+        "description": "Returns the integer of the number of free bytes of memory the script can use.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetFreeMemory",
         "param": []
     },
     {
         "name": "llGetFreeURLs",
-        "descrition": "Returns an integer that is the number of available URLs. If attached, return the URL's remaining for the owner. Otherwise, return the availabe URL's for the sim",
+        "description": "Returns an integer that is the number of available URLs. If attached, return the URL's remaining for the owner. Otherwise, return the availabe URL's for the sim",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetFreeURLs",
         "param": []
     },
     {
         "name": "llGetGeometricCenter",
-        "descrition": "Returns the vector that is the geometric center of the object relative to the root prim.",
+        "description": "Returns the vector that is the geometric center of the object relative to the root prim.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetGeometricCenter",
         "param": []
     },
     {
         "name": "llGetGMTclock",
-        "descrition": "Returns a float that is the time in seconds since midnight GMT.  Value appears to be truncated to the second.",
+        "description": "Returns a float that is the time in seconds since midnight GMT.  Value appears to be truncated to the second.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetGMTclock",
         "param": []
     },
     {
         "name": "llGetHTTPHeader",
-        "descrition": "Returns a string that is the value for header for request_id.",
+        "description": "Returns a string that is the value for header for request_id.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetHTTPHeader",
         "param": [
@@ -1472,7 +1472,7 @@ export const Functions = [
     },
     {
         "name": "llGetInventoryAcquireTime",
-        "descrition": "Returns a string with the timestamp that the item was added to the prim's inventory.",
+        "description": "Returns a string with the timestamp that the item was added to the prim's inventory.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetInventoryAcquireTime",
         "param": [
@@ -1485,7 +1485,7 @@ export const Functions = [
     },
     {
         "name": "llGetInventoryCreator",
-        "descrition": "Returns a key of the creator of the inventory item.",
+        "description": "Returns a key of the creator of the inventory item.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetInventoryCreator",
         "param": [
@@ -1498,7 +1498,7 @@ export const Functions = [
     },
     {
         "name": "llGetInventoryKey",
-        "descrition": "Returns a key that is the UUID of the inventory name",
+        "description": "Returns a key that is the UUID of the inventory name",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetInventoryKey",
         "param": [
@@ -1511,7 +1511,7 @@ export const Functions = [
     },
     {
         "name": "llGetInventoryName",
-        "descrition": "Returns a string that is the name of the inventory item number of type. Returns an empty string if no item of the specified type is found in the prim's inventory (or there are less than or equal to number items of the type).",
+        "description": "Returns a string that is the name of the inventory item number of type. Returns an empty string if no item of the specified type is found in the prim's inventory (or there are less than or equal to number items of the type).",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetInventoryName",
         "param": [
@@ -1529,7 +1529,7 @@ export const Functions = [
     },
     {
         "name": "llGetInventoryNumber",
-        "descrition": "Returns an integer that is the number of items of a given type in the prims inventory.",
+        "description": "Returns an integer that is the number of items of a given type in the prims inventory.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetInventoryNumber",
         "param": [
@@ -1542,7 +1542,7 @@ export const Functions = [
     },
     {
         "name": "llGetInventoryPermMask",
-        "descrition": "Returns a bit field (an integer) of the requested permission category for the inventory item",
+        "description": "Returns a bit field (an integer) of the requested permission category for the inventory item",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetInventoryPermMask",
         "param": [
@@ -1560,7 +1560,7 @@ export const Functions = [
     },
     {
         "name": "llGetInventoryType",
-        "descrition": "Returns an integer that is the type of the inventory item name",
+        "description": "Returns an integer that is the type of the inventory item name",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetInventoryType",
         "param": [
@@ -1573,14 +1573,14 @@ export const Functions = [
     },
     {
         "name": "llGetKey",
-        "descrition": "Returns the key of the prim the script is in.",
+        "description": "Returns the key of the prim the script is in.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetKey",
         "param": []
     },
     {
         "name": "llGetLandOwnerAt",
-        "descrition": "Returns a key that is the land owner at pos.",
+        "description": "Returns a key that is the land owner at pos.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetLandOwnerAt",
         "param": [
@@ -1593,7 +1593,7 @@ export const Functions = [
     },
     {
         "name": "llGetLinkKey",
-        "descrition": "Returns the key of the linked prim link",
+        "description": "Returns the key of the linked prim link",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkKey",
         "param": [
@@ -1606,7 +1606,7 @@ export const Functions = [
     },
     {
         "name": "llGetObjectLinkKey",
-        "descrition": "Returns the key of the linked prim link in the linkset identified by object_id",
+        "description": "Returns the key of the linked prim link in the linkset identified by object_id",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkKey",
         "param": [
@@ -1624,7 +1624,7 @@ export const Functions = [
     },
     {
         "name": "llGetLinkMedia",
-        "descrition": "Get the media params for a particular face on a linked prim, given the desired list of named params.\n\nReturns a parameter list (a list) of values in the order requested.",
+        "description": "Get the media params for a particular face on a linked prim, given the desired list of named params.\n\nReturns a parameter list (a list) of values in the order requested.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkMedia",
         "param": [
@@ -1647,7 +1647,7 @@ export const Functions = [
     },
     {
         "name": "llGetLinkName",
-        "descrition": "Returns a string that is the name of link in link set",
+        "description": "Returns a string that is the name of link in link set",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkName",
         "param": [
@@ -1660,14 +1660,14 @@ export const Functions = [
     },
     {
         "name": "llGetLinkNumber",
-        "descrition": "Returns an integer that is the link number of the prim containing the script.",
+        "description": "Returns an integer that is the link number of the prim containing the script.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkNumber",
         "param": []
     },
     {
         "name": "llGetLinkNumberOfSides",
-        "descrition": "Returns an integer that is the number of faces (or sides) of the prim link.",
+        "description": "Returns an integer that is the number of faces (or sides) of the prim link.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkNumberOfSides",
         "param": [
@@ -1680,7 +1680,7 @@ export const Functions = [
     },
     {
         "name": "llGetPrimitiveParams",
-        "descrition": "Returns attribute values (a list) for the attributes requested in the params list.",
+        "description": "Returns attribute values (a list) for the attributes requested in the params list.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkPrimitiveParams",
         "param": [
@@ -1693,7 +1693,7 @@ export const Functions = [
     },
     {
         "name": "llGetLinkPrimitiveParams",
-        "descrition": "Identical to llGetPrimitiveParams except that it acts on the prim specified by the link number given.\n\nReturns attribute values (a list) for the attributes requested in the params list for the link.",
+        "description": "Identical to llGetPrimitiveParams except that it acts on the prim specified by the link number given.\n\nReturns attribute values (a list) for the attributes requested in the params list for the link.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkPrimitiveParams",
         "param": [
@@ -1711,7 +1711,7 @@ export const Functions = [
     },
     {
         "name": "llGetListEntryType",
-        "descrition": "Returns the type (an integer) of the entry at index in src.",
+        "description": "Returns the type (an integer) of the entry at index in src.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetListEntryType",
         "param": [
@@ -1729,7 +1729,7 @@ export const Functions = [
     },
     {
         "name": "llGetListLength",
-        "descrition": "Returns an integer that is the number of elements in the list src.",
+        "description": "Returns an integer that is the number of elements in the list src.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetListLength",
         "param": [
@@ -1742,70 +1742,70 @@ export const Functions = [
     },
     {
         "name": "llGetLocalPos",
-        "descrition": "Returns a vector that is the position relative (local) to the root.",
+        "description": "Returns a vector that is the position relative (local) to the root.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetLocalPos",
         "param": []
     },
     {
         "name": "llGetLocalRot",
-        "descrition": "Returns the rotation of the prim relative to the root.",
+        "description": "Returns the rotation of the prim relative to the root.",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetLocalRot",
         "param": []
     },
     {
         "name": "llGetMass",
-        "descrition": "Returns a float that is the mass of object (in Lindograms) that script is attached to.",
+        "description": "Returns a float that is the mass of object (in Lindograms) that script is attached to.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetMass",
         "param": []
     },
     {
         "name": "llGetMassMKS",
-        "descrition": "Returns a float that is the mass (in Kilograms) of object that script is attached to. Functionally identical to llGetMass except for the unit used in the return value.",
+        "description": "Returns a float that is the mass (in Kilograms) of object that script is attached to. Functionally identical to llGetMass except for the unit used in the return value.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetMassMKS",
         "param": []
     },
     {
         "name": "llGetMaxScaleFactor",
-        "descrition": "Returns a float that is the largest scaling factor that can be used with llScaleByFactor to resize the object.  This maximum is determined by the Linkability Rules and prim scale limits.",
+        "description": "Returns a float that is the largest scaling factor that can be used with llScaleByFactor to resize the object.  This maximum is determined by the Linkability Rules and prim scale limits.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetMaxScaleFactor",
         "param": []
     },
     {
         "name": "llGetMemoryLimit",
-        "descrition": "Get the maximum memory a script can use.\n\nReturns the integer amount of memory the script can use in bytes.",
+        "description": "Get the maximum memory a script can use.\n\nReturns the integer amount of memory the script can use in bytes.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetMemoryLimit",
         "param": []
     },
     {
         "name": "llGetMinScaleFactor",
-        "descrition": "Returns a float that is the smallest scaling factor that can be used with llScaleByFactor to resize the object.  This minimum is determined by the prim scale limits.",
+        "description": "Returns a float that is the smallest scaling factor that can be used with llScaleByFactor to resize the object.  This minimum is determined by the prim scale limits.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetMinScaleFactor",
         "param": []
     },
     {
         "name": "llGetMoonDirection",
-        "descrition": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.\n\nReturns a vector ",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetMoonDirection",
         "param": []
     },
     {
         "name": "llGetMoonRotation",
-        "descrition": "Return the rotation applied to the moon for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the moon for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.\n\nReturns a rotation ",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetMoonRotation",
         "param": []
     },
     {
         "name": "llGetNextEmail",
-        "descrition": "Get the next queued email that comes from address, with specified subject.",
+        "description": "Get the next queued email that comes from address, with specified subject.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlGetNextEmail",
         "param": [
@@ -1823,7 +1823,7 @@ export const Functions = [
     },
     {
         "name": "llGetNotecardLine",
-        "descrition": "Requests the line line of the notecard name from the dataserver.\n\nReturns the handle (a key) for a dataserver event response.",
+        "description": "Requests the line line of the notecard name from the dataserver.\n\nReturns the handle (a key) for a dataserver event response.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetNotecardLine",
         "param": [
@@ -1841,7 +1841,7 @@ export const Functions = [
     },
     {
         "name": "llGetNumberOfNotecardLines",
-        "descrition": "Requests the number of lines in notecard name via the dataserver event (cast dataserver value to integer)\n\nReturns the handle (a key) for a dataserver event response.",
+        "description": "Requests the number of lines in notecard name via the dataserver event (cast dataserver value to integer)\n\nReturns the handle (a key) for a dataserver event response.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetNumberOfNotecardLines",
         "param": [
@@ -1854,35 +1854,35 @@ export const Functions = [
     },
     {
         "name": "llGetNumberOfPrims",
-        "descrition": "Returns an integer that is the number of prims in a link set the script is attached to.",
+        "description": "Returns an integer that is the number of prims in a link set the script is attached to.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetNumberOfPrims",
         "param": []
     },
     {
         "name": "llGetNumberOfSides",
-        "descrition": "Returns an integer that is the number of faces (or sides) of the prim.",
+        "description": "Returns an integer that is the number of faces (or sides) of the prim.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetNumberOfSides",
         "param": []
     },
     {
         "name": "llGetObjectAnimationNames",
-        "descrition": "Returns a list of names of animations playing in the current object",
+        "description": "Returns a list of names of animations playing in the current object",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetObjectAnimationNames",
         "param": []
     },
     {
         "name": "llGetObjectDesc",
-        "descrition": "Returns a string containing the description of the prim the script is attached to.",
+        "description": "Returns a string containing the description of the prim the script is attached to.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetObjectDesc",
         "param": []
     },
     {
         "name": "llGetObjectDetails",
-        "descrition": "Returns a list of the details for id, specifically those requested in params.",
+        "description": "Returns a list of the details for id, specifically those requested in params.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetObjectDetails",
         "param": [
@@ -1900,7 +1900,7 @@ export const Functions = [
     },
     {
         "name": "llGetLinkKey",
-        "descrition": "Returns the key of the linked prim link",
+        "description": "Returns the key of the linked prim link",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkKey#llGetObjectLinkKey",
         "param": [
@@ -1913,7 +1913,7 @@ export const Functions = [
     },
     {
         "name": "llGetObjectLinkKey",
-        "descrition": "Returns the key of the linked prim link in the linkset identified by object_id",
+        "description": "Returns the key of the linked prim link in the linkset identified by object_id",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetLinkKey#llGetObjectLinkKey",
         "param": [
@@ -1931,7 +1931,7 @@ export const Functions = [
     },
     {
         "name": "llGetObjectMass",
-        "descrition": "Returns a float that is the mass of id",
+        "description": "Returns a float that is the mass of id",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetObjectMass",
         "param": [
@@ -1944,14 +1944,14 @@ export const Functions = [
     },
     {
         "name": "llGetObjectName",
-        "descrition": "Returns a string that is the name of the prim the script is attached to.",
+        "description": "Returns a string that is the name of the prim the script is attached to.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetObjectName",
         "param": []
     },
     {
         "name": "llGetObjectPermMask",
-        "descrition": "Returns a bit field (an integer) of the requested permission category for the object containing this script.",
+        "description": "Returns a bit field (an integer) of the requested permission category for the object containing this script.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetObjectPermMask",
         "param": [
@@ -1964,7 +1964,7 @@ export const Functions = [
     },
     {
         "name": "llGetObjectPrimCount",
-        "descrition": "Returns an integer that is the total number of prims in the object that contains prim.",
+        "description": "Returns an integer that is the total number of prims in the object that contains prim.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetObjectPrimCount",
         "param": [
@@ -1977,21 +1977,21 @@ export const Functions = [
     },
     {
         "name": "llGetOmega",
-        "descrition": "Returns a vector that is the rotation velocity of the object in radians per second.",
+        "description": "Returns a vector that is the rotation velocity of the object in radians per second.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetOmega",
         "param": []
     },
     {
         "name": "llGetOwner",
-        "descrition": "Returns a key that is the object owner's UUID.",
+        "description": "Returns a key that is the object owner's UUID.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetOwner",
         "param": []
     },
     {
         "name": "llGetOwnerKey",
-        "descrition": "Returns a key that is the owner of prim id",
+        "description": "Returns a key that is the owner of prim id",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetOwnerKey",
         "param": [
@@ -2004,7 +2004,7 @@ export const Functions = [
     },
     {
         "name": "llGetParcelDetails",
-        "descrition": "Returns a list that is the parcel details specified in params (in the same order) for the parcel at pos.",
+        "description": "Returns a list that is the parcel details specified in params (in the same order) for the parcel at pos.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetParcelDetails",
         "param": [
@@ -2022,7 +2022,7 @@ export const Functions = [
     },
     {
         "name": "llGetParcelFlags",
-        "descrition": "Returns a bit field (an integer) of parcel flags (PARCEL_FLAG_*) for the parcel that includes the point pos.",
+        "description": "Returns a bit field (an integer) of parcel flags (PARCEL_FLAG_*) for the parcel that includes the point pos.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetParcelFlags",
         "param": [
@@ -2035,7 +2035,7 @@ export const Functions = [
     },
     {
         "name": "llGetParcelMaxPrims",
-        "descrition": "Returns an integer that is the maximum combined land impact allowed for objects on the parcel at pos.",
+        "description": "Returns an integer that is the maximum combined land impact allowed for objects on the parcel at pos.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetParcelMaxPrims",
         "param": [
@@ -2053,21 +2053,21 @@ export const Functions = [
     },
     {
         "name": "llGetParcelMusicURL",
-        "descrition": "Returns a string containing the parcel streaming audio URL.",
+        "description": "Returns a string containing the parcel streaming audio URL.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetParcelMusicURL",
         "param": []
     },
     {
         "name": "llGetParcelMusicURL",
-        "descrition": "Returns a string containing the parcel streaming audio URL.",
+        "description": "Returns a string containing the parcel streaming audio URL.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetParcelMusicURL",
         "param": []
     },
     {
         "name": "llGetParcelPrimOwners",
-        "descrition": "Returns a list of all residents and groups who own objects on the parcel at pos and with individual land impact used. \n\nThe list is formatted as [ key ownerKey1, integer agentImpact1, key ownerKey2, integer agentImpact2, ... ], and sorted by agent/group key with a maximum of 100 strides.",
+        "description": "Returns a list of all residents and groups who own objects on the parcel at pos and with individual land impact used. \n\nThe list is formatted as [ key ownerKey1, integer agentImpact1, key ownerKey2, integer agentImpact2, ... ], and sorted by agent/group key with a maximum of 100 strides.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetParcelPrimOwners",
         "param": [
@@ -2080,21 +2080,21 @@ export const Functions = [
     },
     {
         "name": "llGetPermissions",
-        "descrition": "Returns an integer bitfield with the script permissions granted",
+        "description": "Returns an integer bitfield with the script permissions granted",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetPermissions",
         "param": []
     },
     {
         "name": "llGetPermissionsKey",
-        "descrition": "Returns the avatar (a key) of the avatar that last granted or declined permissions to the script.",
+        "description": "Returns the avatar (a key) of the avatar that last granted or declined permissions to the script.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlGetPermissionsKey",
         "param": []
     },
     {
         "name": "llGetPhysicsMaterial",
-        "descrition": "Used to get the physical characteristics of an object.\n\nReturns a list in the form [ float gravity_multiplier, float restitution, float friction, float density ]",
+        "description": "Used to get the physical characteristics of an object.\n\nReturns a list in the form [ float gravity_multiplier, float restitution, float friction, float density ]",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetPhysicsMaterial",
         "param": [
@@ -2122,21 +2122,21 @@ export const Functions = [
     },
     {
         "name": "llGetPos",
-        "descrition": "Returns the vector position of the task in region coordinates",
+        "description": "Returns the vector position of the task in region coordinates",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetPos",
         "param": []
     },
     {
         "name": "llGetPos",
-        "descrition": "Returns the vector position of the task in region coordinates",
+        "description": "Returns the vector position of the task in region coordinates",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetPos",
         "param": []
     },
     {
         "name": "llGetPrimMediaParams",
-        "descrition": "Get the media params for a particular face on an object, given the desired list of names.\n\nReturns a parameter list (a list) of values in the order requested.",
+        "description": "Get the media params for a particular face on an object, given the desired list of names.\n\nReturns a parameter list (a list) of values in the order requested.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetPrimMediaParams",
         "param": [
@@ -2154,126 +2154,126 @@ export const Functions = [
     },
     {
         "name": "llGetRegionAgentCount",
-        "descrition": "Returns an integer that is the number of avatars in the region.",
+        "description": "Returns an integer that is the number of avatars in the region.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionAgentCount",
         "param": []
     },
     {
         "name": "llGetRegionCorner",
-        "descrition": "Returns a vector in meters that is the global location of the south-west corner of the region the object is in. The z component is 0.0",
+        "description": "Returns a vector in meters that is the global location of the south-west corner of the region the object is in. The z component is 0.0",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionCorner",
         "param": []
     },
     {
         "name": "llGetRegionDayLength",
-        "descrition": "Return the number of seconds in the day cycle applied to the current region. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds in the day cycle applied to the current region. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.\n\nReturns an integer ",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionDayLength",
         "param": []
     },
     {
         "name": "llGetRegionDayOffset",
-        "descrition": "Return the number of seconds added to the current time before calculating the current environmental time for the region.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds added to the current time before calculating the current environmental time for the region.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.\n\nReturns an integer ",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionDayOffset",
         "param": []
     },
     {
         "name": "llGetRegionFlags",
-        "descrition": "Returns an integer that is the region flags (REGION_FLAG_*) for the region the object is in.",
+        "description": "Returns an integer that is the region flags (REGION_FLAG_*) for the region the object is in.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionFlags",
         "param": []
     },
     {
         "name": "llGetRegionFPS",
-        "descrition": "Returns a float that is the mean region frames per second.",
+        "description": "Returns a float that is the mean region frames per second.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionFPS",
         "param": []
     },
     {
         "name": "llGetRegionMoonDirection",
-        "descrition": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.\n\nReturns a vector ",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionMoonDirection",
         "param": []
     },
     {
         "name": "llGetRegionMoonRotation",
-        "descrition": "Return the rotation applied to the moon for the region at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the moon for the region at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.\n\nReturns a rotation ",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionMoonRotation",
         "param": []
     },
     {
         "name": "llGetRegionName",
-        "descrition": "Returns a string that is the current region name",
+        "description": "Returns a string that is the current region name",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionName",
         "param": []
     },
     {
         "name": "llGetRegionSunDirection",
-        "descrition": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.\n\nReturns a vector ",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionSunDirection",
         "param": []
     },
     {
         "name": "llGetRegionSunRotation",
-        "descrition": "Return the rotation applied to the sun for the region at the location of the object containing the script.  These functions are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the sun for the region at the location of the object containing the script.  These functions are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.\n\nReturns a rotation ",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionSunRotation",
         "param": []
     },
     {
         "name": "llGetRegionTimeDilation",
-        "descrition": "Returns a float that is the current time dilation, the value range is [0.0, 1.0], 0.0 (full dilation) and 1.0 (no dilation).[1]",
+        "description": "Returns a float that is the current time dilation, the value range is [0.0, 1.0], 0.0 (full dilation) and 1.0 (no dilation).[1]",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetRegionTimeDilation",
         "param": []
     },
     {
         "name": "llGetRootPosition",
-        "descrition": "Returns a vector that is the region position of the root object of the object script is attached to",
+        "description": "Returns a vector that is the region position of the root object of the object script is attached to",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetRootPosition",
         "param": []
     },
     {
         "name": "llGetRootRotation",
-        "descrition": "Returns a rotation that is the region rotation of the root prim of the object.",
+        "description": "Returns a rotation that is the region rotation of the root prim of the object.",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetRootRotation",
         "param": []
     },
     {
         "name": "llGetRot",
-        "descrition": "Returns a rotation that is the prim's rotation relative to the region's axes.",
+        "description": "Returns a rotation that is the prim's rotation relative to the region's axes.",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetRot",
         "param": []
     },
     {
         "name": "llGetScale",
-        "descrition": "Returns a vector that is the scale of the prim.",
+        "description": "Returns a vector that is the scale of the prim.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetScale",
         "param": []
     },
     {
         "name": "llGetScriptName",
-        "descrition": "Returns a string that is the name of the script that called this function.",
+        "description": "Returns a string that is the name of the script that called this function.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetScriptName",
         "param": []
     },
     {
         "name": "llGetScriptState",
-        "descrition": "Returns a boolean (an integer) that is TRUE if the script is running.",
+        "description": "Returns a boolean (an integer) that is TRUE if the script is running.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetScriptState",
         "param": [
@@ -2286,7 +2286,7 @@ export const Functions = [
     },
     {
         "name": "llGetSimStats",
-        "descrition": "Returns a float that is the requested statistic.",
+        "description": "Returns a float that is the requested statistic.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetSimStats",
         "param": [
@@ -2299,28 +2299,28 @@ export const Functions = [
     },
     {
         "name": "llGetSimulatorHostname",
-        "descrition": "Returns a string that is the hostname of the machine the script is running on (same as string in viewer Help dialog)",
+        "description": "Returns a string that is the hostname of the machine the script is running on (same as string in viewer Help dialog)",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetSimulatorHostname",
         "param": []
     },
     {
         "name": "llGetSPMaxMemory",
-        "descrition": "Returns the integer of the most bytes used while LlScriptProfiler was last active.",
+        "description": "Returns the integer of the most bytes used while LlScriptProfiler was last active.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetSPMaxMemory",
         "param": []
     },
     {
         "name": "llGetStartParameter",
-        "descrition": "Returns an integer that is the script start/rez parameter.",
+        "description": "Returns an integer that is the script start/rez parameter.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetStartParameter",
         "param": []
     },
     {
         "name": "llGetStaticPath",
-        "descrition": "Returns a list of position vectors indicating pathfinding waypoints between positions at start and end, for a character of a given radius. The waypoints this function returns are for the 'static' nav mesh, meaning that objects set to \"movable obstacle\" or \"movable phantom\" are ignored.",
+        "description": "Returns a list of position vectors indicating pathfinding waypoints between positions at start and end, for a character of a given radius. The waypoints this function returns are for the 'static' nav mesh, meaning that objects set to \"movable obstacle\" or \"movable phantom\" are ignored.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetStaticPath",
         "param": [
@@ -2348,7 +2348,7 @@ export const Functions = [
     },
     {
         "name": "llGetStatus",
-        "descrition": "Returns a boolean (an integer) equal to the status of the object.",
+        "description": "Returns a boolean (an integer) equal to the status of the object.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetStatus",
         "param": [
@@ -2361,7 +2361,7 @@ export const Functions = [
     },
     {
         "name": "llGetSubString",
-        "descrition": "Returns a string that is the substring of src from start to end, leaving the original string intact.",
+        "description": "Returns a string that is the substring of src from start to end, leaving the original string intact.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetSubString",
         "param": [
@@ -2384,21 +2384,21 @@ export const Functions = [
     },
     {
         "name": "llGetSunDirection",
-        "descrition": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.\n\nReturns a vector ",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetSunDirection",
         "param": []
     },
     {
         "name": "llGetSunRotation",
-        "descrition": "Return the rotation applied to the sun for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the sun for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.\n\nReturns a rotation ",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlGetSunRotation",
         "param": []
     },
     {
         "name": "llGetTexture",
-        "descrition": "Returns a string that is the texture on face",
+        "description": "Returns a string that is the texture on face",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetTexture",
         "param": [
@@ -2411,7 +2411,7 @@ export const Functions = [
     },
     {
         "name": "llGetTextureOffset",
-        "descrition": "Returns a vector that is the texture offset of face in the x (\"U\", horizontal) and y (\"V\", vertical) components. The z component is unused.",
+        "description": "Returns a vector that is the texture offset of face in the x (\"U\", horizontal) and y (\"V\", vertical) components. The z component is unused.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetTextureOffset",
         "param": [
@@ -2424,7 +2424,7 @@ export const Functions = [
     },
     {
         "name": "llGetTextureRot",
-        "descrition": "Returns a float that is the texture rotation, expressed as an angle, on face",
+        "description": "Returns a float that is the texture rotation, expressed as an angle, on face",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetTextureRot",
         "param": [
@@ -2437,7 +2437,7 @@ export const Functions = [
     },
     {
         "name": "llGetTextureScale",
-        "descrition": "Returns a vector that is the texture scale on face (only the x and y components are used).",
+        "description": "Returns a vector that is the texture scale on face (only the x and y components are used).",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetTextureScale",
         "param": [
@@ -2450,49 +2450,49 @@ export const Functions = [
     },
     {
         "name": "llGetTime",
-        "descrition": "Returns a float that is script time in seconds with subsecond precision since the script started, was last reset, or call to either llResetTime or llGetAndResetTime.",
+        "description": "Returns a float that is script time in seconds with subsecond precision since the script started, was last reset, or call to either llResetTime or llGetAndResetTime.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetTime",
         "param": []
     },
     {
         "name": "llGetTimeOfDay",
-        "descrition": "Returns a float that is the time in seconds with subsecond precision since Second Life midnight or region up-time (time since when the region was brought online/rebooted); whichever is smaller. If the region is configured so the sun stays in a constant position, then the returned value is the region up-time.",
+        "description": "Returns a float that is the time in seconds with subsecond precision since Second Life midnight or region up-time (time since when the region was brought online/rebooted); whichever is smaller. If the region is configured so the sun stays in a constant position, then the returned value is the region up-time.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetTimeOfDay",
         "param": []
     },
     {
         "name": "llGetTimestamp",
-        "descrition": "Returns a string that is the current date and time in the UTC time zone in the format \"YYYY-MM-DDThh:mm:ss.ff..fZ\"",
+        "description": "Returns a string that is the current date and time in the UTC time zone in the format \"YYYY-MM-DDThh:mm:ss.ff..fZ\"",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetTimestamp",
         "param": []
     },
     {
         "name": "llGetTorque",
-        "descrition": "Returns a vector that is the torque (if the script is physical)",
+        "description": "Returns a vector that is the torque (if the script is physical)",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetTorque",
         "param": []
     },
     {
         "name": "llGetUnixTime",
-        "descrition": "Returns an integer that is the number of seconds elapsed since 00:00 hours, Jan 1, 1970  UTC from the system clock.",
+        "description": "Returns an integer that is the number of seconds elapsed since 00:00 hours, Jan 1, 1970  UTC from the system clock.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetUnixTime",
         "param": []
     },
     {
         "name": "llGetUsedMemory",
-        "descrition": "Returns the integer of the number of bytes of memory currently in use by the script.",
+        "description": "Returns the integer of the number of bytes of memory currently in use by the script.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGetUsedMemory",
         "param": []
     },
     {
         "name": "llGetUsername",
-        "descrition": "Returns a string that is the unique username of the avatar specified by id.",
+        "description": "Returns a string that is the unique username of the avatar specified by id.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlGetUsername",
         "param": [
@@ -2505,14 +2505,14 @@ export const Functions = [
     },
     {
         "name": "llGetVel",
-        "descrition": "Returns a vector that is the velocity of the object.",
+        "description": "Returns a vector that is the velocity of the object.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGetVel",
         "param": []
     },
     {
         "name": "llGetVisualParams",
-        "descrition": "Returns a list of the details for agentid requested in params.",
+        "description": "Returns a list of the details for agentid requested in params.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlGetVisualParams",
         "param": [
@@ -2530,14 +2530,14 @@ export const Functions = [
     },
     {
         "name": "llGetWallclock",
-        "descrition": "Returns a float that is the time in seconds since midnight Pacific time (PST/PDT), truncated to whole seconds. That is the same as the time of day in SLT expressed as seconds.",
+        "description": "Returns a float that is the time in seconds since midnight Pacific time (PST/PDT), truncated to whole seconds. That is the same as the time of day in SLT expressed as seconds.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGetWallclock",
         "param": []
     },
     {
         "name": "llGiveInventory",
-        "descrition": "Give inventory to destination.",
+        "description": "Give inventory to destination.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlGiveInventory",
         "param": [
@@ -2555,7 +2555,7 @@ export const Functions = [
     },
     {
         "name": "llGiveInventoryList",
-        "descrition": "Gives inventory items to target, creating a new folder to put them in.",
+        "description": "Gives inventory items to target, creating a new folder to put them in.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlGiveInventoryList",
         "param": [
@@ -2578,7 +2578,7 @@ export const Functions = [
     },
     {
         "name": "llGiveMoney",
-        "descrition": "Transfer amount of L$ money from script owner to destination avatar.\n\nReturns an integer that is always zero. In contrast llTransferLindenDollars returns a key that can be used to match the function call to the resulting transaction_result event and the transaction history.",
+        "description": "Transfer amount of L$ money from script owner to destination avatar.\n\nReturns an integer that is always zero. In contrast llTransferLindenDollars returns a key that can be used to match the function call to the resulting transaction_result event and the transaction history.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlGiveMoney",
         "param": [
@@ -2596,7 +2596,7 @@ export const Functions = [
     },
     {
         "name": "llGround",
-        "descrition": "Returns a float that is the ground height directly below the prim position + offset",
+        "description": "Returns a float that is the ground height directly below the prim position + offset",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlGround",
         "param": [
@@ -2609,7 +2609,7 @@ export const Functions = [
     },
     {
         "name": "llGroundContour",
-        "descrition": "Returns a vector that is the ground contour direction below the prim position + offset. The contour is the direction of a contour line at that point, that is the direction in which there is no change in elevation.",
+        "description": "Returns a vector that is the ground contour direction below the prim position + offset. The contour is the direction of a contour line at that point, that is the direction in which there is no change in elevation.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGroundContour",
         "param": [
@@ -2622,7 +2622,7 @@ export const Functions = [
     },
     {
         "name": "llGroundNormal",
-        "descrition": "Returns a vector that is the ground  normal from the current position + offset.",
+        "description": "Returns a vector that is the ground  normal from the current position + offset.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGroundNormal",
         "param": [
@@ -2635,7 +2635,7 @@ export const Functions = [
     },
     {
         "name": "llGroundRepel",
-        "descrition": "Critically damps to height if within height * 0.5 of ground or water level (which ever is higher)",
+        "description": "Critically damps to height if within height * 0.5 of ground or water level (which ever is higher)",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlGroundRepel",
         "param": [
@@ -2658,7 +2658,7 @@ export const Functions = [
     },
     {
         "name": "llGroundSlope",
-        "descrition": "Returns a vector that is the ground slope below the object position + offset",
+        "description": "Returns a vector that is the ground slope below the object position + offset",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlGroundSlope",
         "param": [
@@ -2671,7 +2671,7 @@ export const Functions = [
     },
     {
         "name": "llHash",
-        "descrition": "Returns a 32bit hash for the provided string.  Returns 0 if the input string is empty.\n\nReturns an integer ",
+        "description": "Returns a 32bit hash for the provided string.  Returns 0 if the input string is empty.\n\nReturns an integer ",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlHash",
         "param": [
@@ -2684,7 +2684,7 @@ export const Functions = [
     },
     {
         "name": "llHMAC",
-        "descrition": "Returns a string that is the  Base64-encoded  HMAC hash of msg when using hash algorithm algorithm and secret key private_key.",
+        "description": "Returns a string that is the  Base64-encoded  HMAC hash of msg when using hash algorithm algorithm and secret key private_key.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlHMAC",
         "param": [
@@ -2707,7 +2707,7 @@ export const Functions = [
     },
     {
         "name": "llHTTPRequest",
-        "descrition": "Sends an HTTP request to the specified URL with the body of the request and parameters.\n\nReturns a handle (a key) identifying the HTTP request made.",
+        "description": "Sends an HTTP request to the specified URL with the body of the request and parameters.\n\nReturns a handle (a key) identifying the HTTP request made.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlHTTPRequest",
         "param": [
@@ -2730,7 +2730,7 @@ export const Functions = [
     },
     {
         "name": "llHTTPResponse",
-        "descrition": "Responds to request_id with status and body.",
+        "description": "Responds to request_id with status and body.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlHTTPResponse",
         "param": [
@@ -2753,7 +2753,7 @@ export const Functions = [
     },
     {
         "name": "llInsertString",
-        "descrition": "Returns the string dst with src inserted starting at pos.",
+        "description": "Returns the string dst with src inserted starting at pos.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlInsertString",
         "param": [
@@ -2776,7 +2776,7 @@ export const Functions = [
     },
     {
         "name": "llInstantMessage",
-        "descrition": "Sends an Instant Message specified in the string message to the user specified by user.",
+        "description": "Sends an Instant Message specified in the string message to the user specified by user.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlInstantMessage",
         "param": [
@@ -2794,7 +2794,7 @@ export const Functions = [
     },
     {
         "name": "llIntegerToBase64",
-        "descrition": "Returns a string that is a Base64 big endian encode of number",
+        "description": "Returns a string that is a Base64 big endian encode of number",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlIntegerToBase64",
         "param": [
@@ -2807,7 +2807,7 @@ export const Functions = [
     },
     {
         "name": "llJson2List",
-        "descrition": "This function takes a string representing JSON, and returns a list of the top level.\n\nReturns a list made by parsing src, a string representing json.",
+        "description": "This function takes a string representing JSON, and returns a list of the top level.\n\nReturns a list made by parsing src, a string representing json.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlJson2List",
         "param": [
@@ -2820,7 +2820,7 @@ export const Functions = [
     },
     {
         "name": "llJsonGetValue",
-        "descrition": "Gets the value indicated by specifiers from the json string.\n\nReturns a string made by parsing json, a string representing json and traversing as specified by specifiers.",
+        "description": "Gets the value indicated by specifiers from the json string.\n\nReturns a string made by parsing json, a string representing json and traversing as specified by specifiers.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlJsonGetValue",
         "param": [
@@ -2838,7 +2838,7 @@ export const Functions = [
     },
     {
         "name": "llJsonSetValue",
-        "descrition": "Returns, if successful, a new JSON text string which is json with the value indicated by the specifiers list set to value.",
+        "description": "Returns, if successful, a new JSON text string which is json with the value indicated by the specifiers list set to value.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlJsonSetValue",
         "param": [
@@ -2861,7 +2861,7 @@ export const Functions = [
     },
     {
         "name": "llJsonValueType",
-        "descrition": "Gets the JSON type for the value in json at the location specifiers.\n\nReturns the string specifying the type of the value at specifiers in json.",
+        "description": "Gets the JSON type for the value in json at the location specifiers.\n\nReturns the string specifying the type of the value at specifiers in json.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlJsonValueType",
         "param": [
@@ -2879,7 +2879,7 @@ export const Functions = [
     },
     {
         "name": "llKey2Name",
-        "descrition": "Returns a string that is the legacy name of the prim or avatar specified by id.",
+        "description": "Returns a string that is the legacy name of the prim or avatar specified by id.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlKey2Name",
         "param": [
@@ -2892,14 +2892,14 @@ export const Functions = [
     },
     {
         "name": "llKeyCountKeyValue",
-        "descrition": "Start an asynchronous transaction to request the number of keys with the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to request the number of keys with the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlKeyCountKeyValue",
         "param": []
     },
     {
         "name": "llKeysKeyValue",
-        "descrition": "Start an asynchronous transaction to request a number of keys from the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.",
+        "description": "Start an asynchronous transaction to request a number of keys from the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlKeysKeyValue",
         "param": [
@@ -2917,7 +2917,7 @@ export const Functions = [
     },
     {
         "name": "llLinear2sRGB",
-        "descrition": "Returns a vector Transforms a color specified in linear RGB colorspace into the sRGB colorspace.",
+        "description": "Returns a vector Transforms a color specified in linear RGB colorspace into the sRGB colorspace.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlLinear2sRGB",
         "param": [
@@ -2930,7 +2930,7 @@ export const Functions = [
     },
     {
         "name": "llAdjustSoundVolume",
-        "descrition": "Adjusts volume of attached sound.",
+        "description": "Adjusts volume of attached sound.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkAdjustSoundVolume",
         "param": [
@@ -2943,7 +2943,7 @@ export const Functions = [
     },
     {
         "name": "llLinkAdjustSoundVolume",
-        "descrition": "Adjusts volume of attached sound.",
+        "description": "Adjusts volume of attached sound.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkAdjustSoundVolume",
         "param": [
@@ -2961,7 +2961,7 @@ export const Functions = [
     },
     {
         "name": "llParticleSystem",
-        "descrition": "Defines a particle system for the containing prim based on a list of rules.",
+        "description": "Defines a particle system for the containing prim based on a list of rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkParticleSystem",
         "param": [
@@ -2974,7 +2974,7 @@ export const Functions = [
     },
     {
         "name": "llLinkParticleSystem",
-        "descrition": "A particle system defined by a list of rules is set for the prim(s) link.",
+        "description": "A particle system defined by a list of rules is set for the prim(s) link.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkParticleSystem",
         "param": [
@@ -2992,7 +2992,7 @@ export const Functions = [
     },
     {
         "name": "llLinkPlaySound",
-        "descrition": "Plays attached sound once at volume",
+        "description": "Plays attached sound once at volume",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkPlaySound",
         "param": [
@@ -3020,21 +3020,21 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataAvailable",
-        "descrition": "The llLinksetDataAvailable returns the number of bytes available in the linkset's datastore.\n\nReturns an integer number of bytes available in the linkset store.",
+        "description": "The llLinksetDataAvailable returns the number of bytes available in the linkset's datastore.\n\nReturns an integer number of bytes available in the linkset store.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataAvailable",
         "param": []
     },
     {
         "name": "llLinksetDataCountKeys",
-        "descrition": "The llLinksetDataCountKeys returns the number of unique keys that have been stored in the linkset's datastore.\n\nReturns an integer number of keys used in the linkset store.",
+        "description": "The llLinksetDataCountKeys returns the number of unique keys that have been stored in the linkset's datastore.\n\nReturns an integer number of keys used in the linkset store.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataCountKeys",
         "param": []
     },
     {
         "name": "llLinksetDataDelete",
-        "descrition": "Removes an unprotected name:value pair from the linkset's datastore. If the pair was created\n\nReturns an integer success or failure code.",
+        "description": "Removes an unprotected name:value pair from the linkset's datastore. If the pair was created\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataDelete",
         "param": [
@@ -3047,7 +3047,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataDeleteProtected",
-        "descrition": "The llLinksetDataDeleteProtected function erases a protected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
+        "description": "The llLinksetDataDeleteProtected function erases a protected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataDelete",
         "param": [
@@ -3065,7 +3065,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataDelete",
-        "descrition": "Removes an unprotected name:value pair from the linkset's datastore. If the pair was created\n\nReturns an integer success or failure code.",
+        "description": "Removes an unprotected name:value pair from the linkset's datastore. If the pair was created\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataDeleteProtected",
         "param": [
@@ -3078,7 +3078,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataDeleteProtected",
-        "descrition": "The llLinksetDataDeleteProtected function erases a protected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
+        "description": "The llLinksetDataDeleteProtected function erases a protected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataDeleteProtected",
         "param": [
@@ -3096,7 +3096,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataFindKeys",
-        "descrition": "The llLinksetDataFindKeys function returns a list of up to count keys from the datastore that match pattern, starting at the one indicated by start. If count is less than 1, then all keys between start and the end which match pattern are returned. If count minus start exceeds the number of matching keys, the returned list will be shorter than count, down to a zero-length list if start equals or exceeds the number of matching keys.\n\nReturns a list of the keys in the datastore.",
+        "description": "The llLinksetDataFindKeys function returns a list of up to count keys from the datastore that match pattern, starting at the one indicated by start. If count is less than 1, then all keys between start and the end which match pattern are returned. If count minus start exceeds the number of matching keys, the returned list will be shorter than count, down to a zero-length list if start equals or exceeds the number of matching keys.\n\nReturns a list of the keys in the datastore.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataFindKeys",
         "param": [
@@ -3119,7 +3119,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataListKeys",
-        "descrition": "The llLinksetDataListKeys function returns a list of up to count keys in the datastore, starting at the one indicated by start. If count is less than 1, then all keys between start and the end are returned. If count minus start exceeds the total number of keys, the returned list will be shorter than count, down to a zero-length list if start equals or exceeds the total number of keys.\n\nReturns a list of the keys in the datastore, ordered alphabetically.",
+        "description": "The llLinksetDataListKeys function returns a list of up to count keys in the datastore, starting at the one indicated by start. If count is less than 1, then all keys between start and the end are returned. If count minus start exceeds the total number of keys, the returned list will be shorter than count, down to a zero-length list if start equals or exceeds the total number of keys.\n\nReturns a list of the keys in the datastore, ordered alphabetically.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataListKeys",
         "param": [
@@ -3137,7 +3137,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataRead",
-        "descrition": "Reads an unprotected name:value pair from the linkset's datastore.\n\nReturns a string value corresponding to name",
+        "description": "Reads an unprotected name:value pair from the linkset's datastore.\n\nReturns a string value corresponding to name",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataRead",
         "param": [
@@ -3150,7 +3150,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataReadProtected",
-        "descrition": "Reads a protected name:value pair from the datastore.\n\nReturns a string value corresponding to name",
+        "description": "Reads a protected name:value pair from the datastore.\n\nReturns a string value corresponding to name",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataRead",
         "param": [
@@ -3168,7 +3168,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataRead",
-        "descrition": "Reads an unprotected name:value pair from the linkset's datastore.\n\nReturns a string value corresponding to name",
+        "description": "Reads an unprotected name:value pair from the linkset's datastore.\n\nReturns a string value corresponding to name",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataReadProtected",
         "param": [
@@ -3181,7 +3181,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataReadProtected",
-        "descrition": "Reads a protected name:value pair from the datastore.\n\nReturns a string value corresponding to name",
+        "description": "Reads a protected name:value pair from the datastore.\n\nReturns a string value corresponding to name",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataReadProtected",
         "param": [
@@ -3199,14 +3199,14 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataReset",
-        "descrition": "The llLinksetDataReset function erases all name:value pairs stored in the linkset's datastore.  When this function is called the linkset_data event is triggered in all scripts running in the linkset with an action of LINKSETDATA_RESET.",
+        "description": "The llLinksetDataReset function erases all name:value pairs stored in the linkset's datastore.  When this function is called the linkset_data event is triggered in all scripts running in the linkset with an action of LINKSETDATA_RESET.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataReset",
         "param": []
     },
     {
         "name": "llLinksetDataWrite",
-        "descrition": "Creates or updates an unprotected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
+        "description": "Creates or updates an unprotected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataWrite",
         "param": [
@@ -3224,7 +3224,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataWriteProtected",
-        "descrition": "Creates or updates a protected name:value pair from the linkset's datastore. Further attempts to read, write or update the name:value pair must use the protected versions of those functions and must supply the same string that was used in pass.\n\nReturns an integer success or failure code.",
+        "description": "Creates or updates a protected name:value pair from the linkset's datastore. Further attempts to read, write or update the name:value pair must use the protected versions of those functions and must supply the same string that was used in pass.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataWrite",
         "param": [
@@ -3247,7 +3247,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataWrite",
-        "descrition": "Creates or updates an unprotected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
+        "description": "Creates or updates an unprotected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataWriteProtected",
         "param": [
@@ -3265,7 +3265,7 @@ export const Functions = [
     },
     {
         "name": "llLinksetDataWriteProtected",
-        "descrition": "Creates or updates a protected name:value pair from the linkset's datastore. Further attempts to read, write or update the name:value pair must use the protected versions of those functions and must supply the same string that was used in pass.\n\nReturns an integer success or failure code.",
+        "description": "Creates or updates a protected name:value pair from the linkset's datastore. Further attempts to read, write or update the name:value pair must use the protected versions of those functions and must supply the same string that was used in pass.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlLinksetDataWriteProtected",
         "param": [
@@ -3288,7 +3288,7 @@ export const Functions = [
     },
     {
         "name": "llSetSoundQueueing",
-        "descrition": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
+        "description": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkSetSoundQueueing",
         "param": [
@@ -3301,7 +3301,7 @@ export const Functions = [
     },
     {
         "name": "llLinkSetSoundQueueing",
-        "descrition": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
+        "description": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkSetSoundQueueing",
         "param": [
@@ -3319,7 +3319,7 @@ export const Functions = [
     },
     {
         "name": "llSetSoundRadius",
-        "descrition": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
+        "description": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkSetSoundRadius",
         "param": [
@@ -3332,7 +3332,7 @@ export const Functions = [
     },
     {
         "name": "llLinkSetSoundRadius",
-        "descrition": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
+        "description": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkSetSoundRadius",
         "param": [
@@ -3350,7 +3350,7 @@ export const Functions = [
     },
     {
         "name": "llLinkSitTarget",
-        "descrition": "Set the sit location for the linked prim(s). The sit location is relative to the prim's position and rotation.",
+        "description": "Set the sit location for the linked prim(s). The sit location is relative to the prim's position and rotation.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkSitTarget",
         "param": [
@@ -3373,14 +3373,14 @@ export const Functions = [
     },
     {
         "name": "llStopSound",
-        "descrition": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
+        "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkStopSound",
         "param": []
     },
     {
         "name": "llLinkStopSound",
-        "descrition": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
+        "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLinkStopSound",
         "param": [
@@ -3393,7 +3393,7 @@ export const Functions = [
     },
     {
         "name": "llList2CSV",
-        "descrition": "Returns a string of comma separated values taken in order from src.",
+        "description": "Returns a string of comma separated values taken in order from src.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlList2CSV",
         "param": [
@@ -3406,7 +3406,7 @@ export const Functions = [
     },
     {
         "name": "llList2Float",
-        "descrition": "Returns a float that is at index in src.",
+        "description": "Returns a float that is at index in src.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlList2Float",
         "param": [
@@ -3424,7 +3424,7 @@ export const Functions = [
     },
     {
         "name": "llList2Integer",
-        "descrition": "Returns an integer that is at index in src.",
+        "description": "Returns an integer that is at index in src.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlList2Integer",
         "param": [
@@ -3442,7 +3442,7 @@ export const Functions = [
     },
     {
         "name": "llList2Json",
-        "descrition": "This function takes a list and returns a JSON string of that list as either a json object or json array.\n\nReturns a string that is either values serialized as a JSON type, or if an error was encountered JSON_INVALID.",
+        "description": "This function takes a list and returns a JSON string of that list as either a json object or json array.\n\nReturns a string that is either values serialized as a JSON type, or if an error was encountered JSON_INVALID.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlList2Json",
         "param": [
@@ -3460,7 +3460,7 @@ export const Functions = [
     },
     {
         "name": "llList2Key",
-        "descrition": "Returns a key that is at index in src.",
+        "description": "Returns a key that is at index in src.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlList2Key",
         "param": [
@@ -3478,7 +3478,7 @@ export const Functions = [
     },
     {
         "name": "llList2List",
-        "descrition": "Returns a list that is a slice of src from start to end.",
+        "description": "Returns a list that is a slice of src from start to end.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlList2List",
         "param": [
@@ -3501,7 +3501,7 @@ export const Functions = [
     },
     {
         "name": "llList2ListStrided",
-        "descrition": "Returns a list of all the entries in the strided list whose index is a multiple of stride in the range start to end.",
+        "description": "Returns a list of all the entries in the strided list whose index is a multiple of stride in the range start to end.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlList2ListStrided",
         "param": [
@@ -3529,7 +3529,7 @@ export const Functions = [
     },
     {
         "name": "llList2Rot",
-        "descrition": "Returns a rotation that is at index in src.",
+        "description": "Returns a rotation that is at index in src.",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlList2Rot",
         "param": [
@@ -3547,7 +3547,7 @@ export const Functions = [
     },
     {
         "name": "llList2String",
-        "descrition": "Returns a string that is at index in src.",
+        "description": "Returns a string that is at index in src.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlList2String",
         "param": [
@@ -3565,7 +3565,7 @@ export const Functions = [
     },
     {
         "name": "llList2Vector",
-        "descrition": "Returns a vector that is at index in src.",
+        "description": "Returns a vector that is at index in src.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlList2Vector",
         "param": [
@@ -3583,7 +3583,7 @@ export const Functions = [
     },
     {
         "name": "llListen",
-        "descrition": "Sets a handle for msg on channel from name and id.\n\nReturns a handle (an integer) that can be used to deactivate or remove the listen.",
+        "description": "Sets a handle for msg on channel from name and id.\n\nReturns a handle (an integer) that can be used to deactivate or remove the listen.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlListen",
         "param": [
@@ -3611,7 +3611,7 @@ export const Functions = [
     },
     {
         "name": "llListenControl",
-        "descrition": "Makes listen event callback handle active or inactive",
+        "description": "Makes listen event callback handle active or inactive",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlListenControl",
         "param": [
@@ -3629,7 +3629,7 @@ export const Functions = [
     },
     {
         "name": "llListenRemove",
-        "descrition": "Removes listen event callback handle",
+        "description": "Removes listen event callback handle",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlListenRemove",
         "param": [
@@ -3642,7 +3642,7 @@ export const Functions = [
     },
     {
         "name": "llListFindList",
-        "descrition": "Returns the integer index of the first instance of test in src.",
+        "description": "Returns the integer index of the first instance of test in src.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlListFindList",
         "param": [
@@ -3660,7 +3660,7 @@ export const Functions = [
     },
     {
         "name": "llListInsertList",
-        "descrition": "Returns a list that contains all the elements from dest but with the elements from src inserted at position start.",
+        "description": "Returns a list that contains all the elements from dest but with the elements from src inserted at position start.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlListInsertList",
         "param": [
@@ -3683,7 +3683,7 @@ export const Functions = [
     },
     {
         "name": "llListRandomize",
-        "descrition": "Returns a list which is a randomized permutation of src.",
+        "description": "Returns a list which is a randomized permutation of src.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlListRandomize",
         "param": [
@@ -3701,7 +3701,7 @@ export const Functions = [
     },
     {
         "name": "llListReplaceList",
-        "descrition": "Returns a list that is a copy of dest with start through end removed and src inserted at start.",
+        "description": "Returns a list that is a copy of dest with start through end removed and src inserted at start.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlListReplaceList",
         "param": [
@@ -3729,7 +3729,7 @@ export const Functions = [
     },
     {
         "name": "llListSort",
-        "descrition": "Returns a list that is src sorted by stride.",
+        "description": "Returns a list that is src sorted by stride.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlListSort",
         "param": [
@@ -3752,7 +3752,7 @@ export const Functions = [
     },
     {
         "name": "llListStatistics",
-        "descrition": "Returns a float that is the result of performing statistical aggregate function operation on src.",
+        "description": "Returns a float that is the result of performing statistical aggregate function operation on src.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlListStatistics",
         "param": [
@@ -3770,7 +3770,7 @@ export const Functions = [
     },
     {
         "name": "llLoadURL",
-        "descrition": "Shows dialog to avatar offering to load web page at url with message.\n\nIf user clicks yes, launches the page in their web browser, starting the browser if required.",
+        "description": "Shows dialog to avatar offering to load web page at url with message.\n\nIf user clicks yes, launches the page in their web browser, starting the browser if required.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLoadURL",
         "param": [
@@ -3793,7 +3793,7 @@ export const Functions = [
     },
     {
         "name": "llLog",
-        "descrition": "Returns a float that is the  natural logarithm of val.\n\nIf val <= 0 return 0.0 instead.",
+        "description": "Returns a float that is the  natural logarithm of val.\n\nIf val <= 0 return 0.0 instead.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlLog",
         "param": [
@@ -3806,7 +3806,7 @@ export const Functions = [
     },
     {
         "name": "llLog10",
-        "descrition": "Returns a float that is the base 10  logarithm of val.\n\nIf val <= 0 return zero instead.",
+        "description": "Returns a float that is the base 10  logarithm of val.\n\nIf val <= 0 return zero instead.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlLog10",
         "param": [
@@ -3819,7 +3819,7 @@ export const Functions = [
     },
     {
         "name": "llLookAt",
-        "descrition": "Cause object to point its up axis (positive z) towards target, while keeping its forward axis (positive x) below the horizon.",
+        "description": "Cause object to point its up axis (positive z) towards target, while keeping its forward axis (positive x) below the horizon.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLookAt",
         "param": [
@@ -3842,7 +3842,7 @@ export const Functions = [
     },
     {
         "name": "llLoopSound",
-        "descrition": "Plays attached sound looping indefinitely at volume",
+        "description": "Plays attached sound looping indefinitely at volume",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLoopSound",
         "param": [
@@ -3860,7 +3860,7 @@ export const Functions = [
     },
     {
         "name": "llLoopSoundMaster",
-        "descrition": "Plays attached sound looping at volume, declares it a sync master.",
+        "description": "Plays attached sound looping at volume, declares it a sync master.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLoopSoundMaster",
         "param": [
@@ -3878,7 +3878,7 @@ export const Functions = [
     },
     {
         "name": "llLoopSoundSlave",
-        "descrition": "Plays attached sound looping at volume, synced to most audible sync master declared by llLoopSoundMaster.",
+        "description": "Plays attached sound looping at volume, synced to most audible sync master declared by llLoopSoundMaster.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlLoopSoundSlave",
         "param": [
@@ -3896,7 +3896,7 @@ export const Functions = [
     },
     {
         "name": "llManageEstateAccess",
-        "descrition": "Use to add or remove agents from the estate's agent access or ban lists or groups from the estate's group access list.\n\nReturns a boolean (an integer) TRUE if the call was successful; FALSE if throttled, invalid action, invalid or null id or object owner is not allowed to manage the estate.",
+        "description": "Use to add or remove agents from the estate's agent access or ban lists or groups from the estate's group access list.\n\nReturns a boolean (an integer) TRUE if the call was successful; FALSE if throttled, invalid action, invalid or null id or object owner is not allowed to manage the estate.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlManageEstateAccess",
         "param": [
@@ -3914,7 +3914,7 @@ export const Functions = [
     },
     {
         "name": "llMapDestination",
-        "descrition": "Opens world map centered on simname with pos highlighted.\n\nOnly works for scripts attached to avatar, or during touch events.",
+        "description": "Opens world map centered on simname with pos highlighted.\n\nOnly works for scripts attached to avatar, or during touch events.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlMapDestination",
         "param": [
@@ -3937,7 +3937,7 @@ export const Functions = [
     },
     {
         "name": "llMD5String",
-        "descrition": "Returns a string of 32 hex characters that is the  MD5 checksum of src with a  salt of \":\"+nonce.",
+        "description": "Returns a string of 32 hex characters that is the  MD5 checksum of src with a  salt of \":\"+nonce.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlMD5String",
         "param": [
@@ -3955,7 +3955,7 @@ export const Functions = [
     },
     {
         "name": "llMessageLinked",
-        "descrition": "The purpose of this function is to allow scripts in the same object to communicate. It triggers a link_message event with the same parameters num, str, and id in all scripts in the prim(s) described by link.",
+        "description": "The purpose of this function is to allow scripts in the same object to communicate. It triggers a link_message event with the same parameters num, str, and id in all scripts in the prim(s) described by link.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlMessageLinked",
         "param": [
@@ -3983,7 +3983,7 @@ export const Functions = [
     },
     {
         "name": "llMinEventDelay",
-        "descrition": "Set the minimum time between events being handled.",
+        "description": "Set the minimum time between events being handled.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlMinEventDelay",
         "param": [
@@ -3996,7 +3996,7 @@ export const Functions = [
     },
     {
         "name": "llModifyLand",
-        "descrition": "Modify land with action on brush",
+        "description": "Modify land with action on brush",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlModifyLand",
         "param": [
@@ -4014,7 +4014,7 @@ export const Functions = [
     },
     {
         "name": "llModPow",
-        "descrition": "Returns an integer that is a raised to the b power, mod c. ( (a**b)%c )",
+        "description": "Returns an integer that is a raised to the b power, mod c. ( (a**b)%c )",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlModPow",
         "param": [
@@ -4037,7 +4037,7 @@ export const Functions = [
     },
     {
         "name": "llMoveToTarget",
-        "descrition": "Critically damp to target in tau seconds (if the script is physical)",
+        "description": "Critically damp to target in tau seconds (if the script is physical)",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlMoveToTarget",
         "param": [
@@ -4055,7 +4055,7 @@ export const Functions = [
     },
     {
         "name": "llName2Key",
-        "descrition": "Returns a key the Agent ID for the named agent in the region. If there is no agent with the specified name currently signed onto the region, this function returns the value NULL_KEY. Names are always provided in the form \"First[ Last]\" or \"first[.last]\" (first name with an optional last name.) If the last name is omitted a last name of \"Resident\" is assumed. Case is not considered when resolving agent names.",
+        "description": "Returns a key the Agent ID for the named agent in the region. If there is no agent with the specified name currently signed onto the region, this function returns the value NULL_KEY. Names are always provided in the form \"First[ Last]\" or \"first[.last]\" (first name with an optional last name.) If the last name is omitted a last name of \"Resident\" is assumed. Case is not considered when resolving agent names.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlName2Key",
         "param": [
@@ -4068,7 +4068,7 @@ export const Functions = [
     },
     {
         "name": "llNavigateTo",
-        "descrition": "Directs an object to travel to a defined position in the region or adjacent regions.",
+        "description": "Directs an object to travel to a defined position in the region or adjacent regions.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlNavigateTo",
         "param": [
@@ -4086,7 +4086,7 @@ export const Functions = [
     },
     {
         "name": "llOffsetTexture",
-        "descrition": "Sets the texture u & v offsets for the chosen face.",
+        "description": "Sets the texture u & v offsets for the chosen face.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlOffsetTexture",
         "param": [
@@ -4109,14 +4109,14 @@ export const Functions = [
     },
     {
         "name": "llOpenRemoteDataChannel",
-        "descrition": "Creates a channel to listen for XML-RPC calls. Will trigger a remote_data event with channel id once it is available.",
+        "description": "Creates a channel to listen for XML-RPC calls. Will trigger a remote_data event with channel id once it is available.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlOpenRemoteDataChannel",
         "param": []
     },
     {
         "name": "llOrd",
-        "descrition": "Calculate the ordinal value for a character in a string.\n\nReturns an integer ",
+        "description": "Calculate the ordinal value for a character in a string.\n\nReturns an integer ",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlOrd",
         "param": [
@@ -4134,7 +4134,7 @@ export const Functions = [
     },
     {
         "name": "llOverMyLand",
-        "descrition": "Returns an integer boolean, TRUE if id is over land owned by the script owner, FALSE otherwise.",
+        "description": "Returns an integer boolean, TRUE if id is over land owned by the script owner, FALSE otherwise.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlOverMyLand",
         "param": [
@@ -4147,7 +4147,7 @@ export const Functions = [
     },
     {
         "name": "llOwnerSay",
-        "descrition": "Says msg to the object's owner only, if the owner is currently in the same region.",
+        "description": "Says msg to the object's owner only, if the owner is currently in the same region.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlOwnerSay",
         "param": [
@@ -4160,7 +4160,7 @@ export const Functions = [
     },
     {
         "name": "llParcelMediaCommandList",
-        "descrition": "Controls the playback of movies and other multimedia resources on a parcel or for an agent.",
+        "description": "Controls the playback of movies and other multimedia resources on a parcel or for an agent.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlParcelMediaCommandList",
         "param": [
@@ -4173,7 +4173,7 @@ export const Functions = [
     },
     {
         "name": "llParcelMediaQuery",
-        "descrition": "Returns a list containing results of query. The results are in the same order as the request.",
+        "description": "Returns a list containing results of query. The results are in the same order as the request.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlParcelMediaQuery",
         "param": [
@@ -4186,7 +4186,7 @@ export const Functions = [
     },
     {
         "name": "llParseString2List",
-        "descrition": "Returns a list that is src broken into a list of strings, discarding separators, keeping spacers, discards any null (empty string) values generated.",
+        "description": "Returns a list that is src broken into a list of strings, discarding separators, keeping spacers, discards any null (empty string) values generated.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlParseString2List",
         "param": [
@@ -4209,7 +4209,7 @@ export const Functions = [
     },
     {
         "name": "llParseStringKeepNulls",
-        "descrition": "Returns a list that is src broken into a list, discarding separators, keeping spacers, keeping any null values generated.",
+        "description": "Returns a list that is src broken into a list, discarding separators, keeping spacers, keeping any null values generated.",
         "returnType": "list",
         "url": "https://wiki.secondlife.com/wiki/LlParseStringKeepNulls",
         "param": [
@@ -4232,7 +4232,7 @@ export const Functions = [
     },
     {
         "name": "llParticleSystem",
-        "descrition": "Defines a particle system for the containing prim based on a list of rules.",
+        "description": "Defines a particle system for the containing prim based on a list of rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlParticleSystem",
         "param": [
@@ -4245,7 +4245,7 @@ export const Functions = [
     },
     {
         "name": "llLinkParticleSystem",
-        "descrition": "A particle system defined by a list of rules is set for the prim(s) link.",
+        "description": "A particle system defined by a list of rules is set for the prim(s) link.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlParticleSystem",
         "param": [
@@ -4263,7 +4263,7 @@ export const Functions = [
     },
     {
         "name": "llPassCollisions",
-        "descrition": "Sets the pass-collisions prim attribute.",
+        "description": "Sets the pass-collisions prim attribute.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPassCollisions",
         "param": [
@@ -4276,7 +4276,7 @@ export const Functions = [
     },
     {
         "name": "llPassTouches",
-        "descrition": "Sets the pass-touches prim attribute.",
+        "description": "Sets the pass-touches prim attribute.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPassTouches",
         "param": [
@@ -4289,7 +4289,7 @@ export const Functions = [
     },
     {
         "name": "llPatrolPoints",
-        "descrition": "Sets the object patrolling between the points specified in patrolPoints.",
+        "description": "Sets the object patrolling between the points specified in patrolPoints.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPatrolPoints",
         "param": [
@@ -4307,7 +4307,7 @@ export const Functions = [
     },
     {
         "name": "llPlaySound",
-        "descrition": "Plays attached sound once at volume",
+        "description": "Plays attached sound once at volume",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPlaySound",
         "param": [
@@ -4325,7 +4325,7 @@ export const Functions = [
     },
     {
         "name": "llPlaySoundSlave",
-        "descrition": "Plays attached sound once at volume, synced to next loop of most audible sync master declared by llLoopSoundMaster.",
+        "description": "Plays attached sound once at volume, synced to next loop of most audible sync master declared by llLoopSoundMaster.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPlaySoundSlave",
         "param": [
@@ -4343,7 +4343,7 @@ export const Functions = [
     },
     {
         "name": "llPow",
-        "descrition": "Returns a float that is base raised to the power exponent (baseexponent)",
+        "description": "Returns a float that is base raised to the power exponent (baseexponent)",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlPow",
         "param": [
@@ -4361,7 +4361,7 @@ export const Functions = [
     },
     {
         "name": "llPreloadSound",
-        "descrition": "Preloads sound on viewers within range",
+        "description": "Preloads sound on viewers within range",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPreloadSound",
         "param": [
@@ -4374,7 +4374,7 @@ export const Functions = [
     },
     {
         "name": "llPursue",
-        "descrition": "Causes the object to pursue target.",
+        "description": "Causes the object to pursue target.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPursue",
         "param": [
@@ -4392,7 +4392,7 @@ export const Functions = [
     },
     {
         "name": "llPushObject",
-        "descrition": "Applies impulse and ang_impulse to object target",
+        "description": "Applies impulse and ang_impulse to object target",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlPushObject",
         "param": [
@@ -4420,7 +4420,7 @@ export const Functions = [
     },
     {
         "name": "llReadKeyValue",
-        "descrition": "Start an asynchronous transaction to read the value associated with the specified key (k) and the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to read the value associated with the specified key (k) and the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlReadKeyValue",
         "param": [
@@ -4433,7 +4433,7 @@ export const Functions = [
     },
     {
         "name": "llRegionSay",
-        "descrition": "Says the string msg on channel number channel that can be heard anywhere in the region by a script listening on channel.",
+        "description": "Says the string msg on channel number channel that can be heard anywhere in the region by a script listening on channel.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRegionSay",
         "param": [
@@ -4451,7 +4451,7 @@ export const Functions = [
     },
     {
         "name": "llRegionSayTo",
-        "descrition": "Says[1] the text supplied in string msg on channel supplied in integer channel to the object or avatar specified by target",
+        "description": "Says[1] the text supplied in string msg on channel supplied in integer channel to the object or avatar specified by target",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRegionSayTo",
         "param": [
@@ -4474,14 +4474,14 @@ export const Functions = [
     },
     {
         "name": "llReleaseControls",
-        "descrition": "Stop taking inputs (that were taken with llTakeControls), dequeues any remaining control events. If PERMISSION_TAKE_CONTROLS was previously granted, it will be revoked.",
+        "description": "Stop taking inputs (that were taken with llTakeControls), dequeues any remaining control events. If PERMISSION_TAKE_CONTROLS was previously granted, it will be revoked.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlReleaseControls",
         "param": []
     },
     {
         "name": "llReleaseURL",
-        "descrition": "Releases the specified URL, it will no longer be usable.",
+        "description": "Releases the specified URL, it will no longer be usable.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlReleaseURL",
         "param": [
@@ -4494,7 +4494,7 @@ export const Functions = [
     },
     {
         "name": "llRemoteDataReply",
-        "descrition": "Send an XML-RPC reply on channel to message_id with payload of string sdata and integer idata",
+        "description": "Send an XML-RPC reply on channel to message_id with payload of string sdata and integer idata",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRemoteDataReply",
         "param": [
@@ -4522,7 +4522,7 @@ export const Functions = [
     },
     {
         "name": "llRemoteLoadScriptPin",
-        "descrition": "Copy script name into target and set to running with a start_param only if target's pin matches pin",
+        "description": "Copy script name into target and set to running with a start_param only if target's pin matches pin",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRemoteLoadScriptPin",
         "param": [
@@ -4555,7 +4555,7 @@ export const Functions = [
     },
     {
         "name": "llRemoveFromLandBanList",
-        "descrition": "Remove avatar from the land ban list",
+        "description": "Remove avatar from the land ban list",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRemoveFromLandBanList",
         "param": [
@@ -4568,7 +4568,7 @@ export const Functions = [
     },
     {
         "name": "llRemoveFromLandPassList",
-        "descrition": "Remove avatar from the land pass list.",
+        "description": "Remove avatar from the land pass list.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRemoveFromLandPassList",
         "param": [
@@ -4581,7 +4581,7 @@ export const Functions = [
     },
     {
         "name": "llRemoveInventory",
-        "descrition": "Remove the named inventory item",
+        "description": "Remove the named inventory item",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRemoveInventory",
         "param": [
@@ -4594,7 +4594,7 @@ export const Functions = [
     },
     {
         "name": "llRemoveVehicleFlags",
-        "descrition": "Disable the specified vehicle flags",
+        "description": "Disable the specified vehicle flags",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRemoveVehicleFlags",
         "param": [
@@ -4607,7 +4607,7 @@ export const Functions = [
     },
     {
         "name": "llReplaceAgentEnvironment",
-        "descrition": "The llReplaceAgentEnvironment function overrides the current region and parcel environment seen by an agent. The new environment persists until the agent crosses to a new region or this function is called with the NULL_KEY or empty string in the environment parameter for the particular agent, doing so will strip all environmental settings applied to this agent as part of the experience. This function must be executed as part of an experience.\n\nReturns an Integer ",
+        "description": "The llReplaceAgentEnvironment function overrides the current region and parcel environment seen by an agent. The new environment persists until the agent crosses to a new region or this function is called with the NULL_KEY or empty string in the environment parameter for the particular agent, doing so will strip all environmental settings applied to this agent as part of the experience. This function must be executed as part of an experience.\n\nReturns an Integer ",
         "returnType": "Integer",
         "url": "https://wiki.secondlife.com/wiki/LlReplaceAgentEnvironment",
         "param": [
@@ -4630,7 +4630,7 @@ export const Functions = [
     },
     {
         "name": "llReplaceEnvironment",
-        "descrition": "The llReplaceEnvironment function replaces the environment in a parcel or a region. Either for a single elevation track or the entire environment. The owner of the script must have permission to edit the environment on the destination parcel, or be an estate manage in the case of an entire region.In most cases errors are reported as a return value from the function (see table below). However, issues with the environment assets may be reported in the debug chat.\n\nReturns an Integer ",
+        "description": "The llReplaceEnvironment function replaces the environment in a parcel or a region. Either for a single elevation track or the entire environment. The owner of the script must have permission to edit the environment on the destination parcel, or be an estate manage in the case of an entire region.In most cases errors are reported as a return value from the function (see table below). However, issues with the environment assets may be reported in the debug chat.\n\nReturns an Integer ",
         "returnType": "Integer",
         "url": "https://wiki.secondlife.com/wiki/LlReplaceEnvironment",
         "param": [
@@ -4663,7 +4663,7 @@ export const Functions = [
     },
     {
         "name": "llReplaceSubString",
-        "descrition": "Returns a string that is the result of replacing the first count matching instances pattern in src with replacement_pattern.",
+        "description": "Returns a string that is the result of replacing the first count matching instances pattern in src with replacement_pattern.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlReplaceSubString",
         "param": [
@@ -4691,7 +4691,7 @@ export const Functions = [
     },
     {
         "name": "llRequestAgentData",
-        "descrition": "Requests data about agent id. When data is available the dataserver event will be raised\n\nReturns the handle (a key) for the dataserver event when it is raised.",
+        "description": "Requests data about agent id. When data is available the dataserver event will be raised\n\nReturns the handle (a key) for the dataserver event when it is raised.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestAgentData",
         "param": [
@@ -4709,7 +4709,7 @@ export const Functions = [
     },
     {
         "name": "llRequestDisplayName",
-        "descrition": "Requests the Display Name of the agent identified by id. When the Display Name is available the dataserver event will be raised. The agent identified by id does not need to be in the same region or online at the time of the request.\n\nReturns the handle (a key) that is used to identify the dataserver event when it is raised.",
+        "description": "Requests the Display Name of the agent identified by id. When the Display Name is available the dataserver event will be raised. The agent identified by id does not need to be in the same region or online at the time of the request.\n\nReturns the handle (a key) that is used to identify the dataserver event when it is raised.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestDisplayName",
         "param": [
@@ -4722,7 +4722,7 @@ export const Functions = [
     },
     {
         "name": "llRequestExperiencePermissions",
-        "descrition": "Asks the agent for permission to participate in the script's Experience.",
+        "description": "Asks the agent for permission to participate in the script's Experience.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRequestExperiencePermissions",
         "param": [
@@ -4740,7 +4740,7 @@ export const Functions = [
     },
     {
         "name": "llRequestInventoryData",
-        "descrition": "Requests data about the item name in the prim's inventory. When data is available the dataserver event will be raised.\n\nReturns the handle (a key) that is used to identify the dataserver event when it is raised.",
+        "description": "Requests data about the item name in the prim's inventory. When data is available the dataserver event will be raised.\n\nReturns the handle (a key) that is used to identify the dataserver event when it is raised.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestInventoryData",
         "param": [
@@ -4753,7 +4753,7 @@ export const Functions = [
     },
     {
         "name": "llRequestPermissions",
-        "descrition": "Ask agent for permissions to run certain classes of functions.",
+        "description": "Ask agent for permissions to run certain classes of functions.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRequestPermissions",
         "param": [
@@ -4771,14 +4771,14 @@ export const Functions = [
     },
     {
         "name": "llRequestSecureURL",
-        "descrition": "Requests one HTTPS:// (SSL) url for use by this object. The http_request event is tiggered with result of the request. HTTPS-in uses port 12043.\n\nReturns a handle (a key) used for identifying the result of the request in the http_request event.",
+        "description": "Requests one HTTPS:// (SSL) url for use by this object. The http_request event is tiggered with result of the request. HTTPS-in uses port 12043.\n\nReturns a handle (a key) used for identifying the result of the request in the http_request event.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestSecureURL",
         "param": []
     },
     {
         "name": "llRequestSimulatorData",
-        "descrition": "Requests data about region. When data is available the dataserver event will be raised.\n\nReturns a handle (a key) for a dataserver event response.",
+        "description": "Requests data about region. When data is available the dataserver event will be raised.\n\nReturns a handle (a key) for a dataserver event response.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestSimulatorData",
         "param": [
@@ -4796,14 +4796,14 @@ export const Functions = [
     },
     {
         "name": "llRequestURL",
-        "descrition": "Requests one HTTP:// url for use by this script. The http_request event is triggered with the result of the request.\n\nReturns a handle (a key) used for identifying the result of the request in the http_request event.",
+        "description": "Requests one HTTP:// url for use by this script. The http_request event is triggered with the result of the request.\n\nReturns a handle (a key) used for identifying the result of the request in the http_request event.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestURL",
         "param": []
     },
     {
         "name": "llRequestUserKey",
-        "descrition": "Requests the Agent ID for the agent identified by name from the dataserver. The name given may be either the current name of an avatar or a historical name that has been used in the past. If no agent can be found with the supplied name this function returns the value NULL_KEY. ",
+        "description": "Requests the Agent ID for the agent identified by name from the dataserver. The name given may be either the current name of an avatar or a historical name that has been used in the past. If no agent can be found with the supplied name this function returns the value NULL_KEY. ",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestUserKey",
         "param": [
@@ -4816,7 +4816,7 @@ export const Functions = [
     },
     {
         "name": "llRequestUsername",
-        "descrition": "Requests the Username of the agent identified by id. When the Username is available the dataserver event will be raised. The agent identified by id does not need to be in the same region or online at the time of the request.\n\nReturns a handle (a key) that is used to identify the dataserver event when it is raised.If id is not the UUID of an avatar, the dataserver event is not raised.",
+        "description": "Requests the Username of the agent identified by id. When the Username is available the dataserver event will be raised. The agent identified by id does not need to be in the same region or online at the time of the request.\n\nReturns a handle (a key) that is used to identify the dataserver event when it is raised.If id is not the UUID of an avatar, the dataserver event is not raised.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlRequestUsername",
         "param": [
@@ -4829,7 +4829,7 @@ export const Functions = [
     },
     {
         "name": "llResetAnimationOverride",
-        "descrition": "Resets the animation override of the specified animation state (anim_state) to the corresponding default value.",
+        "description": "Resets the animation override of the specified animation state (anim_state) to the corresponding default value.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlResetAnimationOverride",
         "param": [
@@ -4842,21 +4842,21 @@ export const Functions = [
     },
     {
         "name": "llResetLandBanList",
-        "descrition": "Removes all residents from the land ban list.",
+        "description": "Removes all residents from the land ban list.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlResetLandBanList",
         "param": []
     },
     {
         "name": "llResetLandPassList",
-        "descrition": "Removes all residents from the land access/pass list.",
+        "description": "Removes all residents from the land access/pass list.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlResetLandPassList",
         "param": []
     },
     {
         "name": "llResetOtherScript",
-        "descrition": "Resets script name.",
+        "description": "Resets script name.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlResetOtherScript",
         "param": [
@@ -4869,21 +4869,21 @@ export const Functions = [
     },
     {
         "name": "llResetScript",
-        "descrition": "Resets the script.",
+        "description": "Resets the script.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlResetScript",
         "param": []
     },
     {
         "name": "llResetTime",
-        "descrition": "Resets the script-time timer to zero.",
+        "description": "Resets the script-time timer to zero.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlResetTime",
         "param": []
     },
     {
         "name": "llReturnObjectsByID",
-        "descrition": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.",
+        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlReturnObjectsByID",
         "param": [
@@ -4896,7 +4896,7 @@ export const Functions = [
     },
     {
         "name": "llReturnObjectsByOwner",
-        "descrition": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.",
+        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlReturnObjectsByOwner",
         "param": [
@@ -4914,7 +4914,7 @@ export const Functions = [
     },
     {
         "name": "llRezAtRoot",
-        "descrition": "Instantiate inventory object rotated to rot with its root at position, moving at velocity, using param as the start parameter",
+        "description": "Instantiate inventory object rotated to rot with its root at position, moving at velocity, using param as the start parameter",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRezAtRoot",
         "param": [
@@ -4947,7 +4947,7 @@ export const Functions = [
     },
     {
         "name": "llRezObject",
-        "descrition": "Instantiate inventory object at pos with velocity vel and rotation rot with start parameter param",
+        "description": "Instantiate inventory object at pos with velocity vel and rotation rot with start parameter param",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRezObject",
         "param": [
@@ -4980,7 +4980,7 @@ export const Functions = [
     },
     {
         "name": "llRot2Angle",
-        "descrition": "Returns a float that is the rotation angle represented by rot",
+        "description": "Returns a float that is the rotation angle represented by rot",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlRot2Angle",
         "param": [
@@ -4993,7 +4993,7 @@ export const Functions = [
     },
     {
         "name": "llRot2Axis",
-        "descrition": "Returns a vector the rotation axis represented by rot",
+        "description": "Returns a vector the rotation axis represented by rot",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlRot2Axis",
         "param": [
@@ -5006,7 +5006,7 @@ export const Functions = [
     },
     {
         "name": "llRot2Euler",
-        "descrition": "Returns a vector that is the Euler representation (roll, pitch, yaw) of quat, with each component expressed in radians.",
+        "description": "Returns a vector that is the Euler representation (roll, pitch, yaw) of quat, with each component expressed in radians.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlRot2Euler",
         "param": [
@@ -5019,7 +5019,7 @@ export const Functions = [
     },
     {
         "name": "llRot2Fwd",
-        "descrition": "Computes the orientation of the local x-axis relative to the parent (i.e. the root prim or the world).\n\nReturns a vector that is the forward vector defined by q, i.e. a unit vector pointing in the local positive X direction.",
+        "description": "Computes the orientation of the local x-axis relative to the parent (i.e. the root prim or the world).\n\nReturns a vector that is the forward vector defined by q, i.e. a unit vector pointing in the local positive X direction.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlRot2Fwd",
         "param": [
@@ -5032,7 +5032,7 @@ export const Functions = [
     },
     {
         "name": "llRot2Left",
-        "descrition": "Computes the orientation of the local y-axis relative to the parent (i.e. relative to the root prim or the world).\n\nReturns a vector that is the left vector defined by q, i.e. a unit vector pointing in the local positive Y direction",
+        "description": "Computes the orientation of the local y-axis relative to the parent (i.e. relative to the root prim or the world).\n\nReturns a vector that is the left vector defined by q, i.e. a unit vector pointing in the local positive Y direction",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlRot2Left",
         "param": [
@@ -5045,7 +5045,7 @@ export const Functions = [
     },
     {
         "name": "llRot2Up",
-        "descrition": "Computes the orientation of the local z-axis relative to the parent (i.e. the root prim or the world).\n\nReturns a vector that is the up vector defined by q, i.e. a unit vector pointing in the positive Z direction",
+        "description": "Computes the orientation of the local z-axis relative to the parent (i.e. the root prim or the world).\n\nReturns a vector that is the up vector defined by q, i.e. a unit vector pointing in the positive Z direction",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlRot2Up",
         "param": [
@@ -5058,7 +5058,7 @@ export const Functions = [
     },
     {
         "name": "llRotateTexture",
-        "descrition": "Sets the texture rotation of the chosen face to angle.",
+        "description": "Sets the texture rotation of the chosen face to angle.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRotateTexture",
         "param": [
@@ -5076,7 +5076,7 @@ export const Functions = [
     },
     {
         "name": "llRotBetween",
-        "descrition": "Returns a rotation that is the shortest rotation between the direction start and the direction end",
+        "description": "Returns a rotation that is the shortest rotation between the direction start and the direction end",
         "returnType": "rotation",
         "url": "https://wiki.secondlife.com/wiki/LlRotBetween",
         "param": [
@@ -5094,7 +5094,7 @@ export const Functions = [
     },
     {
         "name": "llRotLookAt",
-        "descrition": "Causes an object to smoothly rotate to target_direction with strength resistance at damping force.",
+        "description": "Causes an object to smoothly rotate to target_direction with strength resistance at damping force.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRotLookAt",
         "param": [
@@ -5117,7 +5117,7 @@ export const Functions = [
     },
     {
         "name": "llRotTarget",
-        "descrition": "This function is to have the script know when it has reached a rotation.\n\nIt registers a rot with a error that triggers at_rot_target and not_at_rot_target events continuously until unregistered.\n\nReturns a handle (an integer) to unregister the target with llRotTargetRemove",
+        "description": "This function is to have the script know when it has reached a rotation.\n\nIt registers a rot with a error that triggers at_rot_target and not_at_rot_target events continuously until unregistered.\n\nReturns a handle (an integer) to unregister the target with llRotTargetRemove",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlRotTarget",
         "param": [
@@ -5135,7 +5135,7 @@ export const Functions = [
     },
     {
         "name": "llRotTargetRemove",
-        "descrition": "Removes rotational target handle registered with llRotTarget",
+        "description": "Removes rotational target handle registered with llRotTarget",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlRotTargetRemove",
         "param": [
@@ -5148,7 +5148,7 @@ export const Functions = [
     },
     {
         "name": "llRound",
-        "descrition": "Returns the integer that val is closest to.",
+        "description": "Returns the integer that val is closest to.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlRound",
         "param": [
@@ -5161,7 +5161,7 @@ export const Functions = [
     },
     {
         "name": "llSameGroup",
-        "descrition": "Returns a boolean (an integer) that is TRUE if uuid and the prim the script is in are of the same group, otherwise FALSE.",
+        "description": "Returns a boolean (an integer) that is TRUE if uuid and the prim the script is in are of the same group, otherwise FALSE.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlSameGroup",
         "param": [
@@ -5174,7 +5174,7 @@ export const Functions = [
     },
     {
         "name": "llSay",
-        "descrition": "Says the text supplied in string msg on channel supplied in integer channel.",
+        "description": "Says the text supplied in string msg on channel supplied in integer channel.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSay",
         "param": [
@@ -5192,7 +5192,7 @@ export const Functions = [
     },
     {
         "name": "llScaleByFactor",
-        "descrition": "Attempts to resize the entire object by scaling_factor, maintaining the size-position ratios of the prims.",
+        "description": "Attempts to resize the entire object by scaling_factor, maintaining the size-position ratios of the prims.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlScaleByFactor",
         "param": [
@@ -5205,7 +5205,7 @@ export const Functions = [
     },
     {
         "name": "llScaleTexture",
-        "descrition": "Sets the texture u & v scales for the chosen face.",
+        "description": "Sets the texture u & v scales for the chosen face.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlScaleTexture",
         "param": [
@@ -5228,7 +5228,7 @@ export const Functions = [
     },
     {
         "name": "llScriptDanger",
-        "descrition": "Returns a boolean (an integer) that is TRUE if pos is over public land, sandbox land, land that doesn't allow everyone to edit and build, or land that doesn't allow outside scripts.",
+        "description": "Returns a boolean (an integer) that is TRUE if pos is over public land, sandbox land, land that doesn't allow everyone to edit and build, or land that doesn't allow outside scripts.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlScriptDanger",
         "param": [
@@ -5241,7 +5241,7 @@ export const Functions = [
     },
     {
         "name": "llScriptProfiler",
-        "descrition": "Enables or disables the scripts profiling state.",
+        "description": "Enables or disables the scripts profiling state.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlScriptProfiler",
         "param": [
@@ -5254,7 +5254,7 @@ export const Functions = [
     },
     {
         "name": "llSendRemoteData",
-        "descrition": "Send an XML-RPC request to dest through channel with payload of channel (in a string), integer idata and string sdata.\n\nReturns a key that is the message_id for the resulting remote_data events.",
+        "description": "Send an XML-RPC request to dest through channel with payload of channel (in a string), integer idata and string sdata.\n\nReturns a key that is the message_id for the resulting remote_data events.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlSendRemoteData",
         "param": [
@@ -5282,7 +5282,7 @@ export const Functions = [
     },
     {
         "name": "llSensor",
-        "descrition": "Performs a single scan for name and id with type within radius meters and arc radians of forward vector.",
+        "description": "Performs a single scan for name and id with type within radius meters and arc radians of forward vector.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSensor",
         "param": [
@@ -5315,14 +5315,14 @@ export const Functions = [
     },
     {
         "name": "llSensorRemove",
-        "descrition": "Removes the sensor setup by llSensorRepeat.",
+        "description": "Removes the sensor setup by llSensorRepeat.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSensorRemove",
         "param": []
     },
     {
         "name": "llSensorRepeat",
-        "descrition": "Performs a scan for name and id with type within range meters and arc radians of forward vector and repeats every rate seconds. The first scan is not performed until rate seconds have passed.",
+        "description": "Performs a scan for name and id with type within range meters and arc radians of forward vector and repeats every rate seconds. The first scan is not performed until rate seconds have passed.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSensorRepeat",
         "param": [
@@ -5360,7 +5360,7 @@ export const Functions = [
     },
     {
         "name": "llSetAgentEnvironment",
-        "descrition": "This function sets environment values for an individual agent in an experience.  The changes to the environment persist until the agent moves to a new region or llSetAgentEnvironment is called for an agent with an empty list. Passing an empty list in params will strip all environmental settings applied to this agent as part of the experience",
+        "description": "This function sets environment values for an individual agent in an experience.  The changes to the environment persist until the agent moves to a new region or llSetAgentEnvironment is called for an agent with an empty list. Passing an empty list in params will strip all environmental settings applied to this agent as part of the experience",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetAgentEnvironment",
         "param": [
@@ -5383,7 +5383,7 @@ export const Functions = [
     },
     {
         "name": "llSetAlpha",
-        "descrition": "Sets the alpha on face",
+        "description": "Sets the alpha on face",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetAlpha",
         "param": [
@@ -5401,7 +5401,7 @@ export const Functions = [
     },
     {
         "name": "llSetAngularVelocity",
-        "descrition": "Applies rotational velocity to object. It does the same job as llApplyRotationalImpulse but doesn't depend of the mass of object .",
+        "description": "Applies rotational velocity to object. It does the same job as llApplyRotationalImpulse but doesn't depend of the mass of object .",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetAngularVelocity",
         "param": [
@@ -5419,7 +5419,7 @@ export const Functions = [
     },
     {
         "name": "llSetAnimationOverride",
-        "descrition": "Set the animation (anim) that will play for the given animation state (anim_state).",
+        "description": "Set the animation (anim) that will play for the given animation state (anim_state).",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetAnimationOverride",
         "param": [
@@ -5437,7 +5437,7 @@ export const Functions = [
     },
     {
         "name": "llSetBuoyancy",
-        "descrition": "Sets the buoyancy of the task or object. Requires physics to be enabled.",
+        "description": "Sets the buoyancy of the task or object. Requires physics to be enabled.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetBuoyancy",
         "param": [
@@ -5450,7 +5450,7 @@ export const Functions = [
     },
     {
         "name": "llSetCameraAtOffset",
-        "descrition": "Sets the point the camera is looking at to offset for avatars that sit on the object.",
+        "description": "Sets the point the camera is looking at to offset for avatars that sit on the object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetCameraAtOffset",
         "param": [
@@ -5463,7 +5463,7 @@ export const Functions = [
     },
     {
         "name": "llSetCameraEyeOffset",
-        "descrition": "Sets the camera eye offset for avatars that sit on the object.",
+        "description": "Sets the camera eye offset for avatars that sit on the object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetCameraEyeOffset",
         "param": [
@@ -5476,7 +5476,7 @@ export const Functions = [
     },
     {
         "name": "llSetCameraParams",
-        "descrition": "Sets multiple camera parameters at once.",
+        "description": "Sets multiple camera parameters at once.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetCameraParams",
         "param": [
@@ -5489,7 +5489,7 @@ export const Functions = [
     },
     {
         "name": "llSetClickAction",
-        "descrition": "Sets the action performed when a prim is clicked upon (aka click action).",
+        "description": "Sets the action performed when a prim is clicked upon (aka click action).",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetClickAction",
         "param": [
@@ -5502,7 +5502,7 @@ export const Functions = [
     },
     {
         "name": "llSetColor",
-        "descrition": "Sets the color on face of the prim.",
+        "description": "Sets the color on face of the prim.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetColor",
         "param": [
@@ -5520,7 +5520,7 @@ export const Functions = [
     },
     {
         "name": "llSetContentType",
-        "descrition": "Sets the  Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse.",
+        "description": "Sets the  Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetContentType",
         "param": [
@@ -5538,7 +5538,7 @@ export const Functions = [
     },
     {
         "name": "llSetDamage",
-        "descrition": "Sets the amount of damage that will be done when this object hits an avatar.",
+        "description": "Sets the amount of damage that will be done when this object hits an avatar.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetDamage",
         "param": [
@@ -5551,7 +5551,7 @@ export const Functions = [
     },
     {
         "name": "llSetEnvironment",
-        "descrition": "This function overrides the environmental settings for a region or a parcel. The owner of the script must have permission to modify the environment on the parcel or be an estate manager to change the entire region.",
+        "description": "This function overrides the environmental settings for a region or a parcel. The owner of the script must have permission to modify the environment on the parcel or be an estate manager to change the entire region.",
         "returnType": "Integer",
         "url": "https://wiki.secondlife.com/wiki/LlSetEnvironment",
         "param": [
@@ -5569,7 +5569,7 @@ export const Functions = [
     },
     {
         "name": "llSetForce",
-        "descrition": "Applies force to the object (if the script is physical)",
+        "description": "Applies force to the object (if the script is physical)",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetForce",
         "param": [
@@ -5587,7 +5587,7 @@ export const Functions = [
     },
     {
         "name": "llSetForceAndTorque",
-        "descrition": "Sets the force and torque of object (if the script is physical)",
+        "description": "Sets the force and torque of object (if the script is physical)",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetForceAndTorque",
         "param": [
@@ -5610,7 +5610,7 @@ export const Functions = [
     },
     {
         "name": "llSetHoverHeight",
-        "descrition": "Critically damps to a height above the ground (or water) in tau seconds.",
+        "description": "Critically damps to a height above the ground (or water) in tau seconds.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetHoverHeight",
         "param": [
@@ -5633,7 +5633,7 @@ export const Functions = [
     },
     {
         "name": "llSetKeyframedMotion",
-        "descrition": "Specify a list of times, positions, and orientations to be followed by an object. The object will be smoothly moved between keyframes by the simulator. Collisions with other nonphysical or keyframed objects will be ignored (no script events will fire and collision processing will not occur). Collisions with physical objects will be computed and reported, but the keyframed object will be unaffected by those collisions. (The physical object will be affected, however.)",
+        "description": "Specify a list of times, positions, and orientations to be followed by an object. The object will be smoothly moved between keyframes by the simulator. Collisions with other nonphysical or keyframed objects will be ignored (no script events will fire and collision processing will not occur). Collisions with physical objects will be computed and reported, but the keyframed object will be unaffected by those collisions. (The physical object will be affected, however.)",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetKeyframedMotion",
         "param": [
@@ -5651,7 +5651,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkAlpha",
-        "descrition": "If a prim exists in the link set at link, set alpha on face of that prim.",
+        "description": "If a prim exists in the link set at link, set alpha on face of that prim.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkAlpha",
         "param": [
@@ -5674,7 +5674,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkCamera",
-        "descrition": "Sets the camera eye offset, and the offset that camera is looking at, for avatars that sit on the linked prim.",
+        "description": "Sets the camera eye offset, and the offset that camera is looking at, for avatars that sit on the linked prim.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkCamera",
         "param": [
@@ -5697,7 +5697,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkColor",
-        "descrition": "If a prim exists in the link set at link, set color on face of that prim.",
+        "description": "If a prim exists in the link set at link, set color on face of that prim.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkColor",
         "param": [
@@ -5720,7 +5720,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkMedia",
-        "descrition": "Set the media params for a particular face on the linked prim(s) without a delay.\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation(s).",
+        "description": "Set the media params for a particular face on the linked prim(s) without a delay.\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation(s).",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkMedia",
         "param": [
@@ -5743,7 +5743,7 @@ export const Functions = [
     },
     {
         "name": "llSetPrimitiveParams",
-        "descrition": "Sets the prim's parameters according to rules.",
+        "description": "Sets the prim's parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParams",
         "param": [
@@ -5756,7 +5756,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkPrimitiveParams",
-        "descrition": "Sets the prims parameters according to rules.",
+        "description": "Sets the prims parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParams",
         "param": [
@@ -5774,7 +5774,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkPrimitiveParamsFast",
-        "descrition": "Sets the prims parameters according to rules.",
+        "description": "Sets the prims parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParams",
         "param": [
@@ -5792,7 +5792,7 @@ export const Functions = [
     },
     {
         "name": "llSetPrimitiveParams",
-        "descrition": "Sets the prim's parameters according to rules.",
+        "description": "Sets the prim's parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParamsFast",
         "param": [
@@ -5805,7 +5805,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkPrimitiveParams",
-        "descrition": "Sets the prims parameters according to rules.",
+        "description": "Sets the prims parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParamsFast",
         "param": [
@@ -5823,7 +5823,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkPrimitiveParamsFast",
-        "descrition": "Sets the prims parameters according to rules.",
+        "description": "Sets the prims parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParamsFast",
         "param": [
@@ -5841,7 +5841,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkTexture",
-        "descrition": "If a prim exists in the link set at link, set texture on face of that prim.",
+        "description": "If a prim exists in the link set at link, set texture on face of that prim.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkTexture",
         "param": [
@@ -5864,7 +5864,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkTextureAnim",
-        "descrition": "Animate the texture on the specified face/faces of the specified prim/prims by setting the texture scale and offset.  Identical to llSetTextureAnim except able to modify any prim in the link set.",
+        "description": "Animate the texture on the specified face/faces of the specified prim/prims by setting the texture scale and offset.  Identical to llSetTextureAnim except able to modify any prim in the link set.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLinkTextureAnim",
         "param": [
@@ -5912,7 +5912,7 @@ export const Functions = [
     },
     {
         "name": "llSetLocalRot",
-        "descrition": "Sets the rotation of a child prim relative to the root prim",
+        "description": "Sets the rotation of a child prim relative to the root prim",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetLocalRot",
         "param": [
@@ -5925,7 +5925,7 @@ export const Functions = [
     },
     {
         "name": "llSetMemoryLimit",
-        "descrition": "Request limit bytes to be reserved for this script.\n\nReturns the boolean (an integer) TRUE if the memory limit was successfully set (or FALSE if not).",
+        "description": "Request limit bytes to be reserved for this script.\n\nReturns the boolean (an integer) TRUE if the memory limit was successfully set (or FALSE if not).",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlSetMemoryLimit",
         "param": [
@@ -5938,7 +5938,7 @@ export const Functions = [
     },
     {
         "name": "llSetObjectDesc",
-        "descrition": "Sets the prims description",
+        "description": "Sets the prims description",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetObjectDesc",
         "param": [
@@ -5951,7 +5951,7 @@ export const Functions = [
     },
     {
         "name": "llSetObjectName",
-        "descrition": "Sets the prim's name according to the name parameter.",
+        "description": "Sets the prim's name according to the name parameter.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetObjectName",
         "param": [
@@ -5964,7 +5964,7 @@ export const Functions = [
     },
     {
         "name": "llSetParcelMusicURL",
-        "descrition": "Sets the streaming audio URL for the parcel object is on",
+        "description": "Sets the streaming audio URL for the parcel object is on",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetParcelMusicURL",
         "param": [
@@ -5977,7 +5977,7 @@ export const Functions = [
     },
     {
         "name": "llSetPayPrice",
-        "descrition": "Suggest default amounts for the pay text field and pay buttons of the appearing dialog when someone chooses to pay this object.",
+        "description": "Suggest default amounts for the pay text field and pay buttons of the appearing dialog when someone chooses to pay this object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetPayPrice",
         "param": [
@@ -5995,7 +5995,7 @@ export const Functions = [
     },
     {
         "name": "llSetPhysicsMaterial",
-        "descrition": "Used to set the physical characteristics of an object.",
+        "description": "Used to set the physical characteristics of an object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetPhysicsMaterial",
         "param": [
@@ -6028,7 +6028,7 @@ export const Functions = [
     },
     {
         "name": "llSetPos",
-        "descrition": "Moves the object or primitive towards pos without using physics.",
+        "description": "Moves the object or primitive towards pos without using physics.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetPos",
         "param": [
@@ -6041,7 +6041,7 @@ export const Functions = [
     },
     {
         "name": "llSetPrimitiveParams",
-        "descrition": "Sets the prim's parameters according to rules.",
+        "description": "Sets the prim's parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetPrimitiveParams",
         "param": [
@@ -6054,7 +6054,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkPrimitiveParams",
-        "descrition": "Sets the prims parameters according to rules.",
+        "description": "Sets the prims parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetPrimitiveParams",
         "param": [
@@ -6072,7 +6072,7 @@ export const Functions = [
     },
     {
         "name": "llSetLinkPrimitiveParamsFast",
-        "descrition": "Sets the prims parameters according to rules.",
+        "description": "Sets the prims parameters according to rules.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetPrimitiveParams",
         "param": [
@@ -6090,7 +6090,7 @@ export const Functions = [
     },
     {
         "name": "llSetPrimMediaParams",
-        "descrition": "Set the media params for a particular face.\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation(s).",
+        "description": "Set the media params for a particular face.\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation(s).",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlSetPrimMediaParams",
         "param": [
@@ -6108,7 +6108,7 @@ export const Functions = [
     },
     {
         "name": "llSetRegionPos",
-        "descrition": "Tries to move the entire object so that the root prim is within 0.1m of position.\n\nReturns an integer boolean, TRUE if the object is successfully placed within 0.1 m of position, FALSE otherwise. See #Specification for details.",
+        "description": "Tries to move the entire object so that the root prim is within 0.1m of position.\n\nReturns an integer boolean, TRUE if the object is successfully placed within 0.1 m of position, FALSE otherwise. See #Specification for details.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlSetRegionPos",
         "param": [
@@ -6121,7 +6121,7 @@ export const Functions = [
     },
     {
         "name": "llSetRemoteScriptAccessPin",
-        "descrition": "Allows a prim to have scripts remotely loaded via llRemoteLoadScriptPin when it is passed the correct pin and the prim is set mod.",
+        "description": "Allows a prim to have scripts remotely loaded via llRemoteLoadScriptPin when it is passed the correct pin and the prim is set mod.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetRemoteScriptAccessPin",
         "param": [
@@ -6134,7 +6134,7 @@ export const Functions = [
     },
     {
         "name": "llSetRot",
-        "descrition": "Sets the rotation of the prim to rot.",
+        "description": "Sets the rotation of the prim to rot.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetRot",
         "param": [
@@ -6147,7 +6147,7 @@ export const Functions = [
     },
     {
         "name": "llSetScale",
-        "descrition": "Sets the size of the prim according to size",
+        "description": "Sets the size of the prim according to size",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetScale",
         "param": [
@@ -6160,7 +6160,7 @@ export const Functions = [
     },
     {
         "name": "llSetScriptState",
-        "descrition": "Set the running state of the script name.",
+        "description": "Set the running state of the script name.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetScriptState",
         "param": [
@@ -6178,7 +6178,7 @@ export const Functions = [
     },
     {
         "name": "llSetSitText",
-        "descrition": "Displays text rather than the default \"Sit Here\" in the right-click menu.",
+        "description": "Displays text rather than the default \"Sit Here\" in the right-click menu.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetSitText",
         "param": [
@@ -6191,7 +6191,7 @@ export const Functions = [
     },
     {
         "name": "llSetSoundQueueing",
-        "descrition": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
+        "description": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetSoundQueueing",
         "param": [
@@ -6204,7 +6204,7 @@ export const Functions = [
     },
     {
         "name": "llLinkSetSoundQueueing",
-        "descrition": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
+        "description": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetSoundQueueing",
         "param": [
@@ -6222,7 +6222,7 @@ export const Functions = [
     },
     {
         "name": "llSetSoundRadius",
-        "descrition": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
+        "description": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetSoundRadius",
         "param": [
@@ -6235,7 +6235,7 @@ export const Functions = [
     },
     {
         "name": "llLinkSetSoundRadius",
-        "descrition": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
+        "description": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetSoundRadius",
         "param": [
@@ -6253,7 +6253,7 @@ export const Functions = [
     },
     {
         "name": "llSetStatus",
-        "descrition": "Sets the object status attributes indicated in the status} mask to value",
+        "description": "Sets the object status attributes indicated in the status} mask to value",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetStatus",
         "param": [
@@ -6271,7 +6271,7 @@ export const Functions = [
     },
     {
         "name": "llSetText",
-        "descrition": "Displays text that hovers over the prim with specific color and translucency (specified with alpha).",
+        "description": "Displays text that hovers over the prim with specific color and translucency (specified with alpha).",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetText",
         "param": [
@@ -6294,7 +6294,7 @@ export const Functions = [
     },
     {
         "name": "llSetTexture",
-        "descrition": "Sets the texture of this prim's face.",
+        "description": "Sets the texture of this prim's face.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetTexture",
         "param": [
@@ -6312,7 +6312,7 @@ export const Functions = [
     },
     {
         "name": "llSetTextureAnim",
-        "descrition": "Animate the texture on the specified face/faces by setting the texture scale and offset.",
+        "description": "Animate the texture on the specified face/faces by setting the texture scale and offset.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetTextureAnim",
         "param": [
@@ -6355,7 +6355,7 @@ export const Functions = [
     },
     {
         "name": "llSetTimerEvent",
-        "descrition": "Cause the timer event to be triggered a maximum of once every sec seconds. Passing in 0.0 stops further timer events.",
+        "description": "Cause the timer event to be triggered a maximum of once every sec seconds. Passing in 0.0 stops further timer events.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetTimerEvent",
         "param": [
@@ -6368,7 +6368,7 @@ export const Functions = [
     },
     {
         "name": "llSetTorque",
-        "descrition": "Sets the torque of object (if the script is physical)",
+        "description": "Sets the torque of object (if the script is physical)",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetTorque",
         "param": [
@@ -6386,7 +6386,7 @@ export const Functions = [
     },
     {
         "name": "llSetTouchText",
-        "descrition": "Displays text rather than the default \"Touch\" in the right-click menu",
+        "description": "Displays text rather than the default \"Touch\" in the right-click menu",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetTouchText",
         "param": [
@@ -6399,7 +6399,7 @@ export const Functions = [
     },
     {
         "name": "llSetVehicleFlags",
-        "descrition": "Enabled the specified vehicle flags",
+        "description": "Enabled the specified vehicle flags",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetVehicleFlags",
         "param": [
@@ -6412,7 +6412,7 @@ export const Functions = [
     },
     {
         "name": "llSetVehicleFloatParam",
-        "descrition": "Sets the vehicle float parameter param to value.",
+        "description": "Sets the vehicle float parameter param to value.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetVehicleFloatParam",
         "param": [
@@ -6430,7 +6430,7 @@ export const Functions = [
     },
     {
         "name": "llSetVehicleRotationParam",
-        "descrition": "Sets the vehicle rotation parameter param to rot.",
+        "description": "Sets the vehicle rotation parameter param to rot.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetVehicleRotationParam",
         "param": [
@@ -6448,7 +6448,7 @@ export const Functions = [
     },
     {
         "name": "llSetVehicleType",
-        "descrition": "Sets the vehicle type to one of the default types.",
+        "description": "Sets the vehicle type to one of the default types.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetVehicleType",
         "param": [
@@ -6461,7 +6461,7 @@ export const Functions = [
     },
     {
         "name": "llSetVehicleVectorParam",
-        "descrition": "Sets the vehicle vector parameter param to vec.",
+        "description": "Sets the vehicle vector parameter param to vec.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetVehicleVectorParam",
         "param": [
@@ -6479,7 +6479,7 @@ export const Functions = [
     },
     {
         "name": "llSetVelocity",
-        "descrition": "Applies velocity to object",
+        "description": "Applies velocity to object",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSetVelocity",
         "param": [
@@ -6497,7 +6497,7 @@ export const Functions = [
     },
     {
         "name": "llSHA1String",
-        "descrition": "Returns a string of 40 hex characters that is the  SHA-1 security hash of src.",
+        "description": "Returns a string of 40 hex characters that is the  SHA-1 security hash of src.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlSHA1String",
         "param": [
@@ -6510,7 +6510,7 @@ export const Functions = [
     },
     {
         "name": "llSHA256String",
-        "descrition": "Returns a string of 64 hex characters that is the  SHA-256 security hash of src.",
+        "description": "Returns a string of 64 hex characters that is the  SHA-256 security hash of src.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlSHA256String",
         "param": [
@@ -6523,7 +6523,7 @@ export const Functions = [
     },
     {
         "name": "llShout",
-        "descrition": "Shouts the text supplied in string msg on channel supplied in integer channel.",
+        "description": "Shouts the text supplied in string msg on channel supplied in integer channel.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlShout",
         "param": [
@@ -6541,7 +6541,7 @@ export const Functions = [
     },
     {
         "name": "llSignRSA",
-        "descrition": "Returns a string that is the  Base64-encoded  RSA signature of msg when using hash algorithm algorithm and secret key private_key.  Can be paired with llVerifyRSA to pass verifiable messages.",
+        "description": "Returns a string that is the  Base64-encoded  RSA signature of msg when using hash algorithm algorithm and secret key private_key.  Can be paired with llVerifyRSA to pass verifiable messages.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlSignRSA",
         "param": [
@@ -6564,7 +6564,7 @@ export const Functions = [
     },
     {
         "name": "llSin",
-        "descrition": "Returns a float that is the sine of theta.",
+        "description": "Returns a float that is the sine of theta.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlSin",
         "param": [
@@ -6577,7 +6577,7 @@ export const Functions = [
     },
     {
         "name": "llSitOnLink",
-        "descrition": "The avatar specified by agent_id is forced to sit on the sit target of the prim indicated by the link parameter.  If the specified link is already occupied, the simulator searches down the chain of prims in the link set looking for an available sit target.\n\nReturns an Integer ",
+        "description": "The avatar specified by agent_id is forced to sit on the sit target of the prim indicated by the link parameter.  If the specified link is already occupied, the simulator searches down the chain of prims in the link set looking for an available sit target.\n\nReturns an Integer ",
         "returnType": "Integer",
         "url": "https://wiki.secondlife.com/wiki/LlSitOnLink",
         "param": [
@@ -6595,7 +6595,7 @@ export const Functions = [
     },
     {
         "name": "llSitTarget",
-        "descrition": "Set the sit location for the prim. The sit location is relative to the prim's position and rotation.",
+        "description": "Set the sit location for the prim. The sit location is relative to the prim's position and rotation.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSitTarget",
         "param": [
@@ -6613,7 +6613,7 @@ export const Functions = [
     },
     {
         "name": "llSleep",
-        "descrition": "Puts the script to sleep for sec seconds. The script will not do anything during this time.",
+        "description": "Puts the script to sleep for sec seconds. The script will not do anything during this time.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlSleep",
         "param": [
@@ -6626,7 +6626,7 @@ export const Functions = [
     },
     {
         "name": "llSqrt",
-        "descrition": "Returns a float that is the square root of val.",
+        "description": "Returns a float that is the square root of val.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlSqrt",
         "param": [
@@ -6639,7 +6639,7 @@ export const Functions = [
     },
     {
         "name": "llsRGB2Linear",
-        "descrition": "Returns a vector Transforms a color specified in the sRGB colorspace to the linear RGB colorspace.",
+        "description": "Returns a vector Transforms a color specified in the sRGB colorspace to the linear RGB colorspace.",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlsRGB2Linear",
         "param": [
@@ -6652,7 +6652,7 @@ export const Functions = [
     },
     {
         "name": "llStartAnimation",
-        "descrition": "Start animation anim for agent that granted PERMISSION_TRIGGER_ANIMATION if the permission has not been revoked.",
+        "description": "Start animation anim for agent that granted PERMISSION_TRIGGER_ANIMATION if the permission has not been revoked.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStartAnimation",
         "param": [
@@ -6665,7 +6665,7 @@ export const Functions = [
     },
     {
         "name": "llStartObjectAnimation",
-        "descrition": "Start animation for the current object.",
+        "description": "Start animation for the current object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStartObjectAnimation",
         "param": [
@@ -6678,7 +6678,7 @@ export const Functions = [
     },
     {
         "name": "llStopAnimation",
-        "descrition": "Stop animation anim for agent that granted PERMISSION_TRIGGER_ANIMATION if the permission has not been revoked.",
+        "description": "Stop animation anim for agent that granted PERMISSION_TRIGGER_ANIMATION if the permission has not been revoked.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStopAnimation",
         "param": [
@@ -6691,7 +6691,7 @@ export const Functions = [
     },
     {
         "name": "llStopObjectAnimation",
-        "descrition": "Stop an animation for the current object.",
+        "description": "Stop an animation for the current object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStopObjectAnimation",
         "param": [
@@ -6704,35 +6704,35 @@ export const Functions = [
     },
     {
         "name": "llStopHover",
-        "descrition": "Stop hovering to a height",
+        "description": "Stop hovering to a height",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStopHover",
         "param": []
     },
     {
         "name": "llStopLookAt",
-        "descrition": "Stop causing object to point at a target",
+        "description": "Stop causing object to point at a target",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStopLookAt",
         "param": []
     },
     {
         "name": "llStopMoveToTarget",
-        "descrition": "Stops critically damped motion",
+        "description": "Stops critically damped motion",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStopMoveToTarget",
         "param": []
     },
     {
         "name": "llStopSound",
-        "descrition": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
+        "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStopSound",
         "param": []
     },
     {
         "name": "llLinkStopSound",
-        "descrition": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
+        "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlStopSound",
         "param": [
@@ -6745,7 +6745,7 @@ export const Functions = [
     },
     {
         "name": "llStringLength",
-        "descrition": "Returns an integer that is the number of characters in str (not counting the null).",
+        "description": "Returns an integer that is the number of characters in str (not counting the null).",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlStringLength",
         "param": [
@@ -6758,7 +6758,7 @@ export const Functions = [
     },
     {
         "name": "llStringToBase64",
-        "descrition": "Returns the string Base64 representation of the str interpreted as an UTF-8 byte sequence",
+        "description": "Returns the string Base64 representation of the str interpreted as an UTF-8 byte sequence",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlStringToBase64",
         "param": [
@@ -6771,7 +6771,7 @@ export const Functions = [
     },
     {
         "name": "llStringTrim",
-        "descrition": "Returns a string that is src with leading and/or trailing white space (spaces, tabs, and line feeds) trimmed from it.",
+        "description": "Returns a string that is src with leading and/or trailing white space (spaces, tabs, and line feeds) trimmed from it.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlStringTrim",
         "param": [
@@ -6789,7 +6789,7 @@ export const Functions = [
     },
     {
         "name": "llSubStringIndex",
-        "descrition": "Returns an integer that is the index of the first instance of pattern in source.",
+        "description": "Returns an integer that is the index of the first instance of pattern in source.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlSubStringIndex",
         "param": [
@@ -6807,7 +6807,7 @@ export const Functions = [
     },
     {
         "name": "llTakeControls",
-        "descrition": "Allows for intercepting of keyboard and mouse clicks, specifically those specified by controls, from the agent the script has permissions for.",
+        "description": "Allows for intercepting of keyboard and mouse clicks, specifically those specified by controls, from the agent the script has permissions for.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTakeControls",
         "param": [
@@ -6830,7 +6830,7 @@ export const Functions = [
     },
     {
         "name": "llTan",
-        "descrition": "Returns a float that is the tangent of theta.",
+        "description": "Returns a float that is the tangent of theta.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlTan",
         "param": [
@@ -6843,7 +6843,7 @@ export const Functions = [
     },
     {
         "name": "llTarget",
-        "descrition": "This function is to have the script know when it has reached a position.\n\nIt registers a position with a range that triggers at_target and not_at_target events continuously until unregistered.\n\nReturns a handle (an integer) to unregister the target with llTargetRemove.",
+        "description": "This function is to have the script know when it has reached a position.\n\nIt registers a position with a range that triggers at_target and not_at_target events continuously until unregistered.\n\nReturns a handle (an integer) to unregister the target with llTargetRemove.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlTarget",
         "param": [
@@ -6861,7 +6861,7 @@ export const Functions = [
     },
     {
         "name": "llTargetedEmail",
-        "descrition": "Sends an email to the owner (selected by target) of an object with subject and message.",
+        "description": "Sends an email to the owner (selected by target) of an object with subject and message.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTargetedEmail",
         "param": [
@@ -6884,7 +6884,7 @@ export const Functions = [
     },
     {
         "name": "llTargetOmega",
-        "descrition": "Rotates the object/prim around axis at a rate of spinrate * llVecMag(axis) in radians per second with strength gain.",
+        "description": "Rotates the object/prim around axis at a rate of spinrate * llVecMag(axis) in radians per second with strength gain.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTargetOmega",
         "param": [
@@ -6907,7 +6907,7 @@ export const Functions = [
     },
     {
         "name": "llTargetRemove",
-        "descrition": "Removes positional target handle registered with llTarget",
+        "description": "Removes positional target handle registered with llTarget",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTargetRemove",
         "param": [
@@ -6920,7 +6920,7 @@ export const Functions = [
     },
     {
         "name": "llTeleportAgent",
-        "descrition": "Teleports an agent to a landmark stored in the object's inventory.",
+        "description": "Teleports an agent to a landmark stored in the object's inventory.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTeleportAgent",
         "param": [
@@ -6948,7 +6948,7 @@ export const Functions = [
     },
     {
         "name": "llTeleportAgentGlobalCoords",
-        "descrition": "Teleports an agent to region_coordinates within a region specified by global_coordinates.",
+        "description": "Teleports an agent to region_coordinates within a region specified by global_coordinates.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTeleportAgentGlobalCoords",
         "param": [
@@ -6976,7 +6976,7 @@ export const Functions = [
     },
     {
         "name": "llTeleportAgentHome",
-        "descrition": "Teleports avatar on owner's land to their home location without any warning, similar to a God Summons or dying.",
+        "description": "Teleports avatar on owner's land to their home location without any warning, similar to a God Summons or dying.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTeleportAgentHome",
         "param": [
@@ -6989,7 +6989,7 @@ export const Functions = [
     },
     {
         "name": "llTextBox",
-        "descrition": "Shows a dialog box on avatar's screen with the text message. It contains a text box for input, any text that is entered is said by avatar on channel when the \"Submit\" button is clicked.",
+        "description": "Shows a dialog box on avatar's screen with the text message. It contains a text box for input, any text that is entered is said by avatar on channel when the \"Submit\" button is clicked.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTextBox",
         "param": [
@@ -7012,7 +7012,7 @@ export const Functions = [
     },
     {
         "name": "llToLower",
-        "descrition": "Returns a string that is src with all lower-case letters",
+        "description": "Returns a string that is src with all lower-case letters",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlToLower",
         "param": [
@@ -7025,7 +7025,7 @@ export const Functions = [
     },
     {
         "name": "llToUpper",
-        "descrition": "Returns a string that is src with all upper-case characters.",
+        "description": "Returns a string that is src with all upper-case characters.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlToUpper",
         "param": [
@@ -7038,7 +7038,7 @@ export const Functions = [
     },
     {
         "name": "llTransferLindenDollars",
-        "descrition": "Transfer amount of L$ money from script owner to destination avatar.\n\nReturns a key used in a matching transaction_result event for the success or failure of the transfer. If the transaction is successful, this key will show in the transaction history.",
+        "description": "Transfer amount of L$ money from script owner to destination avatar.\n\nReturns a key used in a matching transaction_result event for the success or failure of the transfer. If the transaction is successful, this key will show in the transaction history.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlTransferLindenDollars",
         "param": [
@@ -7056,7 +7056,7 @@ export const Functions = [
     },
     {
         "name": "llTriggerSound",
-        "descrition": "Plays sound at volume, centered at but not attached to object.",
+        "description": "Plays sound at volume, centered at but not attached to object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTriggerSound",
         "param": [
@@ -7074,7 +7074,7 @@ export const Functions = [
     },
     {
         "name": "llTriggerSoundLimited",
-        "descrition": "Plays sound at volume, centered at but not attached to the object, limited to the box defined by vectors top_north_east and bottom_south_west",
+        "description": "Plays sound at volume, centered at but not attached to the object, limited to the box defined by vectors top_north_east and bottom_south_west",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlTriggerSoundLimited",
         "param": [
@@ -7102,7 +7102,7 @@ export const Functions = [
     },
     {
         "name": "llUnescapeURL",
-        "descrition": "Returns a string that is an unescaped/unencoded version of url, replacing \"%20\" with spaces etc.",
+        "description": "Returns a string that is an unescaped/unencoded version of url, replacing \"%20\" with spaces etc.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlUnescapeURL",
         "param": [
@@ -7115,7 +7115,7 @@ export const Functions = [
     },
     {
         "name": "llUnSit",
-        "descrition": "The agent identified by id is forced to stand up if any of the following apply:",
+        "description": "The agent identified by id is forced to stand up if any of the following apply:",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlUnSit",
         "param": [
@@ -7128,7 +7128,7 @@ export const Functions = [
     },
     {
         "name": "llUpdateCharacter",
-        "descrition": "Updates settings for a character",
+        "description": "Updates settings for a character",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlUpdateCharacter",
         "param": [
@@ -7141,7 +7141,7 @@ export const Functions = [
     },
     {
         "name": "llUpdateKeyValue",
-        "descrition": "Start an asynchronous transaction to update a key-value pair associated with the script's Experience with the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to update a key-value pair associated with the script's Experience with the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
         "returnType": "key",
         "url": "https://wiki.secondlife.com/wiki/LlUpdateKeyValue",
         "param": [
@@ -7169,7 +7169,7 @@ export const Functions = [
     },
     {
         "name": "llVecDist",
-        "descrition": "Returns a float that is the undirected nonnegative distance between vec_a and vec_b.",
+        "description": "Returns a float that is the undirected nonnegative distance between vec_a and vec_b.",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlVecDist",
         "param": [
@@ -7187,7 +7187,7 @@ export const Functions = [
     },
     {
         "name": "llVecMag",
-        "descrition": "Returns a float that is the magnitude of the vector (the undirected non-negative distance from vec to <0.0, 0.0, 0.0>).",
+        "description": "Returns a float that is the magnitude of the vector (the undirected non-negative distance from vec to <0.0, 0.0, 0.0>).",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlVecMag",
         "param": [
@@ -7200,7 +7200,7 @@ export const Functions = [
     },
     {
         "name": "llVecNorm",
-        "descrition": "Returns the vector that is vec normalized (a unit vector sharing the same direction as vec).",
+        "description": "Returns the vector that is vec normalized (a unit vector sharing the same direction as vec).",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlVecNorm",
         "param": [
@@ -7213,7 +7213,7 @@ export const Functions = [
     },
     {
         "name": "llVerifyRSA",
-        "descrition": "Returns an integer indicating whether the  RSA signature is valid for msg when using hash algorithm algorithm and public RSA key public_key.  Returns TRUE if the signature is verified, and FALSE otherwise.  Can be paired with llSignRSA to validate the authenticity of messages from other LSL scripts.",
+        "description": "Returns an integer indicating whether the  RSA signature is valid for msg when using hash algorithm algorithm and public RSA key public_key.  Returns TRUE if the signature is verified, and FALSE otherwise.  Can be paired with llSignRSA to validate the authenticity of messages from other LSL scripts.",
         "returnType": "integer",
         "url": "https://wiki.secondlife.com/wiki/LlVerifyRSA",
         "param": [
@@ -7241,7 +7241,7 @@ export const Functions = [
     },
     {
         "name": "llVolumeDetect",
-        "descrition": "If detect is TRUE, VolumeDetect is enabled, physical object and avatars can pass through the object.",
+        "description": "If detect is TRUE, VolumeDetect is enabled, physical object and avatars can pass through the object.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlVolumeDetect",
         "param": [
@@ -7254,7 +7254,7 @@ export const Functions = [
     },
     {
         "name": "llWanderWithin",
-        "descrition": "Sets a character to wander about a central spot within a specified radius.",
+        "description": "Sets a character to wander about a central spot within a specified radius.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlWanderWithin",
         "param": [
@@ -7277,7 +7277,7 @@ export const Functions = [
     },
     {
         "name": "llWater",
-        "descrition": "Returns a float that is the water height below the prim's position + offset",
+        "description": "Returns a float that is the water height below the prim's position + offset",
         "returnType": "float",
         "url": "https://wiki.secondlife.com/wiki/LlWater",
         "param": [
@@ -7290,7 +7290,7 @@ export const Functions = [
     },
     {
         "name": "llWhisper",
-        "descrition": "Whispers the text supplied in string msg on channel supplied in integer channel.",
+        "description": "Whispers the text supplied in string msg on channel supplied in integer channel.",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/LlWhisper",
         "param": [
@@ -7308,7 +7308,7 @@ export const Functions = [
     },
     {
         "name": "llWind",
-        "descrition": "Returns a vector that is the wind velocity at the prim's position + offset",
+        "description": "Returns a vector that is the wind velocity at the prim's position + offset",
         "returnType": "vector",
         "url": "https://wiki.secondlife.com/wiki/LlWind",
         "param": [
@@ -7321,7 +7321,7 @@ export const Functions = [
     },
     {
         "name": "llXorBase64",
-        "descrition": "Correctly performs an exclusive or on two Base64 strings.\n\nReturns a string that is a Base64 XOR of str1 and str2.",
+        "description": "Correctly performs an exclusive or on two Base64 strings.\n\nReturns a string that is a Base64 XOR of str1 and str2.",
         "returnType": "string",
         "url": "https://wiki.secondlife.com/wiki/LlXorBase64",
         "param": [
@@ -7337,4 +7337,4 @@ export const Functions = [
             }
         ]
     }
-]
+];

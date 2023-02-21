@@ -102,7 +102,7 @@ export async function activate(context: vscode.ExtensionContext) {
 							'```',
 
 							'___',
-							e[0]["descrition"],
+							e[0]["description"],
 							'',
 							paramDesc
 
@@ -156,7 +156,7 @@ for (let c = 0; c < Functions.length; c++) {
 	item.kind = vscode.CompletionItemKind.Function;
 	item.insertText = Functions[c]["name"] + "";
 	item.detail = getFunctionSignature(Functions[c]);
-	item.documentation = new vscode.MarkdownString(Functions[c]["descrition"]);
+	item.documentation = new vscode.MarkdownString(Functions[c]["description"]);
 	// item.command = [moveofterinsert];
 	list.items.push(item);
 	item.range;
@@ -168,7 +168,7 @@ for (let c = 0; c < Constants.length; c++) {
 	item.kind = vscode.CompletionItemKind.Constant;
 	item.insertText = Constants[c]["name"] + " ";
 	item.detail = Constants[c]["name"];
-	item.documentation = new vscode.MarkdownString(Constants[c]["descrition"]);
+	item.documentation = new vscode.MarkdownString(Constants[c]["description"]);
 	list.items.push(item);
 }
 
@@ -181,7 +181,7 @@ for (let c = 0; c < Events.length; c++) {
 	item.insertText = getFunctionSignature(Events[c]);
 
 	item.detail = Events[c]["name"];
-	item.documentation = new vscode.MarkdownString(Events[c]["descrition"]);
+	item.documentation = new vscode.MarkdownString(Events[c]["description"]);
 	list.items.push(item);
 }
 
