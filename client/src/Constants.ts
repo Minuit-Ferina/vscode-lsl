@@ -3791,4 +3791,4 @@ export const Constants = [
         "value": "<0.0, 0.0, 0.0>",
         "description": "The vector constant ZERO_VECTOR has the value <0.0, 0.0, 0.0>"
     }
-]
+];
