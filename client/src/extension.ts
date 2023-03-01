@@ -4,7 +4,7 @@
  * ------------------------------------------------------------------------------------------ */
 
 import * as path from 'path';
-import { Tokenize, StreamOfTokens, TokenClass } from './lsl-lexer/src/index';
+import { Tokenize, StreamOfTokens, TokenClass } from 'lsl-lexer';
 import * as fs from 'fs';
 import * as os from 'os';
 
