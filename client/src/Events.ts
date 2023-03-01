@@ -4,7 +4,13 @@ export const Events = [
         "description": "Triggered in an object when the object attaches or detaches from agent.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Attach",
-        "param": []
+        "param": [
+            {
+                "name": "id",
+                "description": "the avatar if attached, if not attached NULL_KEY.",
+                "type": "key"
+            }
+        ]
     },
     {
         "name": "at_rot_target",
@@ -57,28 +63,52 @@ export const Events = [
         "description": "Various changes to the object/prim trigger this event.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Changed",
-        "param": []
+        "param": [
+            {
+                "name": "change",
+                "description": "bit field of CHANGED_* flags",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "collision",
         "description": "Triggered while task is colliding with another task.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Collision",
-        "param": []
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "collision_end",
         "description": "Triggered when task stops colliding with another task\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Collision_end",
-        "param": []
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "collision_start",
         "description": "Triggered when task starts colliding with another task\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Collision_start",
-        "param": []
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "control",
@@ -159,7 +189,13 @@ export const Events = [
         "description": "The agent has approved an experience permissions request.  This may be through interaction with the experience permission dialog or the experience profile, or automatically if the agent has previously approved the experience.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Experience_permissions",
-        "param": []
+        "param": [
+            {
+                "name": "agent_id",
+                "description": "avatar UUID approving permission",
+                "type": "key"
+            }
+        ]
     },
     {
         "name": "experience_permissions_denied",
@@ -235,21 +271,39 @@ export const Events = [
         "description": "Triggered in the root when physical object or attached avatar is colliding with land\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Land_collision",
-        "param": []
+        "param": [
+            {
+                "name": "pos",
+                "description": "position of collision with the ground",
+                "type": "vector"
+            }
+        ]
     },
     {
         "name": "land_collision_end",
         "description": "Triggered in the root when a physical object or attached avatar stops colliding with land\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Land_collision_end",
-        "param": []
+        "param": [
+            {
+                "name": "pos",
+                "description": "position of last collision with the groun",
+                "type": "vector"
+            }
+        ]
     },
     {
         "name": "land_collision_start",
         "description": "Triggered in the root when a physical object or attached avatar starts colliding with land\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Land_collision_start",
-        "param": []
+        "param": [
+            {
+                "name": "pos",
+                "description": "position of collision with the ground",
+                "type": "vector"
+            }
+        ]
     },
     {
         "name": "linkset_data",
@@ -391,14 +445,26 @@ export const Events = [
         "description": "Triggered when the object rezzes an object.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Object_rez",
-        "param": []
+        "param": [
+            {
+                "name": "id",
+                "description": "UUID of object rezzed.",
+                "type": "key"
+            }
+        ]
     },
     {
         "name": "on_rez",
         "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/On_rez",
-        "param": []
+        "param": [
+            {
+                "name": "start_param",
+                "description": "parameter supplied to llRezObject or llRezAtRoot",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "path_update",
@@ -461,14 +527,26 @@ export const Events = [
         "description": "Triggered when an agent grants run time permissions to this script.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Run_time_permissions",
-        "param": []
+        "param": [
+            {
+                "name": "perm",
+                "description": "mask of PERMISSIONS_* flags granting permissions",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "sensor",
         "description": "Results from a call to either llSensor or llSensorRepeat.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Sensor",
-        "param": []
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "state_entry",
@@ -497,21 +575,39 @@ export const Events = [
         "description": "Triggered whilst an agent is clicking the task. It will continue to be triggered until the the prim/object is stopped being clicked (it triggers multiple times).\nTriggered on touch start, each minimum event delay while held, and touch end.\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Touch",
-        "param": []
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "touch_end",
         "description": "Triggered when agent stops clicking on task\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Touch_end",
-        "param": []
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "touch_start",
         "description": "Triggered by the start of agent clicking on task\n",
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Touch_start",
-        "param": []
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "transaction_result",
