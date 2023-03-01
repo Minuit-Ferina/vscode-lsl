@@ -5,12 +5,16 @@
 
 import * as path from 'path';
 import { Tokenize, StreamOfTokens, TokenClass } from './lsl-lexer/src/index';
+import * as fs from 'fs';
+import * as os from 'os';
+
 import * as vscode from 'vscode';
 
 import * as semanticProvider from './DocumentSemanticTokensProvider';
 import { Functions } from './Functions';
 import { Constants } from './Constants';
 import { Events } from './Events';
+import { State } from './State';
 import { Types } from './Types';
 
 import {
@@ -276,7 +280,6 @@ vscode.languages.registerCompletionItemProvider("lsl", {
 					if (
 						// insert word if it's not already in the list
 						_list.items.filter(f => {
-							console.log(word + " :: " + f.label);
 							return f.label == e.data;
 						}).length == 0
 						&&
@@ -396,6 +399,26 @@ vscode.languages.registerSignatureHelpProvider('lsl', {
 },
 	'(', ',');
 
+// vscode.languages.registerInlineCompletionItemProvider("lsl", {
+// 	async provideInlineCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+// 		const word = document.getText(
+// 			document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
+// 		);
+
+// 		// const resource = document.uri;
+
+// 		// const line = document.lineAt(position).text;
+// 		// const lineTrimmed = line.substring(0, position.character);
+// 		// const len = lineTrimmed.length;
+
+// 		if (word === "defaul")
+// 			return [Object.assign({ text: "\nstate_entry()\n{\n}{\n}" })];
+// 		// return new vscode.InlineCompletionList(
+// 		// [new vscode.InlineCompletionItem("\nstate_entry()\n{\n}{\n}")]
+// 		// );
+// 	}
+// }
+// );
 
 function getFunctionSignature(fn: object): string {
 	let ret = `${fn["returnType"]}`;
