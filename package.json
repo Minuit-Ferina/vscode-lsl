@@ -22,7 +22,7 @@
 	"engines": {
 		"vscode": "^1.74.0"
 	},
-	"main": "./client/out/extension",
+	"main": "./out/extension",
 	"contributes": {
 		"languages": [
 			{
@@ -218,7 +218,7 @@
 	"scripts": {
 		"_vscode:prepublish": "npm run compile",
 		"vscode:prepublish": "npm run esbuild-base -- --minify",
-		"esbuild-base": "esbuild ./client/src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild-base": "esbuild ./client/src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
 		"esbuild": "npm run esbuild-base -- --sourcemap",
 		"es-run": "npx ./out/main.js",
 		"compile": "tsc -b",
