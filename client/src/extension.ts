@@ -4,6 +4,7 @@
  * ------------------------------------------------------------------------------------------ */
 
 import * as path from 'path';
+import { Tokenize, StreamOfTokens, TokenClass } from './lsl-lexer/src/index';
 import * as vscode from 'vscode';
 
 import * as semanticProvider from './DocumentSemanticTokensProvider';
@@ -222,10 +223,39 @@ for (let c = 0; c < Types.length; c++) {
 }
 
 vscode.languages.registerCompletionItemProvider("lsl", {
-	provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-		// const word = document.getWordRangeAtPosition(position);
+	async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+		const word = document.getText(document.getWordRangeAtPosition(position));
+		const _list = new vscode.CompletionList;
+		const tockens: StreamOfTokens = await Tokenize(document.getText());
 
-		return list;
+		
+		tockens.forEach(e => {
+			if (e.tokenClass == TokenClass.IDENTIFIER) {
+				
+				if (position.line != e.row || position.character != e.col) {
+					const e1 = new vscode.CompletionItem({
+						label: e.data,
+					});
+					e1.insertText = e.data;
+					e1.sortText = e.data;
+					// e1.kind = vscode.CompletionItemKind.;
+					if (
+						// insert word if it's not already in the list
+						_list.items.filter(f => {
+							console.log(word + " :: " + f.label);
+							return f.label == e.data;
+						}).length == 0
+						&&
+						// insert the word if it's not the word that we are writing
+						e.data != word
+					) {
+						_list.items.push(e1);
+					}
+				}
+			}
+		});
+
+		return list.items.concat(_list.items);
 	}
 });
 

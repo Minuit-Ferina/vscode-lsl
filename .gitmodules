@@ -1,0 +1,3 @@
+[submodule "client/src/lsl-lexer"]
+	path = client/src/lsl-lexer
+	url = https://minuit.ferina@github.com/Minuit-Ferina/lsl-lexer.git
