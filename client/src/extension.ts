@@ -222,6 +222,40 @@ for (let c = 0; c < Types.length; c++) {
 	list.items.push(item);
 }
 
+{
+	const item: vscode.CompletionItem = { label: "default" };
+	item.sortText = "default";
+	item.kind = vscode.CompletionItemKind.Class;
+	item.insertText = `default
+{
+	state_entry()
+	{
+		
+	}
+}`;
+
+	item.detail = "default";
+	item.documentation = "default state";
+	list.items.push(item);
+}
+
+{
+	const item: vscode.CompletionItem = { label: "state" };
+	item.sortText = "state";
+	item.kind = vscode.CompletionItemKind.Class;
+	item.insertText = `state Name
+{
+	state_entry()
+	{
+		
+	}
+}`;
+
+	item.detail = "state definition";
+	item.documentation = "state";
+	list.items.push(item);
+}
+
 vscode.languages.registerCompletionItemProvider("lsl", {
 	async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
 		const word = document.getText(document.getWordRangeAtPosition(position));
