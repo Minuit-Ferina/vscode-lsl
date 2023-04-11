@@ -9,3 +9,4 @@ contributing.md
 client/node_modules/**
 server/**
 client/**
+!client/out

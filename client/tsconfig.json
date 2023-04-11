@@ -3,7 +3,7 @@
 		"module": "CommonJS",
 		"target": "ES2015",
 		"lib": ["ES2015", "dom"],
-		"outDir": "out",
+		"outDir": "./out",
 		"rootDir": "./src",
 		"sourceMap": true,
 		"esModuleInterop": true,

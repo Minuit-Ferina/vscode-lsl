@@ -6,7 +6,7 @@
 		"name": "Minuit Ferina"
 	},
 	"license": "MIT",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Minuit-Ferina/vscode-lsl.git"
@@ -22,7 +22,7 @@
 	"engines": {
 		"vscode": "^1.74.0"
 	},
-	"main": "./out/extension",
+	"main": "./client/out/extension",
 	"contributes": {
 		"languages": [
 			{
@@ -199,17 +199,14 @@
 			}
 		],
 		"configuration": {
-			"type": "object",
 			"title": "LSL",
 			"properties": {
-				"lsl.enhancedColorization": {
-					"type": "string",
-					"enum": [
-						"enabled",
-						"disabled"
-					],
-					"default": "enabled",
-					"markdownDescription": "%lsl.configuration.enhancedColorization.markdownDescription%",
+				"lsl.include_path": {
+					"title": "Include Path",
+					"description": "Include path (e.g. c:/lsl/)",
+					"type": "array",
+					"default": "",
+					"markdownDescription": "",
 					"scope": "window"
 				}
 			}
@@ -218,11 +215,12 @@
 	"scripts": {
 		"_vscode:prepublish": "npm run compile",
 		"vscode:prepublish": "npm run esbuild-base -- --minify",
-		"esbuild-base": "esbuild ./client/src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"esbuild-base": "npm run clean && esbuild ./client/src/extension.ts --bundle --outfile=client/out/extension.js --external:vscode --format=cjs --platform=node",
 		"esbuild": "npm run esbuild-base -- --sourcemap",
 		"es-run": "npx ./out/main.js",
 		"compile": "tsc -b",
 		"watch": "tsc -b -w",
+		"clean": "del-cli ./client/out/*",
 		"lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
 		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
 		"test": "sh ./scripts/e2e.sh"
@@ -233,6 +231,7 @@
 		"@types/vscode": "^1.65.0",
 		"@typescript-eslint/eslint-plugin": "^5.42.0",
 		"@typescript-eslint/parser": "^5.42.0",
+		"del-cli": "^5.0.0",
 		"esbuild": "^0.17.8",
 		"eslint": "^8.26.0",
 		"mocha": "^9.2.1",

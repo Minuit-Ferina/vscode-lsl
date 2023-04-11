@@ -4,7 +4,6 @@
 		"vscode": "^1.65.0"
 	},
 	"dependencies": {
-		"c-preprocessor": "^0.2.13",
 		"lsl-lexer": "file:../../LSL-lexer",
 		"vscode-languageclient": "^7.0.0"
 	},
