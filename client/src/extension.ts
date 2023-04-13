@@ -130,7 +130,7 @@ vscode.languages.registerCompletionItemProvider("lsl", {
 		// outputChannel.show(true);
 
 
-		return lsl.final_list;
+		return lsl.CompletionItems(document);
 	}
 });
 

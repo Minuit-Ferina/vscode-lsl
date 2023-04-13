@@ -12,9 +12,8 @@ import { Types } from './Types';
 
 export const lslDiagnostics = vscode.languages.createDiagnosticCollection("lsl");
 
-let includePath: Array<string>;
-
-
+let includePath: Array<string> = [];
+export const outputChannel: vscode.OutputChannel = vscode.window.createOutputChannel("LSL-Tool2");
 
 
 const list = new vscode.CompletionList;
@@ -104,18 +103,24 @@ for (let c = 0; c < Types.length; c++) {
 
 interface document {
 	Diagnostic: Array<vscode.Diagnostic>,
-	IncludedDoc: Array<document>,
-	Tokens: code
+	IncludedDoc: Array<string>,
+	Tokens: code,
+	Uri: vscode.Uri,
+	isTokenized: boolean,
+	CompletionList?: vscode.CompletionList<vscode.CompletionItem>,
 }
 
-const documentsMap: Map<vscode.Uri, document> = new Map();
+const documentsMap: Map<string, document> = new Map();
 
-function generate_list(document: vscode.TextDocument) {
-	const _list = new vscode.CompletionList();
+function generate_list(uri: string) {
 
-	const doc = documentsMap.get(document.uri);
+	const doc = documentsMap.get(uri);
+	if (!doc)
+		return;
+	doc.CompletionList = new vscode.CompletionList();
+	const _list = doc.CompletionList;
 
-	doc.Tokens.tockenStream.forEach(e => {
+	for (const e of doc.Tokens.tockenStream) {
 		if (e.tokenClass === TokenClass.IDENTIFIER) {
 
 			// if (event.contentChanges[0].range.start.line !== e.row || event.contentChanges[0].range.start.character !== e.col) {
@@ -142,14 +147,13 @@ function generate_list(document: vscode.TextDocument) {
 			}
 			// }
 		}
-	});
+	}
 
-	final_list.items = list.items.concat(_list.items);
 }
 
 export async function diag(code: string, uri: vscode.Uri) {
 
-lslDiagnostics.delete(uri);
+	lslDiagnostics.delete(uri);
 
 	const inc = includePath.slice();
 	inc.unshift("./");
@@ -162,69 +166,90 @@ lslDiagnostics.delete(uri);
 	// .then((_tockens: code) => {
 
 	let doc: document;
-	if (documentsMap.has(uri))
-		doc = documentsMap.get(uri);
+	if (documentsMap.has(uri.path))
+		doc = documentsMap.get(uri.path);
 	else
-		doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [] };
+		doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [], Uri: uri, isTokenized: true };
 
-	// const doc: document = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [] };
+	doc.Diagnostic = [];
+	doc.Tokens = _tockens;
 
-	/**
-	 * 'BOS_Collar/bos_collar/include/comm.include.lsl'
-	 * '/h:/Mon Drive/SL/BOS_Collar/bos_collar/src/HUD/main.lsl'
-	 */
-	// const t = new URI('BOS_Collar/bos_collar/include/comm.include.lsl');
+	// parce the tockenStream
+	for (let c = 0; c < doc.Tokens.tockenStream.length; c++) {
+		const tocken = doc.Tokens.tockenStream[c];
 
-	// const t: vscode.Uri;
-	// if (e.file !== "main") {
-	// 	let path = "";
-	// 	vscode.workspace.fs.stat(document.uri);
-	// 	if (fs.existsSync(e.file))
-	// 		path = "./";
-	// 	else {
-	// 		// find the correct path
-	// 		for (const p of includePath) {
-	// 			if (fs.existsSync(p + "/" + e.file))
-	// 				path = p;
-	// 		}
-	// 	}
-
-	// 	t = vscode.Uri.parse("/" + path + e.file);
-	// }
-	// else
-	// 	t = uri;
-
-	// doc.push(diagnostic);
-	// documentsMap.set(uri, d);
+		if (tocken.tokenClass === TokenClass.PREPRO) {
+			if (doc.Tokens.tockenStream[c].data === "include") {
 
 
-	if (doc.Tokens.errors.length > 0) {
-		// const diagnostics: vscode.Diagnostic[] = [];
 
-		// documentsMap.clear();
+				const tocken_1 = doc.Tokens.tockenStream[c + 1];
+				const incfile = tocken_1.data;
 
-		for (const e of doc.Tokens.errors) {
 
-			const range = new vscode.Range(e.line - 1, 0, e.line - 1, 255);
+				// check in current file directory 
+				const e = uri.path;
+				const p = e.substring(1, 1 + e.lastIndexOf("/"));
+				// check in include directories
 
-			const diagnostic = new vscode.Diagnostic(range, e.message,
-				vscode.DiagnosticSeverity.Error);
-			// diagnostic.code = 102;
+				if (fs.existsSync(p + incfile)) {
+					const t = vscode.Uri.file(p + incfile);
+					doc.IncludedDoc.push(t.path);
 
-			doc.Diagnostic.push(diagnostic);
+					if (!documentsMap.has(t.path)) {
+						doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [], Uri: uri, isTokenized: false };
+						if (!vscode.workspace.getWorkspaceFolder(t))
+							diag((await vscode.workspace.fs.readFile(t)).toString(), t);
+					}
+					// console.log(p + incfile);
+				}
+				else {
+					for (const pncp of includePath) {
+						const fullpath = pncp + incfile;
+						if (fs.existsSync(pncp + incfile)) {
+							const t = vscode.Uri.file(pncp + incfile);
+							doc.IncludedDoc.push(t.path);
+
+
+							if (!documentsMap.has(t.path)) {
+								doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [], Uri: uri, isTokenized: false };
+								if (!vscode.workspace.getWorkspaceFolder(t))
+									diag((await vscode.workspace.fs.readFile(t)).toString(), t);
+							}
+
+							// let t: string = t.path;
+							// console.log(pncp + incfile);
+						}
+						else {
+							const range = new vscode.Range(
+								doc.Tokens.tockenStream[c + 1].row - 1,
+								doc.Tokens.tockenStream[c + 1].col,
+								doc.Tokens.tockenStream[c + 1].row - 1,
+								255);
+							const diagnostic = new vscode.Diagnostic(range, `include file not found (${doc.Tokens.tockenStream[c + 1].data})`,
+								vscode.DiagnosticSeverity.Error);
+							// diagnostic.code = 102;
+
+							doc.Diagnostic.push(diagnostic);
+
+						}
+					}
+				}
+			}
 		}
-		for (const k of documentsMap) {
-			lslDiagnostics.set(k[0], k[1].Diagnostic);
-		}
+	}
+
+	for (const k of documentsMap) {
+		lslDiagnostics.set(k[1].Uri, k[1].Diagnostic);
 	}
 	// }
 	// );
-	documentsMap.set(uri, doc);
+	documentsMap.set(uri.path, doc);
 }
 
 export async function onDidOpenTextDocument(document: vscode.TextDocument) {
 	diag(document.getText(), document.uri);
-	generate_list(document);
+	generate_list(document.uri.path);
 }
 
 export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEvent) {
@@ -239,7 +264,7 @@ export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEv
 
 	////////////////////////////////	
 	if (event.contentChanges[0].text === "\r\n" || event.contentChanges[0].text === "\r\n")
-		generate_list(event.document);
+		generate_list(event.document.uri.path);
 }
 
 export async function init() {
@@ -253,10 +278,14 @@ export async function init() {
 		const t = await vscode.workspace.fs.readDirectory(folder.uri);
 
 		const files = await vscode.workspace.findFiles('**/*.lsl');
-		files.forEach(async e => {
+		for (const e of files) {
 			const code = await vscode.workspace.fs.readFile(e);
-			diag(code.toString(), e);
-		});
+			await diag(code.toString(), e);
+		}
+		for (const k of documentsMap) {
+			generate_list(k[0]);
+		}
+
 	}
 }
 
@@ -480,4 +509,37 @@ function getFunctionSignature(fn: object): string {
 	}
 	ret += `)`;
 	return ret;
+}
+
+let IncTrack: Array<string> = [];
+export function CompletionItems(document: vscode.TextDocument) {
+	IncTrack = [];
+	const doc = documentsMap.get(document.uri.path);
+
+	if (!doc)
+		return list;
+
+	let returnList = list.items.concat(doc.CompletionList.items);
+	IncTrack.push(document.uri.path);
+
+	returnList = returnList.concat(getDocCompletionList(document.uri.path));
+
+	const unique = [...new Set(returnList)];
+	return unique;
+}
+
+function getDocCompletionList(uri: string): Array<vscode.CompletionItem> {
+	const doc = documentsMap.get(uri);
+
+	const returnList = new vscode.CompletionList();
+
+	if (!IncTrack.includes(doc.Uri.path))
+		returnList.items = returnList.items.concat(doc.CompletionList.items);
+
+	for (const e of doc.IncludedDoc) {
+		if (!IncTrack.includes(e))
+			returnList.items = returnList.items.concat(getDocCompletionList(e));
+	}
+
+	return returnList.items;
 }
