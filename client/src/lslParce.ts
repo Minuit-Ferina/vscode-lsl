@@ -217,60 +217,71 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 		const tocken = doc.Tokens.tockenStream[c];
 
 		if (tocken.tokenClass === TokenClass.PREPRO) {
-			if (doc.Tokens.tockenStream[c].data === "include") {
+			if (doc.Tokens.tockenStream[c + 1].data === "include"
+				&& doc.Tokens.tockenStream[c + 2].tokenClass === TokenClass.STRING_LITERAL) {
 
-
-
-				const tocken_1 = doc.Tokens.tockenStream[c + 1];
+				const tocken_1 = doc.Tokens.tockenStream[c + 2];
 				const incfile = tocken_1.data;
-
 
 				// check in current file directory 
 				const e = uri.path;
 				const p = e.substring(1, 1 + e.lastIndexOf("/"));
+				const _includePath = includePath.slice();
+				_includePath.unshift(p);
 				// check in include directories
+				if (incfile == '') {
+					const range = new vscode.Range(
+						doc.Tokens.tockenStream[c + 2].row - 1,
+						doc.Tokens.tockenStream[c + 2].col,
+						doc.Tokens.tockenStream[c + 2].row - 1,
+						255);
+					const diagnostic = new vscode.Diagnostic(range, `include file no specified`,
+						vscode.DiagnosticSeverity.Error);
+					// diagnostic.code = 102;
 
-				if (fs.existsSync(p + incfile)) {
+					doc.Diagnostic.push(diagnostic);
+				}
+				else if (fs.existsSync(p + incfile)) {
 					const t = vscode.Uri.file(p + incfile);
 					doc.IncludedDoc.push(t.path);
 
 					if (!documentsMap.has(t.path)) {
-						doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [], Uri: uri, isTokenized: false };
 						if (!vscode.workspace.getWorkspaceFolder(t))
 							diag((await vscode.workspace.fs.readFile(t)).toString(), t);
 					}
 					// console.log(p + incfile);
 				}
 				else {
-					for (const pncp of includePath) {
+					let error = true;
+					for (let c2 = 0; c2 < _includePath.length; c2++) {
+						const pncp = _includePath[c2];
 						const fullpath = pncp + incfile;
 						if (fs.existsSync(pncp + incfile)) {
 							const t = vscode.Uri.file(pncp + incfile);
 							doc.IncludedDoc.push(t.path);
 
-
 							if (!documentsMap.has(t.path)) {
-								doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [], Uri: uri, isTokenized: false };
 								if (!vscode.workspace.getWorkspaceFolder(t))
 									diag((await vscode.workspace.fs.readFile(t)).toString(), t);
 							}
+							error = false;
+							continue;
 
 							// let t: string = t.path;
 							// console.log(pncp + incfile);
 						}
-						else {
-							const range = new vscode.Range(
-								doc.Tokens.tockenStream[c + 1].row - 1,
-								doc.Tokens.tockenStream[c + 1].col,
-								doc.Tokens.tockenStream[c + 1].row - 1,
-								255);
-							const diagnostic = new vscode.Diagnostic(range, `include file not found (${doc.Tokens.tockenStream[c + 1].data})`,
-								vscode.DiagnosticSeverity.Error);
-							// diagnostic.code = 102;
+					}
+					if (error) {
+						const range = new vscode.Range(
+							doc.Tokens.tockenStream[c + 2].row - 1,
+							doc.Tokens.tockenStream[c + 2].col,
+							doc.Tokens.tockenStream[c + 2].row - 1,
+							255);
+						const diagnostic = new vscode.Diagnostic(range, `include file not found (${doc.Tokens.tockenStream[c + 2].data})`,
+							vscode.DiagnosticSeverity.Error);
+						// diagnostic.code = 102;
 
-							doc.Diagnostic.push(diagnostic);
-
-						}
+						doc.Diagnostic.push(diagnostic);
 					}
 				}
 			}
