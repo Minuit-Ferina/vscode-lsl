@@ -9,6 +9,7 @@ import { Constants } from './Constants';
 import { Events } from './Events';
 import { State } from './State';
 import { Types } from './Types';
+import { Token } from 'lsl-lexer/dist/lexer';
 
 export const lslDiagnostics = vscode.languages.createDiagnosticCollection("lsl");
 
@@ -151,7 +152,16 @@ function generate_list(uri: string) {
 
 }
 
-export async function diag(code: string, uri: vscode.Uri) {
+function countLines(text: string): number {
+	let n = 0;
+	for (const e of text) {
+		if (e === "\n")
+			n++;
+	}
+	return n;
+}
+
+export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) {
 
 	lslDiagnostics.delete(uri);
 
@@ -172,7 +182,35 @@ export async function diag(code: string, uri: vscode.Uri) {
 		doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [], Uri: uri, isTokenized: true };
 
 	doc.Diagnostic = [];
-	doc.Tokens = _tockens;
+
+	if (range === undefined) {
+		// .then((_tockens: code) => {
+		doc.Tokens = _tockens;
+		generate_list(uri.path);
+	}
+	else {
+		const rowLen = countLines(code);
+		const start = doc.Tokens.tockenStream.findIndex((e: Token, index: number, obj: Token[]) => {
+			return e.row > range.start.line;
+		});
+		let end = doc.Tokens.tockenStream.findIndex((e: Token, index: number, obj: Token[]) => {
+			return e.row > range.end.line + 1;
+		});
+		for (const element of _tockens.tockenStream) {
+			element.row += range.start.line;
+		}
+
+		if (end === -1)
+			end = start + _tockens.tockenStream.length;
+		else
+			for (let i = end; i < doc.Tokens.tockenStream.length; i++) {
+				doc.Tokens.tockenStream[i].row += rowLen;
+			}
+		doc.Tokens.tockenStream.splice(start, end - start, ..._tockens.tockenStream);
+
+		if (rowLen > 0)
+			generate_list(uri.path);
+	}
 
 	// parce the tockenStream
 	for (let c = 0; c < doc.Tokens.tockenStream.length; c++) {
@@ -257,14 +295,19 @@ export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEv
 	if (event.contentChanges.length <= 0)
 		return;
 
-	diag(event.document.getText(), event.document.uri);
+	const _event = event;
+	for (const e of event.contentChanges) {
+		// event.contentChanges.forEach(e => {
+		console.log(e);
+		const rowLen = countLines(e.text);
+		const endPos = _event.document.positionAt(_event.document.offsetAt(new vscode.Position(e.range.end.line + rowLen + 1, 0)) - 1);
+		const range = new vscode.Range(new vscode.Position(e.range.start.line, 0), new vscode.Position(e.range.end.line + rowLen, 99999999));
+		const lines = _event.document.getText(range);
+		diag(lines, _event.document.uri, e.range);
+	}
 
 	// if (event.contentChanges[0].text.match(/[a-zA-Z0-9]/g))
 	// 	return;
-
-	////////////////////////////////	
-	if (event.contentChanges[0].text === "\r\n" || event.contentChanges[0].text === "\r\n")
-		generate_list(event.document.uri.path);
 }
 
 export async function init() {
