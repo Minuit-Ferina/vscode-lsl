@@ -268,7 +268,9 @@ export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEv
 }
 
 export async function init() {
-	includePath = vscode.workspace.getConfiguration("lsl").get("include_path");
+	includePath = vscode.workspace.getConfiguration("lsl").get("include_path", []);
+	if (!Array.isArray(includePath))
+		includePath = [];
 
 	const folders = vscode.workspace.workspaceFolders;
 	if (!folders) {
@@ -292,7 +294,9 @@ export async function init() {
 
 
 export function onDidChangeConfiguration(textEditor: vscode.ConfigurationChangeEvent) {
-	includePath = vscode.workspace.getConfiguration("lsl").get("include_path");
+	includePath = vscode.workspace.getConfiguration("lsl").get("include_path", []);
+	if (!Array.isArray(includePath))
+		includePath = [];
 }
 
 export async function provideHover(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.ProviderResult<vscode.Hover>> {
