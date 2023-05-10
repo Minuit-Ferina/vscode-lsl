@@ -123,6 +123,12 @@ export async function activate(context: vscode.ExtensionContext) {
 
 }
 
+vscode.languages.registerDocumentSymbolProvider("lsl", {
+	provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
+		return lsl.provideDocumentSymbols(document, token);
+	}
+});
+
 vscode.languages.registerCompletionItemProvider("lsl", {
 	async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
 
