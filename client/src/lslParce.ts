@@ -311,17 +311,12 @@ export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEv
 
 	const _event = event;
 	for (const e of event.contentChanges) {
-		// event.contentChanges.forEach(e => {
-		console.log(e);
 		const rowLen = countLines(e.text);
 		const endPos = _event.document.positionAt(_event.document.offsetAt(new vscode.Position(e.range.end.line + rowLen + 1, 0)) - 1);
 		const range = new vscode.Range(new vscode.Position(e.range.start.line, 0), new vscode.Position(e.range.end.line + rowLen, 99999999));
 		const lines = _event.document.getText(range);
 		diag(lines, _event.document.uri, e.range);
 	}
-
-	// if (event.contentChanges[0].text.match(/[a-zA-Z0-9]/g))
-	// 	return;
 }
 
 export async function init() {
@@ -484,18 +479,13 @@ export function provideDocumentSymbols(document: vscode.TextDocument, token: vsc
 				const fullrange = new vscode.Range(
 					new vscode.Position(node.range.start.row - 1, node.range.start.col - 1),
 					new vscode.Position(node.range.end.row - 1, node.range.end.col - 1));
-				const range = new vscode.Range(
-					new vscode.Position(node.range.start.row - 1, node.range.start.col - 1),
-					new vscode.Position(node.range.start.row - 1, node.range.start.col + 5));
-				if (!fullrange.contains(range)) {
-					console.log(node.name);
-					console.log(JSON.stringify(fullrange));
-					console.log(JSON.stringify(range));
-				}
+				const range: vscode.Range = new vscode.Range(
+					new vscode.Position(node.nameRange.start.row - 1, node.nameRange.start.col - 1),
+					new vscode.Position(node.nameRange.end.row - 1, node.nameRange.end.col - 1));
 
 				const t = new vscode.DocumentSymbol(node.name, "", kind,
 					fullrange,
-					range);
+					fullrange);
 				for (const child of node.childs) {
 					if (child.length)
 						t.children.push(...DocumentSymbols(child));
