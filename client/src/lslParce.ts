@@ -344,6 +344,11 @@ export async function init() {
 	if (!Array.isArray(includePath))
 		includePath = [];
 
+	vscode.workspace.textDocuments.forEach( async (e) => {
+		await diag(e.getText(), e.uri);
+		generate_list(e.uri.path);
+	});
+
 	const folders = vscode.workspace.workspaceFolders;
 	if (!folders) {
 		return;
