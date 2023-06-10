@@ -7,7 +7,6 @@ import { Tokenize, StreamOfTokens, TokenClass, code } from 'lsl-lexer';
 import { Functions } from './Functions';
 import { Constants } from './Constants';
 import { Events } from './Events';
-import { State } from './State';
 import { Types } from './Types';
 import { Token } from 'lsl-lexer/dist/lexer';
 import * as lsl from 'lsl-parser';
