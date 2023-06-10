@@ -121,35 +121,47 @@ function generate_list(uri: string) {
 	doc.CompletionList = new vscode.CompletionList();
 	const _list = doc.CompletionList;
 
-	for (const e of doc.Tokens.tockenStream) {
-		if (e.tokenClass === TokenClass.IDENTIFIER) {
+	const _nodes = lsl.lslParce(doc.Tokens.tockenStream);
+	for (const e of _nodes) {
+		switch (e.description) {
+			case "function_declaration":
+				{
+					const e1 = new vscode.CompletionItem(
+						e.name.toString(),
+					);
+					e1.insertText = e.name.toString();
+					e1.sortText = e.name.toString();
 
-			// if (event.contentChanges[0].range.start.line !== e.row || event.contentChanges[0].range.start.character !== e.col) {
-			if (
-				// insert word if it's not already in the list
-				(list.items.filter(f => {
-					return f.label.toString() === e.data.toString();
-				}).length === 0)
-				&&
-				(_list.items.filter(f =>
-					f.label.toString() === e.data.toString()
-				).length === 0)
-				// &&
-				// insert the word if it's not the word that we are writing
-				// (e.data !== word)
-			) {
-				const e1 = new vscode.CompletionItem(
-					e.data.toString(),
-				);
-				e1.insertText = e.data.toString();
-				e1.sortText = e.data.toString();
+					_list.items.push(e1);
+				}
+				break;
+			case "variable_declaration":
+				{
+					const e1 = new vscode.CompletionItem(
+						e.name.toString(),
+					);
+					e1.insertText = e.name.toString();
+					e1.sortText = e.name.toString();
 
-				_list.items.push(e1);
-			}
-			// }
+					_list.items.push(e1);
+				}
+				break;
+			case "preprocessor":
+				{
+					if (e.name === "define") {
+						const name = e.tokens[2].data;
+						const e1 = new vscode.CompletionItem(
+							name.toString(),
+						);
+						e1.insertText = name.toString();
+						e1.sortText = name.toString();
+
+						_list.items.push(e1);
+					}
+				}
+				break;
 		}
 	}
-
 }
 
 function countLines(text: string): number {
