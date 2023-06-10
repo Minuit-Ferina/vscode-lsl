@@ -627,7 +627,7 @@ export function CompletionItems(document: vscode.TextDocument) {
 	IncTrack = [];
 	const doc = documentsMap.get(document.uri.path);
 
-	if (!doc)
+	if (!doc || !doc.CompletionList)
 		return list;
 
 	let returnList = list.items.concat(doc.CompletionList.items);
