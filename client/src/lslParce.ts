@@ -476,25 +476,40 @@ export async function provideDocumentSymbols(document: vscode.TextDocument, toke
 	const DocumentSymbols = function (nodes: lsl.Node[]): vscode.DocumentSymbol[] {
 		const _outArray: vscode.DocumentSymbol[] = [];
 		for (const node of nodes) {
-			if (node.nodeType == lsl.NodeType.Function_Deffinition || node.nodeType == lsl.NodeType.Variable_Deffinition) {
+			if (node.description == "function_declaration" || node.description == "variable_declaration"
+				|| node.description == "event" || node.description == "state_declaration"
+				|| node.description == "default_state_declaration") {
 				let kind: vscode.SymbolKind;
 				let level: number;
-				switch (node.nodeType) {
-					case lsl.NodeType.Function_Deffinition:
+				switch (node.description) {
+					case "function_declaration":
 						kind = vscode.SymbolKind.Function;
 						level = 0;
 						break;
-					case lsl.NodeType.Variable_Deffinition:
+					case "variable_declaration":
 						kind = vscode.SymbolKind.Variable;
 						level = 1;
 						break;
+					case "event":
+						kind = vscode.SymbolKind.Event;
+						level = 1;
+						break;
+					case "state_declaration":
+						kind = vscode.SymbolKind.Class;
+						level = 1;
+						break;
+					case "default_state_declaration":
+						kind = vscode.SymbolKind.Module;
+						level = 1;
+						break;
+
 				}
 				const fullrange = new vscode.Range(
-					new vscode.Position(node.range.start.row - 1, node.range.start.col - 1),
-					new vscode.Position(node.range.end.row - 1, node.range.end.col - 1));
+					new vscode.Position(node.range.start.row, node.range.start.col),
+					new vscode.Position(node.range.end.row, node.range.end.col));
 				const range: vscode.Range = new vscode.Range(
-					new vscode.Position(node.nameRange.start.row - 1, node.nameRange.start.col - 1),
-					new vscode.Position(node.nameRange.end.row - 1, node.nameRange.end.col - 1));
+					new vscode.Position(node.nameRange.start.row, node.nameRange.start.col),
+					new vscode.Position(node.nameRange.end.row, node.nameRange.end.col));
 
 				const t = new vscode.DocumentSymbol(node.name, "", kind,
 					fullrange,
@@ -509,12 +524,15 @@ export async function provideDocumentSymbols(document: vscode.TextDocument, toke
 		return _outArray;
 	};
 
-	const _nodes = lsl.lslParce(doc.Tokens.tockenStream);
+	if (doc) {
+		const _nodes = lsl.lslParce(doc.Tokens.tockenStream);
 
-	if (_nodes.length)
-		outArray.push(...DocumentSymbols(_nodes));
-
-	return outArray;
+		if (_nodes.length) {
+			outArray.push(...DocumentSymbols(_nodes));
+			return outArray;
+		}
+	}
+	return [];
 }
 
 export async function provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Promise<vscode.ProviderResult<vscode.SignatureHelp>> {
