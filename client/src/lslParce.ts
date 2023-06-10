@@ -454,10 +454,15 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	return null;
 }
 
-export function provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken): vscode.DocumentSymbol[] {
+export async function provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken): Promise<vscode.DocumentSymbol[]> {
 	let doc: document;
 	if (documentsMap.has(document.uri.path))
 		doc = documentsMap.get(document.uri.path);
+	else {
+		await diag(document.getText(), document.uri);
+		doc = documentsMap.get(document.uri.path);
+	}
+	
 	const outArray: vscode.DocumentSymbol[] = [];
 
 	const DocumentSymbols = function (nodes: lsl.Node[]): vscode.DocumentSymbol[] {

@@ -118,56 +118,52 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	vscode.languages.registerDocumentSymbolProvider("lsl", {
+		provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
+			return lsl.provideDocumentSymbols(document, token);
+		}
+	});
+
+	vscode.languages.registerCompletionItemProvider("lsl", {
+		async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+
+			// outputChannel.appendLine("provideCompletionItems");
+			// outputChannel.show(true);
+
+			return lsl.CompletionItems(document);
+		}
+	});
+
+	vscode.languages.registerSignatureHelpProvider('lsl', {
+		async provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
+			return lsl.provideSignatureHelp(document, position, token);
+		}
+	},
+		'(', ',');
+
+	// vscode.languages.registerInlineCompletionItemProvider("lsl", {
+	// 	async provideInlineCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+	// 		const word = document.getText(
+	// 			document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
+	// 		);
+
+	// 		// const resource = document.uri;
+
+	// 		// const line = document.lineAt(position).text;
+	// 		// const lineTrimmed = line.substring(0, position.character);
+	// 		// const len = lineTrimmed.length;
+
+	// 		if (word === "defaul")
+	// 			return [Object.assign({ text: "\nstate_entry()\n{\n}{\n}" })];
+	// 		// return new vscode.InlineCompletionList(
+	// 		// [new vscode.InlineCompletionItem("\nstate_entry()\n{\n}{\n}")]
+	// 		// );
+	// 	}
+	// }
+	// );
 
 	lsl.init();
-
 }
-
-vscode.languages.registerDocumentSymbolProvider("lsl", {
-	provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
-		return lsl.provideDocumentSymbols(document, token);
-	}
-});
-
-vscode.languages.registerCompletionItemProvider("lsl", {
-	async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-
-		// outputChannel.appendLine("provideCompletionItems");
-		// outputChannel.show(true);
-
-
-		return lsl.CompletionItems(document);
-	}
-});
-
-vscode.languages.registerSignatureHelpProvider('lsl', {
-	async provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
-		return lsl.provideSignatureHelp(document, position, token);
-	}
-},
-	'(', ',');
-
-// vscode.languages.registerInlineCompletionItemProvider("lsl", {
-// 	async provideInlineCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-// 		const word = document.getText(
-// 			document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
-// 		);
-
-// 		// const resource = document.uri;
-
-// 		// const line = document.lineAt(position).text;
-// 		// const lineTrimmed = line.substring(0, position.character);
-// 		// const len = lineTrimmed.length;
-
-// 		if (word === "defaul")
-// 			return [Object.assign({ text: "\nstate_entry()\n{\n}{\n}" })];
-// 		// return new vscode.InlineCompletionList(
-// 		// [new vscode.InlineCompletionItem("\nstate_entry()\n{\n}{\n}")]
-// 		// );
-// 	}
-// }
-// );
-
 
 export function deactivate(): Thenable<void> | undefined {
 	if (!client) {
