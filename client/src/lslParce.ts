@@ -179,8 +179,10 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 	let doc: document;
 	if (documentsMap.has(uri.path))
 		doc = documentsMap.get(uri.path);
-	else
+	else {
 		doc = { Tokens: _tockens, Diagnostic: [], IncludedDoc: [], Uri: uri, isTokenized: true };
+		range = undefined;
+	}
 
 	doc.Diagnostic = [];
 
@@ -191,17 +193,15 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 	}
 	else {
 		const rowLen = countLines(code);
-		const start = doc.Tokens.tockenStream.findIndex((e: Token, index: number, obj: Token[]) => {
-			return e.range.start.row > range.start.line;
+		let start = doc.Tokens.tockenStream.findIndex((e: Token, index: number, obj: Token[]) => {
+			return e.range.start.row == range.start.line;
 		});
 		let end = doc.Tokens.tockenStream.findIndex((e: Token, index: number, obj: Token[]) => {
-			return e.range.start.row > range.end.line + 1;
+			return e.range.start.row == range.end.line + 1;
 		});
-		for (const element of _tockens.tockenStream) {
-			element.range.start.row += range.start.line;
-			element.range.end.row += range.start.line;
-		}
 
+
+		if (start === -1) start = 0;
 		if (end === -1)
 			end = start + _tockens.tockenStream.length;
 		else
@@ -209,7 +209,15 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 				doc.Tokens.tockenStream[i].range.start.row += rowLen;
 				doc.Tokens.tockenStream[i].range.end.row += rowLen;
 			}
+
+		const level_offset = doc.Tokens.tockenStream[start].level;
 		doc.Tokens.tockenStream.splice(start, end - start, ..._tockens.tockenStream);
+		// align the new tocken
+		for (const element of _tockens.tockenStream) {
+			element.range.start.row += range.start.line;
+			element.range.end.row += range.start.line;
+			element.level += level_offset;
+		}
 
 		if (rowLen > 0)
 			generate_list(uri.path);
@@ -234,10 +242,10 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 				// check in include directories
 				if (incfile == '') {
 					const range = new vscode.Range(
-						doc.Tokens.tockenStream[c + 2].range.start.row - 1,
-						doc.Tokens.tockenStream[c + 2].range.start.col - 1,
-						doc.Tokens.tockenStream[c + 2].range.end.row - 1,
-						doc.Tokens.tockenStream[c + 2].range.end.col - 1);
+						doc.Tokens.tockenStream[c + 2].range.start.row,
+						doc.Tokens.tockenStream[c + 2].range.start.col,
+						doc.Tokens.tockenStream[c + 2].range.end.row,
+						doc.Tokens.tockenStream[c + 2].range.end.col);
 					const diagnostic = new vscode.Diagnostic(range, `include file no specified`,
 						vscode.DiagnosticSeverity.Error);
 					// diagnostic.code = 102;
@@ -276,10 +284,10 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 					}
 					if (error) {
 						const range = new vscode.Range(
-							doc.Tokens.tockenStream[c + 2].range.start.row - 1,
-							doc.Tokens.tockenStream[c + 2].range.start.col - 1,
-							doc.Tokens.tockenStream[c + 2].range.end.row - 1,
-							doc.Tokens.tockenStream[c + 2].range.end.col - 1);
+							doc.Tokens.tockenStream[c + 2].range.start.row,
+							doc.Tokens.tockenStream[c + 2].range.start.col,
+							doc.Tokens.tockenStream[c + 2].range.end.row,
+							doc.Tokens.tockenStream[c + 2].range.end.col);
 						const diagnostic = new vscode.Diagnostic(range, `include file not found (${doc.Tokens.tockenStream[c + 2].data})`,
 							vscode.DiagnosticSeverity.Error);
 						// diagnostic.code = 102;
