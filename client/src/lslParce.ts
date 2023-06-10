@@ -193,14 +193,15 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 	else {
 		const rowLen = countLines(code);
 		let start = doc.Tokens.tockenStream.findIndex((e: Token, index: number, obj: Token[]) => {
-			return e.range.start.row == range.start.line;
+			return e.range.start.row >= range.start.line;
 		});
 		let end = doc.Tokens.tockenStream.findIndex((e: Token, index: number, obj: Token[]) => {
-			return e.range.start.row == range.end.line + 1;
+			return e.range.start.row >= range.end.line + 1;
 		});
 
-
+		// start == -1 : the tocken list is empty or we are that start of the file
 		if (start === -1) start = 0;
+		// if end == -1 : we are at the end of the file
 		if (end === -1)
 			end = start + _tockens.tockenStream.length;
 		else
