@@ -231,8 +231,7 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 			element.level += level_offset;
 		}
 
-		if (rowLen > 0)
-			generate_list(uri.path);
+		generate_list(uri.path);
 	}
 
 	// parce the tockenStream
