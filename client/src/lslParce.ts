@@ -109,6 +109,7 @@ interface document {
 	Uri: vscode.Uri,
 	isTokenized: boolean,
 	CompletionList?: vscode.CompletionList<vscode.CompletionItem>,
+	isParsing?: boolean
 }
 
 const documentsMap: Map<string, document> = new Map();
@@ -316,6 +317,7 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 	// }
 	// );
 	documentsMap.set(uri.path, doc);
+	doc.isParsing = false;
 }
 
 export async function onDidOpenTextDocument(document: vscode.TextDocument) {
@@ -334,7 +336,18 @@ export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEv
 		const endPos = _event.document.positionAt(_event.document.offsetAt(new vscode.Position(e.range.end.line + rowLen + 1, 0)) - 1);
 		const range = new vscode.Range(new vscode.Position(e.range.start.line, 0), new vscode.Position(e.range.end.line + rowLen, 99999999));
 		const lines = _event.document.getText(range);
-		diag(lines, _event.document.uri, e.range);
+		let doc: document;
+		if (documentsMap.has(_event.document.uri.path))
+			doc = documentsMap.get(_event.document.uri.path);
+		else {
+			return;
+		}
+
+		if(!doc.isParsing)
+		{
+			doc.isParsing = true;
+			diag(lines, _event.document.uri, e.range);
+		}
 	}
 }
 
