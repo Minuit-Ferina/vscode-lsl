@@ -35,24 +35,20 @@ export async function activate(context: vscode.ExtensionContext) {
 		outputChannel = vscode.window.createOutputChannel("LSL-Tool");
 		// progress.report({message: "activate"});
 
-		progress.report({ message: "onDidChangeConfiguration" });
 		context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(function (textEditor) {
 			// outputChannel.appendLine("onDidChangeConfiguration");
 			// outputChannel.show(true);
 			lsl.onDidChangeConfiguration(textEditor);
 		}));
 
-		progress.report({ message: "lslDiagnostics" });
 		context.subscriptions.push(lsl.lslDiagnostics);
 
-		progress.report({ message: "onDidChangeWorkspaceFolders" });
 		context.subscriptions.push(vscode.workspace.onDidChangeWorkspaceFolders(async function (event) {
 			if (event.added[0].name === "lsl") {
 				console.log("");
 			}
 		}));
 
-		progress.report({ message: "onDidOpenTextDocument" });
 		context.subscriptions.push(vscode.workspace.onDidOpenTextDocument(async function (event) {
 			if (event.languageId === "lsl") {
 				// outputChannel.appendLine("onDidChangeTextDocument");
@@ -62,7 +58,6 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		}));
 
-		progress.report({ message: "onDidChangeTextDocument" });
 		context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(function (event) {
 			if (event.document.languageId === "lsl") {
 				lsl.onDidChangeTextDocument(event);
@@ -85,7 +80,6 @@ export async function activate(context: vscode.ExtensionContext) {
 		};
 
 		// Options to control the language client
-		progress.report({ message: "LanguageClientOptions" });
 		const clientOptions: LanguageClientOptions = {
 			// Register the server for plain text documents
 			documentSelector: [{ scheme: 'file', language: 'lsl' }],
@@ -96,7 +90,6 @@ export async function activate(context: vscode.ExtensionContext) {
 		};
 
 		// Create the language client and start the client.
-		progress.report({ message: "LanguageClient" });
 		client = new LanguageClient(
 			'languageServerExample',
 			'Language Server Example',
@@ -109,21 +102,18 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		// semanticProvider.register();
 
-		progress.report({ message: "registerHoverProvider" });
 		vscode.languages.registerHoverProvider("lsl", {
 			async provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
 				return lsl.provideHover(document, position, token);
 			}
 		});
 
-		progress.report({ message: "registerDocumentSymbolProvider" });
 		vscode.languages.registerDocumentSymbolProvider("lsl", {
 			provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
 				return lsl.provideDocumentSymbols(document, token);
 			}
 		});
 
-		progress.report({ message: "registerCompletionItemProvider" });
 		vscode.languages.registerCompletionItemProvider("lsl", {
 			async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
 
@@ -134,7 +124,6 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 		});
 
-		progress.report({ message: "registerSignatureHelpProvider" });
 		vscode.languages.registerSignatureHelpProvider('lsl', {
 			async provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
 				return lsl.provideSignatureHelp(document, position, token);
@@ -154,7 +143,6 @@ export async function activate(context: vscode.ExtensionContext) {
 	// 		// const lineTrimmed = line.substring(0, position.character);
 	// 		// const len = lineTrimmed.length;
 
-		progress.report({ message: "init" });
 		lsl.init();
 
 		const p = new Promise<void>(resolve => {
