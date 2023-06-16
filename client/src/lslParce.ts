@@ -386,6 +386,7 @@ export function onDidChangeConfiguration(textEditor: vscode.ConfigurationChangeE
 	includePath = vscode.workspace.getConfiguration("lsl").get("include_path", []);
 	if (!Array.isArray(includePath))
 		includePath = [];
+	init();
 }
 
 export async function provideHover(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.ProviderResult<vscode.Hover>> {
