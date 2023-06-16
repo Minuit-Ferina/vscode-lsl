@@ -389,7 +389,7 @@ export function onDidChangeConfiguration(textEditor: vscode.ConfigurationChangeE
 	init();
 }
 
-export async function provideHover(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.ProviderResult<vscode.Hover>> {
+export async function provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Promise<vscode.ProviderResult<vscode.Hover>> {
 	const word = document.getText(
 		document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
 	);
@@ -506,6 +506,8 @@ export async function provideDocumentSymbols(document: vscode.TextDocument, toke
 	const DocumentSymbols = function (nodes: lsl.Node[]): vscode.DocumentSymbol[] {
 		const _outArray: vscode.DocumentSymbol[] = [];
 		for (const node of nodes) {
+			if (token.isCancellationRequested)
+				return [];
 			if (node.description == "function_declaration" || node.description == "variable_declaration"
 				|| node.description == "event" || node.description == "state_declaration"
 				|| node.description == "default_state_declaration") {
@@ -545,6 +547,8 @@ export async function provideDocumentSymbols(document: vscode.TextDocument, toke
 					fullrange,
 					fullrange);
 				for (const child of node.childs) {
+					if (token.isCancellationRequested)
+						return [];
 					if (child.length)
 						t.children.push(...DocumentSymbols(child));
 				}
@@ -679,7 +683,7 @@ function getFunctionSignature(fn: object): string {
 }
 
 let IncTrack: Array<string> = [];
-export function CompletionItems(document: vscode.TextDocument) {
+export function CompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
 	IncTrack = [];
 	const doc = documentsMap.get(document.uri.path);
 
@@ -689,13 +693,13 @@ export function CompletionItems(document: vscode.TextDocument) {
 	let returnList = list.items.concat(doc.CompletionList.items);
 	IncTrack.push(document.uri.path);
 
-	returnList = returnList.concat(getDocCompletionList(document.uri.path));
+	returnList = returnList.concat(getDocCompletionList(document.uri.path, token));
 
 	const unique = [...new Set(returnList)];
 	return unique;
 }
 
-function getDocCompletionList(uri: string): Array<vscode.CompletionItem> {
+function getDocCompletionList(uri: string, token: vscode.CancellationToken): Array<vscode.CompletionItem> {
 	const doc = documentsMap.get(uri);
 
 	const returnList = new vscode.CompletionList();
@@ -704,8 +708,11 @@ function getDocCompletionList(uri: string): Array<vscode.CompletionItem> {
 		returnList.items = returnList.items.concat(doc.CompletionList.items);
 
 	for (const e of doc.IncludedDoc) {
+		if (token.isCancellationRequested)
+			return [];
+
 		if (!IncTrack.includes(e))
-			returnList.items = returnList.items.concat(getDocCompletionList(e));
+			returnList.items = returnList.items.concat(getDocCompletionList(e, token));
 	}
 
 	return returnList.items;
