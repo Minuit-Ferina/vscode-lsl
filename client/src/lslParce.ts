@@ -280,7 +280,7 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 						const pncp = _includePath[c2];
 						const fullpath = pncp + incfile;
 						if (fs.existsSync(pncp + incfile)) {
-							const t = vscode.Uri.file(pncp + incfile);
+							const t = vscode.Uri.file(pncp + "/" + incfile);
 							doc.IncludedDoc.push(t.path);
 
 							if (!documentsMap.has(t.path)) {
