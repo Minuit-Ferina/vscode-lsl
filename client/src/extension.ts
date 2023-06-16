@@ -23,123 +23,124 @@ let client: LanguageClient;
 let outputChannel: vscode.OutputChannel;
 
 export async function activate(context: vscode.ExtensionContext) {
+	return vscode.window.withProgress({
+		location: vscode.ProgressLocation.Window,
+		title: "LSL Tools starting",
+		cancellable: false,
 
-	outputChannel = vscode.window.createOutputChannel("LSL-Tool");
+	}, (progress, token) => {
+		token.onCancellationRequested(() => {
+			console.log("User canceled the long running operation");
+		});
+		outputChannel = vscode.window.createOutputChannel("LSL-Tool");
+		// progress.report({message: "activate"});
 
-
-	context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(function (textEditor) {
-		// outputChannel.appendLine("onDidChangeConfiguration");
-		// outputChannel.show(true);
-		lsl.onDidChangeConfiguration(textEditor);
-	}));
-
-
-	context.subscriptions.push(lsl.lslDiagnostics);
-
-	context.subscriptions.push(vscode.workspace.onDidChangeWorkspaceFolders(async function (event) {
-		if (event.added[0].name === "lsl") {
-			console.log("");
-		}
-	}));
-
-	context.subscriptions.push(vscode.workspace.onDidOpenTextDocument(async function (event) {
-		if (event.languageId === "lsl") {
-			// outputChannel.appendLine("onDidChangeTextDocument");
+		progress.report({ message: "onDidChangeConfiguration" });
+		context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(function (textEditor) {
+			// outputChannel.appendLine("onDidChangeConfiguration");
 			// outputChannel.show(true);
-			lsl.onDidOpenTextDocument(event);
-		}
+			lsl.onDidChangeConfiguration(textEditor);
+		}));
 
-	}));
+		progress.report({ message: "lslDiagnostics" });
+		context.subscriptions.push(lsl.lslDiagnostics);
 
-	context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(function (event) {
-		if (event.document.languageId === "lsl") {
-			// outputChannel.appendLine("onDidChangeTextDocument");
-			// outputChannel.show(true);
+		progress.report({ message: "onDidChangeWorkspaceFolders" });
+		context.subscriptions.push(vscode.workspace.onDidChangeWorkspaceFolders(async function (event) {
+			if (event.added[0].name === "lsl") {
+				console.log("");
+			}
+		}));
 
-			// const index = lineOfText.text.indexOf(EMOJI);
-			// const range = new vscode.Range(2, index, 2, index + 2);
+		progress.report({ message: "onDidOpenTextDocument" });
+		context.subscriptions.push(vscode.workspace.onDidOpenTextDocument(async function (event) {
+			if (event.languageId === "lsl") {
+				// outputChannel.appendLine("onDidChangeTextDocument");
+				// outputChannel.show(true);
+				lsl.onDidOpenTextDocument(event);
+			}
 
-			// const diagnostics: vscode.Diagnostic[] = [];
-			// const diagnostic = new vscode.Diagnostic(range, "When you say 'emoji', do you want to find out more?",
-			// 	vscode.DiagnosticSeverity.Information);
+		}));
 
-			// diagnostics.push(diagnostic);
-			// diagnostic.code = 102;
-			// lslDiagnostics.set(textEditor.document.uri, diagnostics);
+		progress.report({ message: "onDidChangeTextDocument" });
+		context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(function (event) {
+			if (event.document.languageId === "lsl") {
+				lsl.onDidChangeTextDocument(event);
+			}
+		}));
 
-			// outputChannel.appendLine("reason: " + event.reason.toString());
-			// outputChannel.show(true);
+		// The server is implemented in node
+		const serverModule = context.asAbsolutePath(
+			path.join('server', 'out', 'server.js')
+		);
 
-			lsl.onDidChangeTextDocument(event);
-		}
-	}));
+		// If the extension is launched in debug mode then the debug server options are used
+		// Otherwise the run options are used
+		const serverOptions: ServerOptions = {
+			run: { module: serverModule, transport: TransportKind.ipc },
+			debug: {
+				module: serverModule,
+				transport: TransportKind.ipc,
+			}
+		};
 
-	// The server is implemented in node
-	const serverModule = context.asAbsolutePath(
-		path.join('server', 'out', 'server.js')
-	);
+		// Options to control the language client
+		progress.report({ message: "LanguageClientOptions" });
+		const clientOptions: LanguageClientOptions = {
+			// Register the server for plain text documents
+			documentSelector: [{ scheme: 'file', language: 'lsl' }],
+			synchronize: {
+				// Notify the server about file changes to '.clientrc files contained in the workspace
+				fileEvents: vscode.workspace.createFileSystemWatcher('**/.clientrc')
+			},
+		};
 
-	// If the extension is launched in debug mode then the debug server options are used
-	// Otherwise the run options are used
-	const serverOptions: ServerOptions = {
-		run: { module: serverModule, transport: TransportKind.ipc },
-		debug: {
-			module: serverModule,
-			transport: TransportKind.ipc,
-		}
-	};
+		// Create the language client and start the client.
+		progress.report({ message: "LanguageClient" });
+		client = new LanguageClient(
+			'languageServerExample',
+			'Language Server Example',
+			serverOptions,
+			clientOptions
+		);
 
-	// Options to control the language client
-	const clientOptions: LanguageClientOptions = {
-		// Register the server for plain text documents
-		documentSelector: [{ scheme: 'file', language: 'lsl' }],
-		synchronize: {
-			// Notify the server about file changes to '.clientrc files contained in the workspace
-			fileEvents: vscode.workspace.createFileSystemWatcher('**/.clientrc')
+		// Start the client. This will also launch the server
+		// client.start();
+
+		// semanticProvider.register();
+
+		progress.report({ message: "registerHoverProvider" });
+		vscode.languages.registerHoverProvider("lsl", {
+			async provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
+				return lsl.provideHover(document, position, token);
+			}
+		});
+
+		progress.report({ message: "registerDocumentSymbolProvider" });
+		vscode.languages.registerDocumentSymbolProvider("lsl", {
+			provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
+				return lsl.provideDocumentSymbols(document, token);
+			}
+		});
+
+		progress.report({ message: "registerCompletionItemProvider" });
+		vscode.languages.registerCompletionItemProvider("lsl", {
+			async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+
+				// outputChannel.appendLine("provideCompletionItems");
+				// outputChannel.show(true);
+
+				return lsl.CompletionItems(document, position, token, context);
+			}
+		});
+
+		progress.report({ message: "registerSignatureHelpProvider" });
+		vscode.languages.registerSignatureHelpProvider('lsl', {
+			async provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
+				return lsl.provideSignatureHelp(document, position, token);
+			}
 		},
-	};
-
-	// Create the language client and start the client.
-	client = new LanguageClient(
-		'languageServerExample',
-		'Language Server Example',
-		serverOptions,
-		clientOptions
-	);
-
-	// Start the client. This will also launch the server
-	// client.start();
-
-	// semanticProvider.register();
-
-	vscode.languages.registerHoverProvider("lsl", {
-		async provideHover(document, position) {
-			return lsl.provideHover(document, position);
-		}
-	});
-
-	vscode.languages.registerDocumentSymbolProvider("lsl", {
-		provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
-			return lsl.provideDocumentSymbols(document, token);
-		}
-	});
-
-	vscode.languages.registerCompletionItemProvider("lsl", {
-		async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-
-			// outputChannel.appendLine("provideCompletionItems");
-			// outputChannel.show(true);
-
-			return lsl.CompletionItems(document);
-		}
-	});
-
-	vscode.languages.registerSignatureHelpProvider('lsl', {
-		async provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
-			return lsl.provideSignatureHelp(document, position, token);
-		}
-	},
-		'(', ',');
+			'(', ',');
 
 	// vscode.languages.registerInlineCompletionItemProvider("lsl", {
 	// 	async provideInlineCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
@@ -153,16 +154,17 @@ export async function activate(context: vscode.ExtensionContext) {
 	// 		// const lineTrimmed = line.substring(0, position.character);
 	// 		// const len = lineTrimmed.length;
 
-	// 		if (word === "defaul")
-	// 			return [Object.assign({ text: "\nstate_entry()\n{\n}{\n}" })];
-	// 		// return new vscode.InlineCompletionList(
-	// 		// [new vscode.InlineCompletionItem("\nstate_entry()\n{\n}{\n}")]
-	// 		// );
-	// 	}
-	// }
-	// );
+		progress.report({ message: "init" });
+		lsl.init();
 
-	lsl.init();
+		const p = new Promise<void>(resolve => {
+			setTimeout(() => {
+				resolve();
+			}, 5);
+		});
+		return p;
+	}
+	);
 }
 
 export function deactivate(): Thenable<void> | undefined {
