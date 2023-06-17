@@ -330,24 +330,52 @@ export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEv
 	if (event.contentChanges.length <= 0)
 		return;
 
-	const _event = event;
-	for (const e of event.contentChanges) {
-		const rowLen = countLines(e.text);
-		const endPos = _event.document.positionAt(_event.document.offsetAt(new vscode.Position(e.range.end.line + rowLen + 1, 0)) - 1);
-		const range = new vscode.Range(new vscode.Position(e.range.start.line, 0), new vscode.Position(e.range.end.line + rowLen, 99999999));
-		const lines = _event.document.getText(range);
-		let doc: document;
-		if (documentsMap.has(_event.document.uri.path))
-			doc = documentsMap.get(_event.document.uri.path);
-		else {
-			return;
+	// if (event.contentChanges.length <= 0)
+	// 	return;
+	/*
+		const _event = event;
+		for (const e of event.contentChanges) {
+			const rowLen = countLines(e.text);
+			// const endPos = _event.document.positionAt(_event.document.offsetAt(new vscode.Position(e.range.end.line + rowLen + 1, 0)) - 1);
+			const range = new vscode.Range(new vscode.Position(e.range.start.line, 0), new vscode.Position(e.range.end.line + rowLen, 99999999));
+			const lines = _event.document.getText(range);
+	
+			// move this into a cancellable worker
+	
+			let doc: document;
+			if (documentsMap.has(_event.document.uri.path))
+				doc = documentsMap.get(_event.document.uri.path);
+			else {
+				return;
+			}
+	
+			// 		doc.Worker = new Worker(__dirname + '/lsl-diag.js', {
+			// doc.Worker = new Worker('diag(lines, _event.document.uri, e.range)', {
+			// 	eval: true,
+			// 	env: SHARE_ENV,
+			// 	workerData: {
+			// 		code: lines,
+			// 		uri: _event.document.uri,
+			// 		range: e.range
+			// 	}
+			// });
+	
+			if (!doc.isParsing) {
+				doc.isParsing = true;
+				diag(lines, _event.document.uri, e.range);
+			}
 		}
+		*/
+	let doc: document;
+	if (documentsMap.has(event.document.uri.path))
+		doc = documentsMap.get(event.document.uri.path);
+	else {
+		return;
+	}
+	if (!doc.isParsing) {
+		doc.isParsing = true;
+		diag(event.document.getText(), event.document.uri);
 
-		if(!doc.isParsing)
-		{
-			doc.isParsing = true;
-			diag(lines, _event.document.uri, e.range);
-		}
 	}
 }
 
