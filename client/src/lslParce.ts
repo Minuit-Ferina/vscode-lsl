@@ -1,15 +1,7 @@
-import * as fs from 'fs';
-import { Worker, SHARE_ENV } from 'worker_threads';
-
 import * as vscode from 'vscode';
 import { documentsMap, document } from './providers/DocumentsMap';
 
-// import { visit } from './providers/CompletionSignature';
-import * as providerDocumentSymbols from './providers/providerDocumentSymbols';
 import { ExtractVariablesAndFunctionsVisitor } from './providers/ExtractVariablesAndFunctionsVisitor';
-
-// import { generate_list } from './providers/common';
-
 
 export const lslDiagnostics = vscode.languages.createDiagnosticCollection("lsl");
 

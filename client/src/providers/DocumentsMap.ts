@@ -2,7 +2,6 @@
 
 import * as vscode from 'vscode';
 import { ExtractVariablesAndFunctionsVisitor } from './ExtractVariablesAndFunctionsVisitor';
-import { Lscript_programContext } from '../antlr4/LSLParser';
 
 
 export interface document {

@@ -1,11 +1,6 @@
-
-
 import * as vscode from 'vscode';
 
 import { documentsMap } from './DocumentsMap';
-import { list } from './common';
-// import { getLocalSymboles } from './ExtractVariablesAndFunctionsVisitor';
-
 
 const IncTrack: Array<string> = [];
 

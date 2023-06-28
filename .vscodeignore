@@ -6,7 +6,8 @@
 **/tsconfig.base.json
 contributing.md
 .travis.yml
-client/node_modules/**
 server/**
 client/**
+client/node_modules/**
+!client/node_modules/antlr4/**
 !client/out

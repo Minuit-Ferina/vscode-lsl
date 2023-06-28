@@ -1,9 +1,4 @@
-
-
-
 import * as vscode from 'vscode';
-
-import { documentsMap, document } from './DocumentsMap';
 
 import { Functions } from '../Functions';
 import { Constants } from '../Constants';
