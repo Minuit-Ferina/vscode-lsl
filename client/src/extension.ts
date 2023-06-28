@@ -9,7 +9,13 @@ import * as os from 'os';
 import * as vscode from 'vscode';
 
 import * as lsl from './lslParce';
-import * as semanticProvider from './DocumentSemanticTokensProvider';
+
+import { CompletionItems } from './providers/provideCompletionItems';
+import { provideHover } from './providers/provideHover';
+import { provideSignatureHelp } from './providers/provideSignatureHelp';
+import {  providerDocumentSymbols} from './providers/providerDocumentSymbols';
+
+import * as semanticProvider from './providers/DocumentSemanticTokensProvider';
 
 import {
 	LanguageClient,
@@ -28,12 +34,14 @@ export async function activate(context: vscode.ExtensionContext) {
 		title: "LSL Tools starting",
 		cancellable: false,
 
-	}, (progress, token) => {
+	}, async (progress, token) => {
 		token.onCancellationRequested(() => {
 			console.log("User canceled the long running operation");
 		});
 		outputChannel = vscode.window.createOutputChannel("LSL-Tool");
 		// progress.report({message: "activate"});
+
+		await lsl.init();
 
 		context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(function (textEditor) {
 			// outputChannel.appendLine("onDidChangeConfiguration");
@@ -104,13 +112,13 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		vscode.languages.registerHoverProvider("lsl", {
 			async provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
-				return lsl.provideHover(document, position, token);
+				return provideHover(document, position, token);
 			}
 		});
 
 		vscode.languages.registerDocumentSymbolProvider("lsl", {
 			provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
-				return lsl.provideDocumentSymbols(document, token);
+				return providerDocumentSymbols(document, token);
 			}
 		});
 
@@ -120,30 +128,16 @@ export async function activate(context: vscode.ExtensionContext) {
 				// outputChannel.appendLine("provideCompletionItems");
 				// outputChannel.show(true);
 
-				return lsl.CompletionItems(document, position, token, context);
+				return CompletionItems(document, position, token, context);
 			}
 		});
 
 		vscode.languages.registerSignatureHelpProvider('lsl', {
 			async provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
-				return lsl.provideSignatureHelp(document, position, token);
+				return provideSignatureHelp(document, position, token);
 			}
 		},
 			'(', ',');
-
-	// vscode.languages.registerInlineCompletionItemProvider("lsl", {
-	// 	async provideInlineCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-	// 		const word = document.getText(
-	// 			document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
-	// 		);
-
-	// 		// const resource = document.uri;
-
-	// 		// const line = document.lineAt(position).text;
-	// 		// const lineTrimmed = line.substring(0, position.character);
-	// 		// const len = lineTrimmed.length;
-
-		lsl.init();
 
 		const p = new Promise<void>(resolve => {
 			setTimeout(() => {
