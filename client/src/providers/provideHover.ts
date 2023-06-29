@@ -2,6 +2,8 @@
 
 import * as vscode from 'vscode';
 
+import { document, documentsMap } from './DocumentsMap';
+
 import { Functions } from '../Functions';
 import { Constants } from '../Constants';
 import { Events } from '../Events';
@@ -9,6 +11,14 @@ import { Types } from '../Types';
 
 
 export async function provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Promise<vscode.ProviderResult<vscode.Hover>> {
+	let doc: document;
+	if (documentsMap.has(document.uri.path))
+		doc = documentsMap.get(document.uri.path);
+	else {
+		// await diag(document.getText(), document.uri);
+		doc = documentsMap.get(document.uri.path);
+	}
+
 	const word = document.getText(
 		document.getWordRangeAtPosition(position)  //  /\b\w+(?=\(.*\))/
 	);
@@ -104,5 +114,40 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 				].join('\n')
 			));
 	}
+
+	// identifier not in static list, try to lookup with the parser
+	
+	const ret = doc.parser.getLocalSymboles(doc.parser.tree, position);
+	const t = ret.filter(e => e.name === word && (e.nodeType === "global_variable_declaration" || e.nodeType === "variable_declaration"));
+	if (t.length > 0) {
+		return new vscode.Hover(
+			new vscode.MarkdownString(
+				[
+					'```lsl',
+					t[0].signature,
+					'```',
+					'___',
+					"",
+					'',
+				].join('\n')
+			));
+	}
+
+	const ret2 = doc.parser.Symbols;
+	const t2 = ret.filter(e => e.name === word && (e.nodeType === "global_function_declaration" || e.nodeType === "global_variable_declaration" || e.nodeType === "state"));
+	if (t2.length > 0) {
+		return new vscode.Hover(
+			new vscode.MarkdownString(
+				[
+					'```lsl',
+					t2[0].signature,
+					'```',
+					'___',
+					"",
+					'',
+				].join('\n')
+			));
+	}
+
 	return null;
 }

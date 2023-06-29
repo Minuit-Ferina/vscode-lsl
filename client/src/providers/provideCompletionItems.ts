@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 
 import { documentsMap } from './DocumentsMap';
+import { list } from './common';
 
 const IncTrack: Array<string> = [];
 
@@ -9,39 +10,38 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 	// IncTrack = [];
 	const doc = documentsMap.get(document.uri.path);
 
-	//	if (context.triggerKind != 0)
-	//		console.log("d");
-	// if (!doc || !doc.CompletionList)
-	// 	return list;
-
-	// let returnList = list.items.concat(doc.CompletionList.items);
-	// IncTrack.push(document.uri.path);
-
-	// returnList = returnList.concat(getDocCompletionList(document.uri.path, token));
-
-	// const unique = [...new Set(returnList)];
-	// return unique;
-
-	const ret = doc.parser.getLocalSymboles(doc.parser.tree, position);
-	return [];
-}
-
-
-function getDocCompletionList(uri: string, token: vscode.CancellationToken): Array<vscode.CompletionItem> {
-	const doc = documentsMap.get(uri);
-
 	const returnList = new vscode.CompletionList();
+	const ret = doc.parser.getLocalSymboles(doc.parser.tree, position);
 
-	if (!IncTrack.includes(doc.Uri.path))
-		returnList.items = returnList.items.concat(doc.CompletionList.items);
-
-	for (const e of doc.IncludedDoc) {
-		if (token.isCancellationRequested)
-			return [];
-
-		if (!IncTrack.includes(e))
-			returnList.items = returnList.items.concat(getDocCompletionList(e, token));
+	for (const e of ret) {
+		// ret.forEach(e => {
+		if (e.nodeType === "variable_declaration") {
+			const kind = vscode.CompletionItemKind.Variable;
+			const t = new vscode.CompletionItem(e.name,
+				kind);
+			returnList.items.push(t);
+		}
 	}
 
-	return returnList.items;
+	doc.parser.getDocumentSymboles(doc.parser.tree);
+	const ret2 = doc.parser.Symbols;
+	for (const e of ret2) {
+		if (e.nodeType === "function_declaration") {
+			const kind = vscode.CompletionItemKind.Function;
+			const t = new vscode.CompletionItem(e.name,
+				kind);
+			returnList.items.push(t);
+		}
+		if (e.nodeType === "state_declaration") {
+			const kind = vscode.CompletionItemKind.Class;
+			const t = new vscode.CompletionItem(e.name,
+				kind);
+			returnList.items.push(t);
+		}
+
+	}
+
+	IncTrack.push(document.uri.path);
+
+	return returnList.items.concat(list.items);
 }

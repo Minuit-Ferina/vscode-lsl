@@ -5,25 +5,46 @@ import LSLVisitor, { } from '../antlr4/LSLParserVisitor';
 
 
 import * as vscode from 'vscode';
+import { type } from 'os';
 
+class Position {
+	row: number;
+	col: number;
+	constructor(row: number, col: number) {
+		this.row = row;
+		this.col = col;
+	}
+}
+class Range {
+	start: Position;
+	end: Position;
+	constructor(start: Position, end: Position) {
+		this.start = start;
+		this.end = end;
+	}
+}
 
 
 
 class SymbolsNode {
 	name: string;
 	type: string;
+	nodeType: string;
 	startLine: number;
 	startColumn: number;
 	endLine: number;
 	endColumn: number;
+	signature: string;
 
-	constructor(name: string, type: string, startLine: number, startColumn: number, endLine: number, endColumn: number) {
+	constructor(name: string, nodeType: string, type: string, startLine: number, startColumn: number, endLine: number, endColumn: number) {
 		this.name = name;
 		this.startLine = startLine;
 		this.startColumn = startColumn;
 		this.endColumn = endColumn;
 		this.endLine = endLine;
 		this.type = type;
+		this.nodeType = nodeType;
+		this.signature = "";
 	}
 }
 
@@ -32,6 +53,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 	outArray: vscode.DocumentSymbol[];
 	level: number;
 
+	Symbols: Array<SymbolsNode>;
 	localSymbols: Array<Array<SymbolsNode>>;
 	breakPosition: vscode.Position;
 
@@ -47,6 +69,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 		super();
 		this.cancelToken = false;
 		this.outArray = new Array<vscode.DocumentSymbol>;
+		this.Symbols = new Array<SymbolsNode>;
 		this.localSymbols = new Array<Array<SymbolsNode>>;
 		this.breakPosition = new vscode.Position(99999999999999, 0);
 
@@ -84,8 +107,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 	};
 
 	visitFunction_parameter = (ctx: Function_parameterContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
 		// const name = this.visit(ctx.name_type().identifier()) as vscode.DocumentSymbol;
 		const name = ctx.name_type().identifier().getText();
 		const type = ctx.name_type().typename().getText();
@@ -100,15 +121,18 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 				new vscode.Position(ctx.stop.line - 1, ctx.stop.column)
 			)
 		);
-		this.localSymbols[this.localSymbols.length - 1].push(new SymbolsNode(symbole.name, type, ctx.start.line - 1, ctx.start.column,
-			ctx.stop.line - 1, ctx.stop.column));
+
+		const sym = new SymbolsNode(name, "variable_declaration", type, ctx.start.line - 1, ctx.start.column,
+			ctx.stop.line - 1, ctx.stop.column);
+		sym.signature = type + " " + name;
+		this.Symbols.push(sym);
+		if (ctx.start.line <= this.breakPosition.line)
+			this.localSymbols[this.localSymbols.length - 1].push(sym);
 
 		return symbole;
 	};
 
 	visitGlobal_function = (ctx: Global_functionContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
 		let paramList;
 		let name;
 		let type = "";
@@ -131,12 +155,23 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 				new vscode.Position(ctx.stop.line - 1, ctx.stop.column)
 			)
 		);
-		this.localSymbols[this.localSymbols.length - 1].push(new SymbolsNode(symbole.name, type, ctx.start.line - 1, ctx.start.column,
-			ctx.stop.line - 1, ctx.stop.column));
+
+		const sym = new SymbolsNode(symbole.name, "global_function_declaration", type, ctx.start.line - 1, ctx.start.column,
+			ctx.stop.line - 1, ctx.stop.column);
+		sym.signature = type + " " + name + "()";
+		this.Symbols.push(sym);
+		if (ctx.start.line <= this.breakPosition.line)
+			this.localSymbols[this.localSymbols.length - 1].push(sym);
 
 		if (ctx.function_parameters()) {
 			paramList = this.visit(ctx.function_parameters()) as Array<vscode.DocumentSymbol>;
 			symbole.children.push(...paramList);
+			for (const e of ctx.function_parameters().function_parameter_list()) {
+				const sym = new SymbolsNode(e.name_type().identifier().getText(), "variable_declaration", e.name_type().typename().getText(), ctx.start.line - 1, ctx.start.column,
+					ctx.stop.line - 1, ctx.stop.column);
+				sym.signature = e.name_type().typename().getText() + " " + e.name_type().identifier().getText() + "()";
+				// this.localSymbols[this.localSymbols.length - 1].push(sym);
+			}
 		}
 		let childs = [];
 		if (ctx.compound_statement())
@@ -154,33 +189,48 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 	};
 
 	visitStatements = (ctx: StatementsContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
-		this.localSymbols.push([]);
+		if (ctx.start.line <= this.breakPosition.line)
+			this.localSymbols.push([]);
 		const t = [];
 
 		ctx.statement_list().forEach(e => {
 			if (e.declaration()) {
 				const t2 = this.visit(e.declaration());
+
 				if (t2)
 					t.push(t2);
+
+				// const name = e.declaration().Identifier();
+				const type = e.declaration().typename().getText();
+				const name = e.declaration().Identifier().getText();
+
+				const sym = new SymbolsNode(name, "variable_declaration", type, ctx.start.line - 1, ctx.start.column,
+					ctx.stop.line - 1, ctx.stop.column);
+				sym.signature = type + " " + name;
+
+				this.Symbols.push(sym);
+				if (ctx.start.line <= this.breakPosition.line)
+					this.localSymbols[this.localSymbols.length - 1].push(sym);
 			}
 			else {
 				if (e.identifier()) {
 					const name = e.identifier().getText();
-					this.localSymbols[this.localSymbols.length - 1].push(new SymbolsNode(name, "", ctx.start.line - 1, ctx.start.column,
-						ctx.stop.line - 1, ctx.stop.column));
+
+					const sym = new SymbolsNode(name, "variable", "", ctx.start.line - 1, ctx.start.column,
+						ctx.stop.line - 1, ctx.stop.column);
+					sym.signature = " " + name;
+					// this.Symbols.push(sym);
+					// this.localSymbols[this.localSymbols.length - 1].push(sym);
 
 				}
 			}
 		});
-		this.localSymbols.pop();
+		if (ctx.stop.line <= this.breakPosition.line)
+			this.localSymbols.pop();
 		return t;
 	};
 
 	visitGlobal_variable = (ctx: Global_variableContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
 		const name = ctx.name_type().identifier().getText();
 		const type = ctx.name_type().typename().getText();
 
@@ -194,15 +244,20 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 				new vscode.Position(ctx.stop.line - 1, ctx.stop.column)
 			)
 		);
-		this.localSymbols[this.localSymbols.length - 1].push(new SymbolsNode(symbole.name, type, ctx.start.line - 1, ctx.start.column,
-			ctx.stop.line - 1, ctx.stop.column));
+
+		const sym = new SymbolsNode(symbole.name, "global_variable_declaration", type, ctx.start.line - 1, ctx.start.column,
+			ctx.stop.line - 1, ctx.stop.column);
+		sym.signature = type + " " + name;
+		this.Symbols.push(sym);
+		if (ctx.start.line <= this.breakPosition.line)
+			this.localSymbols[this.localSymbols.length - 1].push(sym);
 
 		return symbole;
 	};
 
 	visitLscript_program = (ctx: Lscript_programContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
+		this.Symbols = [];
+		this.localSymbols = [];
 		this.localSymbols.push([]);
 		const t = this.visitChildren(ctx) as Array<any>;
 		let t2 = [];
@@ -212,7 +267,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 				if (e)
 					t2.push(...e);
 			});
-		this.localSymbols.pop();
+		if (ctx.stop.line <= this.breakPosition.line)
+			this.localSymbols.pop();
 
 		t2 = stripUndefined(t2);
 		return t2;
@@ -262,8 +318,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 		return symbole;
 	};
 	visitLlstate = (ctx: LlstateContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
 		const t = [];
 
 		const name = ctx.Identifier().getText();
@@ -300,17 +354,32 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 			if (e.function_parameters()) {
 				const c = this.visit(e.function_parameters()) as Array<vscode.DocumentSymbol>;
 				symbole2.children.push(...c);
+
+				for (const e2 of e.function_parameters().function_parameter_list()) {
+					const sym = new SymbolsNode(e2.name_type().identifier().getText(), "variable_declaration", e2.name_type().typename().getText(), ctx.start.line - 1, ctx.start.column,
+						ctx.stop.line - 1, ctx.stop.column);
+					sym.signature = e2.name_type().typename().getText() + " " + e2.name_type().identifier().getText();
+					this.Symbols.push(sym);
+					if (ctx.start.line <= this.breakPosition.line)
+						this.localSymbols[this.localSymbols.length - 1].push(sym);
+				}
+
+
+
 			}
 			symbole.children.push(symbole2);
 		});
-		this.localSymbols[this.localSymbols.length - 1].push(new SymbolsNode(symbole.name, "", ctx.start.line - 1, ctx.start.column,
-			ctx.stop.line - 1, ctx.stop.column));
+
+		const sym = new SymbolsNode(symbole.name, "state_declaration", "state", ctx.start.line - 1, ctx.start.column,
+			ctx.stop.line - 1, ctx.stop.column);
+		sym.signature = "state " + name;
+		this.Symbols.push(sym);
+		if (ctx.start.line <= this.breakPosition.line)
+			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		return symbole;
 	};
 
 	visitDeclaration = (ctx: DeclarationContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
 		const name = ctx.Identifier().getText();
 		const type = ctx.typename().getText();
 
@@ -326,14 +395,14 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 		);
 
 		symbole.kind = vscode.SymbolKind.Variable;
-
-		this.localSymbols[this.localSymbols.length - 1].push(new SymbolsNode(symbole.name, type, ctx.start.line - 1, ctx.start.column,
-			ctx.stop.line - 1, ctx.stop.column));
+		const sym = new SymbolsNode(symbole.name, "variable", type, ctx.start.line - 1, ctx.start.column,
+			ctx.stop.line - 1, ctx.stop.column);
+		sym.signature = type + "" + name;
+		if (ctx.start.line <= this.breakPosition.line)
+			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		return symbole;
 	};
 	visitEvent = (ctx: EventContext) => {
-		if (ctx.start.line > this.breakPosition.line)
-			throw ("test");
 		const name = ctx.Identifier().getText();
 
 		const symbole = new vscode.DocumentSymbol(name, "", vscode.SymbolKind.Event,
@@ -350,6 +419,13 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 		if (ctx.function_parameters()) {
 			const params = this.visit(ctx.function_parameters()) as Array<vscode.DocumentSymbol>;
 			symbole.children.push(...params);
+
+			for (const e of ctx.function_parameters().function_parameter_list()) {
+				const sym = new SymbolsNode(e.name_type().identifier().getText(), "variable", e.name_type().typename().getText(), ctx.start.line - 1, ctx.start.column,
+					ctx.stop.line - 1, ctx.stop.column);
+				sym.signature = e.name_type().typename().getText() + " " + e.name_type().identifier().getText() + "()";
+				// this.localSymbols[this.localSymbols.length - 1].push(sym);
+			}
 		}
 
 		const childs = this.visit(ctx.compound_statement().statements()) as Array<vscode.DocumentSymbol>;
@@ -374,30 +450,18 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 
 
 	getDocumentSymboles(tree: Lscript_programContext, position?: vscode.Position): Array<vscode.DocumentSymbol> {
-		// const t = new ExtractVariablesAndFunctionsVisitor();
-
-		// let symboles: Array<vscode.DocumentSymbol>;
-
-		// try {
 		this.breakPosition = new vscode.Position(99999999999999, 0);
 		const symboles = this.visit(this.tree) as Array<vscode.DocumentSymbol>;
 
-		// }
-		// catch (error) {
-		// symboles = [];
-		// }
-		return symboles;
-
+		return stripUndefined(symboles);
 	}
 
 
-	getLocalSymboles(tree: Lscript_programContext, position?: vscode.Position): Array<string> {
-		// const t = new ExtractVariablesAndFunctionsVisitor();
-
+	getLocalSymboles(tree: Lscript_programContext, position?: vscode.Position): Array<SymbolsNode> {
 		let symboles;
 
 		if (position)
-			this.breakPosition = position;
+			this.breakPosition = new vscode.Position(position.line + 1, position.character);
 		else
 			this.breakPosition = new vscode.Position(99999999999999, 0);
 
@@ -407,20 +471,19 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 		catch (error) {
 			symboles = this.localSymbols;
 		}
-
-		const out = new Array<string>;
-		symboles.forEach(i => {
+		symboles = this.localSymbols;
+		const out = new Array<SymbolsNode>;
+		for (const i of symboles) {
 			if (i)
 				i.forEach(j => {
-					out.push(j.name);
+					out.push(j);
 				});
-		});
+		}
 
-		return out;
+		return stripUndefined(out);
 	}
 
 	getLocalSymbolesNode(tree: Lscript_programContext): Array<SymbolsNode> {
-		// const t = new ExtractVariablesAndFunctionsVisitor();
 		this.breakPosition = new vscode.Position(99999999999999, 0);
 
 		this.visit(this.tree);
@@ -434,14 +497,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<Array<vscode
 				});
 		});
 
-		return out;
+		return stripUndefined(out);
 	}
-
-
-
-
-
-
 }
 
 
@@ -474,14 +531,9 @@ class lslerror extends ErrorListener<Token>
 }
 
 function stripUndefined(arr) {
-
-	// arr.forEach(e => {
-	// 	if(e !== undefined)
-	// });
-	// return arr;
 	return arr.reduce(function (result, item) {
-		if(item !== undefined)
-		result.push(Array.isArray(item) && !item.length ? stripUndefined(item) : item);
+		if (item !== undefined)
+			result.push(Array.isArray(item) && !item.length ? stripUndefined(item) : item);
 		return result;
 	}, []);
 }
