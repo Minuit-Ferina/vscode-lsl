@@ -26,8 +26,14 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 	doc.parser.getDocumentSymboles(doc.parser.tree);
 	const ret2 = doc.parser.Symbols;
 	for (const e of ret2) {
-		if (e.nodeType === "function_declaration") {
+		if (e.nodeType === "global_function_declaration") {
 			const kind = vscode.CompletionItemKind.Function;
+			const t = new vscode.CompletionItem(e.name,
+				kind);
+			returnList.items.push(t);
+		}
+		if (e.nodeType === "global_variable_declaration") {
+			const kind = vscode.CompletionItemKind.Variable;
 			const t = new vscode.CompletionItem(e.name,
 				kind);
 			returnList.items.push(t);
