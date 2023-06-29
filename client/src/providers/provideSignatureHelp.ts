@@ -68,7 +68,6 @@ export async function provideSignatureHelp(document: vscode.TextDocument, positi
 
 	const e = Functions.filter(function (el) {
 		return el.name === funcName;
-
 	});
 
 	const ret: vscode.SignatureHelp = {
