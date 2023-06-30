@@ -108,7 +108,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		// Start the client. This will also launch the server
 		// client.start();
 
-		// semanticProvider.register();
+		semanticProvider.register();
 
 		vscode.languages.registerHoverProvider("lsl", {
 			async provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {

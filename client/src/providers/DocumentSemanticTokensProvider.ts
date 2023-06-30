@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 const tokenTypes = ['class', 'interface', 'enum', 'function', 'variable', '#define'];
 const tokenModifiers = ['declaration', 'documentation'];
 import { documentsMap } from './DocumentsMap';
+import { Position } from './common';
 
 const legend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
 
@@ -15,17 +16,45 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 	): vscode.ProviderResult<vscode.SemanticTokens> {
 		// analyze the document and return semantic tokens
 		const doc = documentsMap.get(document.uri.path);
-		const nodes = doc.parser.getLocalSymbolesNode(doc.parser.tree);
-		const tokensBuilder = 	new vscode.SemanticTokensBuilder(legend);
-		nodes.forEach(e=>{
-			tokensBuilder.push(
-				new vscode.Range(new vscode.Position(e.startLine, e.startColumn), new vscode.Position(e.endLine, e.endColumn)),
-				e.type,
-				['declaration']
-			);
-			
-		});
-		return tokensBuilder.build();		
+		const ruleIdentifierNondigit = doc.parser.lexer.ruleNames.indexOf("IdentifierNondigit");
+		const ruleIdentifier = doc.parser.lexer.ruleNames.indexOf("Identifier");
+
+		const nodes = doc.parser.tokens.tokens.filter(e => e.type === ruleIdentifierNondigit || e.type === ruleIdentifier);
+		const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
+
+		for (const e of nodes) {
+
+			let type = "";
+
+			const ret = doc.parser.getLocalSymboles(doc.parser.tree, new Position(e.line+1, e.column));
+			const t = ret.filter(e2 => e2.name === e.text
+				&& (
+					e2.nodeType === "variable_declaration"
+					|| e2.nodeType === 'function_parameter'));
+			if (t.length > 0) {
+				type = "variable";
+			}
+			const ret2 = doc.parser.Symbols;
+			const t2 = ret2.filter(e2 => e2.name === e.text
+				&& (
+					e2.nodeType === "global_function"
+					|| e2.nodeType === "state"));
+			if (t2.length > 0) {
+				type = "function";
+			}
+
+
+			if (type != "")
+				tokensBuilder.push(
+					new vscode.Range(new vscode.Position(e.line - 1, e.column), new vscode.Position(e.line - 1, e.column + e.text.length)),
+					type,
+					[]
+				);
+			// else
+			// 		console.log(e.text);
+		}
+
+		return tokensBuilder.build();
 	}
 };
 
