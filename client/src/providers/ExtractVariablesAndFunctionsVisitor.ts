@@ -7,26 +7,7 @@ import LSLVisitor, { } from '../antlr4/LSLParserVisitor';
 import * as vscode from 'vscode';
 import { type } from 'os';
 
-class Position {
-	row: number;
-	col: number;
-	constructor(row: number, col: number) {
-		this.row = row;
-		this.col = col;
-	}
-}
-class Range {
-	start: Position;
-	end: Position;
-	constructor(start: Position, end: Position) {
-		this.start = start;
-		this.end = end;
-	}
-}
-
-
-
-class SymbolsNode {
+export class SymbolsNode {
 	name: string;
 	type: string;
 	nodeType: string;

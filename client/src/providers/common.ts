@@ -134,3 +134,44 @@ export function countLines(text: string): number {
 	}
 	return n;
 }
+
+
+export function stripUndefined(arr) {
+	if (Array.isArray(arr))
+		return arr.reduce(function (result, item) {
+			if (item !== undefined)
+				result.push(Array.isArray(item) && !item.length ? stripUndefined(item) : item);
+			return result;
+		}, []);
+	else
+		return arr;
+}
+
+export class Position {
+	row: number;
+	col: number;
+	constructor(row: number, col: number) {
+		this.row = row;
+		this.col = col;
+	}
+	static fromVSPosition(position: vscode.Position): Position {
+		return new Position(position.line, position.character);
+	}
+}
+export class Range {
+	start: Position;
+	end: Position;
+	constructor(start: Position, end: Position) {
+		this.start = start;
+		this.end = end;
+	}
+	static fromVSRange(range: vscode.Range): Range {
+		return new Range(Position.fromVSPosition(range.start), Position.fromVSPosition(range.end));
+	}
+	toVSCodeRange(): vscode.Range {
+		return new vscode.Range(
+			new vscode.Position(this.start.row, this.start.col),
+			new vscode.Position(this.end.row, this.end.col)
+		);
+	}
+}
