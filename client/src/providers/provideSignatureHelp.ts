@@ -2,6 +2,7 @@
 import * as vscode from 'vscode';
 
 import { getFunctionSignature } from './common';
+import { documentsMap, document } from './DocumentsMap';
 import { Functions } from '../Functions';
 
 export async function provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Promise<vscode.ProviderResult<vscode.SignatureHelp>> {
@@ -65,7 +66,7 @@ export async function provideSignatureHelp(document: vscode.TextDocument, positi
 	const afterLine = modLine.substring(i + 1);
 	const countColons = afterLine.split(',').length - 1;
 
-
+	// search in the LSL builtin functions
 	const e = Functions.filter(function (el) {
 		return el.name === funcName;
 	});
@@ -91,13 +92,41 @@ export async function provideSignatureHelp(document: vscode.TextDocument, positi
 			);
 		}
 
-
 		ret.signatures = [{
 			label: signature,
 			parameters: param
 		}];
 	}
+	else {
+		let doc: document;
+		if (documentsMap.has(document.uri.path))
+			doc = documentsMap.get(document.uri.path);
+		else {
+			// await diag(document.getText(), document.uri);
+			doc = documentsMap.get(document.uri.path);
+		}
 
+		const param = [];
+
+		const ret2 = doc.parser.Symbols;
+		const t2 = ret2.filter(e => e.name === funcName
+			&& (
+				e.nodeType === "global_function"
+			));
+		if (t2.length > 0) {
+
+			for (const e of t2[0].childrens.filter(e => e.nodeType === "function_parameter")) {
+				param.push(
+					{
+						label: e.signature,
+					}
+				);
+			}
+			ret.signatures = [{
+				label: t2[0].signature,
+				parameters: param
+			}];
+		}
+	}
 	return ret;
-
 }
