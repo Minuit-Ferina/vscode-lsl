@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { documentsMap } from './DocumentsMap';
-import { list } from './common';
+import { list, Position} from './common';
 
 const IncTrack: Array<string> = [];
 
@@ -11,11 +11,11 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 	const doc = documentsMap.get(document.uri.path);
 
 	const returnList = new vscode.CompletionList();
-	const ret = doc.parser.getLocalSymboles(doc.parser.tree, position);
+	const ret = doc.parser.getLocalSymboles(doc.parser.tree, Position.fromVSPosition(position));
 
 	for (const e of ret) {
 		// ret.forEach(e => {
-		if (e.nodeType === "variable_declaration") {
+		if (e.nodeType === "variable_declaration" || e.nodeType === "function_parameter" ) {
 			const kind = vscode.CompletionItemKind.Variable;
 			const t = new vscode.CompletionItem(e.name,
 				kind);
@@ -26,19 +26,13 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 	doc.parser.getDocumentSymboles(doc.parser.tree);
 	const ret2 = doc.parser.Symbols;
 	for (const e of ret2) {
-		if (e.nodeType === "global_function_declaration") {
+		if (e.nodeType === "global_function") {
 			const kind = vscode.CompletionItemKind.Function;
 			const t = new vscode.CompletionItem(e.name,
 				kind);
 			returnList.items.push(t);
 		}
-		if (e.nodeType === "global_variable_declaration") {
-			const kind = vscode.CompletionItemKind.Variable;
-			const t = new vscode.CompletionItem(e.name,
-				kind);
-			returnList.items.push(t);
-		}
-		if (e.nodeType === "state_declaration") {
+		if (e.nodeType === "state") {
 			const kind = vscode.CompletionItemKind.Class;
 			const t = new vscode.CompletionItem(e.name,
 				kind);

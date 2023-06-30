@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 
 import { document, documentsMap } from './DocumentsMap';
+import { Range, Position } from './common';
 
 import { Functions } from '../Functions';
 import { Constants } from '../Constants';
@@ -116,9 +117,12 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	}
 
 	// identifier not in static list, try to lookup with the parser
-	
-	const ret = doc.parser.getLocalSymboles(doc.parser.tree, position);
-	const t = ret.filter(e => e.name === word && (e.nodeType === "global_variable_declaration" || e.nodeType === "variable_declaration"));
+
+	const ret = doc.parser.getLocalSymboles(doc.parser.tree, Position.fromVSPosition(position));
+	const t = ret.filter(e => e.name === word
+		&& (
+			e.nodeType === "variable_declaration"
+			|| e.nodeType === 'function_parameter'));
 	if (t.length > 0) {
 		return new vscode.Hover(
 			new vscode.MarkdownString(
@@ -134,7 +138,10 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	}
 
 	const ret2 = doc.parser.Symbols;
-	const t2 = ret.filter(e => e.name === word && (e.nodeType === "global_function_declaration" || e.nodeType === "global_variable_declaration" || e.nodeType === "state"));
+	const t2 = ret2.filter(e => e.name === word
+		&& (
+			e.nodeType === "global_function"
+			|| e.nodeType === "state"));
 	if (t2.length > 0) {
 		return new vscode.Hover(
 			new vscode.MarkdownString(
