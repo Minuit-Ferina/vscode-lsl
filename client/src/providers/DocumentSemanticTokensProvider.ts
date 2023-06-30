@@ -1,9 +1,12 @@
 import * as vscode from 'vscode';
 
-const tokenTypes = ['class', 'interface', 'enum', 'function', 'variable', '#define'];
+const tokenTypes = ['event', 'class', 'interface', 'enum', 'function', 'variable', '#define'];
 const tokenModifiers = ['declaration', 'documentation'];
 import { documentsMap } from './DocumentsMap';
 import { Position } from './common';
+
+import { Functions } from '../Functions';
+import { Events } from '../Events';
 
 const legend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
 
@@ -50,6 +53,18 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 			}
 			if (e.type === doc.parser.lexer.ruleNames.indexOf("State"))
 				type = "class";
+
+			// search in the LSL buildin functions 
+			const t4 = Functions.filter(e2 => e2.name === e.text);
+			if (t4.length > 0) {
+				type = 'function';
+			}
+
+			// search in the LSL buildin functions 
+			const t5 = Events.filter(e2 => e2.name === e.text);
+			if (t5.length > 0) {
+				type = 'event';
+			}
 
 			if (type != "")
 				tokensBuilder.push(
