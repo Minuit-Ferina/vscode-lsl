@@ -54,13 +54,13 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 			if (e.type === doc.parser.lexer.ruleNames.indexOf("State"))
 				type = "class";
 
-			// search in the LSL buildin functions 
+			// search in the LSL builtin functions 
 			const t4 = Functions.filter(e2 => e2.name === e.text);
 			if (t4.length > 0) {
 				type = 'function';
 			}
 
-			// search in the LSL buildin functions 
+			// search in the LSL builtin functions 
 			const t5 = Events.filter(e2 => e2.name === e.text);
 			if (t5.length > 0) {
 				type = 'event';
