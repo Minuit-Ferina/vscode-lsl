@@ -46,7 +46,7 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 
 			if (type != "")
 				tokensBuilder.push(
-					new vscode.Range(new vscode.Position(e.line, e.column), new vscode.Position(e.line, e.column + e.text.length)),
+					new vscode.Range(new vscode.Position(e.line - 1, e.column), new vscode.Position(e.line - 1, e.column + e.text.length)),
 					type,
 					[]
 				);
