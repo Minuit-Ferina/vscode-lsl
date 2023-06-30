@@ -7,7 +7,6 @@ import { Lscript_programContext } from "./LSLParser";
 import { GlobalContext } from "./LSLParser";
 import { DeclarationContext } from "./LSLParser";
 import { TypenameContext } from "./LSLParser";
-import { Name_typeContext } from "./LSLParser";
 import { LlstatesContext } from "./LSLParser";
 import { Default_stateContext } from "./LSLParser";
 import { LlstateContext } from "./LSLParser";
@@ -80,12 +79,6 @@ export default class LSLParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitTypename?: (ctx: TypenameContext) => Result;
-	/**
-	 * Visit a parse tree produced by `LSLParser.name_type`.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	visitName_type?: (ctx: Name_typeContext) => Result;
 	/**
 	 * Visit a parse tree produced by `LSLParser.llstates`.
 	 * @param ctx the parse tree

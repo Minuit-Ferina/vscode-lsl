@@ -7,7 +7,6 @@ import { Lscript_programContext } from "./LSLParser";
 import { GlobalContext } from "./LSLParser";
 import { DeclarationContext } from "./LSLParser";
 import { TypenameContext } from "./LSLParser";
-import { Name_typeContext } from "./LSLParser";
 import { LlstatesContext } from "./LSLParser";
 import { Default_stateContext } from "./LSLParser";
 import { LlstateContext } from "./LSLParser";
@@ -93,16 +92,6 @@ export default class LSLParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitTypename?: (ctx: TypenameContext) => void;
-	/**
-	 * Enter a parse tree produced by `LSLParser.name_type`.
-	 * @param ctx the parse tree
-	 */
-	enterName_type?: (ctx: Name_typeContext) => void;
-	/**
-	 * Exit a parse tree produced by `LSLParser.name_type`.
-	 * @param ctx the parse tree
-	 */
-	exitName_type?: (ctx: Name_typeContext) => void;
 	/**
 	 * Enter a parse tree produced by `LSLParser.llstates`.
 	 * @param ctx the parse tree
