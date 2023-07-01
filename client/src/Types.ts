@@ -1,4 +1,4 @@
-import {Directory} from './providers/common';
+import {Directory} from './directory';
 
 export const Types = new Directory([
     {
