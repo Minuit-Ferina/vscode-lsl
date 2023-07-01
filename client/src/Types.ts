@@ -1,4 +1,6 @@
-export const Types = [
+import {Directory} from './providers/common';
+
+export const Types = new Directory([
     {
         "name": "integer",
         "description": "The integer data type is a signed 32 bit value between −2,147,483,648 and +2,147,483,647 (that is 0x80000000 to 0x7FFFFFFF in hex). Integers are whole numbers. The fractional datatype is the float.\n\nDEBUG_CHANNEL can be used as a constant for the maximum integer (for that is the value it is defined as).",
@@ -47,4 +49,4 @@ export const Types = [
         "returnType": "",
         "url": "https://wiki.secondlife.com/wiki/Category:LSL_Vector",
 	}
-];
+]);

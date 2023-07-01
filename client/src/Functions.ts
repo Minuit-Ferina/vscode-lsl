@@ -1,4 +1,6 @@
-export const Functions = [
+import {Directory} from './providers/common';
+
+export const Functions = new Directory([
     {
         "name": "llAbs",
         "description": "Returns an integer that is the positive version of val.",
@@ -7337,4 +7339,4 @@ export const Functions = [
             }
         ]
     }
-];
+]);

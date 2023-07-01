@@ -1,94 +1,6 @@
 import * as vscode from 'vscode';
 
-import { Functions } from '../Functions';
-import { Constants } from '../Constants';
-import { Events } from '../Events';
-import { Types } from '../Types';
-
 export const list = new vscode.CompletionList;
-
-
-for (let c = 0; c < Functions.length; c++) {
-	const item: vscode.CompletionItem = { label: Functions[c]["name"] };
-	item.sortText = Functions[c]["name"];
-	item.kind = vscode.CompletionItemKind.Function;
-	item.insertText = Functions[c]["name"] + "";
-	item.detail = getFunctionSignature(Functions[c]);
-	item.documentation = new vscode.MarkdownString(Functions[c]["description"]);
-	// item.command = [moveofterinsert];
-	list.items.push(item);
-	item.range;
-}
-
-for (let c = 0; c < Constants.length; c++) {
-	const item: vscode.CompletionItem = { label: Constants[c]["name"] };
-	item.sortText = Constants[c]["name"];
-	item.kind = vscode.CompletionItemKind.Constant;
-	item.insertText = Constants[c]["name"] + " ";
-	item.detail = Constants[c]["name"];
-	item.documentation = new vscode.MarkdownString(Constants[c]["description"]);
-	list.items.push(item);
-}
-
-for (let c = 0; c < Events.length; c++) {
-	const item: vscode.CompletionItem = { label: Events[c]["name"] };
-	item.sortText = Events[c]["name"];
-	item.kind = vscode.CompletionItemKind.Event;
-	item.insertText = Events[c]["name"] + "(";
-
-	item.insertText = getFunctionSignature(Events[c]);
-
-	item.detail = Events[c]["name"];
-	item.documentation = new vscode.MarkdownString(Events[c]["description"]);
-	list.items.push(item);
-}
-
-for (let c = 0; c < Types.length; c++) {
-	const item: vscode.CompletionItem = { label: Types[c]["name"] };
-	item.sortText = Types[c]["name"];
-	item.kind = vscode.CompletionItemKind.Class;
-	item.insertText = Types[c]["name"] + "";
-
-	// item.insertText = getFunctionSignature(Types[c]);
-
-	item.detail = Types[c]["name"];
-	item.documentation = new vscode.MarkdownString(Types[c]["description"]);
-	list.items.push(item);
-}
-
-{
-	const item: vscode.CompletionItem = { label: "default" };
-	item.sortText = "default";
-	item.kind = vscode.CompletionItemKind.Class;
-	item.insertText = `default
-{
-state_entry()
-{
-	
-}
-}`;
-
-	item.detail = "default";
-	item.documentation = "default state";
-	list.items.push(item);
-}
-
-{
-	const item: vscode.CompletionItem = { label: "state" };
-	item.sortText = "state";
-	item.kind = vscode.CompletionItemKind.Class;
-	item.insertText = `state Name
-{
-state_entry()
-{
-	
-}
-}`;
-
-	item.detail = "state definition";
-	item.documentation = "state";
-	list.items.push(item);
-}
 
 
 export function getFunctionSignature(fn: object): string {
@@ -175,3 +87,110 @@ export class Range {
 		);
 	}
 }
+
+
+export class Directory
+{
+	data: Map<string, object>;
+	constructor(data) {
+		this.data = new Map<string, object>;
+		data.forEach(element => {
+			this.data.set(element["name"], element);
+		});
+	}
+	getFromName(name: string): object {
+		return this.data.get(name);
+	}
+	exist(name: string) {
+		return this.data.has(name);
+	}
+}
+
+import { Functions } from '../Functions';
+import { Constants } from '../Constants';
+import { Events } from '../Events';
+import { Types } from '../Types';
+
+
+for (let c = 0; c < Functions.data.values.length; c++) {
+	const item: vscode.CompletionItem = { label: Functions.data.values[c]["name"] };
+	item.sortText = Functions.data.values[c]["name"];
+	item.kind = vscode.CompletionItemKind.Function;
+	item.insertText = Functions.data.values[c]["name"] + "";
+	item.detail = getFunctionSignature(Functions.data.values[c]);
+	item.documentation = new vscode.MarkdownString(Functions.data.values[c]["description"]);
+	// item.command = [moveofterinsert];
+	list.items.push(item);
+	item.range;
+}
+
+for (let c = 0; c < Constants.data.values.length; c++) {
+	const item: vscode.CompletionItem = { label: Constants.data.values[c]["name"] };
+	item.sortText = Constants.data.values[c]["name"];
+	item.kind = vscode.CompletionItemKind.Constant;
+	item.insertText = Constants.data.values[c]["name"] + " ";
+	item.detail = Constants.data.values[c]["name"];
+	item.documentation = new vscode.MarkdownString(Constants.data.values[c]["description"]);
+	list.items.push(item);
+}
+
+for (let c = 0; c < Events.data.values.length; c++) {
+	const item: vscode.CompletionItem = { label: Events.data.values[c]["name"] };
+	item.sortText = Events.data.values[c]["name"];
+	item.kind = vscode.CompletionItemKind.Event;
+	item.insertText = Events.data.values[c]["name"] + "(";
+
+	item.insertText = getFunctionSignature(Events.data.values[c]);
+
+	item.detail = Events.data.values[c]["name"];
+	item.documentation = new vscode.MarkdownString(Events.data.values[c]["description"]);
+	list.items.push(item);
+}
+
+for (let c = 0; c < Types.data.values.length; c++) {
+	const item: vscode.CompletionItem = { label: Types.data.values[c]["name"] };
+	item.sortText = Types.data.values[c]["name"];
+	item.kind = vscode.CompletionItemKind.Class;
+	item.insertText = Types.data.values[c]["name"] + "";
+
+	// item.insertText = getFunctionSignature(Types[c]);
+
+	item.detail = Types.data.values[c]["name"];
+	item.documentation = new vscode.MarkdownString(Types.data.values[c]["description"]);
+	list.items.push(item);
+}
+
+{
+	const item: vscode.CompletionItem = { label: "default" };
+	item.sortText = "default";
+	item.kind = vscode.CompletionItemKind.Class;
+	item.insertText = `default
+{
+state_entry()
+{
+	
+}
+}`;
+
+	item.detail = "default";
+	item.documentation = "default state";
+	list.items.push(item);
+}
+
+{
+	const item: vscode.CompletionItem = { label: "state" };
+	item.sortText = "state";
+	item.kind = vscode.CompletionItemKind.Class;
+	item.insertText = `state Name
+{
+state_entry()
+{
+	
+}
+}`;
+
+	item.detail = "state definition";
+	item.documentation = "state";
+	list.items.push(item);
+}
+

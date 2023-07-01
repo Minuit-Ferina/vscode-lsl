@@ -27,17 +27,11 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	let e;
 
 	// function functions and events
-	e = Functions.filter(function (el) {
-		return el.name === word;
+	e = Functions.getFromName(word);
+	if (!e)
+		e = Events.getFromName(word);
 
-	});
-	if (e.length == 0)
-		e = Events.filter(function (el) {
-			return el.name === word;
-
-		});
-
-	if (e.length > 0) {
+	if (e) {
 		const ret = new vscode.MarkdownString();
 		let paramDesc = "";
 		let param = "";
@@ -71,10 +65,8 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	}
 
 	// Constants
-	const e2 = Constants.filter(function (el) {
-		return el.name === word;
-	});
-	if (e2.length > 0) {
+	const e2 = Constants.getFromName(word);
+	if (e2) {
 
 		let fname = "";
 		fname += e2[0]["type"];
@@ -96,10 +88,8 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	}
 
 	// Types
-	const e3 = Types.filter(function (el) {
-		return el.name === word;
-	});
-	if (e3.length > 0) {
+	const e3 = Types.getFromName(word);
+	if (e3) {
 
 		let fname = "";
 		fname += e3[0]["name"];

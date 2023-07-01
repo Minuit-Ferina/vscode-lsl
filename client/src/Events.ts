@@ -1,4 +1,6 @@
-export const Events = [
+import {Directory} from './providers/common';
+
+export const Events = new Directory([
     {
         "name": "attach",
         "description": "Triggered in an object when the object attaches or detaches from agent.\n",
@@ -632,4 +634,4 @@ export const Events = [
             }
         ]
     }
-];
+]);

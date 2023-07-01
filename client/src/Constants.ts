@@ -1,4 +1,6 @@
-export const Constants = [
+import {Directory} from './providers/common';
+
+export const Constants = new Directory([
     {
         "name": "ACTIVE",
         "type": "integer",
@@ -3791,4 +3793,4 @@ export const Constants = [
         "value": "<0.0, 0.0, 0.0>",
         "description": "The vector constant ZERO_VECTOR has the value <0.0, 0.0, 0.0>"
     }
-];
+]);

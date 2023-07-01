@@ -66,10 +66,6 @@ export async function provideSignatureHelp(document: vscode.TextDocument, positi
 	const afterLine = modLine.substring(i + 1);
 	const countColons = afterLine.split(',').length - 1;
 
-	// search in the LSL builtin functions
-	const e = Functions.filter(function (el) {
-		return el.name === funcName;
-	});
 
 	const ret: vscode.SignatureHelp = {
 		activeSignature: 0,
@@ -77,7 +73,9 @@ export async function provideSignatureHelp(document: vscode.TextDocument, positi
 		signatures: []
 	};
 
-	if (e.length > 0) {
+	// search in the LSL builtin functions
+	const e = Functions.getFromName(funcName);
+	if (e) {
 		const a = e[0];
 		const signature = getFunctionSignature(a);
 
