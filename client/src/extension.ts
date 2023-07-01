@@ -43,7 +43,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		await lsl.init();
 
-		context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(function (textEditor) {
+		context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(async function (textEditor) {
 			// outputChannel.appendLine("onDidChangeConfiguration");
 			// outputChannel.show(true);
 			lsl.onDidChangeConfiguration(textEditor);
@@ -66,9 +66,9 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		}));
 
-		context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(function (event) {
+		context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(async function (event) {
 			if (event.document.languageId === "lsl") {
-				lsl.onDidChangeTextDocument(event);
+				return lsl.onDidChangeTextDocument(event);
 			}
 		}));
 
@@ -117,7 +117,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		});
 
 		vscode.languages.registerDocumentSymbolProvider("lsl", {
-			provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
+			async provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
 				return providerDocumentSymbols(document, token);
 			}
 		});

@@ -9,6 +9,7 @@ export class SymbolsNode {
 	name: string;
 	type: string;
 	nodeType: string;
+	cancelToken: boolean;
 	// startLine: number;
 	// startColumn: number;
 	// endLine: number;
@@ -41,7 +42,10 @@ export class SymbolsNode {
 }
 
 export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode> {
-	cancelToken: boolean;
+	cancelToken: object;
+	cancelPromise;
+	parsingTimer: ReturnType<typeof setTimeout>;
+
 	level: number;
 
 	Symbols: Array<SymbolsNode>;
@@ -53,12 +57,12 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	chars;
 	lexer;
 	tokens;
-	parser;
+	parser: LSLParser;
 	tree;
 
 	constructor() {
 		super();
-		this.cancelToken = false;
+		this.cancelToken = {};
 		this.Symbols = new Array<SymbolsNode>;
 		this.localSymbols = new Array<Array<SymbolsNode>>;
 		this.breakPosition = new Position(99999999999999, 0);
@@ -66,20 +70,44 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.lslerror = new lslerror;
 	}
 
+	cancel(): Promise<boolean> {
+		const t = new Promise<boolean>((resolve, reject) => {
+			this.cancelPromise = resolve;
+			resolve(true);
+		});
+		this.cancelToken["isCancellationRequested"] = true;
+		// this.parser.state = 0;
+		this.parser.reset();
+		return t;
+	}
+	execCancel() {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
+	}
 	llparse = (code: string) => {
-		this.lslerror.errorList = [];
-		this.chars = new CharStream(code);
-		this.lexer = new LSLLexer(this.chars);
+		try {
+			this.cancelToken["isCancellationRequested"] = false;
+			this.lslerror.errorList = [];
+			this.chars = new CharStream(code);
+			this.lexer = new LSLLexer(this.chars);
 
-		this.tokens = new CommonTokenStream(this.lexer);
-		this.parser = new LSLParser(this.tokens);
-		this.parser.buildParseTrees = true;
-		this.parser.addErrorListener(this.lslerror);
-		this.tree = this.parser.lscript_program();
-		return this;
+			this.tokens = new CommonTokenStream(this.lexer);
+			this.parser = new LSLParser(this.tokens);
+			this.parser.buildParseTrees = true;
+			this.parser.addErrorListener(this.lslerror);
+			this.tree = this.parser.lscript_program();
+			// this.parser.state = ;
+			return this;
+		}
+		catch (err) {
+			if (this.cancelPromise)
+				this.cancelPromise(true);
+		}
 	};
 
 	visitIdentifier = (ctx: IdentifierContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		const name = ctx.Identifier().getText();
 		const sym = new SymbolsNode(name, "identifier", "", ctx.start.line - 1, ctx.start.column,
 			ctx.start.line - 1, ctx.start.column + name.length);
@@ -89,6 +117,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return sym;
 	};
 	visitFunction_parameters = (ctx: Function_parametersContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		this.level++;
 
 		const sym = new SymbolsNode("", "function_parameters", "", ctx.start.line - 1, ctx.start.column,
@@ -107,6 +137,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitFunction_parameter = (ctx: Function_parameterContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		// const name = this.visit(ctx.name_type().identifier()) as vscode.DocumentSymbol;
 		const name = ctx.identifier().getText();
 		const type = ctx.typename().getText();
@@ -122,6 +154,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitGlobal_function = (ctx: Global_functionContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		let paramList;
 		let type = "";
 		const name = ctx.identifier().getText();
@@ -146,7 +180,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			for (const e of paramList) {
 				sym.signature += e.signature + ", ";
 			}
-			sym.signature  = sym.signature.slice(0, sym.signature.lastIndexOf(", "));
+			sym.signature = sym.signature.slice(0, sym.signature.lastIndexOf(", "));
 		}
 		sym.signature += ")";
 
@@ -158,10 +192,14 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return sym;
 	};
 	visitCompound_statement = (ctx: Compound_statementContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		return this.visit(ctx.statements());
 	};
 
 	visitStatements = (ctx: StatementsContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols.push([]);
 
@@ -179,6 +217,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitStatement = (ctx: StatementContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		const sym = new SymbolsNode("", "statements", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
 		if (ctx.declaration()) {
@@ -198,6 +238,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitGlobal_variable = (ctx: Global_variableContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		const name = ctx.identifier().getText();
 		const type = ctx.typename().getText();
 
@@ -212,6 +254,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitLscript_program = (ctx: Lscript_programContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		this.Symbols = [];
 		this.localSymbols = [];
 		this.localSymbols.push([]);
@@ -236,6 +280,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitDefault_state = (ctx: Default_stateContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		const t = <any>this.visitChildren(ctx.state_body());
 
 		const name = 'default';
@@ -249,6 +295,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return sym;
 	};
 	visitLlstate = (ctx: LlstateContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		// const t = [];
 
 		const name = ctx.Identifier().getText();
@@ -269,6 +317,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitDeclaration = (ctx: DeclarationContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		const name = ctx.Identifier().getText();
 		const type = ctx.typename().getText();
 
@@ -282,6 +332,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitEvent = (ctx: EventContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
 		const name = ctx.Identifier().getText();
 		// let param = [];
 		// const childs = <any>this.visitChildren(ctx.compound_statement());
@@ -305,7 +357,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	///////////////////////////////////////////////////////////////////////
 
 
-	public getDocumentSymboles(tree: Lscript_programContext, position?: Position) {
+	public getDocumentSymboles(code: string, position?: Position) {
+		this.llparse(code);
 		this.breakPosition = new Position(99999999999999, 0);
 		const symboles = this.visit(this.tree);
 		symboles.stripUndefined();
@@ -313,7 +366,9 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	}
 
 
-	public getLocalSymboles(tree: Lscript_programContext, position?: Position): Array<SymbolsNode> {
+	public getLocalSymboles(code: string, position?: Position): Array<SymbolsNode> {
+		// this.llparse(code);
+
 		let symboles;
 
 		if (position)
@@ -338,7 +393,9 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return out;
 	}
 
-	public getLocalSymbolesNode(tree: Lscript_programContext): Array<SymbolsNode> {
+	public getLocalSymbolesNode(code: string): Array<SymbolsNode> {
+		this.llparse(code);
+
 		this.breakPosition = new Position(99999999999999, 0);
 
 		this.visit(this.tree);

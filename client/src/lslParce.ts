@@ -35,23 +35,31 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 			parser: new ExtractVariablesAndFunctionsVisitor()
 			// isParsing: true
 		};
-
-
 		// return;
 	}
 
-	if (doc.isParsing) return;
-
-	doc.isParsing = true;
-	// doc.parser = new ExtractVariablesAndFunctionsVisitor();
+	
 	doc.parser.llparse(code);
-
+	
 	doc.Diagnostic = [];
-
-	if (range === undefined) {
-		// .then((_tockens: code) => {
-		// generate_list(uri.path);
+	// vscode.workspace.textDocuments.find(e => e.uri === uri).isDirty = true;
+	
+	for (const k of documentsMap) {
+		lslDiagnostics.set(k[1].Uri, k[1].Diagnostic);
 	}
+	documentsMap.set(uri.path, doc);
+	
+	console.log("parsed");
+	doc.parser.parsingTimer = undefined;
+
+
+	// doc.isParsing = true;
+	// doc.parser = new ExtractVariablesAndFunctionsVisitor();
+
+	// if (range === undefined) {
+	// .then((_tockens: code) => {
+	// generate_list(uri.path);
+	// }
 	/*
 		doc.parser.lslerror.errorList.forEach(e => {
 	
@@ -148,13 +156,8 @@ export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) 
 	// 	}
 	// }
 
-	for (const k of documentsMap) {
-		lslDiagnostics.set(k[1].Uri, k[1].Diagnostic);
-	}
 	// }
 	// );
-	documentsMap.set(uri.path, doc);
-	doc.isParsing = false;
 }
 
 export async function onDidOpenTextDocument(document: vscode.TextDocument) {
@@ -162,7 +165,10 @@ export async function onDidOpenTextDocument(document: vscode.TextDocument) {
 	// generate_list(document.uri.path);
 }
 
-export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEvent) {
+export function onDidChangeTextDocument(event: vscode.TextDocumentChangeEvent) {
+	if (event.contentChanges.length == 1)
+		if (event.contentChanges[0].text.length === 0)
+			return;
 	//////////////////////////////////////////////77
 	//TODO: make this function cancellable
 
@@ -202,15 +208,36 @@ export async function onDidChangeTextDocument(event: vscode.TextDocumentChangeEv
 			}
 		}
 		*/
-	let doc: document;
-	if (documentsMap.has(event.document.uri.path))
-		doc = documentsMap.get(event.document.uri.path);
-	else {
+	// let doc: document;
+	if (documentsMap.has(event.document.uri.path)) {
+		const doc = documentsMap.get(event.document.uri.path);
+		// if (!doc.isParsing) {
+		// doc.isParsing = true;
+
+		// if (doc.isParsing) {
+		// doc.parser.cancel().then(() => {
+		// 	diag(event.document.getText(), event.document.uri);
+		// });
+		// console.log("running");
+		// return;
+		// }
+		// else {
+
+		if (doc.parser.parsingTimer) {
+			clearTimeout(doc.parser.parsingTimer);
+			console.log("postpone parse");
+		}
+		else
+			diag(event.document.getText(), event.document.uri);
+		doc.parser.parsingTimer = setTimeout(() => {
+			console.log("parse");
+			diag(event.document.getText(), event.document.uri);
+		},
+			1000);
 		return;
+		// }
 	}
-	// if (!doc.isParsing) {
-	// doc.isParsing = true;
-	diag(event.document.getText(), event.document.uri);
+	return;
 
 	// }
 }
@@ -222,7 +249,7 @@ export async function init() {
 
 	vscode.workspace.textDocuments.forEach(async (e) => {
 		if (e.languageId == "lsl")
-			await diag(e.getText(), e.uri);
+			diag(e.getText(), e.uri);
 		// generate_list(e.uri.path);
 	});
 
@@ -236,7 +263,7 @@ export async function init() {
 		const files = await vscode.workspace.findFiles('**/*.lsl');
 		for (const e of files) {
 			const code = await vscode.workspace.fs.readFile(e);
-			await diag(code.toString(), e);
+			diag(code.toString(), e);
 		}
 		// for (const k of documentsMap) {
 		// generate_list(k[0]);

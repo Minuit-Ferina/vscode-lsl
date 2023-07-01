@@ -12,7 +12,6 @@ export interface document {
 	isTokenized: boolean,
 	CompletionList?: vscode.CompletionList<vscode.CompletionItem>,
 	Worker?: Worker,
-	isParsing?: boolean,
 	// document: vscode.TextDocument,
 	parser?: ExtractVariablesAndFunctionsVisitor
 	// tree: Lscript_programContext

@@ -14,14 +14,19 @@ export async function providerDocumentSymbols(document: vscode.TextDocument, tok
 		// await diag(document.getText(), document.uri);
 		doc = documentsMap.get(document.uri.path);
 	}
-	const ret = doc.parser.getDocumentSymboles(doc.parser.tree);
+	
+	token.onCancellationRequested(()=>{
+		doc.parser.cancel();
+	});
+	const ret = doc.parser.getDocumentSymboles(document.getText());
 
-	const t = SymbolsNode2DocumentSymboles(ret);
+	const t = SymbolsNode2DocumentSymboles(ret, token);
+	console.log("providerDocumentSymbols");
 	return t;
 }
 
 
-function SymbolsNode2DocumentSymboles(sym: SymbolsNode): vscode.DocumentSymbol[] {
+function SymbolsNode2DocumentSymboles(sym: SymbolsNode, token: vscode.CancellationToken): vscode.DocumentSymbol[] {
 	let kind;
 	if (sym.nodeType === "default_state")
 		kind = vscode.SymbolKind.Class;
@@ -41,7 +46,9 @@ function SymbolsNode2DocumentSymboles(sym: SymbolsNode): vscode.DocumentSymbol[]
 		const docSym = new vscode.DocumentSymbol(sym.name, "", kind, sym.range.toVSCodeRange(), sym.range.toVSCodeRange());
 
 		for (const e of sym.childrens) {
-			const t = SymbolsNode2DocumentSymboles(e);
+			if (token.isCancellationRequested)
+				break;
+			const t = SymbolsNode2DocumentSymboles(e, token);
 			docSym.children.push(...t);
 		}
 
@@ -51,7 +58,9 @@ function SymbolsNode2DocumentSymboles(sym: SymbolsNode): vscode.DocumentSymbol[]
 	else {
 
 		for (const e of sym.childrens) {
-			const t = SymbolsNode2DocumentSymboles(e);
+			if (token.isCancellationRequested)
+				break;
+			const t = SymbolsNode2DocumentSymboles(e, token);
 			out.push(...t);
 		}
 		return out;

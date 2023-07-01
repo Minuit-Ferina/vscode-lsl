@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { documentsMap } from './DocumentsMap';
-import { list, Position} from './common';
+import { list, Position } from './common';
 
 const IncTrack: Array<string> = [];
 
@@ -11,11 +11,15 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 	const doc = documentsMap.get(document.uri.path);
 
 	const returnList = new vscode.CompletionList();
-	const ret = doc.parser.getLocalSymboles(doc.parser.tree, Position.fromVSPosition(position));
+	doc.parser.cancelToken = token;
+	const ret = doc.parser.getLocalSymboles(document.getText(), Position.fromVSPosition(position));
 
 	for (const e of ret) {
+		if (token.isCancellationRequested)
+			break;
+
 		// ret.forEach(e => {
-		if (e.nodeType === "variable_declaration" || e.nodeType === "function_parameter" ) {
+		if (e.nodeType === "variable_declaration" || e.nodeType === "function_parameter") {
 			const kind = vscode.CompletionItemKind.Variable;
 			const t = new vscode.CompletionItem(e.name,
 				kind);
@@ -23,9 +27,12 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 		}
 	}
 
-	doc.parser.getDocumentSymboles(doc.parser.tree);
+	doc.parser.getDocumentSymboles(document.getText());
 	const ret2 = doc.parser.Symbols;
 	for (const e of ret2) {
+		if (token.isCancellationRequested)
+			break;
+
 		if (e.nodeType === "global_function") {
 			const kind = vscode.CompletionItemKind.Function;
 			const t = new vscode.CompletionItem(e.name,

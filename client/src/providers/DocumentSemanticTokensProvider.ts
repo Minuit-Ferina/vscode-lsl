@@ -14,10 +14,12 @@ const legend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
 
 
 const provider: vscode.DocumentSemanticTokensProvider = {
-	provideDocumentSemanticTokens(
-		document: vscode.TextDocument
-	): vscode.ProviderResult<vscode.SemanticTokens> {
+	async provideDocumentSemanticTokens(
+		document: vscode.TextDocument,
+		token: vscode.CancellationToken
+	) {
 		// analyze the document and return semantic tokens
+		console.log("provideDocumentSemanticTokens");
 		const doc = documentsMap.get(document.uri.path);
 		const nodes = doc.parser.tokens.tokens.filter(
 			e => e.type === doc.parser.lexer.ruleNames.indexOf("IdentifierNondigit")
@@ -27,45 +29,63 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 		const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
 
 		for (const e of nodes) {
+			if (token.isCancellationRequested)
+				break;
+
 			let type = "";
+			// doc.parser.cancelToken = token;
+			token.onCancellationRequested(() => {
+				doc.parser.cancel();
+			});
 
-			const ret = doc.parser.getLocalSymboles(doc.parser.tree, new Position(e.line + 1, e.column));
-			const t = ret.filter(e2 => e2.name === e.text
-				&& (
-					e2.nodeType === "variable_declaration"
-					|| e2.nodeType === 'function_parameter'));
-			if (t.length > 0) {
-				type = "variable";
-			}
-			const ret2 = doc.parser.Symbols;
-			const t2 = ret2.filter(e2 => e2.name === e.text
-				&& (
-					e2.nodeType === "global_function"));
-			if (t2.length > 0) {
-				type = "function";
-			}
-			const ret3 = doc.parser.Symbols;
-			const t3 = ret2.filter(e2 => e2.name === e.text
-				&& (
-					e2.nodeType === "state"));
-			if (t3.length > 0) {
-				type = "class";
-			}
-			if (e.type === doc.parser.lexer.ruleNames.indexOf("State"))
-				type = "class";
 
-			// search in the LSL builtin functions 
-			const t4 = Functions.filter(e2 => e2.name === e.text);
-			if (t4.length > 0) {
-				type = 'function';
-			}
+			{
+				// search in the LSL builtin functions 
+				const t4 = Functions.filter(e2 => e2.name === e.text);
+				if (t4.length > 0) {
+					type = 'function';
+				}
 
-			// search in the LSL builtin functions 
-			const t5 = Events.filter(e2 => e2.name === e.text);
-			if (t5.length > 0) {
-				type = 'event';
+				else {
+					const ret = doc.parser.getLocalSymboles(document.getText(), new Position(e.line + 1, e.column));
+					const t = ret.filter(e2 => e2.name === e.text
+						&& (
+							e2.nodeType === "variable_declaration"
+							|| e2.nodeType === 'function_parameter'));
+					if (t.length > 0) {
+						type = "variable";
+					}
+					else {
+						const ret2 = doc.parser.Symbols;
+						const t2 = ret2.filter(e2 => e2.name === e.text
+							&& (
+								e2.nodeType === "global_function"));
+						if (t2.length > 0) {
+							type = "function";
+						}
+						else {
+							const ret3 = doc.parser.Symbols;
+							const t3 = ret2.filter(e2 => e2.name === e.text
+								&& (
+									e2.nodeType === "state"));
+							if (t3.length > 0) {
+								type = "class";
+							}
+							else {
+								if (e.type === doc.parser.lexer.ruleNames.indexOf("State"))
+									type = "class";
+								else {
+									// search in the LSL builtin functions 
+									const t5 = Events.filter(e2 => e2.name === e.text);
+									if (t5.length > 0) {
+										type = 'event';
+									}
+								}
+							}
+						}
+					}
+				}
 			}
-
 			if (type != "")
 				tokensBuilder.push(
 					new vscode.Range(new vscode.Position(e.line - 1, e.column), new vscode.Position(e.line - 1, e.column + e.text.length)),
