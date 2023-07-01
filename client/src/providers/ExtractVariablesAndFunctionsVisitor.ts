@@ -175,7 +175,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		sym.signature = type + " " + name + "(";
 		if (ctx.function_parameters()) {
 			paramList = <any>this.visitChildren(ctx.function_parameters());
-			sym.childrens.push(...paramList);
+			if (paramList)
+				sym.childrens.push(...paramList);
 
 			for (const e of paramList) {
 				if (e)
@@ -195,7 +196,9 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	visitCompound_statement = (ctx: Compound_statementContext) => {
 		if (this.cancelToken["isCancellationRequested"])
 			throw ("cancel");
-		return this.visit(ctx.statements());
+		if (ctx.statements())
+			return this.visit(ctx.statements());
+		return;
 	};
 
 	visitStatements = (ctx: StatementsContext) => {
@@ -264,7 +267,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		const sym = new SymbolsNode("lscript_program", "", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
 		for (const e of t) {
-			sym.childrens.push(...e);
+			if (e)
+				sym.childrens.push(...e);
 		}
 
 		// if (t)
@@ -283,15 +287,16 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	visitDefault_state = (ctx: Default_stateContext) => {
 		if (this.cancelToken["isCancellationRequested"])
 			throw ("cancel");
-		const t = <any>this.visitChildren(ctx.state_body());
 
 		const name = 'default';
 
 		const sym = new SymbolsNode(name, "default_state", "state", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
-		sym.childrens.push(...t);
-		// for (const e of t) {
-		// }
+
+		if (ctx.state_body()) {
+			const t = <any>this.visitChildren(ctx.state_body());
+			sym.childrens.push(...t);
+		}
 
 		return sym;
 	};
@@ -303,11 +308,13 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		const name = ctx.Identifier().getText();
 
 
-		const t = <any>this.visitChildren(ctx.state_body());
-
 		const sym = new SymbolsNode(name, "state", "state", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
-		sym.childrens.push(...t);
+
+		if (ctx.state_body()) {
+			const t = <any>this.visitChildren(ctx.state_body());
+			sym.childrens.push(...t);
+		}
 
 		sym.signature = "state " + name;
 		this.Symbols.push(sym);
