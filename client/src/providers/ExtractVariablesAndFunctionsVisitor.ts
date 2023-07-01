@@ -178,7 +178,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			sym.childrens.push(...paramList);
 
 			for (const e of paramList) {
-				sym.signature += e.signature + ", ";
+				if (e)
+					sym.signature += e.signature + ", ";
 			}
 			sym.signature = sym.signature.slice(0, sym.signature.lastIndexOf(", "));
 		}
