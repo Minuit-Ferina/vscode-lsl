@@ -61,6 +61,9 @@ class IntervalTree {
 	constructor() {
 		this.tree = new Array<IntervalTreeItem>;
 	}
+	clear() {
+		this.tree = [];
+	}
 	insert(start: number, stop: number, sym: SymbolsNode) {
 		this.tree.push({ start: start, stop: stop, sym: sym });
 	}
@@ -460,6 +463,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			this.breakPosition = new Position(99999999999999, 0);
 
 		try {
+			this.SymbolsTree.clear();
 			symboles = this.visit(this.tree);
 		}
 		catch (error) {
@@ -481,6 +485,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		this.breakPosition = new Position(99999999999999, 0);
 
+		this.SymbolsTree.clear();
 		this.visit(this.tree);
 		const symboles = this.Symbols;
 
@@ -500,6 +505,21 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 	getL(start: number, stop: number) {
 		return this.SymbolsTree.search(start, stop);
+	}
+
+	getR(position: Position) {
+		const idx = this.tokens.tokens.find(e =>
+			e.line == position.row + 1
+			&& e.column <= position.col
+			&& e.column + e.text.length >= position.col
+		);
+
+		if (idx) {
+			const lo = this.getL(idx.tokenIndex, idx.tokenIndex);
+			return lo;
+		}
+		return [];
+
 	}
 }
 

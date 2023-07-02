@@ -107,8 +107,8 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	}
 
 	// identifier not in static list, try to lookup with the parser
+	const ret = doc.parser.getR(Position.fromVSPosition(position));
 
-	const ret = doc.parser.getLocalSymboles(document.getText(), Position.fromVSPosition(position));
 	const t = ret.filter(e => e.name === word
 		&& (
 			e.nodeType === "variable_declaration"

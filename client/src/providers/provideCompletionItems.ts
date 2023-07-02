@@ -12,7 +12,7 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 
 	const returnList = new vscode.CompletionList();
 	doc.parser.cancelToken = token;
-	const ret = doc.parser.getLocalSymboles(document.getText(), Position.fromVSPosition(position));
+	const ret = doc.parser.getR(Position.fromVSPosition(position));
 
 	for (const e of ret) {
 		if (token.isCancellationRequested)
@@ -27,7 +27,7 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 		}
 	}
 
-	doc.parser.getDocumentSymboles(document.getText());
+	// doc.parser.getDocumentSymboles(document.getText());
 	const ret2 = doc.parser.Symbols;
 	for (const e of ret2) {
 		if (token.isCancellationRequested)
