@@ -3,7 +3,7 @@ import LSLLexer from '../antlr4/LSLLexer';
 import LSLParser, { Compound_statementContext, DeclarationContext, Default_stateContext, EventContext, Function_parameterContext, Function_parametersContext, GlobalContext, Global_functionContext, Global_variableContext, IdentifierContext, LlstateContext, LlstatesContext, Lscript_programContext, StatementContext, StatementsContext } from '../antlr4/LSLParser';
 import LSLVisitor, { } from '../antlr4/LSLParserVisitor';
 
-import { stripUndefined, Position, Range } from './common';
+import { Position, Range } from './common';
 
 export class SymbolsNode {
 	name: string;
@@ -31,11 +31,20 @@ export class SymbolsNode {
 		this.childrens = new Array<SymbolsNode>;
 	}
 
+	addChildrens(childrens: Array<SymbolsNode>) {
+		if (childrens)
+			childrens.forEach(e => {
+				if (e)
+					this.childrens.push(e);
+			});
+	}
+
 	stripUndefined() {
 		if (Array.isArray(this.childrens)) {
 			this.childrens = this.childrens.filter(e => e !== undefined);
 			this.childrens.forEach(e => {
-				e.stripUndefined();
+				if (e && e.stripUndefined)
+					e.stripUndefined();
 			});
 		}
 	}
@@ -155,7 +164,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		for (const e of ctx.function_parameter_list()) {
 			const t = this.visit(e);
-			sym.childrens.push(t);
+			sym.addChildrens([t]);
 		}
 		// for (const e of t) {
 		// }
@@ -207,7 +216,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		if (ctx.function_parameters()) {
 			paramList = <any>this.visitChildren(ctx.function_parameters());
 			if (paramList)
-				sym.childrens.push(...paramList);
+				sym.addChildrens(paramList);
 
 			for (const e of paramList) {
 				if (e)
@@ -219,7 +228,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.compound_statement()) {
 			paramList = <any>this.visit(ctx.compound_statement());
-			sym.childrens.push(paramList);
+			sym.addChildrens(paramList);
 		}
 
 		return sym;
@@ -243,7 +252,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		for (const e of ctx.statement_list()) {
 			const t = this.visit(e);
-			sym.childrens.push(t);
+			sym.addChildrens([t]);
 		}
 
 		if (ctx.stop.line <= this.breakPosition.row)
@@ -258,15 +267,15 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			ctx.stop.line - 1, ctx.stop.column);
 		if (ctx.declaration()) {
 			const t = <any>this.visit(ctx.declaration());
-			sym.childrens.push(t);
+			sym.addChildrens([t]);
 		}
 		else if (ctx.compound_statement()) {
 			const t = this.visit(ctx.compound_statement());
-			sym.childrens.push(t);
+			sym.addChildrens([t]);
 		}
 		else for (const e of ctx.statement_list()) {
 			const t = this.visit(e);
-			sym.childrens.push(t);
+			sym.addChildrens([t]);
 		}
 
 		return sym;
@@ -294,12 +303,13 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.Symbols = [];
 		this.localSymbols = [];
 		this.localSymbols.push([]);
-		const t = <any>this.visitChildren(ctx);
 		const sym = new SymbolsNode("lscript_program", "", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
-		for (const e of t) {
-			if (e)
-				sym.childrens.push(...e);
+		if (ctx.global_list()) {
+			for (const e of ctx.global_list()) {
+				const t = this.visit(e);
+				sym.addChildrens([t]);
+			}
 		}
 
 		// if (t)
@@ -326,7 +336,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.state_body()) {
 			const t = <any>this.visitChildren(ctx.state_body());
-			sym.childrens.push(...t);
+			sym.addChildrens(t);
 		}
 
 		return sym;
@@ -344,7 +354,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.state_body()) {
 			const t = <any>this.visitChildren(ctx.state_body());
-			sym.childrens.push(...t);
+			sym.addChildrens(t);
 		}
 
 		sym.signature = "state " + name;
@@ -383,12 +393,14 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.function_parameters()) {
 			const param = <any>this.visitChildren(ctx.function_parameters());
-			sym.childrens.push(...param);
+			if (param)
+				sym.addChildrens(param);
 		}
 
 		if (ctx.compound_statement()) {
-			const param = <any>this.visit(ctx.compound_statement());
-			sym.childrens.push(param);
+			const param = this.visit(ctx.compound_statement());
+			if (param)
+				sym.addChildrens([param]);
 		}
 		return sym;
 	};
@@ -401,7 +413,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.llparse(code);
 		this.breakPosition = new Position(99999999999999, 0);
 		const symboles = this.visit(this.tree);
-		symboles.stripUndefined();
+		if (symboles)
+			symboles.stripUndefined();
 		return symboles;
 	}
 
@@ -449,7 +462,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		// 		});
 		// });
 		symboles.forEach(e => {
-			e.stripUndefined();
+			if (e)
+				e.stripUndefined();
 		});
 		return symboles;
 	}

@@ -6,6 +6,7 @@ import { SymbolsNode } from './ExtractVariablesAndFunctionsVisitor';
 
 
 export async function providerDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken): Promise<vscode.DocumentSymbol[]> {
+	console.log("providerDocumentSymbols");
 	let doc: document;
 
 	if (documentsMap.has(document.uri.path))
@@ -14,15 +15,18 @@ export async function providerDocumentSymbols(document: vscode.TextDocument, tok
 		// await diag(document.getText(), document.uri);
 		doc = documentsMap.get(document.uri.path);
 	}
-	
-	token.onCancellationRequested(()=>{
+
+	token.onCancellationRequested(() => {
 		doc.parser.cancel();
 	});
 	const ret = doc.parser.getDocumentSymboles(document.getText());
 
-	const t = SymbolsNode2DocumentSymboles(ret, token);
-	console.log("providerDocumentSymbols");
-	return t;
+	if (ret) {
+		const t = SymbolsNode2DocumentSymboles(ret, token);
+		console.log("providerDocumentSymbols done");
+		return t;
+	}
+	return [];
 }
 
 
@@ -48,8 +52,10 @@ function SymbolsNode2DocumentSymboles(sym: SymbolsNode, token: vscode.Cancellati
 		for (const e of sym.childrens) {
 			if (token.isCancellationRequested)
 				break;
-			const t = SymbolsNode2DocumentSymboles(e, token);
-			docSym.children.push(...t);
+			if (e) {
+				const t = SymbolsNode2DocumentSymboles(e, token);
+				docSym.children.push(...t);
+			}
 		}
 
 		out.push(docSym);
@@ -60,8 +66,10 @@ function SymbolsNode2DocumentSymboles(sym: SymbolsNode, token: vscode.Cancellati
 		for (const e of sym.childrens) {
 			if (token.isCancellationRequested)
 				break;
-			const t = SymbolsNode2DocumentSymboles(e, token);
-			out.push(...t);
+			if (e) {
+				const t = SymbolsNode2DocumentSymboles(e, token);
+				out.push(...t);
+			}
 		}
 		return out;
 	}
