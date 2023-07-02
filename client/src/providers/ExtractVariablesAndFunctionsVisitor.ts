@@ -292,7 +292,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.Symbols.push(sym);
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
-		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.stop.tokenIndex, sym);
+		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parser.getTokenStream().size - 1, sym);
 		return sym;
 	};
 
@@ -302,8 +302,14 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.Symbols = [];
 		this.localSymbols = [];
 		this.localSymbols.push([]);
+		let stopLine = ctx.EOF().symbol.line, stopColumn = ctx.EOF().symbol.column;
+		if (ctx.stop) {
+			stopLine = ctx.stop.line;
+			stopColumn = ctx.stop.column;
+		}
+
 		const sym = new SymbolsNode("lscript_program", "", "", ctx.start.line - 1, ctx.start.column,
-			ctx.stop.line - 1, ctx.stop.column);
+			stopLine - 1, stopColumn);
 		if (ctx.global_list()) {
 			for (const e of ctx.global_list()) {
 				const t = this.visit(e);
@@ -326,9 +332,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 	visitGlobal = (ctx: GlobalContext) => {
 		const t = <any>this.visitChildren(ctx);
-		let stopLine=0,stopColumn=0;
-		if(ctx.stop)
-		{
+		let stopLine = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).line, stopColumn = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).column;
+		if (ctx.stop) {
 			stopLine = ctx.stop.line;
 			stopColumn = ctx.stop.column;
 		}
