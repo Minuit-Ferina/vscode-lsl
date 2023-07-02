@@ -335,7 +335,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 	visitGlobal = (ctx: GlobalContext) => {
 		const t = <any>this.visitChildren(ctx);
-		let stopLine = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).line, stopColumn = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).column;
+		let stopLine = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).line + 1, stopColumn = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).column;
 		if (ctx.stop) {
 			stopLine = ctx.stop.line;
 			stopColumn = ctx.stop.column;
@@ -410,7 +410,10 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
-		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.parentCtx.stop.tokenIndex, sym);
+		if (ctx.parentCtx.parentCtx.parentCtx.constructor.name === 'GlobalContext')
+			this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.parentCtx.parentCtx.stop.tokenIndex, sym);
+		else
+			this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
 
