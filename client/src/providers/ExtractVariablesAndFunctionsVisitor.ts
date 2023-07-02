@@ -67,8 +67,7 @@ class IntervalTree {
 	search(start: number, stop: number): Array<SymbolsNode> {
 		const t = this.tree.filter(e => e.start <= start && e.stop >= stop);
 		const out = new Array<SymbolsNode>;
-		for(const e of t)
-		{
+		for (const e of t) {
 			out.push(e.sym);
 		}
 		return out;
@@ -227,8 +226,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		sym.signature += ")";
 
 		if (ctx.compound_statement()) {
-			paramList = <any>this.visit(ctx.compound_statement());
-			sym.addChildrens(paramList);
+			paramList = this.visit(ctx.compound_statement());
+			sym.addChildrens([paramList]);
 		}
 
 		return sym;
@@ -524,6 +523,6 @@ class lslerror extends ErrorListener<Token>
 			msg: msg,
 			e: e
 		});
-		console.log(msg);
+		// console.log(msg);
 	}
 }
