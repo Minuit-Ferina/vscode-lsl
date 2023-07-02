@@ -448,10 +448,16 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	public getDocumentSymboles(code: string, position?: Position) {
 		this.llparse(code);
 		this.breakPosition = new Position(99999999999999, 0);
-		const symboles = this.visit(this.tree);
-		if (symboles)
-			symboles.stripUndefined();
-		return symboles;
+		try {
+			this.SymbolsTree.clear();
+			const symboles = this.visit(this.tree);
+			if (symboles)
+				symboles.stripUndefined();
+			return symboles;
+		}
+		catch (err) {
+			return;
+		}
 	}
 
 
