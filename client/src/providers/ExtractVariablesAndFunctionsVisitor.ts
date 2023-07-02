@@ -325,6 +325,20 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return sym;
 	};
 
+	visitGlobal = (ctx: GlobalContext) => {
+		const t = <any>this.visitChildren(ctx);
+		let stopLine=0,stopColumn=0;
+		if(ctx.stop)
+		{
+			stopLine = ctx.stop.line;
+			stopColumn = ctx.stop.column;
+		}
+		const sym = new SymbolsNode("global", "", "", ctx.start.line - 1, ctx.start.column,
+			stopLine - 1, stopColumn);
+		sym.addChildrens(t);
+		return sym;
+	};
+
 	visitDefault_state = (ctx: Default_stateContext) => {
 		if (this.cancelToken["isCancellationRequested"])
 			throw ("cancel");
@@ -338,6 +352,18 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			const t = <any>this.visitChildren(ctx.state_body());
 			sym.addChildrens(t);
 		}
+
+		return sym;
+	};
+
+	visitLlstates = (ctx: LlstatesContext) => {
+		const name = 'llstates';
+
+		const sym = new SymbolsNode(name, "llstates", "", ctx.start.line - 1, ctx.start.column,
+			ctx.stop.line - 1, ctx.stop.column);
+
+		const t = <any>this.visitChildren(ctx);
+		sym.addChildrens(t);
 
 		return sym;
 	};
