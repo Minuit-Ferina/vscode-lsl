@@ -6,7 +6,7 @@
 		"name": "Minuit Ferina"
 	},
 	"license": "MIT",
-	"version": "0.1.17",
+	"version": "0.1.18",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Minuit-Ferina/vscode-lsl.git"
