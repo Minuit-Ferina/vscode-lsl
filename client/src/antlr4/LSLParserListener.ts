@@ -44,7 +44,6 @@ import { Quaternion_initializerContext } from "./LSLParser";
 import { List_initializerContext } from "./LSLParser";
 import { LvalueContext } from "./LSLParser";
 import { IdentifierContext } from "./LSLParser";
-import { IncludeDirectiveContext } from "./LSLParser";
 
 
 /**
@@ -462,15 +461,5 @@ export default class LSLParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitIdentifier?: (ctx: IdentifierContext) => void;
-	/**
-	 * Enter a parse tree produced by `LSLParser.includeDirective`.
-	 * @param ctx the parse tree
-	 */
-	enterIncludeDirective?: (ctx: IncludeDirectiveContext) => void;
-	/**
-	 * Exit a parse tree produced by `LSLParser.includeDirective`.
-	 * @param ctx the parse tree
-	 */
-	exitIncludeDirective?: (ctx: IncludeDirectiveContext) => void;
 }
 
