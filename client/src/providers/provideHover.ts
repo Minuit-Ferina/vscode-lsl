@@ -35,18 +35,18 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 		const ret = new vscode.MarkdownString();
 		let paramDesc = "";
 		let param = "";
-		for (let c = 0; c < e[0].param.length; c++) {
+		for (let c = 0; c < e.param.length; c++) {
 			paramDesc += "_@param_ ";
-			paramDesc += e[0].param[c]["type"];
-			paramDesc += " `" + e[0].param[c].name + "`";
-			paramDesc += " — " + e[0].param[c].description + "\n\n";
+			paramDesc += e.param[c]["type"];
+			paramDesc += " `" + e.param[c].name + "`";
+			paramDesc += " — " + e.param[c].description + "\n\n";
 
-			param += e[0].param[c]["type"] + " " + e[0].param[c].name;
-			param += c == e[0].param.length - 1 ? "" : ", ";
+			param += e.param[c]["type"] + " " + e.param[c].name;
+			param += c == e.param.length - 1 ? "" : ", ";
 		}
-		let fname = e[0]["returnType"];
-		fname += e[0]["returnType"] == "" ? "" : " ";
-		fname += e[0]["name"];
+		let fname = e["returnType"];
+		fname += e["returnType"] == "" ? "" : " ";
+		fname += e["name"];
 		fname += "( " + param + " )";
 		return new vscode.Hover(
 			new vscode.MarkdownString(
@@ -56,7 +56,7 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 					'```',
 
 					'___',
-					e[0]["description"],
+					e["description"],
 					'',
 					paramDesc
 
@@ -69,11 +69,11 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	if (e2) {
 
 		let fname = "";
-		fname += e2[0]["type"];
+		fname += e2["type"];
 		fname += " ";
-		fname += e2[0]["name"];
+		fname += e2["name"];
 		fname += " = ";
-		fname += e2[0]["value"];
+		fname += e2["value"];
 		return new vscode.Hover(
 			new vscode.MarkdownString(
 				[
@@ -81,7 +81,7 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 					fname,
 					'```',
 					'___',
-					e2[0]["description"],
+					e2["description"],
 					'',
 				].join('\n')
 			));
@@ -92,7 +92,7 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 	if (e3) {
 
 		let fname = "";
-		fname += e3[0]["name"];
+		fname += e3["name"];
 		return new vscode.Hover(
 			new vscode.MarkdownString(
 				[
@@ -100,7 +100,7 @@ export async function provideHover(document: vscode.TextDocument, position: vsco
 					fname,
 					'```',
 					'___',
-					e3[0]["description"],
+					e3["description"],
 					'',
 				].join('\n')
 			));

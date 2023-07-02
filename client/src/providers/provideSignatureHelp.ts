@@ -76,12 +76,12 @@ export async function provideSignatureHelp(document: vscode.TextDocument, positi
 	// search in the LSL builtin functions
 	const e = Functions.getFromName(funcName);
 	if (e) {
-		const a = e[0];
+		const a = e;
 		const signature = getFunctionSignature(a);
 
 		const param = [];
 
-		for (const e of a.param) {
+		for (const e of a["param"]) {
 			param.push(
 				{
 					label: `${e["type"]} ${e["name"]}`,
