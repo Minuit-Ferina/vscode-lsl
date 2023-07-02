@@ -41,6 +41,31 @@ export class SymbolsNode {
 	}
 }
 
+interface IntervalTreeItem {
+	start: number,
+	stop: number,
+	sym: SymbolsNode
+}
+
+class IntervalTree {
+	tree: Array<IntervalTreeItem>;
+	constructor() {
+		this.tree = new Array<IntervalTreeItem>;
+	}
+	insert(start: number, stop: number, sym: SymbolsNode) {
+		this.tree.push({ start: start, stop: stop, sym: sym });
+	}
+	search(start: number, stop: number): Array<SymbolsNode> {
+		const t = this.tree.filter(e => e.start <= start && e.stop >= stop);
+		const out = new Array<SymbolsNode>;
+		for(const e of t)
+		{
+			out.push(e.sym);
+		}
+		return out;
+	}
+}
+
 export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode> {
 	cancelToken: object;
 	cancelPromise;
@@ -60,12 +85,16 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	parser: LSLParser;
 	tree;
 
+	SymbolsTree: IntervalTree;
+
 	constructor() {
 		super();
 		this.cancelToken = {};
 		this.Symbols = new Array<SymbolsNode>;
 		this.localSymbols = new Array<Array<SymbolsNode>>;
 		this.breakPosition = new Position(99999999999999, 0);
+
+		this.SymbolsTree = new IntervalTree();
 
 		this.lslerror = new lslerror;
 	}
@@ -149,6 +178,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.Symbols.push(sym);
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
+		this.SymbolsTree.insert(ctx.parentCtx.parentCtx.start.tokenIndex, ctx.parentCtx.parentCtx.stop.tokenIndex, sym);
 
 		return sym;
 	};
@@ -171,6 +201,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
+		this.SymbolsTree.insert(ctx.parentCtx.start.tokenIndex, ctx.parentCtx.stop.tokenIndex, sym);
 
 		sym.signature = type + " " + name + "(";
 		if (ctx.function_parameters()) {
@@ -253,7 +284,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.Symbols.push(sym);
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
-
+		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
 
@@ -320,7 +351,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.Symbols.push(sym);
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
-
+		this.SymbolsTree.insert(ctx.parentCtx.start.tokenIndex, ctx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
 
@@ -336,6 +367,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
+		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
 
@@ -420,6 +452,10 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			e.stripUndefined();
 		});
 		return symboles;
+	}
+
+	getL(start: number, stop: number) {
+		return this.SymbolsTree.search(start, stop);
 	}
 }
 

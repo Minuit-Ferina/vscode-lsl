@@ -27,7 +27,7 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 				|| e.type === doc.parser.lexer.ruleNames.indexOf("State")
 		);
 		const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
-
+		doc.parser.getDocumentSymboles(document.getText());
 		for (const e of nodes) {
 			if (token.isCancellationRequested)
 				break;
@@ -51,8 +51,9 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 			}
 			else {
 
-				console.log(doc.parser.getL(e.start, e.stop));
-				const localSymboles = doc.parser.getLocalSymboles(document.getText(), new Position(e.line + 1, e.column));
+				// console.log(doc.parser.getL(e.tokenIndex, e.tokenIndex));
+				const localSymboles = doc.parser.getL(e.tokenIndex, e.tokenIndex);
+				// const localSymboles = doc.parser.getLocalSymboles(document.getText(), new Position(e.line + 1, e.column));
 				const t = localSymboles.filter(e2 => e2.name === e.text
 					&& (
 						e2.nodeType === "variable_declaration"
