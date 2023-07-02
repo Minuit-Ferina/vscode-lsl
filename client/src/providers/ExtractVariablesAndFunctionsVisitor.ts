@@ -126,7 +126,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	}
 	llparse = (code: string) => {
 		try {
-			this.cancelToken["isCancellationRequested"] = false;
+			// this.cancelToken["isCancellationRequested"] = false;
 			this.lslerror.errorList = [];
 			this.chars = new CharStream(code);
 			this.lexer = new LSLLexer(this.chars);
@@ -137,11 +137,12 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			this.parser.addErrorListener(this.lslerror);
 			this.tree = this.parser.lscript_program();
 			// this.parser.state = ;
-			return this;
+			return this.tree;
 		}
 		catch (err) {
-			if (this.cancelPromise)
-				this.cancelPromise(true);
+			// if (this.cancelPromise)
+			// this.cancelPromise(true);
+			return;
 		}
 	};
 
