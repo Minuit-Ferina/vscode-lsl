@@ -6,7 +6,7 @@ import { SymbolsNode } from './ExtractVariablesAndFunctionsVisitor';
 
 
 export async function providerDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken): Promise<vscode.DocumentSymbol[]> {
-	console.log("providerDocumentSymbols");
+	// console.log("providerDocumentSymbols");
 	let doc: document;
 
 	if (documentsMap.has(document.uri.path))
@@ -23,7 +23,7 @@ export async function providerDocumentSymbols(document: vscode.TextDocument, tok
 
 	if (ret) {
 		const t = SymbolsNode2DocumentSymboles(ret, token);
-		console.log("providerDocumentSymbols done");
+		// console.log("providerDocumentSymbols done");
 		return t;
 	}
 	return [];

@@ -323,10 +323,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			stopLine - 1, stopColumn);
 
 		const childs = <any>this.visitChildren(ctx);
-		for (const e of childs) {
-			const t = this.visit(e);
-			sym.addChildrens([t]);
-		}
+		if(childs)
+			sym.addChildrens(childs);
 
 		// if (t)
 		// 	t.forEach(e => {
