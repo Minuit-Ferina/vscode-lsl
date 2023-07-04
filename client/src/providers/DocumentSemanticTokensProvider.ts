@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 const tokenTypes = ['event', 'class', 'interface', 'enum', 'function', 'variable', '#define'];
 const tokenModifiers = ['declaration', 'documentation'];
 import { documentsMap } from './DocumentsMap';
-import { Position } from './common';
+import { Position, outputChannel } from './common';
 
 import { Functions } from '../Functions';
 import { Events } from '../Events';
@@ -38,11 +38,7 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 				doc.parser.cancel();
 			});
 
-
-
-
 			// search in the LSL builtin functions
-
 			if (Functions.exist(e.text)) {
 				type = 'function';
 			}
@@ -50,10 +46,7 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 				type = 'event';
 			}
 			else {
-
-				// console.log(doc.parser.getL(e.tokenIndex, e.tokenIndex));
 				const localSymboles = doc.parser.getL(e.tokenIndex, e.tokenIndex);
-				// const localSymboles = doc.parser.getLocalSymboles(document.getText(), new Position(e.line + 1, e.column));
 				const t = localSymboles.filter(e2 => e2.name === e.text
 					&& (
 						e2.nodeType === "variable_declaration"
@@ -86,14 +79,13 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 				}
 			}
 
-			if (type != "")
+			if (type != "") {
 				tokensBuilder.push(
 					new vscode.Range(new vscode.Position(e.line - 1, e.column), new vscode.Position(e.line - 1, e.column + e.text.length)),
 					type,
 					[]
 				);
-			// else
-			// 		console.log(e.text);
+			}
 		}
 		// console.log("provideDocumentSemanticTokens done");
 		return tokensBuilder.build();

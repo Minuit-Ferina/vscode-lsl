@@ -6,12 +6,8 @@ import { ExtractVariablesAndFunctionsVisitor } from './providers/ExtractVariable
 export const lslDiagnostics = vscode.languages.createDiagnosticCollection("lsl");
 
 let includePath: Array<string> = [];
-export const outputChannel: vscode.OutputChannel = vscode.window.createOutputChannel("LSL-Tool2");
 
 export const final_list = new vscode.CompletionList;
-
-
-
 
 export async function diag(code: string, uri: vscode.Uri, range?: vscode.Range) {
 	lslDiagnostics.delete(uri);

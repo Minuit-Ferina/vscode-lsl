@@ -13,7 +13,7 @@ import * as lsl from './lslParce';
 import { CompletionItems } from './providers/provideCompletionItems';
 import { provideHover } from './providers/provideHover';
 import { provideSignatureHelp } from './providers/provideSignatureHelp';
-import {  providerDocumentSymbols} from './providers/providerDocumentSymbols';
+import { providerDocumentSymbols } from './providers/providerDocumentSymbols';
 
 import * as semanticProvider from './providers/DocumentSemanticTokensProvider';
 
@@ -38,7 +38,6 @@ export async function activate(context: vscode.ExtensionContext) {
 		token.onCancellationRequested(() => {
 			console.log("User canceled the long running operation");
 		});
-		outputChannel = vscode.window.createOutputChannel("LSL-Tool");
 		// progress.report({message: "activate"});
 
 		await lsl.init();

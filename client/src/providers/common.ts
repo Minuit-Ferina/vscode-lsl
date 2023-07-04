@@ -2,6 +2,10 @@ import * as vscode from 'vscode';
 
 export const list = new vscode.CompletionList;
 
+// outputChannel.appendLine("onDidChangeTextDocument");
+// outputChannel.show(true);
+export const outputChannel = vscode.window.createOutputChannel("LSL-Tool");
+
 
 export function getFunctionSignature(fn: object): string {
 	let ret = `${fn["returnType"]}`;

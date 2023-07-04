@@ -3,7 +3,7 @@ import LSLLexer from '../antlr4/LSLLexer';
 import LSLParser, { Compound_statementContext, DeclarationContext, Default_stateContext, EventContext, Function_parameterContext, Function_parametersContext, GlobalContext, Global_functionContext, Global_variableContext, IdentifierContext, LlstateContext, LlstatesContext, Lscript_programContext, StatementContext, StatementsContext } from '../antlr4/LSLParser';
 import LSLVisitor, { } from '../antlr4/LSLParserVisitor';
 
-import { Position, Range } from './common';
+import { Position, Range, outputChannel } from './common';
 
 export class SymbolsNode {
 	name: string;
@@ -73,6 +73,13 @@ class IntervalTree {
 		for (const e of t) {
 			out.push(e.sym);
 		}
+		return out;
+	}
+	dump(): string {
+		let out: string;
+		this.tree.forEach(e => {
+			out += "[" + e.start + ", " + e.stop + "]" + " " + e.sym.name + "\n";
+		});
 		return out;
 	}
 }
@@ -314,11 +321,11 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		const sym = new SymbolsNode("lscript_program", "", "", ctx.start.line - 1, ctx.start.column,
 			stopLine - 1, stopColumn);
-		if (ctx.global_list()) {
-			for (const e of ctx.global_list()) {
-				const t = this.visit(e);
-				sym.addChildrens([t]);
-			}
+
+		const childs = <any>this.visitChildren(ctx);
+		for (const e of childs) {
+			const t = this.visit(e);
+			sym.addChildrens([t]);
 		}
 
 		// if (t)
@@ -529,6 +536,18 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			return lo;
 		}
 		return [];
+
+	}
+
+	flattenLocalSymbos(symboles: SymbolsNode[][]) {
+		const out = new Array<SymbolsNode>;
+
+		for (const i of symboles) {
+			if (i)
+				i.forEach(j => {
+					out.push(j);
+				});
+		}
 
 	}
 }
