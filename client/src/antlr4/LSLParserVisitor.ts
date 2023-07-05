@@ -4,7 +4,6 @@ import {ParseTreeVisitor} from 'antlr4';
 
 
 import { Lscript_programContext } from "./LSLParser";
-import { GlobalContext } from "./LSLParser";
 import { DeclarationContext } from "./LSLParser";
 import { TypenameContext } from "./LSLParser";
 import { LlstatesContext } from "./LSLParser";
@@ -29,8 +28,8 @@ import { Function_parameterContext } from "./LSLParser";
 import { State_bodyContext } from "./LSLParser";
 import { EventContext } from "./LSLParser";
 import { Compound_statementContext } from "./LSLParser";
-import { StatementsContext } from "./LSLParser";
 import { StatementContext } from "./LSLParser";
+import { IterableContext } from "./LSLParser";
 import { ForexpressionlistContext } from "./LSLParser";
 import { FuncexpressionlistContext } from "./LSLParser";
 import { ListexpressionlistContext } from "./LSLParser";
@@ -60,12 +59,6 @@ export default class LSLParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitLscript_program?: (ctx: Lscript_programContext) => Result;
-	/**
-	 * Visit a parse tree produced by `LSLParser.global`.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	visitGlobal?: (ctx: GlobalContext) => Result;
 	/**
 	 * Visit a parse tree produced by `LSLParser.declaration`.
 	 * @param ctx the parse tree
@@ -211,17 +204,17 @@ export default class LSLParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 */
 	visitCompound_statement?: (ctx: Compound_statementContext) => Result;
 	/**
-	 * Visit a parse tree produced by `LSLParser.statements`.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	visitStatements?: (ctx: StatementsContext) => Result;
-	/**
 	 * Visit a parse tree produced by `LSLParser.statement`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	visitStatement?: (ctx: StatementContext) => Result;
+	/**
+	 * Visit a parse tree produced by `LSLParser.iterable`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitIterable?: (ctx: IterableContext) => Result;
 	/**
 	 * Visit a parse tree produced by `LSLParser.forexpressionlist`.
 	 * @param ctx the parse tree

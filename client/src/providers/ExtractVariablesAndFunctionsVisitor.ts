@@ -1,9 +1,10 @@
 import { Token, CommonToken, ParseTreeVisitor, CharStream, CommonTokenStream, ParseTreeWalker, FileStream, ParseTree, TerminalNode, ErrorNode, ErrorListener, RecognitionException, Recognizer } from 'antlr4';
 import LSLLexer from '../antlr4/LSLLexer';
-import LSLParser, { Compound_statementContext, DeclarationContext, Default_stateContext, EventContext, Function_parameterContext, Function_parametersContext, GlobalContext, Global_functionContext, Global_variableContext, IdentifierContext, LlstateContext, LlstatesContext, Lscript_programContext, StatementContext, StatementsContext } from '../antlr4/LSLParser';
+import LSLParser, { Compound_statementContext, DeclarationContext, Default_stateContext, EventContext, Function_parameterContext, Function_parametersContext, Global_functionContext, Global_variableContext, IdentifierContext, LlstateContext, LlstatesContext, Lscript_programContext, StatementContext } from '../antlr4/LSLParser';
 import LSLVisitor, { } from '../antlr4/LSLParserVisitor';
 
 import { Position, Range, outputChannel } from './common';
+import { encode } from 'punycode';
 
 export class SymbolsNode {
 	name: string;
@@ -246,34 +247,20 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	visitCompound_statement = (ctx: Compound_statementContext) => {
 		if (this.cancelToken["isCancellationRequested"])
 			throw ("cancel");
-		if (ctx.statements())
-			return this.visit(ctx.statements());
-		return;
-	};
 
-	visitStatements = (ctx: StatementsContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
-		if (ctx.start.line <= this.breakPosition.row)
-			this.localSymbols.push([]);
-
-		const sym = new SymbolsNode("", "statements", "", ctx.start.line - 1, ctx.start.column,
+		const sym = new SymbolsNode("", "compound_statement", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
 
-		for (const e of ctx.statement_list()) {
-			const t = this.visit(e);
-			sym.addChildrens([t]);
-		}
-
-		if (ctx.stop.line <= this.breakPosition.row)
-			this.localSymbols.pop();
+		if (ctx.statement_list())
+			for (const t of ctx.statement_list())
+				sym.addChildrens([this.visit(t)]);
 		return sym;
 	};
 
 	visitStatement = (ctx: StatementContext) => {
 		if (this.cancelToken["isCancellationRequested"])
 			throw ("cancel");
-		const sym = new SymbolsNode("", "statements", "", ctx.start.line - 1, ctx.start.column,
+		const sym = new SymbolsNode("", "statement", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
 		if (ctx.declaration()) {
 			const t = <any>this.visit(ctx.declaration());
@@ -281,10 +268,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		}
 		else if (ctx.compound_statement()) {
 			const t = this.visit(ctx.compound_statement());
-			sym.addChildrens([t]);
-		}
-		else for (const e of ctx.statement_list()) {
-			const t = this.visit(e);
 			sym.addChildrens([t]);
 		}
 
@@ -323,7 +306,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			stopLine - 1, stopColumn);
 
 		const childs = <any>this.visitChildren(ctx);
-		if(childs)
+		if (childs)
 			sym.addChildrens(childs);
 
 		// if (t)
@@ -336,19 +319,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		// sym = stripUndefined(sym);
 		sym.stripUndefined();
-		return sym;
-	};
-
-	visitGlobal = (ctx: GlobalContext) => {
-		const t = <any>this.visitChildren(ctx);
-		let stopLine = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).line + 1, stopColumn = ctx.parser.getTokenStream().get(ctx.parser.getTokenStream().size - 1).column;
-		if (ctx.stop) {
-			stopLine = ctx.stop.line;
-			stopColumn = ctx.stop.column;
-		}
-		const sym = new SymbolsNode("global", "", "", ctx.start.line - 1, ctx.start.column,
-			stopLine - 1, stopColumn);
-		sym.addChildrens(t);
 		return sym;
 	};
 
@@ -416,10 +386,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		if (ctx.start.line <= this.breakPosition.row)
 			this.localSymbols[this.localSymbols.length - 1].push(sym);
-		if (ctx.parentCtx.parentCtx.parentCtx.constructor.name === 'GlobalContext')
-			this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.parentCtx.parentCtx.stop.tokenIndex, sym);
-		else
-			this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.parentCtx.stop.tokenIndex, sym);
+		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
 

@@ -4,7 +4,6 @@ import {ParseTreeListener} from "antlr4";
 
 
 import { Lscript_programContext } from "./LSLParser";
-import { GlobalContext } from "./LSLParser";
 import { DeclarationContext } from "./LSLParser";
 import { TypenameContext } from "./LSLParser";
 import { LlstatesContext } from "./LSLParser";
@@ -29,8 +28,8 @@ import { Function_parameterContext } from "./LSLParser";
 import { State_bodyContext } from "./LSLParser";
 import { EventContext } from "./LSLParser";
 import { Compound_statementContext } from "./LSLParser";
-import { StatementsContext } from "./LSLParser";
 import { StatementContext } from "./LSLParser";
+import { IterableContext } from "./LSLParser";
 import { ForexpressionlistContext } from "./LSLParser";
 import { FuncexpressionlistContext } from "./LSLParser";
 import { ListexpressionlistContext } from "./LSLParser";
@@ -61,16 +60,6 @@ export default class LSLParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitLscript_program?: (ctx: Lscript_programContext) => void;
-	/**
-	 * Enter a parse tree produced by `LSLParser.global`.
-	 * @param ctx the parse tree
-	 */
-	enterGlobal?: (ctx: GlobalContext) => void;
-	/**
-	 * Exit a parse tree produced by `LSLParser.global`.
-	 * @param ctx the parse tree
-	 */
-	exitGlobal?: (ctx: GlobalContext) => void;
 	/**
 	 * Enter a parse tree produced by `LSLParser.declaration`.
 	 * @param ctx the parse tree
@@ -312,16 +301,6 @@ export default class LSLParserListener extends ParseTreeListener {
 	 */
 	exitCompound_statement?: (ctx: Compound_statementContext) => void;
 	/**
-	 * Enter a parse tree produced by `LSLParser.statements`.
-	 * @param ctx the parse tree
-	 */
-	enterStatements?: (ctx: StatementsContext) => void;
-	/**
-	 * Exit a parse tree produced by `LSLParser.statements`.
-	 * @param ctx the parse tree
-	 */
-	exitStatements?: (ctx: StatementsContext) => void;
-	/**
 	 * Enter a parse tree produced by `LSLParser.statement`.
 	 * @param ctx the parse tree
 	 */
@@ -331,6 +310,16 @@ export default class LSLParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitStatement?: (ctx: StatementContext) => void;
+	/**
+	 * Enter a parse tree produced by `LSLParser.iterable`.
+	 * @param ctx the parse tree
+	 */
+	enterIterable?: (ctx: IterableContext) => void;
+	/**
+	 * Exit a parse tree produced by `LSLParser.iterable`.
+	 * @param ctx the parse tree
+	 */
+	exitIterable?: (ctx: IterableContext) => void;
 	/**
 	 * Enter a parse tree produced by `LSLParser.forexpressionlist`.
 	 * @param ctx the parse tree
