@@ -530,7 +530,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 	getR(position: Position) {
 		if (!this.tokens)
-			return;
+			return [];
 		const idx = this.tokens.find(e =>
 			e.line == position.row + 1
 			&& e.column <= position.col
