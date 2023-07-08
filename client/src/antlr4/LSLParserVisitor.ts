@@ -29,6 +29,7 @@ import { State_bodyContext } from "./LSLParser";
 import { EventContext } from "./LSLParser";
 import { Compound_statementContext } from "./LSLParser";
 import { StatementContext } from "./LSLParser";
+import { Jump_labelContext } from "./LSLParser";
 import { IterableContext } from "./LSLParser";
 import { ForexpressionlistContext } from "./LSLParser";
 import { FuncexpressionlistContext } from "./LSLParser";
@@ -209,6 +210,12 @@ export default class LSLParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitStatement?: (ctx: StatementContext) => Result;
+	/**
+	 * Visit a parse tree produced by `LSLParser.jump_label`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitJump_label?: (ctx: Jump_labelContext) => Result;
 	/**
 	 * Visit a parse tree produced by `LSLParser.iterable`.
 	 * @param ctx the parse tree

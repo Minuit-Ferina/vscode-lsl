@@ -29,6 +29,7 @@ import { State_bodyContext } from "./LSLParser";
 import { EventContext } from "./LSLParser";
 import { Compound_statementContext } from "./LSLParser";
 import { StatementContext } from "./LSLParser";
+import { Jump_labelContext } from "./LSLParser";
 import { IterableContext } from "./LSLParser";
 import { ForexpressionlistContext } from "./LSLParser";
 import { FuncexpressionlistContext } from "./LSLParser";
@@ -310,6 +311,16 @@ export default class LSLParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitStatement?: (ctx: StatementContext) => void;
+	/**
+	 * Enter a parse tree produced by `LSLParser.jump_label`.
+	 * @param ctx the parse tree
+	 */
+	enterJump_label?: (ctx: Jump_labelContext) => void;
+	/**
+	 * Exit a parse tree produced by `LSLParser.jump_label`.
+	 * @param ctx the parse tree
+	 */
+	exitJump_label?: (ctx: Jump_labelContext) => void;
 	/**
 	 * Enter a parse tree produced by `LSLParser.iterable`.
 	 * @param ctx the parse tree
