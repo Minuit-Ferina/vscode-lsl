@@ -16,7 +16,7 @@
 			"include": "#comments"
 		},
 		{
-			"match": "\\b(break|case|continue|default|state|do|else|for|goto|if|return|switch|while)\\b",
+			"match": "\\b(jump|break|case|continue|default|state|do|else|for|goto|if|return|switch|while)\\b",
 			"name": "keyword.control.lsl"
 		},
 		{
@@ -225,7 +225,7 @@
 			"include": "#parens"
 		},
 		{
-			"begin": "(?!(?:state|while|for|do|if|else|goto|switch|catch|return|break|case|continue|default|state|float|integer|key|list|rotation|string|vector|TRUE|FALSE|if|elif|else|endif|ifdef|ifndef|define|undef|include|error|warning)\\s*\\()(?=[a-zA-Z_][a-zA-Z0-9_]*\\s*\\()",
+			"begin": "(?!(?:state|while|for|do|if|else|goto|switch|catch|return|break|@|jump|case|continue|default|state|float|integer|key|list|rotation|string|vector|TRUE|FALSE|if|elif|else|endif|ifdef|ifndef|define|undef|include|error|warning)\\s*\\()(?=[a-zA-Z_][a-zA-Z0-9_]*\\s*\\()",
 			"end": "(?<=\\))",
 			"name": "meta.function.lsl",
 			"patterns": [
