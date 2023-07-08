@@ -19,7 +19,7 @@ export async function providerDocumentSymbols(document: vscode.TextDocument, tok
 	token.onCancellationRequested(() => {
 		doc.parser.cancel();
 	});
-	const ret = doc.parser.getDocumentSymboles(document.getText());
+	const ret = await doc.parser.getDocumentSymboles(document.getText());
 
 	if (ret) {
 		const t = SymbolsNode2DocumentSymboles(ret, token);
@@ -47,7 +47,15 @@ function SymbolsNode2DocumentSymboles(sym: SymbolsNode, token: vscode.Cancellati
 
 	const out = new Array<vscode.DocumentSymbol>;
 	if (kind) {
-		const docSym = new vscode.DocumentSymbol(sym.name, "", kind, sym.range.toVSCodeRange(), sym.range.toVSCodeRange());
+		const docSym = new vscode.DocumentSymbol(sym.name, "", kind,
+			new vscode.Range(
+				new vscode.Position(sym.range.start.row, sym.range.start.col),
+				new vscode.Position(sym.range.end.row, sym.range.end.col)
+			),
+			new vscode.Range(
+				new vscode.Position(sym.range.start.row, sym.range.start.col),
+				new vscode.Position(sym.range.end.row, sym.range.end.col)
+			));
 
 		for (const e of sym.childrens) {
 			if (token.isCancellationRequested)

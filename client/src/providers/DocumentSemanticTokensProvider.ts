@@ -21,11 +21,11 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 		// analyze the document and return semantic tokens
 		// console.log("provideDocumentSemanticTokens");
 		const doc = documentsMap.get(document.uri.path);
-		doc.parser.getDocumentSymboles(document.getText());
-		const nodes = doc.parser.tokens.tokens.filter(
-			e => e.type === doc.parser.lexer.ruleNames.indexOf("IdentifierNondigit")
-				|| e.type === doc.parser.lexer.ruleNames.indexOf("Identifier")
-				|| e.type === doc.parser.lexer.ruleNames.indexOf("State")
+		await doc.parser.getDocumentSymboles(document.getText());
+		const nodes = doc.parser.tokens.filter(
+			e => e.type === doc.parser.lexerRulesNames.indexOf("IdentifierNondigit")
+				|| e.type === doc.parser.lexerRulesNames.indexOf("Identifier")
+				|| e.type === doc.parser.lexerRulesNames.indexOf("State")
 		);
 		const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
 		for (const e of nodes) {

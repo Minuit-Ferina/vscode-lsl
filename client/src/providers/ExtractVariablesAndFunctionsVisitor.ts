@@ -1,10 +1,32 @@
+import { Worker, workerData, parentPort } from 'worker_threads';
 import { Token, CommonToken, ParseTreeVisitor, CharStream, CommonTokenStream, ParseTreeWalker, FileStream, ParseTree, TerminalNode, ErrorNode, ErrorListener, RecognitionException, Recognizer } from 'antlr4';
 import LSLLexer from '../antlr4/LSLLexer';
-import LSLParser, { Compound_statementContext, DeclarationContext, Default_stateContext, EventContext, Function_parameterContext, Function_parametersContext, Global_functionContext, Global_variableContext, IdentifierContext, LlstateContext, LlstatesContext, Lscript_programContext, StatementContext } from '../antlr4/LSLParser';
+import LSLParser, { Compound_statementContext, DeclarationContext, Default_stateContext, EventContext, Function_parameterContext, Function_parametersContext, Global_functionContext, Global_variableContext, IdentifierContext, Jump_labelContext, LlstateContext, LlstatesContext, Lscript_programContext, StatementContext } from '../antlr4/LSLParser';
 import LSLVisitor, { } from '../antlr4/LSLParserVisitor';
 
-import { Position, Range, outputChannel } from './common';
+// import { Position, Range } from './common';
 import { encode } from 'punycode';
+
+
+
+export class Position {
+	row: number;
+	col: number;
+	constructor(row: number, col: number) {
+		this.row = row;
+		this.col = col;
+	}
+}
+export class Range {
+	start: Position;
+	end: Position;
+	constructor(start: Position, end: Position) {
+		this.start = start;
+		this.end = end;
+	}
+}
+
+
 
 export class SymbolsNode {
 	name: string;
@@ -97,6 +119,13 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	breakPosition: Position;
 
 	lslerror: lslerror;
+	uri: string;
+
+	isUptodate: boolean;
+	documentSymboles: SymbolsNode;
+	lexerRulesNames;
+
+	worker: Worker;
 
 	chars;
 	lexer;
@@ -116,6 +145,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.SymbolsTree = new IntervalTree();
 
 		this.lslerror = new lslerror;
+		this.isUptodate = false;
 	}
 
 	cancel(): Promise<boolean> {
@@ -133,25 +163,26 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			throw ("cancel");
 	}
 	llparse = (code: string) => {
-		try {
-			// this.cancelToken["isCancellationRequested"] = false;
-			this.lslerror.errorList = [];
-			this.chars = new CharStream(code);
-			this.lexer = new LSLLexer(this.chars);
+		return new Promise((resolve, reject) => {
+			this.worker = new Worker(__dirname + `/../lsl-diag.js`, { workerData: code });
+			this.worker.on('message', (message) => {
+				this.tree = message;
+				this.SymbolsTree.tree = message["SymbolsTree"]["tree"];
+				this.documentSymboles = message["docsym"];
+				this.Symbols = message["symboles"];
+				this.tokens = message["tokens"];
+				this.lexerRulesNames = message["lexerRulesNames"];
+				this.isUptodate = true;
+				resolve(this);
+			});
+			this.worker.on('error', (err)=>{ 
+				reject();
+			});
+			this.worker.on('exit', () => {
+				// reject();
+			});
+		});
 
-			this.tokens = new CommonTokenStream(this.lexer);
-			this.parser = new LSLParser(this.tokens);
-			this.parser.buildParseTrees = true;
-			this.parser.addErrorListener(this.lslerror);
-			this.tree = this.parser.lscript_program();
-			// this.parser.state = ;
-			return this.tree;
-		}
-		catch (err) {
-			// if (this.cancelPromise)
-			// this.cancelPromise(true);
-			return;
-		}
 	};
 
 	visitIdentifier = (ctx: IdentifierContext) => {
@@ -262,6 +293,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			throw ("cancel");
 		const sym = new SymbolsNode("", "statement", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
+
 		if (ctx.declaration()) {
 			const t = <any>this.visit(ctx.declaration());
 			sym.addChildrens([t]);
@@ -270,7 +302,16 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			const t = this.visit(ctx.compound_statement());
 			sym.addChildrens([t]);
 		}
+		else if (ctx.statement_list()) {
+			for (const statement of ctx.statement_list()) {
+				const t = this.visit(statement);
+				sym.addChildrens([t]);
+			}
+		}
 
+		// const childs = <any>this.visitChildren(ctx);
+		// if(childs)
+		// 	sym.addChildrens(childs);
 		return sym;
 	};
 
@@ -319,6 +360,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		// sym = stripUndefined(sym);
 		sym.stripUndefined();
+		this.documentSymboles = sym;
 		return sym;
 	};
 
@@ -380,6 +422,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		const name = ctx.Identifier().getText();
 		const type = ctx.typename().getText();
 
+		// outputChannel.appendLine("variable_declaration " + name);
+
 		const sym = new SymbolsNode(name, "variable_declaration", type, ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
 		sym.signature = type + " " + name;
@@ -389,6 +433,26 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
+
+	visitJump_label = (ctx: Jump_labelContext) => {
+		if (this.cancelToken["isCancellationRequested"])
+			throw ("cancel");
+		const name = ctx.identifier().getText();
+		// const type = ctx.typename().getText();
+
+		// outputChannel.appendLine("label_declaration " + name);
+
+		const sym = new SymbolsNode(name, "label_declaration", "", ctx.start.line - 1, ctx.start.column,
+			ctx.stop.line - 1, ctx.stop.column);
+		sym.signature = name;
+
+		this.Symbols.push(sym);
+		if (ctx.start.line <= this.breakPosition.row)
+			this.localSymbols[this.localSymbols.length - 1].push(sym);
+		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.stop.tokenIndex, sym);
+		return undefined;
+	};
+
 
 	visitEvent = (ctx: EventContext) => {
 		if (this.cancelToken["isCancellationRequested"])
@@ -418,35 +482,28 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	///////////////////////////////////////////////////////////////////////
 
 
-	public getDocumentSymboles(code: string, position?: Position) {
-		this.llparse(code);
-		this.breakPosition = new Position(99999999999999, 0);
-		try {
-			this.SymbolsTree.clear();
-			const symboles = this.visit(this.tree);
-			if (symboles)
-				symboles.stripUndefined();
-			return symboles;
-		}
-		catch (err) {
-			return;
-		}
+	public async getDocumentSymboles(code: string, position?: Position) {
+		if (!this.isUptodate)
+			await this.llparse(code);
+
+		return this.documentSymboles;
 	}
 
 
 	public getLocalSymboles(code: string, position?: Position): Array<SymbolsNode> {
-		// this.llparse(code);
+		if (!this.isUptodate)
+			this.llparse(code);
 
 		let symboles;
 
-		if (position)
-			this.breakPosition = new Position(position.row + 1, position.col);
-		else
-			this.breakPosition = new Position(99999999999999, 0);
+		// if (position)
+		// this.breakPosition = new Position(position.row + 1, position.col);
+		// else
+		// this.breakPosition = new Position(99999999999999, 0);
 
 		try {
-			this.SymbolsTree.clear();
-			symboles = this.visit(this.tree);
+			// this.SymbolsTree.clear();
+			// symboles = this.visit(this.tree);
 		}
 		catch (error) {
 			symboles = this.localSymbols;
@@ -463,12 +520,13 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	}
 
 	public getLocalSymbolesNode(code: string): Array<SymbolsNode> {
-		this.llparse(code);
+		if (!this.isUptodate)
+			this.llparse(code);
 
 		this.breakPosition = new Position(99999999999999, 0);
 
-		this.SymbolsTree.clear();
-		this.visit(this.tree);
+		// this.SymbolsTree.clear();
+		// this.visit(this.tree);
 		const symboles = this.Symbols;
 
 		// const out = new Array<SymbolsNode>;
@@ -490,7 +548,9 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	}
 
 	getR(position: Position) {
-		const idx = this.tokens.tokens.find(e =>
+		if (!this.tokens)
+			return;
+		const idx = this.tokens.find(e =>
 			e.line == position.row + 1
 			&& e.column <= position.col
 			&& e.column + e.text.length >= position.col
@@ -501,7 +561,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			return lo;
 		}
 		return [];
-
 	}
 
 	flattenLocalSymbos(symboles: SymbolsNode[][]) {
@@ -526,12 +585,14 @@ interface error {
 	msg: string,
 	e: RecognitionException
 }
-class lslerror extends ErrorListener<Token>
+export class lslerror extends ErrorListener<Token>
 {
 	errorList: Array<error>;
+	uri: string;
 	constructor() {
 		super();
 		this.errorList = [];
+		this.uri = "";
 	}
 	syntaxError(recognizer: Recognizer<Token>, offendingSymbol: Token, line: number, column: number, msg: string, e: RecognitionException): void {
 		this.errorList.push({
@@ -542,6 +603,11 @@ class lslerror extends ErrorListener<Token>
 			msg: msg,
 			e: e
 		});
+
+		// outputChannel.appendLine(`${this.uri}(${line}:${column}) ${msg}`);
+		// outputChannel.show(true);
+
 		// console.log(msg);
 	}
+
 }
