@@ -11,7 +11,7 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 	const doc = documentsMap.get(document.uri.path);
 
 	const returnList = new vscode.CompletionList();
-	doc.parser.cancelToken = token;
+	// doc.parser.cancelToken = token;
 	const ret = doc.parser.getR(Position.fromVSPosition(position));
 
 	for (const e of ret) {

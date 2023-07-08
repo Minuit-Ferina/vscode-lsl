@@ -24,9 +24,9 @@ import {
 	TransportKind
 } from 'vscode-languageclient/node';
 
-let client: LanguageClient;
+import {outputChannel} from './providers/common';
 
-let outputChannel: vscode.OutputChannel;
+let client: LanguageClient;
 
 export async function activate(context: vscode.ExtensionContext) {
 	return vscode.window.withProgress({
@@ -37,6 +37,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	}, async (progress, token) => {
 		token.onCancellationRequested(() => {
 			console.log("User canceled the long running operation");
+			outputChannel.appendLine("User canceled the long running operation");
 		});
 		// progress.report({message: "activate"});
 

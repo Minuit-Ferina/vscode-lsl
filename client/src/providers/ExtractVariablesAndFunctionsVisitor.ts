@@ -164,7 +164,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	}
 	llparse = (code: string) => {
 		return new Promise((resolve, reject) => {
-			this.worker = new Worker(__dirname + `/../lsl-diag.js`, { workerData: code });
+			this.worker = new Worker(__dirname + "/../out/lsl-diag.js", { workerData: code });
 			this.worker.on('message', (message) => {
 				this.tree = message;
 				this.SymbolsTree.tree = message["SymbolsTree"]["tree"];
@@ -175,11 +175,12 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 				this.isUptodate = true;
 				resolve(this);
 			});
-			this.worker.on('error', (err)=>{ 
+			this.worker.on('error', (err) => {
+				console.error(err);
 				reject();
 			});
 			this.worker.on('exit', () => {
-				// reject();
+				resolve(this);
 			});
 		});
 
@@ -490,9 +491,9 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	}
 
 
-	public getLocalSymboles(code: string, position?: Position): Array<SymbolsNode> {
+	public async getLocalSymboles(code: string, position?: Position): Promise<Array<SymbolsNode>> {
 		if (!this.isUptodate)
-			this.llparse(code);
+			await this.llparse(code);
 
 		let symboles;
 

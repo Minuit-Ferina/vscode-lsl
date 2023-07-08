@@ -20,6 +20,7 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 	) {
 		// analyze the document and return semantic tokens
 		// console.log("provideDocumentSemanticTokens");
+		// outputChannel.appendLine("provideDocumentSemanticTokens");
 		const doc = documentsMap.get(document.uri.path);
 		await doc.parser.getDocumentSymboles(document.getText());
 		const nodes = doc.parser.tokens.filter(
@@ -34,9 +35,9 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 
 			let type = "";
 			// doc.parser.cancelToken = token;
-			token.onCancellationRequested(() => {
-				doc.parser.cancel();
-			});
+			// token.onCancellationRequested(() => {
+			// doc.parser.cancel();
+			// });
 
 			// search in the LSL builtin functions
 			if (Functions.exist(e.text)) {
@@ -86,8 +87,11 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 					[]
 				);
 			}
+			// else
+			// outputChannel.appendLine(e.text);
 		}
 		// console.log("provideDocumentSemanticTokens done");
+		// outputChannel.appendLine("provideDocumentSemanticTokens done");
 		return tokensBuilder.build();
 	}
 };

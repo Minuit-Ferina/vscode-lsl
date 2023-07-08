@@ -3,10 +3,12 @@ import * as vscode from 'vscode';
 import { documentsMap, document } from './DocumentsMap';
 
 import { SymbolsNode } from './ExtractVariablesAndFunctionsVisitor';
+import { outputChannel } from './common';
 
 
 export async function providerDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken): Promise<vscode.DocumentSymbol[]> {
 	// console.log("providerDocumentSymbols");
+	// outputChannel.appendLine("providerDocumentSymbols");
 	let doc: document;
 
 	if (documentsMap.has(document.uri.path))
@@ -16,14 +18,15 @@ export async function providerDocumentSymbols(document: vscode.TextDocument, tok
 		doc = documentsMap.get(document.uri.path);
 	}
 
-	token.onCancellationRequested(() => {
-		doc.parser.cancel();
-	});
+	// token.onCancellationRequested(() => {
+	// doc.parser.cancel();
+	// });
 	const ret = await doc.parser.getDocumentSymboles(document.getText());
 
 	if (ret) {
 		const t = SymbolsNode2DocumentSymboles(ret, token);
 		// console.log("providerDocumentSymbols done");
+		// outputChannel.appendLine("providerDocumentSymbols done");
 		return t;
 	}
 	return [];

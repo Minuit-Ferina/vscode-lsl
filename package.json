@@ -215,7 +215,7 @@
 	"scripts": {
 		"_vscode:prepublish": "npm run compile",
 		"vscode:prepublish": "npm run esbuild-base -- --minify",
-		"esbuild-base": "npm run clean && esbuild ./client/src/extension.ts --bundle --outfile=client/out/extension.js --external:vscode --external:antlr4 --format=cjs --platform=node",
+		"esbuild-base": "npm run clean && esbuild ./client/src/extension.ts --bundle --outfile=client/out/extension.js --external:vscode --external:antlr4 --format=cjs --platform=node && esbuild ./client/src/lsl-diag.ts --outfile=client/out/lsl-diag.js --bundle --external:antlr4 --format=cjs --platform=node",
 		"esbuild": "npm run esbuild-base -- --sourcemap",
 		"es-run": "npx ./out/main.js",
 		"compile": "tsc -b",
