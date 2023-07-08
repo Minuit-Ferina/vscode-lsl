@@ -116,7 +116,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 	Symbols: Array<SymbolsNode>;
 	localSymbols: Array<Array<SymbolsNode>>;
-	breakPosition: Position;
 
 	lslerror: lslerror;
 	uri: string;
@@ -140,7 +139,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.cancelToken = {};
 		this.Symbols = new Array<SymbolsNode>;
 		this.localSymbols = new Array<Array<SymbolsNode>>;
-		this.breakPosition = new Position(99999999999999, 0);
 
 		this.SymbolsTree = new IntervalTree();
 
@@ -153,9 +151,9 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			this.cancelPromise = resolve;
 			resolve(true);
 		});
-		this.cancelToken["isCancellationRequested"] = true;
+		// this.cancelToken["isCancellationRequested"] = true;
 		// this.parser.state = 0;
-		this.parser.reset();
+		// this.parser.reset();
 		return t;
 	}
 	execCancel() {
@@ -228,8 +226,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			ctx.stop.line - 1, ctx.stop.column);
 		sym.signature = type + " " + name;
 		this.Symbols.push(sym);
-		if (ctx.start.line <= this.breakPosition.row)
-			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		this.SymbolsTree.insert(ctx.parentCtx.parentCtx.start.tokenIndex, ctx.parentCtx.parentCtx.stop.tokenIndex, sym);
 
 		return sym;
@@ -249,10 +245,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			ctx.stop.line - 1, ctx.stop.column);
 		this.Symbols.push(sym);
 
-
-
-		if (ctx.start.line <= this.breakPosition.row)
-			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		this.SymbolsTree.insert(ctx.parentCtx.start.tokenIndex, ctx.parentCtx.stop.tokenIndex, sym);
 
 		sym.signature = type + " " + name + "(";
@@ -326,8 +318,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			ctx.stop.line - 1, ctx.stop.column);
 		sym.signature = type + " " + name;
 		this.Symbols.push(sym);
-		if (ctx.start.line <= this.breakPosition.row)
-			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parser.getTokenStream().size - 1, sym);
 		return sym;
 	};
@@ -356,8 +346,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		// 		if (e)
 		// 			t2.push(...e);
 		// 	});
-		if (ctx.stop.line <= this.breakPosition.row)
-			this.localSymbols.pop();
 
 		// sym = stripUndefined(sym);
 		sym.stripUndefined();
@@ -411,8 +399,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		sym.signature = "state " + name;
 		this.Symbols.push(sym);
-		if (ctx.start.line <= this.breakPosition.row)
-			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		this.SymbolsTree.insert(ctx.parentCtx.start.tokenIndex, ctx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
@@ -429,8 +415,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 			ctx.stop.line - 1, ctx.stop.column);
 		sym.signature = type + " " + name;
 
-		if (ctx.start.line <= this.breakPosition.row)
-			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.stop.tokenIndex, sym);
 		return sym;
 	};
@@ -448,8 +432,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		sym.signature = name;
 
 		this.Symbols.push(sym);
-		if (ctx.start.line <= this.breakPosition.row)
-			this.localSymbols[this.localSymbols.length - 1].push(sym);
 		this.SymbolsTree.insert(ctx.start.tokenIndex, ctx.parentCtx.parentCtx.stop.tokenIndex, sym);
 		return undefined;
 	};
@@ -523,8 +505,6 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	public getLocalSymbolesNode(code: string): Array<SymbolsNode> {
 		if (!this.isUptodate)
 			this.llparse(code);
-
-		this.breakPosition = new Position(99999999999999, 0);
 
 		// this.SymbolsTree.clear();
 		// this.visit(this.tree);
