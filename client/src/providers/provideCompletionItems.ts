@@ -12,40 +12,41 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 
 	const returnList = new vscode.CompletionList();
 	// doc.parser.cancelToken = token;
-	const ret = doc.parser.getR(Position.fromVSPosition(position));
+	{
+		const ret = doc.parser.getR(Position.fromVSPosition(position));
+		for (const e of ret) {
+			if (token.isCancellationRequested)
+				break;
 
-	for (const e of ret) {
-		if (token.isCancellationRequested)
-			break;
-
-		// ret.forEach(e => {
-		if (e.nodeType === "variable_declaration" || e.nodeType === "function_parameter") {
-			const kind = vscode.CompletionItemKind.Variable;
-			const t = new vscode.CompletionItem(e.name,
-				kind);
-			returnList.items.push(t);
+			// ret.forEach(e => {
+			if (e.nodeType === "variable_declaration" || e.nodeType === "function_parameter") {
+				const kind = vscode.CompletionItemKind.Variable;
+				const t = new vscode.CompletionItem(e.name,
+					kind);
+				returnList.items.push(t);
+			}
 		}
 	}
+	{
+		// doc.parser.getDocumentSymboles(document.getText());
+		const ret = doc.parser.Symbols;
+		for (const e of ret) {
+			if (token.isCancellationRequested)
+				break;
 
-	// doc.parser.getDocumentSymboles(document.getText());
-	const ret2 = doc.parser.Symbols;
-	for (const e of ret2) {
-		if (token.isCancellationRequested)
-			break;
-
-		if (e.nodeType === "global_function") {
-			const kind = vscode.CompletionItemKind.Function;
-			const t = new vscode.CompletionItem(e.name,
-				kind);
-			returnList.items.push(t);
+			if (e.nodeType === "global_function") {
+				const kind = vscode.CompletionItemKind.Function;
+				const t = new vscode.CompletionItem(e.name,
+					kind);
+				returnList.items.push(t);
+			}
+			if (e.nodeType === "state") {
+				const kind = vscode.CompletionItemKind.Class;
+				const t = new vscode.CompletionItem(e.name,
+					kind);
+				returnList.items.push(t);
+			}
 		}
-		if (e.nodeType === "state") {
-			const kind = vscode.CompletionItemKind.Class;
-			const t = new vscode.CompletionItem(e.name,
-				kind);
-			returnList.items.push(t);
-		}
-
 	}
 
 	IncTrack.push(document.uri.path);
