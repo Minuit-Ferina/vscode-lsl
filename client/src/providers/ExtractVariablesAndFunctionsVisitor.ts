@@ -524,17 +524,21 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return symboles;
 	}
 
+	// return tokens that overlap the token range
 	getL(start: number, stop: number) {
 		return this.SymbolsTree.search(start, stop);
 	}
 
+	// return the tokens that overlap the document range
 	getR(position: Position) {
 		if (!this.tokens)
 			return [];
 		const idx = this.tokens.find(e =>
-			e.line == position.row + 1
-			&& e.column <= position.col
-			&& e.column + e.text.length >= position.col
+			e.line > position.row
+			|| (
+				e.line == position.row + 1
+				&& e.column <= position.col
+				&& e.column + e.text.length >= position.col)
 		);
 
 		if (idx) {
