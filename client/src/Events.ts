@@ -3,7 +3,7 @@ import {Directory} from './directory';
 export const Events = new Directory([
     {
         "name": "at_rot_target",
-        "description": "Result of llRotTarget library function call\n",
+        "description": "Result of llRotTarget library function call.",
         "returnType": "",
         "param": [
             {
@@ -25,7 +25,7 @@ export const Events = new Directory([
     },
     {
         "name": "at_target",
-        "description": "Result of llTarget library function call\n",
+        "description": "Result of llTarget library function call.",
         "returnType": "",
         "param": [
             {
@@ -71,7 +71,7 @@ export const Events = new Directory([
     },
     {
         "name": "collision",
-        "description": "Triggered while task is colliding with another task.\n",
+        "description": "Triggered while task is colliding with another task.",
         "returnType": "",
         "param": [
             {
@@ -83,7 +83,7 @@ export const Events = new Directory([
     },
     {
         "name": "collision_end",
-        "description": "Triggered when task stops colliding with another task\n",
+        "description": "Triggered when task stops colliding with another task.",
         "returnType": "",
         "param": [
             {
@@ -95,7 +95,7 @@ export const Events = new Directory([
     },
     {
         "name": "collision_start",
-        "description": "Triggered when task starts colliding with another task\n",
+        "description": "Triggered when task starts colliding with another task.",
         "returnType": "",
         "param": [
             {
@@ -107,7 +107,7 @@ export const Events = new Directory([
     },
     {
         "name": "control",
-        "description": "Result of llTakeControls library function call and user input.\n",
+        "description": "Result of llTakeControls library function call and user input.",
         "returnType": "",
         "param": [
             {
@@ -129,7 +129,7 @@ export const Events = new Directory([
     },
     {
         "name": "dataserver",
-        "description": "Triggered when task receives asynchronous data\n",
+        "description": "Triggered when task receives asynchronous data.",
         "returnType": "",
         "param": [
             {
@@ -146,7 +146,7 @@ export const Events = new Directory([
     },
     {
         "name": "email",
-        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\n",
+        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\nThe email queue is associated with the prim and any script in the prim can access it. <br/> The prim's email address is its key with \"@lsl.secondlife.com\" appended, <code>llGetKey() + \"@lsl.secondlife.com\"</code>code>; for the main beta grid set grid to aditi.",
         "returnType": "",
         "param": [
             {
@@ -171,14 +171,14 @@ export const Events = new Directory([
             },
             {
                 "name": "num_left",
-                "description": "The number of emails remaining in the email queue.[1]",
+                "description": "The number of emails remaining in the email queue.",
                 "type": "integer"
             }
         ]
     },
     {
         "name": "experience_permissions",
-        "description": "The agent has approved an experience permissions request.  This may be through interaction with the experience permission dialog or the experience profile, or automatically if the agent has previously approved the experience.\n",
+        "description": "The agent has approved an experience permissions request.  This may be through interaction with the experience permission dialog or the experience profile, or automatically if the agent has previously approved the experience.",
         "returnType": "",
         "param": [
             {
@@ -190,7 +190,7 @@ export const Events = new Directory([
     },
     {
         "name": "experience_permissions_denied",
-        "description": "The agent has denied experience permission.\n",
+        "description": "The agent has denied experience permission.\nThis event may be generated in many cases:\n* In response to a call to llRequestExperiencePermissions if any of the following is true:\n** The agent does not respond to the experience permission dialog.  This will happen after a long delay if the agent is running a viewer which doesn't understand the request or if the agent has blocked the object.\n** The agent selects \"Block Experience\" in the experience permission dialog.\n** The agent has previously blocked the experience through another experience permission dialog or through the experience profile.\n** An attachment is asking for permission from an agent other than its owner.\n** The experience cannot run on the region because it is blocked or exceeds the maturity rating of the region.\n* The experience can no longer run:\n** The script has moved to a region where the experience cannot run because it is blocked or it exceeds the maturity rating of the region.\n** The script has moved to a parcel where it is blocked or not allowed.\n** The agent has blocked the experience from the experience profile.\n** The agent has moved to a parcel where the experience cannot run.",
         "returnType": "",
         "param": [
             {
@@ -207,7 +207,7 @@ export const Events = new Directory([
     },
     {
         "name": "http_request",
-        "description": "Triggered when task receives an HTTP request.\n",
+        "description": "Triggered when task receives an HTTP request.",
         "returnType": "",
         "param": [
             {
@@ -229,7 +229,7 @@ export const Events = new Directory([
     },
     {
         "name": "http_response",
-        "description": "Triggered when task receives a response to one of its llHTTPRequests\n",
+        "description": "Triggered when task receives a response to one of its llHTTPRequest.",
         "returnType": "",
         "param": [
             {
@@ -239,7 +239,7 @@ export const Events = new Directory([
             },
             {
                 "name": "status",
-                "description": "HTTP status code (like 404 or 200)",
+                "description": "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes HTTP status code (like 404 or 200)",
                 "type": "integer"
             },
             {
@@ -256,7 +256,7 @@ export const Events = new Directory([
     },
     {
         "name": "land_collision",
-        "description": "Triggered in the root when physical object or attached avatar is colliding with land\n",
+        "description": "Triggered in the root when physical object or attached avatar is colliding with land.",
         "returnType": "",
         "param": [
             {
@@ -268,19 +268,19 @@ export const Events = new Directory([
     },
     {
         "name": "land_collision_end",
-        "description": "Triggered in the root when a physical object or attached avatar stops colliding with land\n",
+        "description": "Triggered in the root when a physical object or attached avatar stops colliding with land.",
         "returnType": "",
         "param": [
             {
                 "name": "pos",
-                "description": "position of last collision with the groun",
+                "description": "position of last collision with the ground",
                 "type": "vector"
             }
         ]
     },
     {
         "name": "land_collision_start",
-        "description": "Triggered in the root when a physical object or attached avatar starts colliding with land\n",
+        "description": "Triggered in the root when a physical object or attached avatar starts colliding with land.",
         "returnType": "",
         "param": [
             {
@@ -319,7 +319,7 @@ export const Events = new Directory([
     },
     {
         "name": "linkset_data",
-        "description": "The linkset_data event fires in all scripts in a linkset whenever the datastore has been modified through a call to one of the llLinksetData functions.\n",
+        "description": "The linkset_data event fires in all scripts in a linkset whenever the datastore has been modified through a call to one of the llLinksetData functions.\nThis event fires in all scripts in a linkset whenever the datastore is changed.",
         "returnType": "",
         "param": [
             {
@@ -341,7 +341,7 @@ export const Events = new Directory([
     },
     {
         "name": "listen",
-        "description": "Triggered by chat, use llListen to enable and filter\n",
+        "description": "Triggered by chat, use llListen to enable and filter.",
         "returnType": "",
         "param": [
             {
@@ -385,12 +385,13 @@ export const Events = new Directory([
     },
     {
         "name": "moving_end",
-        "description": "Triggered when task stops moving\n",
+        "description": "Triggered when task stops moving.",
         "returnType": "",
         "param": []
     },
     {
         "name": "moving_start",
+        "description": "Triggered when task begins moving.",
         "returnType": "",
         "param": []
     },
@@ -402,19 +403,19 @@ export const Events = new Directory([
     },
     {
         "name": "not_at_rot_target",
-        "description": "Result of llRotTarget library function call\n",
+        "description": "Result of llRotTarget library function call.",
         "returnType": "",
         "param": []
     },
     {
         "name": "not_at_target",
-        "description": "Triggered if an object has not yet reached the target set by the call to llTarget.\n",
+        "description": "Triggered if an object has not yet reached the target set by the call to llTarget.\nThis event may be triggered multiple times if the target has not been reached.",
         "returnType": "",
         "param": []
     },
     {
         "name": "object_rez",
-        "description": "Triggered when the object rezzes an object.\n",
+        "description": "Triggered when the object rezzes an object.",
         "returnType": "",
         "param": [
             {
@@ -426,7 +427,7 @@ export const Events = new Directory([
     },
     {
         "name": "on_rez",
-        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\n",
+        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\nstart_param is always zero when an object is not rezzed by llRezObject or llRezAtRoot. \n<br/>When an object is rezzed by llRezObject or llRezAtRoot, then start_param will be the value given as the last parameter of the rezzing command.\n<br/>start_param is available at any subsequent time by calling llGetStartParameter (unless it has been overridden by llRemoteLoadScriptPin).",
         "returnType": "",
         "param": [
             {
@@ -438,7 +439,7 @@ export const Events = new Directory([
     },
     {
         "name": "path_update",
-        "description": "Event description goes here.\n",
+        "description": "Event description goes here.",
         "returnType": "",
         "param": [
             {
@@ -455,7 +456,7 @@ export const Events = new Directory([
     },
     {
         "name": "remote_data",
-        "description": "Triggered by various XML-RPC calls.\n",
+        "description": "Triggered by various XML-RPC calls.",
         "returnType": "",
         "param": [
             {
@@ -492,7 +493,7 @@ export const Events = new Directory([
     },
     {
         "name": "run_time_permissions",
-        "description": "Triggered when an agent grants run time permissions to this script.\n",
+        "description": "Triggered when an agent grants run time permissions to this script.",
         "returnType": "",
         "param": [
             {
@@ -504,37 +505,37 @@ export const Events = new Directory([
     },
     {
         "name": "sensor",
-        "description": "Results from a call to either llSensor or llSensorRepeat.\n",
+        "description": "Results from a call to either llSensor or llSensorRepeat.\nThe results are ordered from nearest to furthest.\n<br/>num_detected is always greater than zero, the no_sensor event is triggered if no objects/avatars were found.",
         "returnType": "",
         "param": [
             {
                 "name": "num_detected",
-                "description": "",
+                "description": "number of objects/avatars found",
                 "type": "integer"
             }
         ]
     },
     {
         "name": "state_entry",
-        "description": "Triggered on any state transition and startup\n",
+        "description": "Triggered on any state transition and startup.",
         "returnType": "",
         "param": []
     },
     {
         "name": "state_exit",
-        "description": "Triggered on a qualifying state transition.\n",
+        "description": "Triggered on a qualifying state transition.",
         "returnType": "",
         "param": []
     },
     {
         "name": "timer",
-        "description": "Repeats the code in the timer(). Result of the llSetTimerEvent library function call.\n",
+        "description": "Repeats the code in the timer(). Result of the llSetTimerEvent library function call.",
         "returnType": "",
         "param": []
     },
     {
         "name": "touch",
-        "description": "Triggered whilst an agent is clicking the task. It will continue to be triggered until the the prim/object is stopped being clicked (it triggers multiple times).\nTriggered on touch start, each minimum event delay while held, and touch end.\n",
+        "description": "Triggered whilst an agent is clicking the task. It will continue to be triggered until the the prim/object is stopped being clicked (it triggers multiple times).\nTriggered on touch start, each minimum event delay while held, and touch end.",
         "returnType": "",
         "param": [
             {
@@ -546,7 +547,7 @@ export const Events = new Directory([
     },
     {
         "name": "touch_end",
-        "description": "Triggered when agent stops clicking on task\n",
+        "description": "Triggered when agent stops clicking on task.",
         "returnType": "",
         "param": [
             {
@@ -558,19 +559,19 @@ export const Events = new Directory([
     },
     {
         "name": "touch_start",
-        "description": "Triggered by the start of agent clicking on task\n",
+        "description": "Triggered by the start of agent clicking on task.",
         "returnType": "",
         "param": [
             {
                 "name": "num_detected",
-                "description": "",
+                "description": "Number of agents detected touching during the last clock cycle",
                 "type": "integer"
             }
         ]
     },
     {
         "name": "transaction_result",
-        "description": "Triggered when task receives asynchronous data\n",
+        "description": "Triggered when task receives asynchronous data.",
         "returnType": "",
         "param": [
             {
