@@ -18,7 +18,6 @@ export const Events = new Directory([
         "name": "at_rot_target",
         "description": "Result of llRotTarget library function call\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/At_rot_target",
         "param": [
             {
                 "name": "handle",
@@ -41,7 +40,6 @@ export const Events = new Directory([
         "name": "at_target",
         "description": "Result of llTarget library function call\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/At_target",
         "param": [
             {
                 "name": "tnum",
@@ -64,7 +62,6 @@ export const Events = new Directory([
         "name": "changed",
         "description": "Various changes to the object/prim trigger this event.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Changed",
         "param": [
             {
                 "name": "change",
@@ -77,7 +74,6 @@ export const Events = new Directory([
         "name": "collision",
         "description": "Triggered while task is colliding with another task.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Collision",
         "param": [
             {
                 "name": "num_detected",
@@ -90,7 +86,6 @@ export const Events = new Directory([
         "name": "collision_end",
         "description": "Triggered when task stops colliding with another task\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Collision_end",
         "param": [
             {
                 "name": "num_detected",
@@ -103,7 +98,6 @@ export const Events = new Directory([
         "name": "collision_start",
         "description": "Triggered when task starts colliding with another task\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Collision_start",
         "param": [
             {
                 "name": "num_detected",
@@ -116,7 +110,6 @@ export const Events = new Directory([
         "name": "control",
         "description": "Result of llTakeControls library function call and user input.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Control",
         "param": [
             {
                 "name": "id",
@@ -139,7 +132,6 @@ export const Events = new Directory([
         "name": "dataserver",
         "description": "Triggered when task receives asynchronous data\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Dataserver",
         "param": [
             {
                 "name": "queryid",
@@ -157,7 +149,6 @@ export const Events = new Directory([
         "name": "email",
         "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Email",
         "param": [
             {
                 "name": "time",
@@ -190,7 +181,6 @@ export const Events = new Directory([
         "name": "experience_permissions",
         "description": "The agent has approved an experience permissions request.  This may be through interaction with the experience permission dialog or the experience profile, or automatically if the agent has previously approved the experience.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Experience_permissions",
         "param": [
             {
                 "name": "agent_id",
@@ -203,7 +193,6 @@ export const Events = new Directory([
         "name": "experience_permissions_denied",
         "description": "The agent has denied experience permission.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Experience_permissions_denied",
         "param": [
             {
                 "name": "agent_id",
@@ -221,7 +210,6 @@ export const Events = new Directory([
         "name": "http_request",
         "description": "Triggered when task receives an HTTP request.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Http_request",
         "param": [
             {
                 "name": "request_id",
@@ -244,7 +232,6 @@ export const Events = new Directory([
         "name": "http_response",
         "description": "Triggered when task receives a response to one of its llHTTPRequests\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Http_response",
         "param": [
             {
                 "name": "request_id",
@@ -272,7 +259,6 @@ export const Events = new Directory([
         "name": "land_collision",
         "description": "Triggered in the root when physical object or attached avatar is colliding with land\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Land_collision",
         "param": [
             {
                 "name": "pos",
@@ -285,7 +271,6 @@ export const Events = new Directory([
         "name": "land_collision_end",
         "description": "Triggered in the root when a physical object or attached avatar stops colliding with land\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Land_collision_end",
         "param": [
             {
                 "name": "pos",
@@ -298,7 +283,6 @@ export const Events = new Directory([
         "name": "land_collision_start",
         "description": "Triggered in the root when a physical object or attached avatar starts colliding with land\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Land_collision_start",
         "param": [
             {
                 "name": "pos",
@@ -311,7 +295,6 @@ export const Events = new Directory([
         "name": "linkset_data",
         "description": "The linkset_data event fires in all scripts in a linkset whenever the datastore has been modified through a call to one of the llLinksetData functions.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Linkset_data",
         "param": [
             {
                 "name": "action",
@@ -362,7 +345,6 @@ export const Events = new Directory([
         "name": "listen",
         "description": "Triggered by chat, use llListen to enable and filter\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Listen",
         "param": [
             {
                 "name": "channel",
@@ -390,7 +372,6 @@ export const Events = new Directory([
         "name": "money",
         "description": "Triggered when money is paid to the prim in the amount by id.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Money",
         "param": [
             {
                 "name": "id",
@@ -408,45 +389,30 @@ export const Events = new Directory([
         "name": "moving_end",
         "description": "Triggered when task stops moving\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Moving_end",
         "param": []
     },
     {
         "name": "moving_start",
         "description": "Triggered when task begins moving\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Moving_start",
         "param": []
     },
     {
         "name": "not_at_rot_target",
         "description": "Result of llRotTarget library function call\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Not_at_rot_target",
-        "param": [
-        ]
+        "param": []
     },
     {
         "name": "not_at_target",
         "description": "Triggered if an object has not yet reached the target set by the call to llTarget.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Not_at_target",
-        "param": [
-        ]
-    },
-    {
-        "name": "no_sensor",
-        "description": "Result of a call to llSensor or llSensorRepeat.\n",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/No_sensor",
-        "param": [
-        ]
+        "param": []
     },
     {
         "name": "object_rez",
         "description": "Triggered when the object rezzes an object.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Object_rez",
         "param": [
             {
                 "name": "id",
@@ -459,7 +425,6 @@ export const Events = new Directory([
         "name": "on_rez",
         "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/On_rez",
         "param": [
             {
                 "name": "start_param",
@@ -472,7 +437,6 @@ export const Events = new Directory([
         "name": "path_update",
         "description": "Event description goes here.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Path_update",
         "param": [
             {
                 "name": "type",
@@ -490,7 +454,6 @@ export const Events = new Directory([
         "name": "remote_data",
         "description": "Triggered by various XML-RPC calls.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Remote_data",
         "param": [
             {
                 "name": "event_type",
@@ -528,7 +491,6 @@ export const Events = new Directory([
         "name": "run_time_permissions",
         "description": "Triggered when an agent grants run time permissions to this script.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Run_time_permissions",
         "param": [
             {
                 "name": "perm",
@@ -541,7 +503,6 @@ export const Events = new Directory([
         "name": "sensor",
         "description": "Results from a call to either llSensor or llSensorRepeat.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Sensor",
         "param": [
             {
                 "name": "num_detected",
@@ -554,29 +515,24 @@ export const Events = new Directory([
         "name": "state_entry",
         "description": "Triggered on any state transition and startup\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/State_entry",
-        "param": [
-        ]
+        "param": []
     },
     {
         "name": "state_exit",
         "description": "Triggered on a qualifying state transition.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/State_exit",
         "param": []
     },
     {
         "name": "timer",
         "description": "Repeats the code in the timer(). Result of the llSetTimerEvent library function call.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Timer",
         "param": []
     },
     {
         "name": "touch",
         "description": "Triggered whilst an agent is clicking the task. It will continue to be triggered until the the prim/object is stopped being clicked (it triggers multiple times).\nTriggered on touch start, each minimum event delay while held, and touch end.\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Touch",
         "param": [
             {
                 "name": "num_detected",
@@ -589,7 +545,6 @@ export const Events = new Directory([
         "name": "touch_end",
         "description": "Triggered when agent stops clicking on task\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Touch_end",
         "param": [
             {
                 "name": "num_detected",
@@ -602,7 +557,6 @@ export const Events = new Directory([
         "name": "touch_start",
         "description": "Triggered by the start of agent clicking on task\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Touch_start",
         "param": [
             {
                 "name": "num_detected",
@@ -615,7 +569,6 @@ export const Events = new Directory([
         "name": "transaction_result",
         "description": "Triggered when task receives asynchronous data\n",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Transaction_result",
         "param": [
             {
                 "name": "id",
