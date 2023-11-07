@@ -2,19 +2,6 @@ import {Directory} from './directory';
 
 export const Events = new Directory([
     {
-        "name": "attach",
-        "description": "Triggered in an object when the object attaches or detaches from agent.\n",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Attach",
-        "param": [
-            {
-                "name": "id",
-                "description": "the avatar if attached, if not attached NULL_KEY.",
-                "type": "key"
-            }
-        ]
-    },
-    {
         "name": "at_rot_target",
         "description": "Result of llRotTarget library function call\n",
         "returnType": "",
@@ -59,8 +46,20 @@ export const Events = new Directory([
         ]
     },
     {
+        "name": "attach",
+        "description": "Triggered in an object when the object attaches or detaches from agent.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "id",
+                "description": "the avatar if attached, if not attached NULL_KEY.",
+                "type": "key"
+            }
+        ]
+    },
+    {
         "name": "changed",
-        "description": "Various changes to the object/prim trigger this event.\n",
+        "description": "Various changes to the object/prim trigger this event.\nMultiple changes can be represented in a single event, so use bitwise arithmetic.",
         "returnType": "",
         "param": [
             {
@@ -292,6 +291,33 @@ export const Events = new Directory([
         ]
     },
     {
+        "name": "link_message",
+        "description": "Triggered when the script receives a link message that was sent by a call to llMessageLinked. llMessageLinked is used to send messages from one script to another.\nd is often used as a second string field (in LSL the Typecasting between string and key types has no effect on the data contained. The sizes of r and d are only limited by available script memory.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "sender_num",
+                "description": "The link number of the prim that contained the script that called llMessageLinked.",
+                "type": "integer"
+            },
+            {
+                "name": "num",
+                "description": "Second parameter of the llMessageLinked call.",
+                "type": "integer"
+            },
+            {
+                "name": "str",
+                "description": "The message that was sent from the script that called llMessageLinked",
+                "type": "string"
+            },
+            {
+                "name": "id",
+                "description": "Fourth parameter of the llMessageLinked call.",
+                "type": "key"
+            }
+        ]
+    },
+    {
         "name": "linkset_data",
         "description": "The linkset_data event fires in all scripts in a linkset whenever the datastore has been modified through a call to one of the llLinksetData functions.\n",
         "returnType": "",
@@ -310,34 +336,6 @@ export const Events = new Directory([
                 "name": "value",
                 "description": "The new value of the pair. Empty string if pair was deleted.",
                 "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "link_message",
-        "description": "Triggered when the script receives a link message that was sent by a call to llMessageLinked. llMessageLinked is used to send messages from one script to another.\n",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/Link_message",
-        "param": [
-            {
-                "name": "sender_num",
-                "description": "The link number of the prim that contained the script that called llMessageLinked.",
-                "type": "integer"
-            },
-            {
-                "name": "num",
-                "description": "Second parameter of the llMessageLinked call.",
-                "type": "integer"
-            },
-            {
-                "name": "str",
-                "description": "The message that was sent from the script that called llMessageLinked.",
-                "type": "string"
-            },
-            {
-                "name": "id",
-                "description": "Fourth parameter of the llMessageLinked call.",
-                "type": "key"
             }
         ]
     },
@@ -393,7 +391,12 @@ export const Events = new Directory([
     },
     {
         "name": "moving_start",
-        "description": "Triggered when task begins moving\n",
+        "returnType": "",
+        "param": []
+    },
+    {
+        "name": "no_sensor",
+        "description": "Result of a call to llSensor or llSensorRepeat.",
         "returnType": "",
         "param": []
     },
