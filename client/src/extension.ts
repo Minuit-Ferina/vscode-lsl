@@ -24,7 +24,7 @@ import {
 	TransportKind
 } from 'vscode-languageclient/node';
 
-import {outputChannel} from './providers/common';
+import { outputChannel } from './providers/common';
 
 let client: LanguageClient;
 
@@ -108,7 +108,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		// Start the client. This will also launch the server
 		// client.start();
 
-		semanticProvider.register();
+		await semanticProvider.register();
 
 		vscode.languages.registerHoverProvider({ language: 'lsl', scheme: 'file' }, {
 			async provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {

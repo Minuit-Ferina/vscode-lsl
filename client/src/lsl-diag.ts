@@ -47,7 +47,14 @@ for (const e of tokens.tokens) {
 	});
 }
 try {
-	parentPort.postMessage({ tokens: outtoken,  lexerRulesNames: lexer.ruleNames, symboles: vi.Symbols, docsym: vi.documentSymboles, SymbolsTree: vi.SymbolsTree, errors: lsler.errorList });
+	parentPort.postMessage({
+		tokens: outtoken,
+		lexerRulesNames: lexer.ruleNames,
+		symboles: vi.Symbols,
+		docsym: vi.documentSymboles,
+		SymbolsTree: vi.SymbolsTree,
+		errors: lsler.errorList
+	});
 }
 catch (err) {
 	console.log(err);

@@ -144,6 +144,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 		this.lslerror = new lslerror;
 		this.isUptodate = false;
+		this.tokens = [];
 	}
 
 	cancel(): Promise<boolean> {
