@@ -110,19 +110,19 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		semanticProvider.register();
 
-		vscode.languages.registerHoverProvider("lsl", {
+		vscode.languages.registerHoverProvider({ language: 'lsl', scheme: 'file' }, {
 			async provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
 				return provideHover(document, position, token);
 			}
 		});
 
-		vscode.languages.registerDocumentSymbolProvider("lsl", {
+		vscode.languages.registerDocumentSymbolProvider({ language: 'lsl', scheme: 'file' }, {
 			async provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken) {
 				return providerDocumentSymbols(document, token);
 			}
 		});
 
-		vscode.languages.registerCompletionItemProvider("lsl", {
+		vscode.languages.registerCompletionItemProvider({ language: 'lsl', scheme: 'file' }, {
 			async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
 
 				// outputChannel.appendLine("provideCompletionItems");
@@ -132,7 +132,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 		});
 
-		vscode.languages.registerSignatureHelpProvider('lsl', {
+		vscode.languages.registerSignatureHelpProvider({ language: 'lsl', scheme: 'file' }, {
 			async provideSignatureHelp(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
 				return provideSignatureHelp(document, position, token);
 			}
