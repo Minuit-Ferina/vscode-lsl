@@ -1,4 +1,4 @@
-import {Directory} from './directory';
+import { Directory } from './directory';
 
 export const Constants = new Directory([
     {
@@ -11,7 +11,7 @@ export const Constants = new Directory([
         "name": "AGENT",
         "type": "integer",
         "value": "0x1",
-        "description": "If it is contained in the result of llDetectedType, it means it is avatar.\nIf it is used as an filter of llSensor or llSensorRepeat, it will search for avatars  legacy name. Use of this constant in this context is not recommended as AGENT_BY_LEGACY_NAME is more informative."
+        "description": "If it is contained in the result of llDetectedType, it means it is avatar.\nIf it is used as an filter of llSensor or llSensorRepeat, it will search for avatars legacy name. Use of this constant in this context is not recommended as AGENT_BY_LEGACY_NAME is more informative."
     },
     {
         "name": "AGENT_ALWAYS_RUN",
@@ -24,6 +24,12 @@ export const Constants = new Directory([
         "type": "integer",
         "value": "0x0002",
         "description": ""
+    },
+    {
+        "name": "AGENT_AUTOMATED",
+        "type": "integer",
+        "value": "0x4000",
+        "description": "Identifies an avatar as having been registered with Linden Lab as an automated/scripted agent, i.e. a .\n\nRegistration is (currently) done via the user's control panel on the Scripted Agent Status tab.\n\n'Bots are ''not'' illegal in Second Life ''per se'', but, according to the new scripted agent privacy policy, failing to register a 'bot as such is indeed forbidden.\n\nAlso note that from the perspective of the grid, it matters not ''how'' the 'bot is implemented; do not assume any technology behind it, just because an avatar has been flagged as an 'automated agent'. The flag essentially reflects the user's (voluntary) self-identification as a 'bot, without the requirement of giving any explanation, and there are a handful of different ways to \"automate\" an agent.\n\nLinden Lab, at their discretion, and based on abuse reports or direct observation, ''may'' also flag an avatar as being an automated agent, which ''will'' set the AGENT_AUTOMATED bit as well. False positives can happen; feel free to file a ticket with Linden Lab's support if your avatar was erroneously flagged as an automated agent and you cannot change it from the SL control panel."
     },
     {
         "name": "AGENT_AUTOPILOT",
@@ -131,13 +137,13 @@ export const Constants = new Directory([
         "name": "ALL_SIDES",
         "type": "integer",
         "value": "-1",
-        "description": ""
+        "description": "Selects all sides of an object in an applicable function."
     },
     {
         "name": "ANIM_ON",
         "type": "integer",
         "value": "0x01",
-        "description": ""
+        "description": "Enables a texture animation."
     },
     {
         "name": "ATTACH_AVATAR_CENTER",
@@ -623,7 +629,7 @@ export const Constants = new Directory([
         "name": "CHANGED_TELEPORT",
         "type": "integer",
         "value": "0x200",
-        "description": "The avatar this object is attached to has teleported. This event only occurs in the root prim of an attachment when the user has teleported. This event does not occur in child prims of attachments, nor does it occur due to a \"sit teleport\". If the user teleports into a parcel where their scripts are disabled then the CHANGED_TELEPORT event is dropped and does not occur even if the user moved to a script-enabled parcel."
+        "description": "The avatar this object is attached to has teleported. This event only occurs in the root prim of an attachment when the user has teleported. This event does not occur in child prims of attachments, nor does it occur due to a \"sit teleport\". If the user teleports into a parcel where their scripts are disabled then the CHANGED_TELEPORT event is queued and occurs after the user moves to a script-enabled parcel."
     },
     {
         "name": "CHANGED_TEXTURE",
@@ -641,7 +647,7 @@ export const Constants = new Directory([
         "name": "CHARACTER_AVOIDANCE_MODE",
         "type": "integer",
         "value": "5",
-        "description": "Used in the functions of pathfinding . Is combined with a mask bit flags. The default is AVOID_CHARACTERS with AVOID_DYNAMIC_OBSTACLES.\nAllows you to specify that a character should not try to avoid other characters, should not try to avoid dynamic obstacles (relatively fast moving objects and avatars), or both.\nllCreateCharacter"
+        "description": "Used in the functions of pathfinding. Is combined with a mask bit flags. The default is AVOID_CHARACTERS with AVOID_DYNAMIC_OBSTACLES.\nAllows you to specify that a character should not try to avoid other characters, should not try to avoid dynamic obstacles (relatively fast moving objects and avatars), or both."
     },
     {
         "name": "CHARACTER_DESIRED_SPEED",
@@ -653,7 +659,7 @@ export const Constants = new Directory([
         "name": "CHARACTER_DESIRED_TURN_SPEED",
         "type": "integer",
         "value": "12",
-        "description": "Used in the functions of pathfinding . Is combined with a float. The default 6 meters/second\nSpecifies the character's maximum speed while turning \nllCreateCharacter"
+        "description": "Used in the functions of pathfinding. Is combined with a float. The default 6 meters/second\nSpecifies the character's maximum speed while turning."
     },
     {
         "name": "CHARACTER_LENGTH",
@@ -665,25 +671,25 @@ export const Constants = new Directory([
         "name": "CHARACTER_MAX_ACCEL",
         "type": "integer",
         "value": "8",
-        "description": "Used in the functions of pathfinding . Is combined with a float. The default 20 meters/s(-2).\nSpecifies the character's maximum acceleration rate. \nllCreateCharacter"
+        "description": "Used in the functions of pathfinding. Is combined with a float. The default 20 meters/s(-2).\nSpecifies the character's maximum acceleration rate."
     },
     {
         "name": "CHARACTER_MAX_DECEL",
         "type": "integer",
         "value": "9",
-        "description": "Used in the functions of pathfinding . Is combined with a float. The default 30 meters/s(-2).\nSpecifies the character's maximum deceleration rate. \nllCreateCharacter"
+        "description": "Used in the functions of pathfinding. Is combined with a float. The default 30 meters/s(-2).\nSpecifies the character's maximum deceleration rate."
     },
     {
         "name": "CHARACTER_MAX_SPEED",
         "type": "integer",
         "value": "13",
-        "description": "Used in the functions of pathfinding . Is combined with a float. The default is 20 meters/second\nSpecifies the character's maximum speed .\nCan t be inferior to 0.2 meters/second and can't be superior to 50 meters/second\nllCreateCharacter"
+        "description": "Used in the functions of pathfinding. Is combined with a float. The default is 20 meters/second\nSpecifies the character's maximum speed .\nCan t be inferior to 0.2 meters/second and can't be superior to 50 meters/second."
     },
     {
         "name": "CHARACTER_MAX_TURN_RADIUS",
         "type": "integer",
         "value": "10",
-        "description": "Used in the functions of pathfinding . Is combined with a float. The default 1.25 meter.\nSpecifies the character's radius when the characters turns at the speed CHARACTER_DESIRED_TURN_SPEED\nllCreateCharacter"
+        "description": "Used in the functions of pathfinding. Is combined with a float. The default 1.25 meter.\nSpecifies the character's radius when the characters turns at the speed CHARACTER_DESIRED_TURN_SPEED."
     },
     {
         "name": "CHARACTER_ORIENTATION",
@@ -695,7 +701,7 @@ export const Constants = new Directory([
         "name": "CHARACTER_RADIUS",
         "type": "integer",
         "value": "2",
-        "description": "Constant used to indicate that the following argument is the radius of the capsule for a Pathfinding character. This is used to help denote how to interpret the size of the character."
+        "description": "Constant used to indicate that the following argument is the radius of the capsule for a Pathfinding character. This is used to help denote the size of the character."
     },
     {
         "name": "CHARACTER_STAY_WITHIN_PARCEL",
@@ -743,6 +749,12 @@ export const Constants = new Directory([
         "name": "CLICK_ACTION_BUY",
         "type": "integer",
         "value": "2",
+        "description": ""
+    },
+    {
+        "name": "CLICK_ACTION_IGNORE",
+        "type": "integer",
+        "value": "9",
         "description": ""
     },
     {
@@ -971,12 +983,12 @@ export const Constants = new Directory([
         "name": "DEG_TO_RAD",
         "type": "float",
         "value": "0.017453292519943295769236907684886f",
-        "description": ""
+        "description": "When multiplied by, converts a value in degrees to radians. Precise value is PI/180."
     },
     {
         "name": "EOF",
         "type": "string",
-        "value": "\"\\n\\n\\n\"",
+        "value": "\\n\\n\\n",
         "description": "EOF is a value returned by the dataserver event, as a result of a call to llGetNotecardLine, specifically when the requested line is past the end of the notecard. The value returned equals \"\\n\\n\\n\", which is to say, three newline characters (0x0a).\n \nEssentially, it is used to let you know when you have finished reading information (usually user configurable parameters) from a notecard, and are ready to move onto the next stage or state of the script."
     },
     {
@@ -1013,37 +1025,37 @@ export const Constants = new Directory([
         "name": "ESTATE_ACCESS_ALLOWED_AGENT_ADD",
         "type": "integer",
         "value": "4",
-        "description": "Used in input parameters of llManageEstateAccess . Add an agent to this estate's Allowed Residents list\nllManageEstateAccess"
+        "description": "Used in input parameters of llManageEstateAccess. Add an agent to this estate's Allowed Residents list."
     },
     {
         "name": "ESTATE_ACCESS_ALLOWED_AGENT_REMOVE",
         "type": "integer",
         "value": "8",
-        "description": "Used in input parameters of llManageEstateAccess . Remove an agent to this estate's Allowed Residents list\nllManageEstateAccess"
+        "description": "Used in input parameters of llManageEstateAccess. Remove an agent to this estate's Allowed Residents list."
     },
     {
         "name": "ESTATE_ACCESS_ALLOWED_GROUP_ADD",
         "type": "integer",
         "value": "16",
-        "description": "Used in input parameters of llManageEstateAccess .Add a group to this estate's Allowed groups list.\nllManageEstateAccess"
+        "description": "Used in input parameters of llManageEstateAccess .Add a group to this estate's Allowed groups list."
     },
     {
         "name": "ESTATE_ACCESS_ALLOWED_GROUP_REMOVE",
         "type": "integer",
         "value": "32",
-        "description": "Used in input parameters of llManageEstateAccess . Remove the group from this estate's Allowed groups list.\nllManageEstateAccess"
+        "description": "Used in input parameters of llManageEstateAccess. Remove the group from this estate's Allowed groups list."
     },
     {
         "name": "ESTATE_ACCESS_BANNED_AGENT_ADD",
         "type": "integer",
         "value": "64",
-        "description": "Used in input parameters of llManageEstateAccess. Add the agent to this estate's Banned residents list.\nllManageEstateAccess"
+        "description": "Used in input parameters of llManageEstateAccess. Add the agent to this estate's Banned residents list."
     },
     {
         "name": "ESTATE_ACCESS_BANNED_AGENT_REMOVE",
         "type": "integer",
         "value": "128",
-        "description": "Used in input parameters of llManageEstateAccess . Remove the agent from this estate's Banned residents list.\nllManageEstateAccess"
+        "description": "Used in input parameters of llManageEstateAccess. Remove the agent from this estate's Banned residents list."
     },
     {
         "name": "FALSE",
@@ -1055,6 +1067,168 @@ export const Constants = new Directory([
         "name": "FORCE_DIRECT_PATH",
         "type": "integer",
         "value": "1",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_AXIS_LEFTX",
+        "type": "integer",
+        "value": "0x0",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_AXIS_LEFTY",
+        "type": "integer",
+        "value": "0x1",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_AXIS_RIGHTX",
+        "type": "integer",
+        "value": "0x2",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_AXIS_RIGHTY",
+        "type": "integer",
+        "value": "0x3",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_AXIS_TRIGGERLEFT",
+        "type": "integer",
+        "value": "0x4",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_AXIS_TRIGGERRIGHT",
+        "type": "integer",
+        "value": "0x5",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_A",
+        "type": "integer",
+        "value": "0x0",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_B",
+        "type": "integer",
+        "value": "0x1",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_BACK",
+        "type": "integer",
+        "value": "0x4",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_DPAD_DOWN",
+        "type": "integer",
+        "value": "0xb",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_DPAD_LEFT",
+        "type": "integer",
+        "value": "0xc",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_DPAD_RIGHT",
+        "type": "integer",
+        "value": "0xd",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_DPAD_UP",
+        "type": "integer",
+        "value": "0xb",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_GUIDE",
+        "type": "integer",
+        "value": "0x5",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_LEFTSHOULDER",
+        "type": "integer",
+        "value": "0x9",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_LEFTSTICK",
+        "type": "integer",
+        "value": "0x7",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_MISC1",
+        "type": "integer",
+        "value": "0xe",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_PADDLE1",
+        "type": "integer",
+        "value": "0xf",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_PADDLE2",
+        "type": "integer",
+        "value": "0x10",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_PADDLE3",
+        "type": "integer",
+        "value": "0x11",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_PADDLE4",
+        "type": "integer",
+        "value": "0x12",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_RIGHTSHOULDER",
+        "type": "integer",
+        "value": "0xa",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_RIGHTSTICK",
+        "type": "integer",
+        "value": "0x8",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_START",
+        "type": "integer",
+        "value": "0x6",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_TOUCHPAD",
+        "type": "integer",
+        "value": "0x13",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_X",
+        "type": "integer",
+        "value": "0x2",
+        "description": ""
+    },
+    {
+        "name": "GAME_CONTROL_BUTTON_Y",
+        "type": "integer",
+        "value": "0x3",
         "description": ""
     },
     {
@@ -1301,13 +1475,13 @@ export const Constants = new Directory([
         "name": "KFM_FORWARD",
         "type": "integer",
         "value": "0",
-        "description": "Specify the playback mode used in llSetKeyframedMotion . It s the default playback mode . It plays the frames in this order frame1, frame2 .. frame N And stops after"
+        "description": "Specify the playback mode used in llSetKeyframedMotion. It s the default playback mode. It plays the frames in this order frame1, frame2 .. frame N And stops after."
     },
     {
         "name": "KFM_LOOP",
         "type": "integer",
         "value": "1",
-        "description": "specify the playback mode used in llSetKeyframedMotion : will play the frames in the order  number 1 , number 2 ... number N , returns to the intitial position , plays number 1 , nummber 2 .."
+        "description": "specify the playback mode used in llSetKeyframedMotion : will play the frames in the order number 1, number 2 ... number N, returns to the intitial position, plays number 1, nummber 2 .."
     },
     {
         "name": "KFM_MODE",
@@ -1325,7 +1499,7 @@ export const Constants = new Directory([
         "name": "KFM_REVERSE",
         "type": "integer",
         "value": "3",
-        "description": "Specify the playback mode used in llSetKeyframedMotion .  It plays the frames in this order frameN, frameN-1 .. frame 2 , frame 1 . And stops after"
+        "description": "Specify the playback mode used in llSetKeyframedMotion.  It plays the frames in this order frameN, frameN-1 .. frame 2, frame 1. And stops after."
     },
     {
         "name": "KFM_ROTATION",
@@ -1379,31 +1553,31 @@ export const Constants = new Directory([
         "name": "LINK_ALL_CHILDREN",
         "type": "integer",
         "value": "-3",
-        "description": ""
+        "description": "Targets all the prims in the linkset, except the root."
     },
     {
         "name": "LINK_ALL_OTHERS",
         "type": "integer",
         "value": "-2",
-        "description": "This does the opposite of LINK_THIS"
+        "description": "Targets all the other prims in the linkset, except the one the script resides in.\n\nThe opposite of LINK_THIS."
     },
     {
         "name": "LINK_ROOT",
         "type": "integer",
         "value": "1",
-        "description": ""
+        "description": "Targets the root prim in the linkset."
     },
     {
         "name": "LINK_SET",
         "type": "integer",
         "value": "-1",
-        "description": ""
+        "description": "Targets all the prims in the linkset."
     },
     {
         "name": "LINK_THIS",
         "type": "integer",
         "value": "-4",
-        "description": "Causes the script to act only upon the prim the script is in. \n\nThe opposite flag of this is LINK_ALL_OTHERS."
+        "description": "Targets the prim the script resides in.\n\nThe opposite flag of this is LINK_ALL_OTHERS."
     },
     {
         "name": "LIST_STAT_GEOMETRIC_MEAN",
@@ -1451,7 +1625,7 @@ export const Constants = new Directory([
         "name": "LIST_STAT_STD_DEV",
         "type": "integer",
         "value": "5",
-        "description": "Calculates the sample standard deviation of a list of numbers.\n<source lang"
+        "description": "Calculates the ''sample'' standard deviation of a list of numbers."
     },
     {
         "name": "LIST_STAT_SUM",
@@ -1469,7 +1643,7 @@ export const Constants = new Directory([
         "name": "LOOP",
         "type": "integer",
         "value": "0x02",
-        "description": ""
+        "description": "Causes a texture animation to loop."
     },
     {
         "name": "MASK_BASE",
@@ -1523,7 +1697,7 @@ export const Constants = new Directory([
         "name": "OBJECT_BODY_SHAPE_TYPE",
         "type": "integer",
         "value": "26",
-        "description": "This is a flag used with llGetObjectDetails to get the \"gender\" setting of an avatar's currently worn shape.\n\nIf id is not an avatar, -1.0 is returned.\n\nNormal operational values are in the range. 0.0 is standard female setting, 1.0 is standard male setting. Intermediate values with visible differences are possible with manually crafted shapes.\n\nNote that this value ''only'' reflects the currently worn shape. The avatar itself has no defined gender, and no information is available about the the avatar's human operator."
+        "description": "This is a flag used with llGetObjectDetails to get the \"gender\" setting of an avatar's currently worn shape.\n\nIf id is not an avatar, -1.0 is returned.\n\nNormal operational values are in the range [0.0, 1.0]. 0.0 is standard female setting, 1.0 is standard male setting. Intermediate values with visible differences are possible with manually crafted shapes.\n\nNote that this value ''only'' reflects the currently worn shape. The avatar itself has no defined gender, and no information is available about the the avatar's human operator."
     },
     {
         "name": "OBJECT_CHARACTER_TIME",
@@ -1565,7 +1739,7 @@ export const Constants = new Directory([
         "name": "OBJECT_HOVER_HEIGHT",
         "type": "integer",
         "value": "25",
-        "description": "This is a flag used with hover height of the avatar.\n\nIf id is not an avatar, 0.0 is returned. Normal values are in the range  with a default of 0.0.\n\nThis value does ''not'' reflect the avatar shape's \"Hover\" slider, only the dynamic viewer setting (right-click on your avatar and pick \"Hover Height\")."
+        "description": "This is a flag used with hover height of the avatar.\n\nIf id is not an avatar, 0.0 is returned. Normal values are in the range [-2.0, 2.0] with a default of 0.0.\n\nThis value does ''not'' reflect the avatar shape's \"Hover\" slider, only the dynamic viewer setting (right-click on your avatar and pick \"Hover Height\")."
     },
     {
         "name": "OBJECT_LAST_OWNER_ID",
@@ -1697,7 +1871,7 @@ export const Constants = new Directory([
         "name": "OBJECT_SERVER_COST",
         "type": "integer",
         "value": "14",
-        "description": "This is a flag used with llGetObjectDetails to get the http://wiki.secondlife.com/wiki/Mesh/Mesh_Server_Weight object cost] of the object."
+        "description": "This is a flag used with llGetObjectDetails to get the object cost of the object."
     },
     {
         "name": "OBJECT_STREAMING_COST",
@@ -1991,7 +2165,7 @@ export const Constants = new Directory([
         "name": "PARCEL_MEDIA_COMMAND_LOOP_SET",
         "type": "integer",
         "value": "13",
-        "description": "Use this to get or set the parcel's media loop duration. It may not be functional. See  for detail."
+        "description": "Use this to get or set the parcel's media loop duration. It may not be functional. See for detail."
     },
     {
         "name": "PARCEL_MEDIA_COMMAND_PAUSE",
@@ -2201,19 +2375,19 @@ export const Constants = new Directory([
         "name": "PI",
         "type": "float",
         "value": "3.1415926535897932384626433832795f",
-        "description": ""
+        "description": ". The number of radians in a half circle."
     },
     {
         "name": "PI_BY_TWO",
         "type": "float",
         "value": "1.5707963267948966192313216916398f",
-        "description": ""
+        "description": "PI/2. The number of radians in a quarter circle."
     },
     {
         "name": "PING_PONG",
         "type": "integer",
         "value": "0x08",
-        "description": ""
+        "description": "Causes a texture animation to play forward first, then in reverse."
     },
     {
         "name": "PRIM_ALLOW_UNSIT",
@@ -2708,70 +2882,82 @@ export const Constants = new Directory([
         "description": "Agents may only be seated on this prim using llSitOnLink.  Attempts to do a manual sit will fail.  This flag applies even outside of an experience enabled region.\n\nIf any prim in a linkset has PRIM_SCRIPTED_SIT_ONLY set and no other prim in the linkset has a sit target then an avatar cannot manually sit on the object.\n\nIf some other prim in the linkset does have a sit target (that is not filled or marked PRIM_SCRIPTED_SIT_ONLY), the agent can sit on that prim"
     },
     {
+        "name": "PRIM_SCULPT_FLAG_ANIMESH",
+        "type": "integer",
+        "value": "0x20",
+        "description": "PRIM_SCULPT_FLAG_ANIMESH is a read-only flag set when the object is an Animated mesh."
+    },
+    {
         "name": "PRIM_SCULPT_FLAG_INVERT",
         "type": "integer",
         "value": "0x40",
-        "description": "PRIM_SCULPT_FLAG_INVERT will cause the sculpted prim to render inside out. It works by inverting the Normal of each polygon that makes up the sculpted prim.\n\nSculpted Prims: FAQ\nsculpt_types"
+        "description": "PRIM_SCULPT_FLAG_INVERT will cause the sculpted prim to render inside out. It works by inverting the Normal of each polygon that makes up the sculpted prim."
     },
     {
         "name": "PRIM_SCULPT_FLAG_MIRROR",
         "type": "integer",
         "value": "0x80",
-        "description": "PRIM_SCULPT_FLAG_MIRROR will cause a mirror of the sculpted prim to rendered. The sculpted prim is mirrored over the X axis.\n\nSculpted Prims: FAQ\nsculpt_types"
+        "description": "PRIM_SCULPT_FLAG_MIRROR will cause a mirror of the sculpted prim to rendered. The sculpted prim is mirrored over the X axis."
     },
     {
         "name": "PRIM_SCULPT_TYPE_CYLINDER",
         "type": "integer",
         "value": "4",
-        "description": "When used in conjunction with PRIM_TYPE_SCULPT a cylinder type sculpty is produced. It does this by stitching the left side to right.\nsculpt_types"
+        "description": "When used in conjunction with PRIM_TYPE_SCULPT a cylinder type sculpty is produced. It does this by stitching the left side to right."
     },
     {
         "name": "PRIM_SCULPT_TYPE_MASK",
         "type": "integer",
         "value": "7",
-        "description": "PRIM_SCULPT_TYPE_MASK can be used when parsing the output of llGetPrimitiveParams when dealing with sculpted prims (PRIM_TYPE_SCULPT) to separate the sculpted type from the flags (PRIM_SCULPT_FLAG_INVERT and PRIM_SCULPT_FLAG_MIRROR) that can modify it.\n\nSculpted Prims: FAQ\nsculpt_types"
+        "description": "PRIM_SCULPT_TYPE_MASK can be used when parsing the output of llGetPrimitiveParams when dealing with sculpted prims (PRIM_TYPE_SCULPT) to separate the sculpted type from the flags (PRIM_SCULPT_FLAG_INVERT and PRIM_SCULPT_FLAG_MIRROR) that can modify it."
+    },
+    {
+        "name": "PRIM_SCULPT_TYPE_MESH",
+        "type": "integer",
+        "value": "5",
+        "description": "When used in conjunction with a Mesh object produced."
     },
     {
         "name": "PRIM_SCULPT_TYPE_PLANE",
         "type": "integer",
         "value": "3",
-        "description": "When used in conjunction with  a plane type sculpty is produced. No stitching or converging is performed.\nsculpt_types"
+        "description": "When used in conjunction with a plane type sculpty is produced. No stitching or converging is performed."
     },
     {
         "name": "PRIM_SCULPT_TYPE_SPHERE",
         "type": "integer",
         "value": "1",
-        "description": "When used in conjunction with  a sphere type sculpty is produced. It does this by stitching the left side to right then separately converging the top & bottom.\nsculpt_types"
+        "description": "When used in conjunction with a sphere type sculpty is produced. It does this by stitching the left side to right then separately converging the top & bottom."
     },
     {
         "name": "PRIM_SCULPT_TYPE_TORUS",
         "type": "integer",
         "value": "2",
-        "description": "When used in conjunction with  a torus type sculpty is produced. It does this by stitching the top to bottom and the left side to right.\nsculpt_types"
+        "description": "When used in conjunction with a torus type sculpty is produced. It does this by stitching the top to bottom and the left side to right."
     },
     {
         "name": "PRIM_SHINY_HIGH",
         "type": "integer",
         "value": "3",
-        "description": ""
+        "description": "Sets the highest intensity legacy shininess."
     },
     {
         "name": "PRIM_SHINY_LOW",
         "type": "integer",
         "value": "1",
-        "description": ""
+        "description": "Sets the lowest intensity legacy shininess."
     },
     {
         "name": "PRIM_SHINY_MEDIUM",
         "type": "integer",
         "value": "2",
-        "description": ""
+        "description": "Sets a medium intensity legacy shininess."
     },
     {
         "name": "PRIM_SHINY_NONE",
         "type": "integer",
         "value": "0",
-        "description": ""
+        "description": "Disables legacy shininess."
     },
     {
         "name": "PRIM_SIT_TARGET",
@@ -2891,13 +3077,13 @@ export const Constants = new Directory([
         "name": "PROFILE_NONE",
         "type": "integer",
         "value": "0",
-        "description": ""
+        "description": "Disables script profiling."
     },
     {
         "name": "PROFILE_SCRIPT_MEMORY",
         "type": "integer",
         "value": "1",
-        "description": ""
+        "description": "Enables script memory profiling, tracking the maximum amount of memory consumed while it is active."
     },
     {
         "name": "PUBLIC_CHANNEL",
@@ -2909,7 +3095,7 @@ export const Constants = new Directory([
         "name": "RAD_TO_DEG",
         "type": "float",
         "value": "57.295779513082320876798154814105f",
-        "description": ""
+        "description": "When multiplied by, converts a value in radians to degrees. Precise value is 180/PI."
     },
     {
         "name": "RC_DATA_FLAGS",
@@ -3071,19 +3257,19 @@ export const Constants = new Directory([
         "name": "REVERSE",
         "type": "integer",
         "value": "0x04",
-        "description": ""
+        "description": "Reverses the direction of a texture animation, playing it from end to start."
     },
     {
         "name": "ROTATE",
         "type": "integer",
         "value": "0x20",
-        "description": "A flag used with llSetTextureAnim to indicate the rotation style of texture animation."
+        "description": "Causes a texture animation to change the texture's rotation. Cannot be combined with SCALE."
     },
     {
         "name": "SCALE",
         "type": "integer",
         "value": "0x40",
-        "description": ""
+        "description": "Causes a texture animation to change the texture's scale. Cannot be combined with ROTATE."
     },
     {
         "name": "SCRIPTED",
@@ -3257,13 +3443,13 @@ export const Constants = new Directory([
         "name": "SMOOTH",
         "type": "integer",
         "value": "0x010",
-        "description": ""
+        "description": "Causes a texture animation to move smoothly between frames, instead of instant changes."
     },
     {
         "name": "SQRT2",
         "type": "float",
         "value": "1.4142135623730950488016887242097f",
-        "description": ""
+        "description": "The square root of two."
     },
     {
         "name": "STATUS_BLOCK_GRAB",
@@ -3473,7 +3659,7 @@ export const Constants = new Directory([
         "name": "TWO_PI",
         "type": "float",
         "value": "6.283185307179586476925286766559f",
-        "description": ""
+        "description": "Two times PI. The number of radians in a full circle."
     },
     {
         "name": "TYPE_FLOAT",
@@ -3707,7 +3893,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_LINEAR_MOTOR_OFFSET",
         "type": "integer",
         "value": "20",
-        "description": "Used with llSetVehicleVectorParam to set the offset for where the linear motor is to be applied from the vehicle's center of mass."
+        "description": "Used with llSetVehicleVectorParam to set the offset for where the linear motor is to be applied from the vehicle's center of mass.\n\nIf the vehicle does not set the VEHICLE_LINEAR_MOTOR_OFFSET, then it defaults to <0.0, 0.0, 0.0>."
     },
     {
         "name": "VEHICLE_LINEAR_MOTOR_TIMESCALE",
@@ -3779,12 +3965,12 @@ export const Constants = new Directory([
         "name": "ZERO_ROTATION",
         "type": "rotation",
         "value": "<0.0, 0.0, 0.0, 1.0>",
-        "description": ""
+        "description": "Represents a rotation that causes no change, that is, an identity rotation. The default value for a variable of rotation type."
     },
     {
         "name": "ZERO_VECTOR",
         "type": "vector",
         "value": "<0.0, 0.0, 0.0>",
-        "description": ""
+        "description": "The default value for a variable of vector type."
     }
 ]);

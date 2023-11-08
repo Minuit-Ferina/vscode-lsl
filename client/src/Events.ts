@@ -112,7 +112,7 @@ export const Events = new Directory([
         "param": [
             {
                 "name": "id",
-                "description": "avatar  UUID",
+                "description": "avatar UUID",
                 "type": "key"
             },
             {
@@ -146,7 +146,7 @@ export const Events = new Directory([
     },
     {
         "name": "email",
-        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\nThe email queue is associated with the prim and any script in the prim can access it. <br/> The prim's email address is its key with \"@lsl.secondlife.com\" appended, <code>llGetKey() + \"@lsl.secondlife.com\"</code>code>; for the main beta grid set grid to aditi.",
+        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\nThe email queue is associated with the prim and any script in the prim can access it.\nThe prim's email address is its key with \"@lsl.secondlife.com\" appended, llGetKey() + \"@lsl.secondlife.com\".",
         "returnType": "",
         "param": [
             {
@@ -195,13 +195,40 @@ export const Events = new Directory([
         "param": [
             {
                 "name": "agent_id",
-                "description": "avatar  UUID that denied permission.",
+                "description": "avatar UUID that denied permission.",
                 "type": "key"
             },
             {
                 "name": "reason",
                 "description": "Reason for denial; one of the Experience Tools XP_ERROR_* errors flags.",
                 "type": "integer"
+            }
+        ]
+    },
+    {
+        "name": "game_control",
+        "description": "Experimental event only available in some testing regions (soon). Triggered when compatible viewer sends fresh GameControlInput message, but only for scripts on attachments or seat.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "id",
+                "description": "avatar UUID",
+                "type": "key"
+            },
+            {
+                "name": "button_levels",
+                "description": "bitfield of buttons held down",
+                "type": "integer"
+            },
+            {
+                "name": "button_edges",
+                "description": "bitfield of buttons that have changed",
+                "type": "integer"
+            },
+            {
+                "name": "axes",
+                "description": "list of axes values in range [-1, 1]",
+                "type": "list"
             }
         ]
     },
@@ -292,7 +319,7 @@ export const Events = new Directory([
     },
     {
         "name": "link_message",
-        "description": "Triggered when the script receives a link message that was sent by a call to llMessageLinked. llMessageLinked is used to send messages from one script to another.\nd is often used as a second string field (in LSL the Typecasting between string and key types has no effect on the data contained. The sizes of r and d are only limited by available script memory.",
+        "description": "Triggered when the script receives a link message that was sent by a call to llMessageLinked. llMessageLinked is used to send messages from one script to another.\nid is often used as a second string field (in LSL the Typecasting between string and key types has no effect on the data contained. The sizes of str and id are only limited by available script memory.",
         "returnType": "",
         "param": [
             {
@@ -368,7 +395,7 @@ export const Events = new Directory([
     },
     {
         "name": "money",
-        "description": "Triggered when money is paid to the prim in the amount by id.\n",
+        "description": "Triggered when money is paid to the prim in the amount by id.",
         "returnType": "",
         "param": [
             {
@@ -427,7 +454,7 @@ export const Events = new Directory([
     },
     {
         "name": "on_rez",
-        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\nstart_param is always zero when an object is not rezzed by llRezObject or llRezAtRoot. \n<br/>When an object is rezzed by llRezObject or llRezAtRoot, then start_param will be the value given as the last parameter of the rezzing command.\n<br/>start_param is available at any subsequent time by calling llGetStartParameter (unless it has been overridden by llRemoteLoadScriptPin).",
+        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\nstart_param is always zero when an object is not rezzed by llRezObject or llRezAtRoot.\nWhen an object is rezzed by llRezObject or llRezAtRoot, then start_param will be the value given as the last parameter of the rezzing command.\nstart_param is available at any subsequent time by calling llGetStartParameter (unless it has been overridden by llRemoteLoadScriptPin).",
         "returnType": "",
         "param": [
             {
@@ -505,7 +532,7 @@ export const Events = new Directory([
     },
     {
         "name": "sensor",
-        "description": "Results from a call to either llSensor or llSensorRepeat.\nThe results are ordered from nearest to furthest.\n<br/>num_detected is always greater than zero, the no_sensor event is triggered if no objects/avatars were found.",
+        "description": "Results from a call to either llSensor or llSensorRepeat.\nThe results are ordered from nearest to furthest.\nnum_detected is always greater than zero, the no_sensor event is triggered if no objects/avatars were found.",
         "returnType": "",
         "param": [
             {
