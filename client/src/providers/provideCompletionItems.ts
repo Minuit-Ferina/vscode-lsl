@@ -46,6 +46,12 @@ export function CompletionItems(document: vscode.TextDocument, position: vscode.
 					kind);
 				returnList.items.push(t);
 			}
+			if (e.nodeType === "label_declaration") {
+				const kind = vscode.CompletionItemKind.Reference;
+				const t = new vscode.CompletionItem(e.name,
+					kind);
+				returnList.items.push(t);
+			}
 		}
 	}
 

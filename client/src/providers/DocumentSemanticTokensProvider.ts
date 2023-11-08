@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-const tokenTypes = ['event', 'class', 'interface', 'enum', 'function', 'variable', '#define'];
+const tokenTypes = ['label', 'event', 'class', 'interface', 'enum', 'function', 'variable', '#define'];
 const tokenModifiers = ['declaration', 'documentation'];
 import { documentsMap } from './DocumentsMap';
 import { Position, outputChannel } from './common';
@@ -64,15 +64,22 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 						type = "function";
 					}
 					else {
-						const ret3 = doc.parser.Symbols;
 						const t3 = ret2.filter(e2 => e2.name === e.text
 							&& (
-								e2.nodeType === "state"));
+								e2.nodeType === "label_declaration"));
 						if (t3.length > 0) {
-							type = "class";
+							type = "label";
 						}
 						else {
-							if (e.type === doc.parser.lexer.ruleNames.indexOf("State"))
+
+							const t3 = ret2.filter(e2 => e2.name === e.text
+								&& (
+									e2.nodeType === "state"));
+							if (t3.length > 0) {
+								type = "class";
+							}
+
+							else if (e.type === doc.parser.lexerRulesNames.indexOf("State"))
 								type = "class";
 
 						}
