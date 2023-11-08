@@ -1,4 +1,4 @@
-import {Directory} from './directory';
+import { Directory } from './directory';
 
 export const Functions = new Directory([
     {
@@ -15,7 +15,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAcos",
-        "description": "Returns a float that is the arccosine in radians of val",
+        "description": "Returns a float that is the arccosine in radians of val\n\nThe returned value is in the range [0.0, PI]",
         "returnType": "float",
         "param": [
             {
@@ -72,24 +72,6 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llLinkAdjustSoundVolume",
-        "description": "Adjusts volume of attached sound.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlAdjustSoundVolume",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            },
-            {
-                "name": "volume",
-                "description": "between 0.0 (silent) and 1.0 (loud) (0.0 <= volume <= 1.0)",
-                "type": "float"
-            }
-        ]
-    },
-    {
         "name": "llAgentInExperience",
         "description": "Determines whether or not the specified agent is in the script's experience.\n\nReturns a boolean (an integer) that is TRUE if the agent is in the experience and the experience can run in the current region.",
         "returnType": "integer",
@@ -103,7 +85,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAllowInventoryDrop",
-        "description": "Allows for all users without modify permissions to add inventory items to a prim.",
+        "description": "Allows for all users without modify permissions to add inventory items to a prim.\n\nTo actually do the dropping, you need to drag an item from your inventory and drop it onto the prim WHILE holding down your  key. If you've got everything right, then just before you release it, you will see the prim framed in red.\n\nOwnership of the dropped inventory item changes to the owner of the prim. Next owner permissions kick in on the item that was dropped in. Non-transfer items cannot be dropped into a prim owned by someone else.\n\nAn application might be a public \"suggestion box\" that you want to let people drop notecards into.",
         "returnType": "",
         "param": [
             {
@@ -132,7 +114,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llApplyImpulse",
-        "description": "Applies impulse to object",
+        "description": "Applies impulse to object\n\nInstantaneous impulse. llSetForce has continuous push. \"Instantaneous\" seems to mean a one second impulse.\n\nThis function actually expects momentum to be expressed in  * meters per second.\n\nSee below for an example script to accelerate an object to a specific velocity. (Alternately, use llSetVelocity)",
         "returnType": "",
         "param": [
             {
@@ -142,7 +124,7 @@ export const Functions = new Directory([
             },
             {
                 "name": "local",
-                "description": "boolean,  if TRUE momentum is treated as a local directional vector, if FALSE momentum is treated as a region directional vector",
+                "description": "boolean, if TRUE momentum is treated as a local directional vector, if FALSE momentum is treated as a region directional vector",
                 "type": "integer"
             }
         ]
@@ -159,14 +141,14 @@ export const Functions = new Directory([
             },
             {
                 "name": "local",
-                "description": "boolean,  if TRUE force is treated as a local directional vector, if FALSE force is treated as a region directional vector",
+                "description": "boolean, if TRUE force is treated as a local directional vector, if FALSE force is treated as a region directional vector",
                 "type": "integer"
             }
         ]
     },
     {
         "name": "llAsin",
-        "description": "Returns a float that is the arcsine in radians of val",
+        "description": "Returns a float that is the arcsine in radians of val\n\nThe returned value is in the range [-PI_BY_TWO]",
         "returnType": "float",
         "param": [
             {
@@ -178,7 +160,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAtan2",
-        "description": "Returns a float that is the  arctangent2 of y, x.",
+        "description": "Returns a float that is the arctangent2 of y, x.\n\nSimilar to the \"Wikipedia logo\" arctangent(y/x) except it utilizes the signs of x & y to determine the quadrant and avoids division by zero.",
         "returnType": "float",
         "param": [
             {
@@ -195,7 +177,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAttachToAvatar",
-        "description": "Attaches the object to the avatar who has granted permission to the script. The object is taken into the users inventory and attached to attach_point.",
+        "description": "Attaches the object to the avatar who has granted permission to the script. The object is taken into the users inventory and attached to attach_point.\n\nIf attach_point is zero, then the object attaches to the attach point it was most recently attached to.",
         "returnType": "",
         "param": [
             {
@@ -207,9 +189,8 @@ export const Functions = new Directory([
     },
     {
         "name": "llAttachToAvatarTemp",
-        "description": "Follows the same convention as llAttachToAvatar, with the exception that the object will not create new inventory for the user, and will disappear on detach or disconnect. Also, this function can be used on avis other than the owner (if granted permission) in which case the ownership is changed to the new wearer.",
+        "description": "Follows the same convention as llAttachToAvatar, with the exception that the object will not create new inventory for the user, and will disappear on detach or disconnect. Also, this function can be used on avis other than the owner (if granted permission) in which case the ownership is changed to the new wearer.\n\nIt should be noted that when an object is attached temporarily, a user cannot 'take' or 'drop' the object that is attached to them.  \nThe user does not have to be the owner of the object in advance; this function transfers ownership automatically (the usual permissions required to transfer objects apply).",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlAttachToAvatarTemp",
         "param": [
             {
                 "name": "attach_point",
@@ -220,7 +201,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAvatarOnLinkSitTarget",
-        "description": "Returns a key that is the UUID of the user seated on the prim.",
+        "description": "Returns a key that is the UUID of the user seated on the prim.\n\nIf the prim lacks a sit target or there is no avatar sitting on the prim, then  is returned.",
         "returnType": "key",
         "param": [
             {
@@ -232,13 +213,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llAvatarOnSitTarget",
-        "description": "Returns a key that is the UUID of the user seated on the prim.",
+        "description": "Returns a key that is the UUID of the user seated on the prim.\n\nIf the prim lacks a sit target or there is no avatar sitting on the prim, then NULL_KEY is returned.",
         "returnType": "key",
         "param": []
     },
     {
         "name": "llAxes2Rot",
-        "description": "Returns a rotation that is defined by the 3 coordinate axes",
+        "description": "Returns a rotation that is defined by the 3 coordinate axes\n\nAll three vectors must be mutually orthogonal unit vectors.",
         "returnType": "rotation",
         "param": [
             {
@@ -260,7 +241,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAxisAngle2Rot",
-        "description": "Returns a rotation that is a generated angle about axis",
+        "description": "Returns a rotation that is a generated angle about axis\n\n\naxis need not be normalized, only the direction is important.\n\nangle need to be between the value 0<angle<PI (higher values than PI lead to 2*PI-angle), because a rotation is not really a rotation (it is more of a rigid motion/mirroring), the final destination is the rotation.\n(in other words: it doesn't matter wether you rotate left by 90 degrees or right by 270 degrees it will return the same rotation).",
         "returnType": "rotation",
         "param": [
             {
@@ -307,7 +288,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llBreakLink",
-        "description": "Delinks the prim with the given link number in a linked object set",
+        "description": "Delinks the prim with the given link number in a linked object set.",
         "returnType": "",
         "param": [
             {
@@ -319,7 +300,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCastRay",
-        "description": "Cast a line from start to end and report collision data for intersections with objects.\n\nReturns a list of strided values on a successful hit, with an additional integer status_code on the end.",
+        "description": "Cast a line from start to end and report collision data for intersections with objects.\nReturns a list of strided values on a successful hit, with an additional integer status_code at the end.\n\nEach stride consists of two mandatory values {RC_DATA_FLAGS for details.)\n\nA negative status_code is an error code, otherwise it is the number of hits (and strides) returned.",
         "returnType": "list",
         "param": [
             {
@@ -353,7 +334,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llChar",
-        "description": "Construct a single character string from the supplied Unicode value.\n\nReturns a string ",
+        "description": "Construct a single character string from the supplied Unicode value.\n\nThis function returns a single character string generated from the character at the indicated UTF-32 codepoint.  Returns \"?\" (Unicode 0x0F) if val is negative.",
         "returnType": "string",
         "param": [
             {
@@ -371,7 +352,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llClearLinkMedia",
-        "description": "Clears (deletes) the media and all params from the given face on the linked prim(s).\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation.",
+        "description": "Clears (deletes) the media and all params from the given face on the linked prim(s).\n\nReturns (an integer) that is a STATUS_* flag which details the success/failure of the operation.",
         "returnType": "integer",
         "param": [
             {
@@ -411,8 +392,20 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llCloud",
+        "description": "Returns a float that is the cloud density at the prim position + offset\n\nReturned values are in the range [0.0, 2.0]. Values above 1.0 indicate rain.",
+        "returnType": "float",
+        "param": [
+            {
+                "name": "offset",
+                "description": "offset relative to the prim's position and expressed in local coordinates",
+                "type": "vector"
+            }
+        ]
+    },
+    {
         "name": "llCollisionFilter",
-        "description": "Sets the collision filter, exclusively or inclusively.",
+        "description": "Sets the collision filter, exclusively or inclusively.\n\nIf accept == TRUE, only accept collisions with objects name AND id (either is optional), otherwise with objects not name AND id\nIf name or id are blank they are not used to filter incoming messages (or you could say they match everything). If id is an invalid key or a null key, it is considered blank.",
         "returnType": "",
         "param": [
             {
@@ -434,7 +427,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCollisionSound",
-        "description": "Suppress default collision sounds, replace default impact sounds with impact_sound at the volume impact_volume",
+        "description": "Suppress default collision sounds, replace default impact sounds with impact_sound at the volume impact_volume\n\nIf impact_sound is an empty string then the collision sound is suppressed.\nIf impact_volume is set to zero the collision particles are suppressed.",
         "returnType": "",
         "param": [
             {
@@ -451,7 +444,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCollisionSprite",
-        "description": "Suppress default collision sprites, replace default impact sprite with impact_sprite",
+        "description": "Suppress default collision sprites, replace default impact sprite with impact_sprite\n\nTo suppress the collision sprite all together, just use an empty string as the value for impact_sprite",
         "returnType": "",
         "param": [
             {
@@ -475,7 +468,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCreateCharacter",
-        "description": "Creates a pathfinding entity, known as a \"character\", from the object containing the script.  Required to activate use of pathfinding functions.",
+        "description": "Creates a pathfinding entity, known as a \"character\", from the object containing the script.  Required to activate use of pathfinding functions.\n\nBy default, the character's shape will be an upright capsule approximately the size of the linkset, adjustable via the options list.  The linkset must use the land impact accounting system introduced with the mesh project.\nIf called on an existing character, all unspecified parameters other than character size will revert to their defaults (if not specified, character size will not change). This is STRONGLY preferred over calling llDeleteCharacter() followed by llCreateCharacter() as it is much, much less taxing on the server.",
         "returnType": "",
         "param": [
             {
@@ -487,7 +480,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCreateKeyValue",
-        "description": "Start an asynchronous transaction to create a key-value pair associated with the script's Experience using the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.",
+        "description": "Start an asynchronous transaction to create a key-value pair associated with the script's Experience using the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.\n\nIf the key already exists the dataserver will return a failure along with the error XP_ERROR_STORAGE_EXCEPTION.\n\nAs of Jan 1, 2016 maximum bytes is 1011 for key and 4095 for value for both LSO and Mono scripts.",
         "returnType": "key",
         "param": [
             {
@@ -504,7 +497,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCreateLink",
-        "description": "Attempt to link the script's object with target.",
+        "description": "Attempt to link the script's object with target.\n\ntarget must be modifiable and have the same owner.<br/>\nThis object must also be modifiable.",
         "returnType": "",
         "param": [
             {
@@ -521,7 +514,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCSV2List",
-        "description": "This function takes a string of values separated by commas, and turns it into a list.\n\nReturns a list made by parsing src, a string of comma separated values.",
+        "description": "This function takes a string of values separated by commas, and turns it into a list.Returns a list made by parsing src, a string of comma separated values.\n\nTo convert a list into a comma-separated string use llList2CSV.\nDo not confuse this function with the  format, it is ''not'' the CSV format.",
         "returnType": "list",
         "param": [
             {
@@ -545,19 +538,19 @@ export const Functions = new Directory([
     },
     {
         "name": "llDeleteKeyValue",
-        "description": "Start an asynchronous transaction to delete a key-value pair associated with the script's Experience with the given key (k).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to delete a key-value pair associated with the script's Experience with the given key (k).Returns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.\n\nIf the key does not exist the dataserver will return a failure along with the error XP_ERROR_STORAGE_EXCEPTION.",
         "returnType": "key",
         "param": [
             {
                 "name": "k",
-                "description": "The key for the key-value pairThe key for the key-value pair",
+                "description": "The key for the key-value pair",
                 "type": "string"
             }
         ]
     },
     {
         "name": "llDeleteSubList",
-        "description": "Returns a list that is a copy of src but with the slice from start to end removed.",
+        "description": "Returns a list that is a copy of src but with the slice from start to end removed.\n\nWhile the function result is different than src, src is not modified, remember to use or store the result of this function.\nThe opposite function would be llListInsertList.",
         "returnType": "list",
         "param": [
             {
@@ -579,7 +572,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDeleteSubString",
-        "description": "Returns a string that is the result of removing characters from src from start to end.",
+        "description": "Returns a string that is the result of removing characters from src from start to end.\n\nCharacters at positions start and end are removed.",
         "returnType": "string",
         "param": [
             {
@@ -601,13 +594,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetachFromAvatar",
-        "description": "Detach object from avatar.",
+        "description": "Detach object from avatar.\n\nThe detached object remains in the user's inventory (unless it was a temporary attachment, in which case it will be destroyed).",
         "returnType": "",
         "param": []
     },
     {
         "name": "llDetectedGrab",
-        "description": "Returns a vector that is the grab offset of the user touching the object; only works in the touch event.",
+        "description": "Returns a vector that is the grab offset of the user touching the object; only works in the touch event.\n\nReturns <0.0, 0.0, 0.0> if number is out of range or if called from an event other than the touch event.",
         "returnType": "vector",
         "param": [
             {
@@ -619,7 +612,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedGroup",
-        "description": "Returns an integer that is TRUE if the detected object or agent has the same active group as the prim containing the script. Otherwise FALSE is returned.",
+        "description": "Returns an integer that is TRUE if the detected object or agent has the same ''active'' group as the prim containing the script. Otherwise FALSE is returned.\n\nReturns FALSE if number is out of range.",
         "returnType": "integer",
         "param": [
             {
@@ -631,7 +624,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedKey",
-        "description": "Returns a key that is the UUID of the detected object or avatar number.",
+        "description": "Returns a key that is the UUID of the detected object or avatar number.\n\nReturns an  if number does not correspond to a valid sensed object or avatar.",
         "returnType": "key",
         "param": [
             {
@@ -643,7 +636,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedLinkNumber",
-        "description": "Returns the link_number (an integer) of the triggered event. If not supported by the event, returns zero.",
+        "description": "Returns the link_number (an integer) of the triggered event. If not supported by the event, returns zero.\n\nnumber does not support negative indexes.\nFor touch and collision categories of events only.",
         "returnType": "integer",
         "param": [
             {
@@ -655,7 +648,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedName",
-        "description": "Returns a string that is the name of the detected item.",
+        "description": "Returns a string that is the name of the detected item.\n\nReturns NULL KEY if item is not valid.\nIf the item detected is an avatar then the Name",
         "returnType": "string",
         "param": [
             {
@@ -667,7 +660,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedOwner",
-        "description": "Returns the key (UUID) of the owner of the object.",
+        "description": "\n\nReturns the key (UUID) of the owner of the object.\n\nnumber does not support negative indexes.\nReturns an empty key if number does not relate to a valid sensed object",
         "returnType": "key",
         "param": [
             {
@@ -679,7 +672,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedPos",
-        "description": "Returns a vector that is the position (in region coordinates) of detected object number.",
+        "description": "Returns a vector that is the position (in region coordinates) of detected object number.\n\nnumber does not support negative indexes.\nReturns ZERO_VECTOR if number is not valid sensed object.",
         "returnType": "vector",
         "param": [
             {
@@ -691,7 +684,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedRot",
-        "description": "Returns the rotation of detected object number.",
+        "description": "Returns the rotation of detected object number.\n\nnumber does not support negative indexes.\nReturns ZERO_ROTATION if number is not valid sensed object.",
         "returnType": "rotation",
         "param": [
             {
@@ -703,7 +696,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedTouchBinormal",
-        "description": "Returns a vector that is the surface binormal (tangent to the surface, pointing along the positive T (V) direction of tangent space) where the touch event was triggered.  Along with llDetectedTouchNormal, this information can be used to find the tangent space at the touch location.",
+        "description": "Returns a vector that is the surface binormal (tangent to the surface, pointing along the positive T (V) direction of tangent space) where the touch event was triggered.  Along with llDetectedTouchNormal, this information can be used to find the tangent space at the touch location.\n\nFor the Touch category of events only. The prim that was touched may not be the prim receiving the event, use cross this vector with the normal.",
         "returnType": "vector",
         "param": [
             {
@@ -715,7 +708,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedTouchFace",
-        "description": "Returns an integer that is the index of the face the avatar clicked on.",
+        "description": "Returns an integer that is the index of the face the avatar clicked on.\n\nFor the Touch category of events only. The prim that was touched may not be the prim receiving the event, use llDetectedLinkNumber to check for this; likewise you can use llDetectedTouchFace to determine which face was touched.",
         "returnType": "integer",
         "param": [
             {
@@ -727,7 +720,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedTouchNormal",
-        "description": "Returns a vector that is the surface normal (perpendicular to the surface) where the touch event was triggered.  Along with llDetectedTouchBinormal, this information can be used to find the tangent space at the touch location.",
+        "description": "Returns a vector that is the surface normal (perpendicular to the surface) where the touch event was triggered. Along with llDetectedTouchBinormal, this information can be used to find the tangent space at the touch location.\n\nFor the Touch category of events only. The prim that was touched may not be the prim receiving the event, use cross the binormal with this vector.",
         "returnType": "vector",
         "param": [
             {
@@ -739,7 +732,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedTouchPos",
-        "description": "Returns the vector position where the object was touched in region coordinates, unless it is attached to the HUD, in which case it returns the position in screen space coordinates.",
+        "description": "Returns the vector position where the object was touched in region coordinates, unless it is attached to the HUD, in which case it returns the position in screen space coordinates.\n\nindex does not support negative indexes.\nFor the touch category of events only. The prim that was touched may not be the prim receiving the event, use llDetectedLinkNumber to check for this; likewise you can use llDetectedTouchFace to determine which face was touched.",
         "returnType": "vector",
         "param": [
             {
@@ -751,7 +744,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedTouchST",
-        "description": "Returns a vector that is the surface coordinates for where the prim was touched. The x & y vector positions contain the horizontal (s) & vertical (t) face coordinates respectively (<s, t, 0.0>). Each component is usually in the interval [0.0, 1.0] with the origin in the bottom left corner.[1] With some mesh objects, values of less than 0.0 and higher than 1.0 have been observed.",
+        "description": "Returns a vector that is the surface coordinates for where the prim was touched. The x & y vector positions contain the horizontal (s) & vertical (t) face coordinates respectively (<s, t, 0.0>). Each component is usually in the interval [0.0, 1.0 with the origin in the bottom left corner. With some mesh objects, values of less than 0.0 and higher than 1.0 have been observed.\n\n is returned when the surface coordinates cannot be determined. See Caveats for further details.\n\nFor the Touch category of events only. The prim that was touched may not be the prim receiving the event, use llDetectedLinkNumber to check for this; likewise you can use llDetectedTouchFace to determine which face was touched.",
         "returnType": "vector",
         "param": [
             {
@@ -763,7 +756,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedTouchUV",
-        "description": "Returns a vector that is the texture coordinates for where the prim was touched. The x & y vector positions contain the horizontal (u) & vertical (v) texture coordinates respectively (<u, v, 0.0>). Like llDetectedTouchST, the interval of each component will be [0.0, 1.0] unless the texture repeats are set to a non-default value. Increasing or decreasing the texture repeats of the face will change this interval accordingly. Additionally,  unlike with llDetectedTouchST, changing a texture's rotation will change the results of this function.",
+        "description": "Returns a vector that is the texture coordinates for where the prim was touched. The x & y vector positions contain the horizontal (u) & vertical (v) texture coordinates respectively (<u, v, 0.0>). Like llDetectedTouchST, the interval of each component will be [0.0, 1.0] unless the texture repeats are set to a non-default value. Increasing or decreasing the texture repeats of the face will change this interval accordingly. Additionally,  unlike with llDetectedTouchST, changing a texture's rotation will change the results of this function.\n\n is returned when the touch UV coordinates cannot be determined. See Caveats for further details.\n\nFor the Touch category of events only. The prim that was touched may not be the prim receiving the event, use llDetectedLinkNumber to check for this; likewise you can use llDetectedTouchFace to determine which face was touched.",
         "returnType": "vector",
         "param": [
             {
@@ -775,7 +768,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedType",
-        "description": "Returns an integer mask that is the types of detected object or avatar.",
+        "description": "Returns an integer mask that is the types of detected object or avatar.\n\nnumber does not support negative indexes.\nReturns zero if number is not valid sensed object or avatar.",
         "returnType": "integer",
         "param": [
             {
@@ -787,7 +780,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedVel",
-        "description": "Returns the vector velocity of detected object or avatar number.",
+        "description": "Returns the vector velocity of detected object or avatar number.\n\nnumber does not support negative indexes.\nReturns ZERO_VECTOR if number is not valid sensed object or avatar.",
         "returnType": "vector",
         "param": [
             {
@@ -799,7 +792,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llDialog",
-        "description": "Shows a dialog box in the lower right corner of the avatar's screen (upper right in Viewer 1.x) with a message and choice buttons, as well as an ignore button. This has many uses ranging from simple message delivery to complex menu systems.",
+        "description": "Shows a dialog box in the lower right corner of the avatar's screen (upper right in Viewer 1.x) with a message and choice buttons, as well as an ignore button. This has many uses ranging from simple message delivery to complex menu systems.\n\nWhen a button is pressed, the avatar says the text of the button label on channel.\nThe position where the chat is generated is where the root prim of the dialog generating object was when the dialog button was pressed.",
         "returnType": "",
         "param": [
             {
@@ -826,13 +819,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llDie",
-        "description": "Deletes the object. The object does not go to the owners Inventory:Trash.",
+        "description": "Deletes the object. The object does not go to the owners Inventory:Trash.\n\nsIf called in any prim in the link set the result will be the deletion of the entire object.To remove a single prim from an object use llBreakLink first.",
         "returnType": "",
         "param": []
     },
     {
         "name": "llDumpList2String",
-        "description": "Returns a string that is the list src converted to a string with separator between the entries.",
+        "description": "Returns a string that is the list src converted to a string with separator between the entries.\n\nUse llParseString2List or llParseStringKeepNulls to undo the process.\n\nUnlike llList2CSV, which dumps a list to a comma-separated formatted string with no choice over the separator, llDumpList2String gives you more control. This can be useful if you don't trust commas as a separator because you might be working with data supplied to the script by a user who uses, say, commas as part of a street address.",
         "returnType": "string",
         "param": [
             {
@@ -849,7 +842,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llEdgeOfWorld",
-        "description": "Checks to see whether the border hit by dir from pos is the edge of the world (has no neighboring simulator).\n\nReturns a boolean (an integer) value. FALSE indicating there is a simulator in the direction indicated.",
+        "description": "Checks to see whether the border hit by dir from pos is the edge of the world (has no neighboring simulator).\n\nReturns a boolean (an integer) value. FALSE indicating there is a simulator in the direction indicated.\n\nThe z component of dir is ignored.",
         "returnType": "integer",
         "param": [
             {
@@ -878,7 +871,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llEmail",
-        "description": "Sends an email to address with subject and message.",
+        "description": "Sends an email to address with subject and message.\n\nThe entire message (including the address, subject and other miscellaneous fields) can't be longer than 4096 bytes combined.",
         "returnType": "",
         "param": [
             {
@@ -900,7 +893,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llEscapeURL",
-        "description": "Returns a string that is the escaped/encoded version of url, replacing spaces with \"%20\" etc. The function will escape any character not in [a-zA-Z0-9] to \"%xx\" where \"xx\" is the  hexadecimal value of the character in  UTF-8  byte form.",
+        "description": "Returns a string that is the escaped/encoded version of url, replacing spaces with \"%20\" etc. The function will escape any character not in [a-zA-Z0-9] to \"%xx\" where \"xx\" is the hexadecimal value of the character in UTF-8 byte form.\n\nTo clarify, numbers and ASCII7 alphabetical characters are NOT escaped. If a character requires more then one byte in  UTF-8  byte form then it returns multiple \"%xx\" sequences chained together.\n\nThis function is similar to functions (e.g. rawurlencode, encodeURIComponent) found in many other languages.",
         "returnType": "string",
         "param": [
             {
@@ -912,7 +905,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llEuler2Rot",
-        "description": "Returns a rotation representation of the  Euler Angles v.",
+        "description": "Returns a rotation representation of the Euler Angles v.",
         "returnType": "rotation",
         "param": [
             {
@@ -941,7 +934,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llExecCharacterCmd",
-        "description": "Send a command to the pathing system.",
+        "description": "Send a command to the pathing system.\n\nCurrently only supports stopping the current pathfinding operation or causing the character to jump.",
         "returnType": "",
         "param": [
             {
@@ -1004,7 +997,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llForceMouselook",
-        "description": "Sets if a sitting avatar should be forced into mouselook when they sit on this prim.",
+        "description": "Sets if a sitting avatar should be forced into mouselook when they sit on this prim.\n\nA sit target is not necessary for this function to work.",
         "returnType": "",
         "param": [
             {
@@ -1016,7 +1009,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llFrand",
-        "description": "Returns a float that is pseudo random in the range [0.0, mag) or (mag, 0.0].[1]\n\n This means that the returned value can be any value in the range 0.0 to mag including 0.0, but not including the value of mag itself. The sign of mag matches the return.",
+        "description": "Returns a float that is pseudo random in the range [0.0, mag) or (mag, 0.0].\nThis means that the returned value can be any value in the range 0.0 to mag including 0.0, but not including the value of mag itself. The sign of mag matches the return.\n\nWhen converting the float to an integer, be sure to use an integer typecast (integer) and not one of the rounding functions (llRound, llFloor, llCeil). The integer typecast is the only method guaranteed not to skew the distribution of integer values.",
         "returnType": "float",
         "param": [
             {
@@ -1081,7 +1074,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetAgentSize",
-        "description": "Returns a vector that is an estimated size of the requested avatar.",
+        "description": "Returns a vector that is an estimated size of the requested avatar.\n\nZERO_VECTOR is returned if avatar is not in the region or if it is not an avatar.",
         "returnType": "vector",
         "param": [
             {
@@ -1093,7 +1086,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetAlpha",
-        "description": "Returns a float that is the alpha of face.",
+        "description": "Returns a float that is the alpha of face.\n\nOtherwise the return is in the range [0, 1], with 0.0 being fully transparent and 1.0 being fully solid.",
         "returnType": "float",
         "param": [
             {
@@ -1111,7 +1104,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetAnimation",
-        "description": "Returns a string that is the name of the currently playing locomotion animation for avatar id. See the table below.",
+        "description": "Returns a string that is the name of the currently playing locomotion animation for avatar id. See the table below.\n\nllGetAgentInfo provides information on some animation states not covered by this function (typing, away, busy). llGetAnimationList provides more detailed information about the running animations, but may not reflect avatar state as accurately as llGetAnimation.",
         "returnType": "string",
         "param": [
             {
@@ -1153,7 +1146,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetAttachedList",
-        "description": "Returns a list of object keys corresponding to public attachments worn by an avatar.",
+        "description": "Returns a list of object keys corresponding to public attachments worn by an avatar.\n\nBy design HUD attachment keys are not reported by this function.\n\nIf avatar is a child agent, [\"NOT ON REGION\"] is returned.\nIf avatar is not a main agent and not a child agent or not an agent at all, [\"NOT FOUND\"] is returned.",
         "returnType": "list",
         "param": [
             {
@@ -1165,7 +1158,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetBoundingBox",
-        "description": "Returns a list that is the bounding box of object relative to its root prim, in local coordinates.\n\nFormat: [ (vector) min_corner, (vector) max_corner ]",
+        "description": "Returns a list that is the bounding box of object relative to its root prim, in local coordinates.\nFormat: [ (vector) min_corner, (vector) max_corner ]\n\nThe bounding box is for the entire link set, not just the requested prim.\nReturns an empty list ([]) if object is not found.",
         "returnType": "list",
         "param": [
             {
@@ -1189,7 +1182,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetCenterOfMass",
-        "description": "Returns the vector position of the object's center of mass in region coordinates.",
+        "description": "Returns the vector position of the object's center of mass in region coordinates.\n\nIf called from a child prim, the child's center of mass is returned instead (but still in region coordinates).",
         "returnType": "vector",
         "param": []
     },
@@ -1230,25 +1223,25 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetDate",
-        "description": "Returns a string that is the current date in the UTC time zone in the format \"YYYY-MM-DD\".",
+        "description": "Returns a string that is the current date in the UTC time zone in the format \"YYYY-MM-DD\".\n\nIf you wish to know the time as well use: llGetTimestamp which uses the format",
         "returnType": "string",
         "param": []
     },
     {
         "name": "llGetDayLength",
-        "description": "Return the number of seconds in the day cycle applied to the current parcel. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds in the day cycle applied to the current parcel. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.",
         "returnType": "integer",
         "param": []
     },
     {
         "name": "llGetDayOffset",
-        "description": "Return the number of seconds added to the current time before calculating the current environmental time for the parcel.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds added to the current time before calculating the current environmental time for the parcel.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.",
         "returnType": "integer",
         "param": []
     },
     {
         "name": "llGetDisplayName",
-        "description": "Returns a string that is the non-unique display name of the avatar specified by id.",
+        "description": "Returns a string that is the non-unique display name of the avatar specified by id.\n\nid must specify a valid avatar key, present in or otherwise known to the sim in which the script is running, otherwise an empty string is returned. This function will still return a valid display name if the avatar is a child agent of the sim (i.e., in an adjacent sim, but presently able to see into the one the script is in), or for a short period after the avatar leaves the sim (specifically, when the client completely disconnects from the sim, either as a main or child agent).",
         "returnType": "string",
         "param": [
             {
@@ -1259,15 +1252,8 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llGetEnergy",
-        "description": "Returns a float that is how much energy is in the object as a percentage of maximum",
-        "returnType": "float",
-        "url": "https://wiki.secondlife.com/wiki/LlGetEnergy",
-        "param": []
-    },
-    {
         "name": "llGetEnv",
-        "description": "Returns a string with the requested data about the region.",
+        "description": "Returns a string with the requested data about the region.\n\nNote that the value returned is a string, you may need to cast it to an integer for use in calculations.",
         "returnType": "string",
         "param": [
             {
@@ -1278,8 +1264,14 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llGetEnergy",
+        "description": "Returns a float that is how much energy is in the object as a percentage of maximum",
+        "returnType": "float",
+        "param": []
+    },
+    {
         "name": "llGetEnvironment",
-        "description": "Returns a list containing the current environment values for the parcel or region as a list of attributes. Takes a list of attributes to retrieve in params and returns them in the order requested.",
+        "description": "Returns a list containing the current environment values for the parcel or region as a list of attributes. Takes a list of attributes to retrieve in params and returns them in the order requested.\n\nIf an unknown rule is encountered in the parameter list an error is sent to the debug channel.",
         "returnType": "list",
         "param": [
             {
@@ -1296,7 +1288,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetExperienceDetails",
-        "description": "Returns a list of details about the experience. This list has 6 components: [string experience_name, key owner_id, key experience_id, integer state, string state_message, key group_id]",
+        "description": "Returns a list of details about the experience. This list has 6 components: [string experience_name, key owner_id, key experience_id, integer state, string state_message, key group_id]\n\nIf experience_id is NULL_KEY, then information about the script's experience is returned. In this situation, if the script isn't associated with an experience, an empty list is returned.",
         "returnType": "list",
         "param": [
             {
@@ -1344,13 +1336,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetGMTclock",
-        "description": "Returns a float that is the time in seconds since midnight GMT.  Value appears to be truncated to the second.",
+        "description": "Returns a float that is the time in seconds since midnight GMT. Value appears to be truncated to the second.\n\nFor SL time, which is the same as California time, use llGetWallclock",
         "returnType": "float",
         "param": []
     },
     {
         "name": "llGetHTTPHeader",
-        "description": "Returns a string that is the value for header for request_id.",
+        "description": "Returns a string that is the value for header for request_id.\n\nReturns an empty string if the header is not found, if the request_id is not a valid key received through the http_request event, or if the headers can no longer be accessed. Headers can only be accessed before llHTTPResponse is called and with-in the first 30&nbsp;seconds after the http_request event is queued.",
         "returnType": "string",
         "param": [
             {
@@ -1391,7 +1383,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetInventoryKey",
-        "description": "Returns a key that is the UUID of the inventory name",
+        "description": "Returns a key that is the UUID of the inventory name.\n\nIf name is not copy, mod, trans then the return is.\nUse llGetInventoryType instead of this function to verify the existence of inventory.",
         "returnType": "key",
         "param": [
             {
@@ -1403,7 +1395,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetInventoryName",
-        "description": "Returns a string that is the name of the inventory item number of type. Returns an empty string if no item of the specified type is found in the prim's inventory (or there are less than or equal to number items of the type).",
+        "description": "Returns a string that is the name of the inventory item number of type. Returns an empty string if no item of the specified type is found in the prim's inventory (or there are less than or equal to number items of the type).\n\nInventory items are sorted in alphabetical order (not chronological order).",
         "returnType": "string",
         "param": [
             {
@@ -1449,7 +1441,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetInventoryType",
-        "description": "Returns an integer that is the type of the inventory item name",
+        "description": "Returns an integer that is the type of the inventory item name\n\nIf name does not exist, INVENTORY_NONE is returned (no errors or messages are generated), making this function ideal for testing the existence of a certain item in inventory.",
         "returnType": "integer",
         "param": [
             {
@@ -1484,32 +1476,14 @@ export const Functions = new Directory([
         "param": [
             {
                 "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            }
-        ]
-    },
-    {
-        "name": "llGetObjectLinkKey",
-        "description": "Returns the key of the linked prim link in the linkset identified by object_id",
-        "returnType": "key",
-        "url": "https://wiki.secondlife.com/wiki/LlGetLinkKey",
-        "param": [
-            {
-                "name": "object_id",
-                "description": "",
-                "type": "key"
-            },
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
+                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag",
                 "type": "integer"
             }
         ]
     },
     {
         "name": "llGetLinkMedia",
-        "description": "Get the media params for a particular face on a linked prim, given the desired list of named params.\n\nReturns a parameter list (a list) of values in the order requested.",
+        "description": "Get the media params for a particular face on a linked prim, given the desired list of named params.\n\nReturns a parameter list (a list) of values in the order requested.\n\nReturns an empty list if no media exists on the face(s).",
         "returnType": "list",
         "param": [
             {
@@ -1543,32 +1517,19 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetLinkNumber",
-        "description": "Returns an integer that is the link number of the prim containing the script.",
+        "description": "Returns an integer that is the link number of the prim containing the script.\n\n0 means the prim is not linked, 1 the prim is the root, 2 the prim is the first child, etc. Links are numbered in the reverse order in which they were linked -- if you select a box, a sphere and a cylinder in that order, then link them, the cylinder is 1, the sphere is 2 and the box is 3. The last selected prim has the lowest link number.",
         "returnType": "integer",
         "param": []
     },
     {
         "name": "llGetLinkNumberOfSides",
-        "description": "Returns an integer that is the number of faces (or sides) of the prim link.",
+        "description": "Returns an integer that is the number of faces (or sides) of the prim link.\n\nSee Face for more information about faces and the conditions that control the number of faces a prim will have.",
         "returnType": "integer",
         "param": [
             {
                 "name": "link",
                 "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
                 "type": "integer"
-            }
-        ]
-    },
-    {
-        "name": "llGetPrimitiveParams",
-        "description": "Returns attribute values (a list) for the attributes requested in the params list.",
-        "returnType": "list",
-        "url": "https://wiki.secondlife.com/wiki/LlGetLinkPrimitiveParams",
-        "param": [
-            {
-                "name": "params",
-                "description": "PRIM_* flags",
-                "type": "list"
             }
         ]
     },
@@ -1591,7 +1552,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetListEntryType",
-        "description": "Returns the type (an integer) of the entry at index in src.",
+        "description": "Returns the type (an integer) of the entry at index in src.\n\nindex supports negative indexes.\n\nIf index describes a location not in src then TYPE_INVALID is returned.",
         "returnType": "integer",
         "param": [
             {
@@ -1620,13 +1581,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetLocalPos",
-        "description": "Returns a vector that is the position relative (local) to the root.",
+        "description": "Returns a vector that is the position relative (local) to the root.\n\nIf called from the root prim it returns the position in the region unless it is attached to which it returns the position relative to the attach point.",
         "returnType": "vector",
         "param": []
     },
     {
         "name": "llGetLocalRot",
-        "description": "Returns the rotation of the prim relative to the root.",
+        "description": "Returns the rotation of the prim relative to the root.\n\nIf called from the root prim, it returns the objects rotation.",
         "returnType": "rotation",
         "param": []
     },
@@ -1638,7 +1599,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetMassMKS",
-        "description": "Returns a float that is the mass (in Kilograms) of object that script is attached to. Functionally identical to llGetMass except for the unit used in the return value.",
+        "description": "Returns a float that is the mass (in Kilograms) of object that script is attached to. Functionally identical to llGetMass except for the unit used in the return value.\n\nMKS as used in the name of this function is likely a reference to the MKS system of units (Meter, Kilogram, Second), which form the base of SI units (with some minor differences).",
         "returnType": "float",
         "param": []
     },
@@ -1662,19 +1623,19 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetMoonDirection",
-        "description": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.",
         "returnType": "vector",
         "param": []
     },
     {
         "name": "llGetMoonRotation",
-        "description": "Return the rotation applied to the moon for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the moon for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.",
         "returnType": "rotation",
         "param": []
     },
     {
         "name": "llGetNextEmail",
-        "description": "Get the next queued email that comes from address, with specified subject.",
+        "description": "Get the next queued email that comes from address, with specified subject.\n\nIf address or subject an empty string, then that parameter will be treated as a wildcard.",
         "returnType": "",
         "param": [
             {
@@ -1691,7 +1652,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetNotecardLine",
-        "description": "Requests the line line of the notecard name from the dataserver.\n\nReturns the handle (a key) for a dataserver event response.",
+        "description": "Requests the line line of the notecard name from the dataserver.\n\nReturns the handle (a key) for a dataserver event response.\n\nIf line is past the end of the notecard EOF is returned by the dataserver.",
         "returnType": "key",
         "param": [
             {
@@ -1726,7 +1687,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetNumberOfSides",
-        "description": "Returns an integer that is the number of faces (or sides) of the prim.",
+        "description": "Returns an integer that is the number of faces (or sides) of the prim.\n\nSee Face for more information about faces and the conditions that control the number of faces a prim will have.",
         "returnType": "integer",
         "param": []
     },
@@ -1738,13 +1699,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetObjectDesc",
-        "description": "Returns a string containing the description of the prim the script is attached to.",
+        "description": "Returns a string containing the description of the prim the script is attached to.\n\nTo get the object's description (not the current prim's), use PRIM_DESC or OBJECT_DESC.",
         "returnType": "string",
         "param": []
     },
     {
         "name": "llGetObjectDetails",
-        "description": "Returns a list of the details for id, specifically those requested in params.",
+        "description": "Returns a list of the details for id, specifically those requested in params.\n\nAn empty list if id is not found.\n is returned when passed an invalid integer parameter.",
         "returnType": "list",
         "param": [
             {
@@ -1756,19 +1717,6 @@ export const Functions = new Directory([
                 "name": "params",
                 "description": "OBJECT_* flags",
                 "type": "list"
-            }
-        ]
-    },
-    {
-        "name": "llGetLinkKey",
-        "description": "Returns the key of the linked prim link",
-        "returnType": "key",
-        "url": "https://wiki.secondlife.com/wiki/LlGetLinkKey#llGetObjectLinkKey",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
             }
         ]
     },
@@ -1821,7 +1769,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetObjectPrimCount",
-        "description": "Returns an integer that is the total number of prims in the object that contains prim.",
+        "description": "Returns an integer that is the total number of prims in the object that contains prim.\n\nAvatars sitting on the object are not counted is not a prim.",
         "returnType": "integer",
         "param": [
             {
@@ -1857,7 +1805,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetParcelDetails",
-        "description": "Returns a list that is the parcel details specified in params (in the same order) for the parcel at pos.",
+        "description": "Returns a list that is the parcel details specified in params (in the same order) for the parcel at pos.\n\nBoth x and y components of pos are clamped to the range [0.0, 256.0] component is ignored.",
         "returnType": "list",
         "param": [
             {
@@ -1874,7 +1822,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetParcelFlags",
-        "description": "Returns a bit field (an integer) of parcel flags (PARCEL_FLAG_*) for the parcel that includes the point pos.",
+        "description": "Returns a bit field (an integer) of parcel flags (PARCEL_FLAG_*) for the parcel that includes the point pos.\n\nBoth x and y components of pos are clamped to the range [0.0, 256.0], the z component is ignored.",
         "returnType": "integer",
         "param": [
             {
@@ -1903,20 +1851,35 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetParcelMusicURL",
-        "description": "Returns a string containing the parcel streaming audio URL.",
+        "description": "Returns a string containing the parcel streaming audio URL.\n\nThe object owner must also be the land owner. If the land is deeded to a group the object will need to be deeded to the same group for this function to work.",
         "returnType": "string",
         "param": []
     },
     {
-        "name": "llGetParcelMusicURL",
-        "description": "Returns a string containing the parcel streaming audio URL.",
-        "returnType": "string",
-        "url": "https://wiki.secondlife.com/wiki/LlGetParcelMusicURL",
-        "param": []
+        "name": "llGetParcelPrimCount",
+        "description": "Returns an integer that is the total land impact of objects on the parcel at pos of the given category",
+        "returnType": "integer",
+        "param": [
+            {
+                "name": "pos",
+                "description": "position in region coordinates (z component is ignored)",
+                "type": "vector"
+            },
+            {
+                "name": "category",
+                "description": "a PARCEL_COUNT_* flag",
+                "type": "integer"
+            },
+            {
+                "name": "sim_wide",
+                "description": "boolean, TRUE searches parcels in the region with the same owner as the targeted parcel, FALSE searches only the targeted parcel",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "llGetParcelPrimOwners",
-        "description": "Returns a list of all residents and groups who own objects on the parcel at pos and with individual land impact used. \n\nThe list is formatted as [ key ownerKey1, integer agentImpact1, key ownerKey2, integer agentImpact2, ... ], and sorted by agent/group key with a maximum of 100 strides.",
+        "description": "Returns a list of all residents and groups who own objects on the parcel at pos and with individual land impact used.\n\nThe list is formatted as [ key ownerKey1, integer agentImpact1, key ownerKey2, integer agentImpact2, ... ], and sorted by agent/group key with a maximum of 100 strides.\n\nRequires owner-like permissions for the parcel.",
         "returnType": "list",
         "param": [
             {
@@ -1934,15 +1897,14 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetPermissionsKey",
-        "description": "Returns the avatar (a key) of the avatar that last granted or declined permissions to the script.",
+        "description": "Returns the avatar (a key) of the avatar that last granted or declined permissions to the script. if permissions were neither granted nor declined (e.g., the permissions dialog was cancelled or otherwise ignored).",
         "returnType": "key",
         "param": []
     },
     {
         "name": "llGetPhysicsMaterial",
-        "description": "Used to get the physical characteristics of an object.\n\nReturns a list in the form [ float gravity_multiplier, float restitution, float friction, float density ]",
+        "description": "Used to get the physical characteristics of an object.\n\nReturns a list in the form [ float gravity_multiplier, float restitution, float friction, float density ].",
         "returnType": "list",
-        "url": "https://wiki.secondlife.com/wiki/LlGetPhysicsMaterial",
         "param": [
             {
                 "name": "gravity_multiplier",
@@ -1970,21 +1932,24 @@ export const Functions = new Directory([
         "name": "llGetPos",
         "description": "Returns the vector position of the task in region coordinates",
         "returnType": "vector",
-        "url": "https://wiki.secondlife.com/wiki/LlGetPos",
         "param": []
     },
     {
-        "name": "llGetPos",
-        "description": "Returns the vector position of the task in region coordinates",
-        "returnType": "vector",
-        "url": "https://wiki.secondlife.com/wiki/LlGetPos",
-        "param": []
+        "name": "llGetPrimitiveParams",
+        "description": "Returns attribute values (a list) for the attributes requested in the params list.\n\nIf you are planning to use PRIM_LINK_TARGET consider using llGetLinkPrimitiveParams instead.",
+        "returnType": "list",
+        "param": [
+            {
+                "name": "params",
+                "description": "PRIM_* flags",
+                "type": "list"
+            }
+        ]
     },
     {
         "name": "llGetPrimMediaParams",
-        "description": "Get the media params for a particular face on an object, given the desired list of names.\n\nReturns a parameter list (a list) of values in the order requested.",
+        "description": "Get the media params for a particular face on an object, given the desired list of names.\n\nReturns a parameter list (a list) of values in the order requested.\n\nReturns an empty list if no media exists on the face.",
         "returnType": "list",
-        "url": "https://wiki.secondlife.com/wiki/LlGetPrimMediaParams",
         "param": [
             {
                 "name": "face",
@@ -2006,25 +1971,25 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetRegionCorner",
-        "description": "Returns a vector in meters that is the global location of the south-west corner of the region the object is in. The z component is 0.0",
+        "description": "Returns a vector in meters that is the global location of the south-west corner of the region the object is in. The z component is 0.0.\n\nDivide the returned value by 256 to get the region offset.",
         "returnType": "vector",
         "param": []
     },
     {
         "name": "llGetRegionDayLength",
-        "description": "Return the number of seconds in the day cycle applied to the current region. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds in the day cycle applied to the current region. llGetDayLength returns the number of seconds for the current parcel, llGetRegionDayLength is the number of seconds in the day cycle applied to the entire region.",
         "returnType": "integer",
         "param": []
     },
     {
         "name": "llGetRegionDayOffset",
-        "description": "Return the number of seconds added to the current time before calculating the current environmental time for the region.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.\n\nReturns an integer ",
+        "description": "Return the number of seconds added to the current time before calculating the current environmental time for the region.  llGetDayOffset  returns the value for the current parcel, llGetRegionDayOffset produces the same value for the entire region.",
         "returnType": "integer",
         "param": []
     },
     {
         "name": "llGetRegionFlags",
-        "description": "Returns an integer that is the region flags (REGION_FLAG_*) for the region the object is in.",
+        "description": "Returns an integer that is the region flags (REGION_FLAG_*) for the region the object is in.\n\nOnly a small number of flags are actually used; the rest (shown below in strike-through) are always zero.  In particular, it is not possible to detect the status of \"Allow Land Resell\", \"Allow Land Join/Divide\", or \"Block Land Show in Search\"; nor, obviously, it is possible for a script to detect that \"Disable Scripts\" has been set.",
         "returnType": "integer",
         "param": []
     },
@@ -2032,18 +1997,17 @@ export const Functions = new Directory([
         "name": "llGetRegionFPS",
         "description": "Returns a float that is the mean region frames per second.",
         "returnType": "float",
-        "url": "https://wiki.secondlife.com/wiki/LlGetRegionFPS",
         "param": []
     },
     {
         "name": "llGetRegionMoonDirection",
-        "description": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current moon position at the location of object containing the script.  llGetMoonDirection is the vector to the parcel's moon, llGetRegionMoonDirection is the vector to region's moon. If there is no custom environment set for the current parcel llGetMoonDirection returns the direction to the region's moon. These functions are altitude aware.",
         "returnType": "vector",
         "param": []
     },
     {
         "name": "llGetRegionMoonRotation",
-        "description": "Return the rotation applied to the moon for the region at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the moon for the region at the location of the object containing the script.  These function are altitude aware and so will pick up the moon for their current track. llGetRegionMoonRotation returns the rotation applied at the region level, llGetMoonRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetMoonRotation returns the same value as llGetRegionMoonRotation.",
         "returnType": "rotation",
         "param": []
     },
@@ -2055,21 +2019,33 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetRegionSunDirection",
-        "description": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.",
         "returnType": "vector",
         "param": []
     },
     {
         "name": "llGetRegionSunRotation",
-        "description": "Return the rotation applied to the sun for the region at the location of the object containing the script.  These functions are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the sun for the region at the location of the object containing the script.  These functions are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.",
         "returnType": "rotation",
         "param": []
     },
     {
         "name": "llGetRegionTimeDilation",
-        "description": "Returns a float that is the current time dilation, the value range is [0.0, 1.0], 0.0 (full dilation) and 1.0 (no dilation).[1]",
+        "description": "Returns a float that is the current time dilation, the value range is [0.0, 1.0], 0.0 (full dilation) and 1.0 (no dilation).\n\nIt is used as the ratio between the change of script time to that of real world time.",
         "returnType": "float",
         "param": []
+    },
+    {
+        "name": "llGetRenderMaterial",
+        "description": "Returns a string that is the Material on face\n\nIf face is ALL_SIDES then the function returns the value for face zero.\nIf the Material is in the prim's inventory, the return value is the inventory name, otherwise the returned value is the Material UUID.",
+        "returnType": "string",
+        "param": [
+            {
+                "name": "face",
+                "description": "face number or ALL_SIDES",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "llGetRootPosition",
@@ -2139,13 +2115,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetStartParameter",
-        "description": "Returns an integer that is the script start/rez parameter.",
+        "description": "Returns an integer that is the script start/rez parameter.\n\n*If the script was loaded with llRemoteLoadScriptPin then that start parameter is returned.\n*If the containing object was rezzed by llRezObject or llRezAtRoot then the return is the on_rez parameter.\n*If the containing object was manually rezzed, by dragging from inventory, the start parameter is 0.",
         "returnType": "integer",
         "param": []
     },
     {
         "name": "llGetStaticPath",
-        "description": "Returns a list of position vectors indicating pathfinding waypoints between positions at start and end, for a character of a given radius. The waypoints this function returns are for the 'static' nav mesh, meaning that objects set to \"movable obstacle\" or \"movable phantom\" are ignored.",
+        "description": "Returns a list of position vectors indicating pathfinding waypoints between positions at start and end, for a character of a given radius. The waypoints this function returns are for the 'static' nav mesh, meaning that objects set to \"movable obstacle\" or \"movable phantom\" are ignored.\n\nThis function can be used from attachments and other non-character objects. It can also be used in any region, even if dynamic pathfinding is disabled.\n\nThe list also always contains an integer in the last element, which is a status code indicating the outcome of the path query:\n* If llGetStaticPath() finds a path, it will return waypoint vectors and will return a status code of 0, for success\n* If llGetStaticPath() cannot find a path for some reason, it only returns the status code, indicating the sort of error. The error codes correspond to the constants in path_update (e.g. PU_FAILURE_INVALID_START is returned if the start vector is not near the nav mesh)",
         "returnType": "list",
         "param": [
             {
@@ -2206,19 +2182,19 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetSunDirection",
-        "description": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.\n\nReturns a vector ",
+        "description": "Returns a normalized vector to the current sun position at the location of object containing the script.  llGetSunDirection is the vector to the parcel's sun, llGetRegionSunDirection is the vector to region's sun. If there is no custom environment set for the current parcel llGetSunDirection returns the direction to the region's sun. These functions are altitude aware.",
         "returnType": "vector",
         "param": []
     },
     {
         "name": "llGetSunRotation",
-        "description": "Return the rotation applied to the sun for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.\n\nReturns a rotation ",
+        "description": "Return the rotation applied to the sun for the parcel at the location of the object containing the script.  These function are altitude aware and so will pick up the sun for their current track. llGetRegionSunRotation returns the rotation applied at the region level, llGetSunRotation does the same for the parcel.  If there is no custom environment applied to parcel llGetSunRotation returns the same value as llGetRegionSunRotation.",
         "returnType": "rotation",
         "param": []
     },
     {
         "name": "llGetTexture",
-        "description": "Returns a string that is the texture on face",
+        "description": "Returns a string that is the texture on face.\n\nIf the texture is in the prim's inventory, the return value is the inventory name, otherwise the returned value is the texture UUID.",
         "returnType": "string",
         "param": [
             {
@@ -2272,13 +2248,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetTimeOfDay",
-        "description": "Returns a float that is the time in seconds with subsecond precision since Second Life midnight or region up-time (time since when the region was brought online/rebooted); whichever is smaller. If the region is configured so the sun stays in a constant position, then the returned value is the region up-time.",
+        "description": "Returns a float that is the time in seconds with subsecond precision since Second Life midnight or region up-time (time since when the region was brought online/rebooted); whichever is smaller. If the region is configured so the sun stays in a constant position, then the returned value is the region up-time.\n\nSecond Life days cycles are 4 hours long (3 hours of light, 1 hour of dark). The sunrise and sunset time varies slowly.",
         "returnType": "float",
         "param": []
     },
     {
         "name": "llGetTimestamp",
-        "description": "Returns a string that is the current date and time in the UTC time zone in the format \"YYYY-MM-DDThh:mm:ss.ff..fZ\"",
+        "description": "Returns a string that is the current date and time in the UTC time zone in the format \"YYYY-MM-DDThh:mm:ss.ff..fZ\".\n\nAppears to be accurate to milliseconds.",
         "returnType": "string",
         "param": []
     },
@@ -2290,7 +2266,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetUnixTime",
-        "description": "Returns an integer that is the number of seconds elapsed since 00:00 hours, Jan 1, 1970  UTC from the system clock.",
+        "description": "Returns an integer that is the number of seconds elapsed since 00:00 hours, Jan 1, 1970 UTC from the system clock.",
         "returnType": "integer",
         "param": []
     },
@@ -2302,7 +2278,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetUsername",
-        "description": "Returns a string that is the unique username of the avatar specified by id.",
+        "description": "Returns a string that is the unique username of the avatar specified by id.\n\nid must specify a valid avatar key, present in or otherwise known to the sim in which the script is running, otherwise an empty string is returned. This function will still return a valid username if the avatar is a child agent of the sim (i.e., in an adjacent sim, but presently able to see into the one the script is in), or for a short period after the avatar leaves the sim (specifically, when the client completely disconnects from the sim, either as a main or child agent).",
         "returnType": "string",
         "param": [
             {
@@ -2314,13 +2290,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetVel",
-        "description": "Returns a vector that is the velocity of the object.",
+        "description": "Returns a vector that is the velocity of the object.\n\nSpeed is the magnitude of the velocity. Speed is measured in meter per second.\nVelocity reported is relative to the global coordinate frame (the object rotation has no affect on this functions output).\nFor physic objects, velocity is the velocity of its center of mass llGetCenterOfMass. ( When the object has some torque and has not force , position of the object moves ( it turns ), but its center of mass is unchanged, so the velocity is null )",
         "returnType": "vector",
         "param": []
     },
     {
         "name": "llGetVisualParams",
-        "description": "Returns a list of the details for agentid requested in params.",
+        "description": "Returns a list of the details for agentid requested in params.\n\nAn empty list if agentid is not found.\nAn empty string, \"\", is returned in the place of any invalid or unknown visual parameter.",
         "returnType": "list",
         "param": [
             {
@@ -2337,13 +2313,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetWallclock",
-        "description": "Returns a float that is the time in seconds since midnight Pacific time (PST/PDT), truncated to whole seconds. That is the same as the time of day in SLT expressed as seconds.",
+        "description": "Returns a float that is the time in seconds since midnight Pacific time (PST/PDT), truncated to whole seconds. That is the same as the time of day in SLT expressed as seconds.\n\nFor GMT use llGetGMTclock",
         "returnType": "float",
         "param": []
     },
     {
         "name": "llGiveInventory",
-        "description": "Give inventory to destination.",
+        "description": "Give inventory to destination.\n\nIf destination is an object then it must be in the same region.\nIf destination is an avatar they do not have to be in the same region.",
         "returnType": "",
         "param": [
             {
@@ -2398,6 +2374,23 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llGodLikeRezObject",
+        "description": "Rez directly off of UUID if owner has god-bit set.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "inventory",
+                "description": "",
+                "type": "key"
+            },
+            {
+                "name": "pos",
+                "description": "position in region coordinates",
+                "type": "vector"
+            }
+        ]
+    },
+    {
         "name": "llGround",
         "description": "Returns a float that is the ground height directly below the prim position + offset",
         "returnType": "float",
@@ -2423,7 +2416,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGroundNormal",
-        "description": "Returns a vector that is the ground  normal from the current position + offset.",
+        "description": "Returns a vector that is the ground normal from the current position + offset.",
         "returnType": "vector",
         "param": [
             {
@@ -2435,7 +2428,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGroundRepel",
-        "description": "Critically damps to height if within height * 0.5 of ground or water level (which ever is higher)",
+        "description": "Critically damps to height if within height * 0.5 of ground or water level (which ever is higher).\n\nDo not use with vehicles.",
         "returnType": "",
         "param": [
             {
@@ -2469,7 +2462,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llHash",
-        "description": "Returns a 32bit hash for the provided string.  Returns 0 if the input string is empty.\n\nReturns an integer ",
+        "description": "Returns a 32bit hash for the provided string.  Returns 0 if the input string is empty.",
         "returnType": "integer",
         "param": [
             {
@@ -2481,7 +2474,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llHMAC",
-        "description": "Returns a string that is the  Base64-encoded  HMAC hash of msg when using hash algorithm algorithm and secret key private_key.",
+        "description": "Returns a string that is the Base64-encoded HMAC hash of msg when using hash algorithm algorithm and secret key private_key.\n\nThis function supports md5, sha1, sha224, sha256, sha384, sha512 for algorithm.",
         "returnType": "string",
         "param": [
             {
@@ -2513,7 +2506,7 @@ export const Functions = new Directory([
             },
             {
                 "name": "parameters",
-                "description": "configuration parameters, specified as HTTP_* flag-value pairs[ parameter1, value1, parameter2, value2, . . . parameterN, valueN]",
+                "description": "configuration parameters, specified as HTTP_* flag-value pairs\n[ parameter1, value1, parameter2, value2, . . . parameterN, valueN]",
                 "type": "list"
             },
             {
@@ -2525,7 +2518,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llHTTPResponse",
-        "description": "Responds to request_id with status and body.",
+        "description": "Responds to request_id with status and body.\n\nThe response need not be made inside the http_request event but if it does not happen in a timely fashion the request will time out (within 25 seconds).",
         "returnType": "",
         "param": [
             {
@@ -2535,7 +2528,7 @@ export const Functions = new Directory([
             },
             {
                 "name": "status",
-                "description": " HTTP Status (200, 400, 404, etc)",
+                "description": "HTTP Status (200, 400, 404, etc)",
                 "type": "integer"
             },
             {
@@ -2547,7 +2540,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llInsertString",
-        "description": "Returns the string dst with src inserted starting at pos.",
+        "description": "Returns the string dst with src inserted starting at pos.\n\npos does not support negative indexes.\ni.e. unlike other somewhat similar string functions such as llGetSubString and llDeleteSubString, you cannot use -1 for the counting with this function. You may use instead the function provided a bit further below.",
         "returnType": "string",
         "param": [
             {
@@ -2598,7 +2591,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llJson2List",
-        "description": "This function takes a string representing JSON, and returns a list of the top level.\n\nReturns a list made by parsing src, a string representing json.",
+        "description": "This function takes a string representing JSON, and returns a list of the top level.\n\nReturns a list made by parsing src, a string representing json.\n\nTo convert a list into a json formatted string use llList2Json.",
         "returnType": "list",
         "param": [
             {
@@ -2610,7 +2603,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llJsonGetValue",
-        "description": "Gets the value indicated by specifiers from the json string.\n\nReturns a string made by parsing json, a string representing json and traversing as specified by specifiers.",
+        "description": "Gets the value indicated by specifiers from the json string.\n\nReturns a string made by parsing json, a string representing json and traversing as specified by specifiers.\n\nWhen the input is invalid or no result can be found this function returns JSON_INVALID. If the result is null the function returns JSON_NULL.",
         "returnType": "string",
         "param": [
             {
@@ -2627,7 +2620,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llJsonSetValue",
-        "description": "Returns, if successful, a new JSON text string which is json with the value indicated by the specifiers list set to value.",
+        "description": "Returns, if successful, a new JSON text string which is json with the value indicated by the specifiers list set to value.\n\nIf unsuccessful (usually because of specifying an out of bounds array index) it returns JSON_INVALID.\n\nAn \"out of bounds array index\" is defined to be any Integer specifiers greater than the length of an existing array at that level within the Json text or greater than 0 (zero) at a level an array doesn't exist.\n\nA special specifiers, JSON_APPEND, is accepted which appends the value to the end of the array at the specifiers level. Care should be taken- if that level is not an array, the existing Value there will be overwritten and replaced with an array containing value at it's first (0) index.\n\nContrary to lists and strings, negative indexing of Json arrays is not supported.\n\nIf an existing \"Key\" is specifiers at that level, its Value will be overwritten by value unless value is the magic value JSON_DELETE. If a value does not exist at specifiers, a new Key:Value pair will be formed within the Json object. \n\nTo delete an existing value at specifiers, use JSON_DELETE as the value. Note it will not prune empty objects or arrays at higher levels.\n\nIf value is JSON_TRUE, JSON_FALSE or JSON_NULL, the Value set will be the bare words 'true', 'false' or 'null', respectively, at the specifiers location within json.",
         "returnType": "string",
         "param": [
             {
@@ -2666,7 +2659,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llKey2Name",
-        "description": "Returns a string that is the legacy name of the prim or avatar specified by id.",
+        "description": "Returns a string that is the legacy name of the prim or avatar specified by id.\n\nid must specify a valid rezzed prim or avatar key, present in or otherwise known to the sim in which the script is running, otherwise an empty string is returned. In the case of an avatar, this function will still return a valid name if the avatar is a child agent of the sim (i.e., in an adjacent sim, but presently able to see into the one the script is in), or for a short period after the avatar leaves the sim (specifically, when the client completely disconnects from the sim, either as a main or child agent).\n\nKeys of inventory items will not work; in the case of these, use llGetInventoryName instead.",
         "returnType": "string",
         "param": [
             {
@@ -2684,7 +2677,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llKeysKeyValue",
-        "description": "Start an asynchronous transaction to request a number of keys from the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.",
+        "description": "Start an asynchronous transaction to request a number of keys from the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed.\n\nThis function will attempt to retrieve the number of keys requested but may return less if there are not enough to fulfill the full amount requested or if the list is too large. The length of the returned list is limited to 4097 characters (the success flag \"1\" and 4096 characters).  The order keys are returned is not guaranteed but is stable between subsequent calls as long as no keys are added or removed.\nThe error XP_ERROR_KEY_NOT_FOUND is returned if there index given is greater than or equal to the number of keys.",
         "returnType": "key",
         "param": [
             {
@@ -2712,19 +2705,6 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llAdjustSoundVolume",
-        "description": "Adjusts volume of attached sound.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlLinkAdjustSoundVolume",
-        "param": [
-            {
-                "name": "volume",
-                "description": "between 0.0 (silent) and 1.0 (loud) (0.0 <= volume <= 1.0)",
-                "type": "float"
-            }
-        ]
-    },
-    {
         "name": "llLinkAdjustSoundVolume",
         "description": "Adjusts volume of attached sound.",
         "returnType": "",
@@ -2738,19 +2718,6 @@ export const Functions = new Directory([
                 "name": "volume",
                 "description": "between 0.0 (silent) and 1.0 (loud) (0.0 <= volume <= 1.0)",
                 "type": "float"
-            }
-        ]
-    },
-    {
-        "name": "llParticleSystem",
-        "description": "Defines a particle system for the containing prim based on a list of rules.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlLinkParticleSystem",
-        "param": [
-            {
-                "name": "rules",
-                "description": "Particle system rules list in the format [ rule1, data1, rule2, data2 . . . rulen, datan ]",
-                "type": "list"
             }
         ]
     },
@@ -2773,7 +2740,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLinkPlaySound",
-        "description": "Plays attached sound once at volume",
+        "description": "Plays attached sound once at volume.",
         "returnType": "",
         "param": [
             {
@@ -2812,7 +2779,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLinksetDataDelete",
-        "description": "Removes an unprotected name:value pair from the linkset's datastore. If the pair was created\n\nReturns an integer success or failure code.",
+        "description": "Removes an unprotected name:value pair from the linkset's datastore. If the pair was created.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
         "param": [
             {
@@ -2826,42 +2793,10 @@ export const Functions = new Directory([
         "name": "llLinksetDataDeleteProtected",
         "description": "The llLinksetDataDeleteProtected function erases a protected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
         "returnType": "integer",
-        "url": "https://wiki.secondlife.com/wiki/LlLinksetDataDelete",
-        "param": [
-            {
-                "name": "name",
-                "description": "The key of the linkset name:value pair to be deleted.The key of the linkset name:value pair to be deleted.",
-                "type": "string"
-            },
-            {
-                "name": "pass",
-                "description": "A pass phrase previously used to protect the name:value pair.",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "llLinksetDataDelete",
-        "description": "Removes an unprotected name:value pair from the linkset's datastore. If the pair was created\n\nReturns an integer success or failure code.",
-        "returnType": "integer",
-        "url": "https://wiki.secondlife.com/wiki/LlLinksetDataDeleteProtected",
         "param": [
             {
                 "name": "name",
                 "description": "The key of the linkset name:value pair to be deleted.",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "llLinksetDataDeleteProtected",
-        "description": "The llLinksetDataDeleteProtected function erases a protected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
-        "returnType": "integer",
-        "url": "https://wiki.secondlife.com/wiki/LlLinksetDataDeleteProtected",
-        "param": [
-            {
-                "name": "name",
-                "description": "The key of the linkset name:value pair to be deleted.The key of the linkset name:value pair to be deleted.",
                 "type": "string"
             },
             {
@@ -2873,7 +2808,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLinksetDataFindKeys",
-        "description": "The llLinksetDataFindKeys function returns a list of up to count keys from the datastore that match pattern, starting at the one indicated by start. If count is less than 1, then all keys between start and the end which match pattern are returned. If count minus start exceeds the number of matching keys, the returned list will be shorter than count, down to a zero-length list if start equals or exceeds the number of matching keys.\n\nReturns a list of the keys in the datastore.",
+        "description": "The llLinksetDataFindKeys function returns a list of up to count keys from the datastore that match pattern, starting at the one indicated by start. If count is less than 1, then all keys between start and the end which match pattern are returned. If count minus start exceeds the number of matching keys, the returned list will be shorter than count, down to a zero-length list if start equals or exceeds the number of matching keys. The list is ordered alphabetically.\n\nReturns a list of the keys in the datastore.",
         "returnType": "list",
         "param": [
             {
@@ -2929,38 +2864,7 @@ export const Functions = new Directory([
         "param": [
             {
                 "name": "name",
-                "description": "The key of the linkset name:value pair to be read.The key of the name:value pair to be read.",
-                "type": "string"
-            },
-            {
-                "name": "pass",
-                "description": "The pass phrase protecting the name:value pair.",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "llLinksetDataRead",
-        "description": "Reads an unprotected name:value pair from the linkset's datastore.\n\nReturns a string value corresponding to name",
-        "returnType": "string",
-        "url": "https://wiki.secondlife.com/wiki/LlLinksetDataReadProtected",
-        "param": [
-            {
-                "name": "name",
-                "description": "The key of the linkset name:value pair to be read.",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "llLinksetDataReadProtected",
-        "description": "Reads a protected name:value pair from the datastore.\n\nReturns a string value corresponding to name",
-        "returnType": "string",
-        "url": "https://wiki.secondlife.com/wiki/LlLinksetDataReadProtected",
-        "param": [
-            {
-                "name": "name",
-                "description": "The key of the linkset name:value pair to be read.The key of the name:value pair to be read.",
+                "description": "The key of the name:value pair to be read.",
                 "type": "string"
             },
             {
@@ -2972,7 +2876,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLinksetDataReset",
-        "description": "The llLinksetDataReset function erases all name:value pairs stored in the linkset's datastore.  When this function is called the linkset_data event is triggered in all scripts running in the linkset with an action of LINKSETDATA_RESET.",
+        "description": "The llLinksetDataReset function erases all name:value pairs stored in the linkset's datastore. When this function is called the linkset_data event is triggered in all scripts running in the linkset with an action of LINKSETDATA_RESET.",
         "returnType": "",
         "param": []
     },
@@ -3012,60 +2916,6 @@ export const Functions = new Directory([
                 "name": "pass",
                 "description": "A pass phrase used to protect the name:value pair.",
                 "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "llLinksetDataWrite",
-        "description": "Creates or updates an unprotected name:value pair from the linkset's datastore.\n\nReturns an integer success or failure code.",
-        "returnType": "integer",
-        "url": "https://wiki.secondlife.com/wiki/LlLinksetDataWriteProtected",
-        "param": [
-            {
-                "name": "name",
-                "description": "The key of the name:value pair in the datastore to be updated or created.",
-                "type": "string"
-            },
-            {
-                "name": "value",
-                "description": "The value of the name:value pair.",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "llLinksetDataWriteProtected",
-        "description": "Creates or updates a protected name:value pair from the linkset's datastore. Further attempts to read, write or update the name:value pair must use the protected versions of those functions and must supply the same string that was used in pass.\n\nReturns an integer success or failure code.",
-        "returnType": "integer",
-        "url": "https://wiki.secondlife.com/wiki/LlLinksetDataWriteProtected",
-        "param": [
-            {
-                "name": "name",
-                "description": "The key of the name:value pair in the datastore to be updated or created.",
-                "type": "string"
-            },
-            {
-                "name": "value",
-                "description": "The value of the name:value pair.",
-                "type": "string"
-            },
-            {
-                "name": "pass",
-                "description": "A pass phrase used to protect the name:value pair.",
-                "type": "string"
-            }
-        ]
-    },
-    {
-        "name": "llSetSoundQueueing",
-        "description": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlLinkSetSoundQueueing",
-        "param": [
-            {
-                "name": "queue",
-                "description": "boolean, sound queuing:  TRUE enables,  FALSE (default) disables",
-                "type": "integer"
             }
         ]
     },
@@ -3087,19 +2937,6 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llSetSoundRadius",
-        "description": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlLinkSetSoundRadius",
-        "param": [
-            {
-                "name": "radius",
-                "description": "in meters",
-                "type": "float"
-            }
-        ]
-    },
-    {
         "name": "llLinkSetSoundRadius",
         "description": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
         "returnType": "",
@@ -3111,14 +2948,14 @@ export const Functions = new Directory([
             },
             {
                 "name": "radius",
-                "description": "in metersin meters",
+                "description": "in meters",
                 "type": "float"
             }
         ]
     },
     {
         "name": "llLinkSitTarget",
-        "description": "Set the sit location for the linked prim(s). The sit location is relative to the prim's position and rotation.",
+        "description": "Set the sit location for the linked prim(s). The sit location is relative to the prim's position and rotation.\n\nIf offset == ZERO_VECTOR then the sit target is removed.",
         "returnType": "",
         "param": [
             {
@@ -3139,13 +2976,6 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llStopSound",
-        "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlLinkStopSound",
-        "param": []
-    },
-    {
         "name": "llLinkStopSound",
         "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
         "returnType": "",
@@ -3159,7 +2989,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llList2CSV",
-        "description": "Returns a string of comma separated values taken in order from src.",
+        "description": "Returns a string of comma separated values taken in order from src.\n\nMore precisely the values are separated with a comma and a space (\", \").",
         "returnType": "string",
         "param": [
             {
@@ -3205,7 +3035,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llList2Json",
-        "description": "This function takes a list and returns a JSON string of that list as either a json object or json array.\n\nReturns a string that is either values serialized as a JSON type, or if an error was encountered JSON_INVALID.",
+        "description": "This function takes a list and returns a JSON string of that list as either a json object or json array.Returns a string that is either values serialized as a JSON type, or if an error was encountered JSON_INVALID.\n\n\nTo convert a json formatted string into a list use llJson2List.",
         "returnType": "string",
         "param": [
             {
@@ -3239,7 +3069,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llList2List",
-        "description": "Returns a list that is a slice of src from start to end.",
+        "description": "Returns a list that is a slice of src from start to end.\n\nstart & end support negative indexes.",
         "returnType": "list",
         "param": [
             {
@@ -3255,6 +3085,38 @@ export const Functions = new Directory([
             {
                 "name": "end",
                 "description": "end index",
+                "type": "integer"
+            }
+        ]
+    },
+    {
+        "name": "llList2ListSlice",
+        "description": "Returns a list of the slice_index'th element of every stride in strided list whose index is a multiple of stride in the range start to end.\n\nThis function supports Strided Lists.\nThe index of the first entry in the list is 0\nThe index of the first entry in a slice is 0\nIf start, end, or slice_index are negative they are indexed from end of list. -1 is last element in the list. -list_length is the 1st element of the list.\nIf slice_index is negative it is counted from the end of its stride regardless of whether or not the stride exceeds the end of the list. e.g: -1 is the last element in a stride.\nIf start > end the range from start to end is treated as an exclusion range.",
+        "returnType": "list",
+        "param": [
+            {
+                "name": "src",
+                "description": "",
+                "type": "list"
+            },
+            {
+                "name": "start",
+                "description": "start index",
+                "type": "integer"
+            },
+            {
+                "name": "end",
+                "description": "end index",
+                "type": "integer"
+            },
+            {
+                "name": "stride",
+                "description": "number of entries per stride, if less than 1 it is assumed to be 1",
+                "type": "integer"
+            },
+            {
+                "name": "slice_index",
+                "description": "",
                 "type": "integer"
             }
         ]
@@ -3288,7 +3150,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llList2Rot",
-        "description": "Returns a rotation that is at index in src.",
+        "description": "Returns a rotation that is at index in src.\n\nindex supports negative indexes.\n\nIf index describes a location not in src then ZERO_ROTATION is returned.\nIf the type of the element at index in src is not a rotation then ZERO_ROTATION is returned.\nHere is a workaround: (rotation)llList2String(src, index);",
         "returnType": "rotation",
         "param": [
             {
@@ -3339,7 +3201,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llListen",
-        "description": "Sets a handle for msg on channel from name and id.\n\nReturns a handle (an integer) that can be used to deactivate or remove the listen.",
+        "description": "Sets a handle for msg on channel from name and id.\n\nReturns a handle (an integer) that can be used to deactivate or remove the listen.\nIf msg, name or id are blank (i.e. \"\") they are not used to filter incoming messages. If id is an invalid key or assigned the value NULL_KEY, it is considered blank as well.",
         "returnType": "integer",
         "param": [
             {
@@ -3383,7 +3245,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llListenRemove",
-        "description": "Removes listen event callback handle",
+        "description": "Removes listen event callback handle.",
         "returnType": "",
         "param": [
             {
@@ -3395,7 +3257,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llListFindList",
-        "description": "Returns the integer index of the first instance of test in src.",
+        "description": "Returns the integer index of the first instance of test in src.\n\nIf test is not found in src, -1 is returned.\nThe index of the first entry in the list is 0\nIf test is found at the last index in src the positive index is returned (5th entry of 5 returns 4).",
         "returnType": "integer",
         "param": [
             {
@@ -3407,6 +3269,38 @@ export const Functions = new Directory([
                 "name": "test",
                 "description": "what to search for (needle)",
                 "type": "list"
+            }
+        ]
+    },
+    {
+        "name": "llListFindStrided",
+        "description": "Returns the integer index of the first instance of test in src matching conditions.\n\nIf test matching range and stride conditions is not found in src, -1 is returned.\nThe length of test may be equal to or less than stride in order to generate a match.\nThe index of the first entry in the list is 0\nIf test is found at the last index in src the positive index is returned (5th entry of 5 returns 4).\nIf start or end is negative, it is counted from the end list. The last element in the list is -1, the first is -list_length",
+        "returnType": "integer",
+        "param": [
+            {
+                "name": "src",
+                "description": "what to search in (haystack)",
+                "type": "list"
+            },
+            {
+                "name": "test",
+                "description": "what to search for (needle)",
+                "type": "list"
+            },
+            {
+                "name": "start",
+                "description": "Start of range to search",
+                "type": "integer"
+            },
+            {
+                "name": "end",
+                "description": "End of range to search",
+                "type": "integer"
+            },
+            {
+                "name": "stride",
+                "description": "Number of entries per stride within src",
+                "type": "integer"
             }
         ]
     },
@@ -3499,8 +3393,35 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llListSortStrided",
+        "description": "llListSortStrided is llListSort with the added parameter of stride_index, adding the flexibility to sort by any item in the stride. These routines use the same underlying code and have the same computational complexity.\n\nReturns a list that is src sorted by the stride_index item in every stride.",
+        "returnType": "list",
+        "param": [
+            {
+                "name": "src",
+                "description": "List to be sorted.",
+                "type": "list"
+            },
+            {
+                "name": "stride",
+                "description": "number of entries per stride, if less than 1 it is assumed to be 1",
+                "type": "integer"
+            },
+            {
+                "name": "stride_index",
+                "description": "The index within the stride to sort by.  stride_index is 0-indexed.  The first element is 0, second 1, etc. An index of 0 is functionally identical to using llListSort",
+                "type": "integer"
+            },
+            {
+                "name": "ascending",
+                "description": "if TRUE then the sort order is ascending, otherwise the order is descending.",
+                "type": "integer"
+            }
+        ]
+    },
+    {
         "name": "llListStatistics",
-        "description": "Returns a float that is the result of performing statistical aggregate function operation on src.",
+        "description": "Returns a float that is the result of performing statistical aggregate function operation on src.\n\nIf a list entry type is not a float or an integer it is silently ignored.",
         "returnType": "float",
         "param": [
             {
@@ -3517,7 +3438,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLoadURL",
-        "description": "Shows dialog to avatar offering to load web page at url with message.\n\nIf user clicks yes, launches the page in their web browser, starting the browser if required.",
+        "description": "Shows dialog to avatar offering to load web page at url with message.\nIf user clicks yes, launches the page in their web browser, starting the browser if required.\n\nThe url is truncated to 255 characters and message is truncated to 254 characters.\nThe protocol for the url must be specified, currently only \"https://\" and \"http://\" are supported.\nThe URL should be RFC-1738 compliant with proper escapes.",
         "returnType": "",
         "param": [
             {
@@ -3539,7 +3460,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLog",
-        "description": "Returns a float that is the  natural logarithm of val.\n\nIf val <= 0 return 0.0 instead.",
+        "description": "Returns a float that is the natural logarithm of val.\nIf val <= 0 return 0.0 instead.\n\nTo get the base 10 logarithm use llLog10.",
         "returnType": "float",
         "param": [
             {
@@ -3551,7 +3472,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLog10",
-        "description": "Returns a float that is the base 10  logarithm of val.\n\nIf val <= 0 return zero instead.",
+        "description": "Returns a float that is the base 10 logarithm of val.\nIf val <= 0 return zero instead.\n\nTo get the natural logarithm use llLog.\nllLog10 should only be used where the base 10 log is needed, all other applications should use llLog instead.",
         "returnType": "float",
         "param": [
             {
@@ -3563,7 +3484,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLookAt",
-        "description": "Cause object to point its up axis (positive z) towards target, while keeping its forward axis (positive x) below the horizon.",
+        "description": "Cause object to point its up axis (positive z) towards target, while keeping its forward axis (positive x) below the horizon.\n\nContinues to track target until llStopLookAt is called.\n\nTo change the position in the same manner use llMoveToTarget.",
         "returnType": "",
         "param": [
             {
@@ -3585,7 +3506,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLoopSound",
-        "description": "Plays attached sound looping indefinitely at volume",
+        "description": "Plays attached sound looping indefinitely at volume.",
         "returnType": "",
         "param": [
             {
@@ -3635,8 +3556,186 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llMakeExplosion",
+        "description": "Make a round explosion of particles.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "particles",
+                "description": "",
+                "type": "integer"
+            },
+            {
+                "name": "scale",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "vel",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "lifetime",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "arc",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "texture",
+                "description": "a texture in the inventory of the prim this script is in or a UUID of a texture",
+                "type": "string"
+            },
+            {
+                "name": "offset",
+                "description": "offset relative to the prim's position and expressed in local coordinates and is completely ignored",
+                "type": "vector"
+            }
+        ]
+    },
+    {
+        "name": "llMakeFire",
+        "description": "Make fire like particles.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "particles",
+                "description": "",
+                "type": "integer"
+            },
+            {
+                "name": "scale",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "vel",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "lifetime",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "arc",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "texture",
+                "description": "a texture in the inventory of the prim this script is in or a UUID of a texture",
+                "type": "string"
+            },
+            {
+                "name": "offset",
+                "description": "offset relative to the prim's position and expressed in local coordinates and is completely ignored",
+                "type": "vector"
+            }
+        ]
+    },
+    {
+        "name": "llMakeFountain",
+        "description": "Make a fountain of particles.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "particles",
+                "description": "",
+                "type": "integer"
+            },
+            {
+                "name": "scale",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "vel",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "lifetime",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "arc",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "bounce",
+                "description": "",
+                "type": "integer"
+            },
+            {
+                "name": "texture",
+                "description": "",
+                "type": "string"
+            },
+            {
+                "name": "offset",
+                "description": "a texture in the inventory of the prim this script is in or a UUID of a texture",
+                "type": "vector"
+            },
+            {
+                "name": "bounce_offset",
+                "description": "offset relative to the prim's position and expressed in local coordinates and is completely ignored",
+                "type": "float"
+            }
+        ]
+    },
+    {
+        "name": "llMakeSmoke",
+        "description": "Make smoke like particles.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "particles",
+                "description": "",
+                "type": "integer"
+            },
+            {
+                "name": "scale",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "vel",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "lifetime",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "arc",
+                "description": "",
+                "type": "float"
+            },
+            {
+                "name": "texture",
+                "description": "a texture in the inventory of the prim this script is in or a UUID of a texture",
+                "type": "string"
+            },
+            {
+                "name": "offset",
+                "description": "offset relative to the prim's position and expressed in local coordinates and is completely ignored",
+                "type": "vector"
+            }
+        ]
+    },
+    {
         "name": "llManageEstateAccess",
-        "description": "Use to add or remove agents from the estate's agent access or ban lists or groups from the estate's group access list.\n\nReturns a boolean (an integer) TRUE if the call was successful; FALSE if throttled, invalid action, invalid or null id or object owner is not allowed to manage the estate.",
+        "description": "Use to add or remove agents from the estate's agent access or ban lists or groups from the estate's group access list.Returns a boolean (an integer) TRUE if the call was successful; FALSE if throttled, invalid action, invalid or null id or object owner is not allowed to manage the estate.\n\nOnly works for objects owned by the Estate Owner or an Estate Manager. By default, the object owner is notified of every change made using this function.  But if the owner grants PERMISSION_SILENT_ESTATE_MANAGEMENT to the script, the owner will not be notified.",
         "returnType": "integer",
         "param": [
             {
@@ -3653,7 +3752,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMapDestination",
-        "description": "Opens world map centered on simname with pos highlighted.\n\nOnly works for scripts attached to avatar, or during touch events.",
+        "description": "Opens world map centered on simname with pos highlighted.\nOnly works for scripts attached to avatar, or during touch events.\n\n(NOTE: look_at currently does nothing)",
         "returnType": "",
         "param": [
             {
@@ -3675,7 +3774,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMD5String",
-        "description": "Returns a string of 32 hex characters that is the  MD5 checksum of src with a  salt of \":\"+nonce.",
+        "description": "Returns a string of 32 hex characters that is the MD5 checksum of src with a salt of \":\"+nonce.",
         "returnType": "string",
         "param": [
             {
@@ -3719,7 +3818,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMinEventDelay",
-        "description": "Set the minimum time between events being handled.",
+        "description": "Set the minimum time between events being handled.\n\nDefaults and minimums vary by the event type, see LSL Delay.",
         "returnType": "",
         "param": [
             {
@@ -3731,7 +3830,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llModifyLand",
-        "description": "Modify land with action on brush",
+        "description": "Modify land with action on brush.\n\nThe position of the prim is used to determine the input for various flags.",
         "returnType": "",
         "param": [
             {
@@ -3770,7 +3869,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMoveToTarget",
-        "description": "Critically damp to target in tau seconds (if the script is physical)",
+        "description": "Critically damp to target in tau seconds (if the script is physical).\n\nTo stop the object from maintaining the target positions use llStopMoveToTarget.\nTo change the rotation in the same manner use llLookAt or llRotLookAt.",
         "returnType": "",
         "param": [
             {
@@ -3799,7 +3898,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llNavigateTo",
-        "description": "Directs an object to travel to a defined position in the region or adjacent regions.",
+        "description": "Directs an object to travel to a defined position in the region or adjacent regions.\n\nAdjacent regions can be reached by extending the position vector into the nearby region.",
         "returnType": "",
         "param": [
             {
@@ -3837,6 +3936,28 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llOpenFloater",
+        "description": "Returns a integer Error code, or 0 if no error.\n\nThis function may be called only from a Linden owned experience.",
+        "returnType": "integer",
+        "param": [
+            {
+                "name": "floater_name",
+                "description": "Identifier of the viewer floater to open.",
+                "type": "string"
+            },
+            {
+                "name": "url",
+                "description": "URL to open in the floater.",
+                "type": "string"
+            },
+            {
+                "name": "params",
+                "description": "Options to apply to floater.",
+                "type": "list"
+            }
+        ]
+    },
+    {
         "name": "llOpenRemoteDataChannel",
         "description": "Creates a channel to listen for XML-RPC calls. Will trigger a remote_data event with channel id once it is available.",
         "returnType": "",
@@ -3844,7 +3965,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llOrd",
-        "description": "Calculate the ordinal value for a character in a string.\n\nReturns an integer ",
+        "description": "Calculate the ordinal value for a character in a string.\n\nThe returned value is the UTF-32 value of the character at the specified index. If index is outside the bounds of the string, this function returns 0.",
         "returnType": "integer",
         "param": [
             {
@@ -3861,7 +3982,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llOverMyLand",
-        "description": "Returns an integer boolean, TRUE if id is over land owned by the script owner, FALSE otherwise.",
+        "description": "Returns an integer boolean, TRUE if id is over land owned by the script owner, FALSE otherwise.\n\nOn group deeded land the object containing the script must be deeded to the same group. (It is not enough to set the script to the group.)",
         "returnType": "integer",
         "param": [
             {
@@ -3909,7 +4030,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llParseString2List",
-        "description": "Returns a list that is src broken into a list of strings, discarding separators, keeping spacers, discards any null (empty string) values generated.",
+        "description": "Returns a list that is src broken into a list of strings, discarding separators, keeping spacers, discards any null (empty string) values generated.\n\nIn most situations llParseStringKeepNulls should be used instead. Discarding null values is rarely desired.",
         "returnType": "list",
         "param": [
             {
@@ -3964,30 +4085,25 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llLinkParticleSystem",
-        "description": "A particle system defined by a list of rules is set for the prim(s) link.",
-        "returnType": "",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            },
-            {
-                "name": "rules",
-                "description": "Particle system rules list in the format [ rule1, data1, rule2, data2 . . . rulen, datan ]",
-                "type": "list"
-            }
-        ]
-    },
-    {
         "name": "llPassCollisions",
-        "description": "Sets the pass-collisions prim attribute.",
+        "description": "Sets the pass-collisions prim attribute.\n\nWhether Collisions are passed to the root prim depends not only on which PASS_* flag is selected, but may also depend on if there is a script that in the prim that handles one of the collision events. For this reason most users will want to use PASS_ALWAYS or PASS_NEVER as they do not have this variable behavior.\n\nThe default value for this attribute is PASS_IF_NOT_HANDLED.",
         "returnType": "",
         "param": [
             {
                 "name": "pass",
-                "description": "PASS_* flag ",
+                "description": "PASS_* flag",
+                "type": "integer"
+            }
+        ]
+    },
+    {
+        "name": "llPassTouches",
+        "description": "Sets the pass-touches prim attribute.\n\nWhether Touches are passed to the root prim depends not only on which PASS_* flag is selected, but may also depend on if there is a script that in the prim that handles one of the touch events. For this reason most users will want to use PASS_ALWAYS or PASS_NEVER as they do not have this variable behavior.\n\nThe default value for this attribute is PASS_ALWAYS.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "pass",
+                "description": "PASS_* flag",
                 "type": "integer"
             }
         ]
@@ -3996,7 +4112,6 @@ export const Functions = new Directory([
         "name": "llPassTouches",
         "description": "Sets the pass-touches prim attribute.",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlPassTouches",
         "param": [
             {
                 "name": "pass",
@@ -4024,7 +4139,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPlaySound",
-        "description": "Plays attached sound once at volume",
+        "description": "Plays attached sound once at volume.",
         "returnType": "",
         "param": [
             {
@@ -4058,7 +4173,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPow",
-        "description": "Returns a float that is base raised to the power exponent (baseexponent)",
+        "description": "Returns a float that is base raised to the power exponent (base^exponent)\n\nReturns NaN when base is negative and exponent is not an integer (an imaginary result, (exponent != (integer)exponent) && (base < 0.0)).",
         "returnType": "float",
         "param": [
             {
@@ -4075,7 +4190,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPreloadSound",
-        "description": "Preloads sound on viewers within range",
+        "description": "Preloads sound on viewers within range.",
         "returnType": "",
         "param": [
             {
@@ -4104,7 +4219,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPushObject",
-        "description": "Applies impulse and ang_impulse to object target",
+        "description": "Applies impulse and ang_impulse to object target.",
         "returnType": "",
         "param": [
             {
@@ -4131,7 +4246,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReadKeyValue",
-        "description": "Start an asynchronous transaction to read the value associated with the specified key (k) and the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to read the value associated with the specified key (k) and the script's Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.\n\nIf the key does not exist the dataserver will return a failure along with the error XP_ERROR_KEY_NOT_FOUND.\n\nFor this function to work, the script must be compiled into an Experience.",
         "returnType": "key",
         "param": [
             {
@@ -4143,7 +4258,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRegionSay",
-        "description": "Says the string msg on channel number channel that can be heard anywhere in the region by a script listening on channel.",
+        "description": "Says the string msg on channel number channel that can be heard anywhere in the region by a script listening on channel.\n\nRegardless of where the prim is, the message will not travel over region borders.",
         "returnType": "",
         "param": [
             {
@@ -4160,7 +4275,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRegionSayTo",
-        "description": "Says[1] the text supplied in string msg on channel supplied in integer channel to the object or avatar specified by target",
+        "description": "Says the text supplied in string msg on channel supplied in integer channel to the object or avatar specified by target",
         "returnType": "",
         "param": [
             {
@@ -4200,7 +4315,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoteDataReply",
-        "description": "Send an XML-RPC reply on channel to message_id with payload of string sdata and integer idata",
+        "description": "Send an XML-RPC reply on channel to message_id with payload of string sdata and integer idata.",
         "returnType": "",
         "param": [
             {
@@ -4227,7 +4342,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoteLoadScriptPin",
-        "description": "Copy script name into target and set to running with a start_param only if target's pin matches pin",
+        "description": "Copy script name into target and set to running with a start_param only if target's pin matches pin.\n\nOnly works if the script owner can modify target.",
         "returnType": "",
         "param": [
             {
@@ -4259,7 +4374,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoveFromLandBanList",
-        "description": "Remove avatar from the land ban list",
+        "description": "Remove avatar from the land ban list.",
         "returnType": "",
         "param": [
             {
@@ -4283,7 +4398,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoveInventory",
-        "description": "Remove the named inventory item",
+        "description": "Remove the named inventory item.",
         "returnType": "",
         "param": [
             {
@@ -4295,7 +4410,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoveVehicleFlags",
-        "description": "Disable the specified vehicle flags",
+        "description": "Disable the specified vehicle flags.",
         "returnType": "",
         "param": [
             {
@@ -4307,7 +4422,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReplaceAgentEnvironment",
-        "description": "The llReplaceAgentEnvironment function overrides the current region and parcel environment seen by an agent. The new environment persists until the agent crosses to a new region or this function is called with the NULL_KEY or empty string in the environment parameter for the particular agent, doing so will strip all environmental settings applied to this agent as part of the experience. This function must be executed as part of an experience.\n\nReturns an Integer ",
+        "description": "The llReplaceAgentEnvironment function overrides the current region and parcel environment seen by an agent. The new environment persists until the agent crosses to a new region or this function is called with the NULL_KEY or empty string in the environment parameter for the particular agent, doing so will strip all environmental settings applied to this agent as part of the experience. This function must be executed as part of an experience.",
         "returnType": "Integer",
         "param": [
             {
@@ -4329,7 +4444,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReplaceEnvironment",
-        "description": "The llReplaceEnvironment function replaces the environment in a parcel or a region. Either for a single elevation track or the entire environment. The owner of the script must have permission to edit the environment on the destination parcel, or be an estate manage in the case of an entire region.In most cases errors are reported as a return value from the function (see table below). However, issues with the environment assets may be reported in the debug chat.\n\nReturns an Integer ",
+        "description": "The llReplaceEnvironment function replaces the environment in a parcel or a region. Either for a single elevation track or the entire environment. The owner of the script must have permission to edit the environment on the destination parcel, or be an estate manage in the case of an entire region.\nIn most cases errors are reported as a return value from the function (see table below). However, issues with the environment assets may be reported in the debug chat.",
         "returnType": "Integer",
         "param": [
             {
@@ -4361,7 +4476,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReplaceSubString",
-        "description": "Returns a string that is the result of replacing the first count matching instances pattern in src with replacement_pattern.",
+        "description": "Returns a string that is the result of replacing the first count matching instances pattern in src with replacement_pattern.\n\nIf count = 0, all matching substrings are replaced. If count > 0, substrings are replaced starting from the left/beginning of src. If count < 0, substrings are replaced starting from the right/end of src.",
         "returnType": "string",
         "param": [
             {
@@ -4388,7 +4503,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRequestAgentData",
-        "description": "Requests data about agent id. When data is available the dataserver event will be raised\n\nReturns the handle (a key) for the dataserver event when it is raised.",
+        "description": "Requests data about agent id. When data is available the dataserver event will be raised.\n\nReturns the handle (a key) for the dataserver event when it is raised.",
         "returnType": "key",
         "param": [
             {
@@ -4417,7 +4532,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRequestExperiencePermissions",
-        "description": "Asks the agent for permission to participate in the script's Experience.",
+        "description": "Asks the agent for permission to participate in the script's Experience.\n\nThis request is similar to llRequestPermissions with all the following permissions: PERMISSION_TAKE_CONTROLS, PERMISSION_TRIGGER_ANIMATION, PERMISSION_ATTACH, PERMISSION_TRACK_CAMERA, PERMISSION_CONTROL_CAMERA and PERMISSION_TELEPORT.  However, unlike llRequestPermissions, the decision to allow or block the request is persistent and applies to all scripts using the experience grid-wide.\n\nSubsequent calls to llRequestExperiencePermissions from scripts in the experience will receive the same response automatically with no user interaction.\n\nEither experience_permissions or experience_permissions_denied will be generated in response to this call. If no response is given by the agent, the request will time out after at least 5 minutes. Multiple requests by the same script can be made during this time out though the script can only have permission for one agent at a time.   \n\nAgents in god mode will always see the permission dialog even if the experience has been previously approved.\n\nOutstanding permission requests will be lost if the script is de-rezzed, moved to another region, or reset.",
         "returnType": "",
         "param": [
             {
@@ -4492,7 +4607,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRequestUserKey",
-        "description": "Requests the Agent ID for the agent identified by name from the dataserver. The name given may be either the current name of an avatar or a historical name that has been used in the past. If no agent can be found with the supplied name this function returns the value NULL_KEY. ",
+        "description": "Requests the Agent ID for the agent identified by name from the dataserver. The name given may be either the current name of an avatar or a historical name that has been used in the past. If no agent can be found with the supplied name this function returns the value NULL_KEY. \n\nReturns a handle (a key) that can be used to identify the request when the dataserver event is raised. \n\nThe agent being searched for with this function does not need to be signed on to Second Life.",
         "returnType": "key",
         "param": [
             {
@@ -4504,7 +4619,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRequestUsername",
-        "description": "Requests the Username of the agent identified by id. When the Username is available the dataserver event will be raised. The agent identified by id does not need to be in the same region or online at the time of the request.\n\nReturns a handle (a key) that is used to identify the dataserver event when it is raised.If id is not the UUID of an avatar, the dataserver event is not raised.",
+        "description": "Requests the Username of the agent identified by id. When the Username is available the dataserver event will be raised. The agent identified by id does not need to be in the same region or online at the time of the request.Returns a handle (a key) that is used to identify the dataserver event when it is raised.\nIf id is not the UUID of an avatar, the dataserver event is not raised.\n\nIf the name has been changed some time in the past, this provides only the current name.",
         "returnType": "key",
         "param": [
             {
@@ -4516,7 +4631,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llResetAnimationOverride",
-        "description": "Resets the animation override of the specified animation state (anim_state) to the corresponding default value.",
+        "description": "Resets the animation override of the specified animation state (anim_state) to the corresponding default value.\n\nIf anim_state equals \"ALL\", all animation states are reset.",
         "returnType": "",
         "param": [
             {
@@ -4540,7 +4655,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llResetOtherScript",
-        "description": "Resets script name.",
+        "description": "Resets script name.\n\nOn script reset...\n*The current event/function is exited without further execution or return.\n*All global variables are set to their defaults\n*The event queue is cleared, and recurring events are stopped.\n*The default state is set as the active state\n**If it has a state_entry event, then it is queued.",
         "returnType": "",
         "param": [
             {
@@ -4552,7 +4667,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llResetScript",
-        "description": "Resets the script.",
+        "description": "Resets the script.\n\nOn script reset...\n*The current event/function is exited without further execution or return.\n*Any granted URLs are released.\n*All global variables are set to their defaults.\n*Timers (including repeating sensors) are cleared.\n*Listeners are removed.\n*The event queue is cleared.\n*The default state is set as the active state.\n**If it has a state_entry event, then it is queued.",
         "returnType": "",
         "param": []
     },
@@ -4564,7 +4679,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReturnObjectsByID",
-        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.",
+        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.\n\nIf the return value is negative, it represents an error flag.",
         "returnType": "integer",
         "param": [
             {
@@ -4576,7 +4691,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReturnObjectsByOwner",
-        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.",
+        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.\n\nIf the return value is negative, it represents an error flag.",
         "returnType": "integer",
         "param": [
             {
@@ -4593,7 +4708,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRezAtRoot",
-        "description": "Instantiate inventory object rotated to rot with its root at position, moving at velocity, using param as the start parameter",
+        "description": "Instantiate inventory object rotated to rot with its root at position, moving at velocity, using param as the start parameter.\n\nTo rez an object so its center is at position (instead of the root) use llRezObject instead.",
         "returnType": "",
         "param": [
             {
@@ -4625,7 +4740,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRezObject",
-        "description": "Instantiate inventory object at pos with velocity vel and rotation rot with start parameter param",
+        "description": "Instantiate inventory object at pos with velocity vel and rotation rot with start parameter param\n\nThe root of inventory is not at pos but the center of inventory is.\nTo have the root prim at pos use llRezAtRoot instead.",
         "returnType": "",
         "param": [
             {
@@ -4657,7 +4772,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRot2Angle",
-        "description": "Returns a float that is the rotation angle represented by rot",
+        "description": "Returns a float that is the rotation angle represented by rot.\n\nUse in conjunction with llRot2Axis.\nTo undo use llAxisAngle2Rot.",
         "returnType": "float",
         "param": [
             {
@@ -4669,7 +4784,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRot2Axis",
-        "description": "Returns a vector the rotation axis represented by rot",
+        "description": "Returns a vector the rotation axis represented by rot.\n\nUse in conjunction with llRot2Angle.\nTo undo use llAxisAngle2Rot or llAxes2Rot.",
         "returnType": "vector",
         "param": [
             {
@@ -4763,7 +4878,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRotLookAt",
-        "description": "Causes an object to smoothly rotate to target_direction with strength resistance at damping force.",
+        "description": "Causes an object to smoothly rotate to target_direction with strength resistance at damping force.\n\nMaintains rotation target_direction until stopped with llStopLookAt.\n\nTo change the position in the same manner, use llMoveToTarget.  For physical objects a range between .2 and 1 is good for both parameters.",
         "returnType": "",
         "param": [
             {
@@ -4785,7 +4900,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRotTarget",
-        "description": "This function is to have the script know when it has reached a rotation.\n\nIt registers a rot with a error that triggers at_rot_target and not_at_rot_target events continuously until unregistered.\n\nReturns a handle (an integer) to unregister the target with llRotTargetRemove",
+        "description": "This function is to have the script know when it has reached a rotation.\n\nIt registers a rot with a error that triggers at_rot_target and not_at_rot_target events continuously until unregistered.Returns a handle (an integer) to unregister the target with llRotTargetRemove\n\nA similar function exists for positions: llTarget\nThis function does not rotate the object, to do that use llSetRot, llRotLookAt or llLookAt.",
         "returnType": "integer",
         "param": [
             {
@@ -4802,7 +4917,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRotTargetRemove",
-        "description": "Removes rotational target handle registered with llRotTarget",
+        "description": "Removes rotational target handle registered with llRotTarget.",
         "returnType": "",
         "param": [
             {
@@ -4814,7 +4929,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRound",
-        "description": "Returns the integer that val is closest to.",
+        "description": "Returns the integer that val is closest to.\n\nIf the absolute value of the tenths position is 4 or less, val is rounded off; otherwise, val is rounded towards positive infinity.",
         "returnType": "integer",
         "param": [
             {
@@ -4826,7 +4941,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSameGroup",
-        "description": "Returns a boolean (an integer) that is TRUE if uuid and the prim the script is in are of the same group, otherwise FALSE.",
+        "description": "Returns a boolean (an integer) that is TRUE if uuid and the prim the script is in are of the same group, otherwise FALSE.\n\nThis function compares the  of what uuid describes.\nIt answers these two questions:\n*\"Is the script's prim in the same group as uuid?\"\n*\"Is the  of the script's prim equal to uuid?\"",
         "returnType": "integer",
         "param": [
             {
@@ -4838,7 +4953,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSay",
-        "description": "Says the text supplied in string msg on channel supplied in integer channel.",
+        "description": "Says the text supplied in string msg on channel supplied in integer channel. The message can be heard 20m away, usually (see caveats).",
         "returnType": "",
         "param": [
             {
@@ -4855,7 +4970,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llScaleByFactor",
-        "description": "Attempts to resize the entire object by scaling_factor, maintaining the size-position ratios of the prims.",
+        "description": "Attempts to resize the entire object by scaling_factor, maintaining the size-position ratios of the prims.\n\nResizing is subject to prim scale limits and linkability limits. This function can not resize the object if the linkset is physical, a pathfinding character, in a keyframed motion, or if resizing would cause the parcel to overflow.Returns a integer TRUE if it succeeds, FALSE if it fails.",
         "returnType": "integer",
         "param": [
             {
@@ -4889,7 +5004,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llScriptDanger",
-        "description": "Returns a boolean (an integer) that is TRUE if pos is over public land, sandbox land, land that doesn't allow everyone to edit and build, or land that doesn't allow outside scripts.",
+        "description": "Returns a boolean (an integer) that is TRUE if pos is over public land, sandbox land, land that doesn't allow everyone to edit and build, or land that doesn't allow outside scripts.\n\nThe usefulness of this function is limited as it does not give the reason why the script would be in danger. llGetParcelFlags on the other hand can be used in much the same way and gives more detailed information.",
         "returnType": "integer",
         "param": [
             {
@@ -4940,7 +5055,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSensor",
-        "description": "Performs a single scan for name and id with type within radius meters and arc radians of forward vector.",
+        "description": "Performs a single scan for name and id with type within radius meters and arc radians of forward vector.\n\nScript execution continues immediately. When the scan is completed, a sensor or no_sensor event is put in the event queue.\n\nIf >Depending upon which AGENT* flag is used determines the format requirements for name\n\nSee: [https://web.archive.org/web/20150426032518/http://www.lslwiki.net/lslwiki/wakka.php?wakka",
         "returnType": "",
         "param": [
             {
@@ -4972,13 +5087,13 @@ export const Functions = new Directory([
     },
     {
         "name": "llSensorRemove",
-        "description": "Removes the sensor setup by llSensorRepeat.",
+        "description": "Removes the sensor setup by llSensorRepeat.\n\nThere are no parameters or return value for this function, as only one llSensorRepeat can be specified per script.",
         "returnType": "",
         "param": []
     },
     {
         "name": "llSensorRepeat",
-        "description": "Performs a scan for name and id with type within range meters and arc radians of forward vector and repeats every rate seconds. The first scan is not performed until rate seconds have passed.",
+        "description": "Performs a scan for name and id with type within range meters and arc radians of forward vector and repeats every rate seconds. The first scan is not performed until rate seconds have passed.\n\nScript execution continues immediately. Whenever a scan is completed, a sensor or no_sensor event is put in the event queue.\n\nIf >Depending upon which AGENT* flag is used determines the format requirements for name\n\nSee: [http://www.lslwiki.net/lslwiki/wakka.php?wakka",
         "returnType": "",
         "param": [
             {
@@ -5015,9 +5130,8 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetAgentEnvironment",
-        "description": "This function sets environment values for an individual agent in an experience.  The changes to the environment persist until the agent moves to a new region or llSetAgentEnvironment is called for an agent with an empty list. Passing an empty list in params will strip all environmental settings applied to this agent as part of the experience",
+        "description": "This function sets environment values for an individual agent in an experience. The changes to the environment persist until the agent moves to a new region or llSetAgentEnvironment is called for an agent with an empty list. Passing an empty list in params will strip all environmental settings applied to this agent as part of the experience.",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetAgentEnvironment",
         "param": [
             {
                 "name": "agent_id",
@@ -5055,7 +5169,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetAngularVelocity",
-        "description": "Applies rotational velocity to object. It does the same job as llApplyRotationalImpulse but doesn't depend of the mass of object .",
+        "description": "Applies rotational velocity to object.\nIt does the same job as llApplyRotationalImpulse but doesn't depend of the mass of object.",
         "returnType": "",
         "param": [
             {
@@ -5072,7 +5186,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetAnimationOverride",
-        "description": "Set the animation (anim) that will play for the given animation state (anim_state).",
+        "description": "Set the animation (anim) that will play for the given animation state (anim_state).\n\nTo run this function the script must request the PERMISSION_OVERRIDE_ANIMATIONS permission with llRequestPermissions.\nNote: Animation overrides survive everything, except relog.",
         "returnType": "",
         "param": [
             {
@@ -5089,7 +5203,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetBuoyancy",
-        "description": "Sets the buoyancy of the task or object. Requires physics to be enabled.",
+        "description": "Sets the buoyancy of the task or object. Requires physics to be enabled.\n\nA buoyancy value of 0.0 disables the effect\nwhen buoyancy is < 1.0, the object sinks\nwhen buoyancy equals 1.0 it floats\nwhen buoyancy is > 1.0 the object rises",
         "returnType": "",
         "param": [
             {
@@ -5101,7 +5215,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetCameraAtOffset",
-        "description": "Sets the point the camera is looking at to offset for avatars that sit on the object.",
+        "description": "Sets the point the camera is looking at to offset for avatars that sit on the object.\n\nThis is the point the camera looks at, not the position of the camera's eye.",
         "returnType": "",
         "param": [
             {
@@ -5113,7 +5227,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetCameraEyeOffset",
-        "description": "Sets the camera eye offset for avatars that sit on the object.",
+        "description": "Sets the camera eye offset for avatars that sit on the object.\n\nThis is the position of the camera's eye, not the point it looks at.",
         "returnType": "",
         "param": [
             {
@@ -5137,7 +5251,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetClickAction",
-        "description": "Sets the action performed when a prim is clicked upon (aka click action).",
+        "description": "Sets the action performed when a prim is clicked upon (aka click action).\n\nWhen the cursor hovers over the prim, its image changes to reflect the action.",
         "returnType": "",
         "param": [
             {
@@ -5195,9 +5309,8 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetEnvironment",
-        "description": "This function overrides the environmental settings for a region or a parcel. The owner of the script must have permission to modify the environment on the parcel or be an estate manager to change the entire region.",
+        "description": "This function overrides the environmental settings for a region or a parcel. The owner of the script must have permission to modify the environment on the parcel or be an estate manager to change the entire region.\n\nAn override for a given parameter can be set at the region scope or parcel scope.  It can also be set for a single sky track, all sky tracks, or both.  If an override of a given parameter is specified for both an individual track and all tracks, the individual track's override takes priority.\n\nNote that the list of valid parameters differs from those available for llGetEnvironment.",
         "returnType": "Integer",
-        "url": "https://wiki.secondlife.com/wiki/LlSetEnvironment",
         "param": [
             {
                 "name": "position",
@@ -5213,7 +5326,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetForce",
-        "description": "Applies force to the object (if the script is physical)",
+        "description": "Applies force to the object (if the script is physical).\n\nContinuous force. llApplyImpulse has instantaneous push.",
         "returnType": "",
         "param": [
             {
@@ -5230,7 +5343,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetForceAndTorque",
-        "description": "Sets the force and torque of object (if the script is physical)",
+        "description": "Sets the force and torque of object (if the script is physical).",
         "returnType": "",
         "param": [
             {
@@ -5252,7 +5365,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetHoverHeight",
-        "description": "Critically damps to a height above the ground (or water) in tau seconds.",
+        "description": "Critically damps to a height above the ground (or water) in tau seconds.\n\nDo not use with vehicles.\nUse llStopHover to stop hovering.",
         "returnType": "",
         "param": [
             {
@@ -5273,13 +5386,35 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llSetInventoryPermMask",
+        "description": "Sets the given permission category to the new value on the inventory item.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "item",
+                "description": "an item in the inventory of the prim this script is in",
+                "type": "string"
+            },
+            {
+                "name": "category",
+                "description": "MASK_* flag",
+                "type": "integer"
+            },
+            {
+                "name": "value",
+                "description": "Permission bit field (PERM_* flags)",
+                "type": "integer"
+            }
+        ]
+    },
+    {
         "name": "llSetKeyframedMotion",
-        "description": "Specify a list of times, positions, and orientations to be followed by an object. The object will be smoothly moved between keyframes by the simulator. Collisions with other nonphysical or keyframed objects will be ignored (no script events will fire and collision processing will not occur). Collisions with physical objects will be computed and reported, but the keyframed object will be unaffected by those collisions. (The physical object will be affected, however.)",
+        "description": "Specify a list of times, positions, and orientations to be followed by an object. The object will be smoothly moved between keyframes by the simulator. Collisions with other nonphysical or keyframed objects will be ignored (no script events will fire and collision processing will not occur). Collisions with physical objects will be computed and reported, but the keyframed object will be unaffected by those collisions. (The physical object will be affected, however.).",
         "returnType": "",
         "param": [
             {
                 "name": "keyframes",
-                "description": "Strided keyframe list of the form:vector position (optional via KFM_TRANSLATION and KFM_DATA)rotation orientation (optional via KFM_ROTATION and KFM_DATA)float timeEach keyframe is interpreted relative to the previous transform of the object. For example, consider the following list of keyframes: [<0, 0, 10>, ZERO_ROTATION, 5, <0, 0, 0>, ZERO_ROTATION, 5, <0, 0, -10>, ZERO_ROTATION, 5]. This would cause the object to move up 10m over the course of 5s. It would then remain at the location for 5s before moving down 10m over the course of another 5s.Time values must be 1/9s. or greater.Linear and angular velocities will be clamped to limits set by the simulator (values TBD).An empty list will terminate any keyframed animation currently playing.",
+                "description": "Strided keyframe list of the form:\n* vector position (optional via KFM_TRANSLATION and KFM_DATA)\n* rotation orientation (optional via KFM_ROTATION and KFM_DATA)\n* float time\n\nEach keyframe is interpreted relative to the previous transform of the object. For example, consider the following list of keyframes: [<0, 0, 10>, ZERO_ROTATION, 5, <0, 0, 0>, ZERO_ROTATION, 5, <0, 0, -10>, ZERO_ROTATION, 5]. This would cause the object to move up 10m over the course of 5s. It would then remain at the location for 5s before moving down 10m over the course of another 5s.\nTime values must be 1/9s. or greater.\nLinear and angular velocities will be clamped to limits set by the simulator (values TBD).\nAn empty list will terminate any keyframed animation currently playing.",
                 "type": "list"
             },
             {
@@ -5378,19 +5513,6 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llSetPrimitiveParams",
-        "description": "Sets the prim's parameters according to rules.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParams",
-        "param": [
-            {
-                "name": "rules",
-                "description": "",
-                "type": "list"
-            }
-        ]
-    },
-    {
         "name": "llSetLinkPrimitiveParams",
         "description": "Sets the prims parameters according to rules.",
         "returnType": "",
@@ -5425,51 +5547,24 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llSetPrimitiveParams",
-        "description": "Sets the prim's parameters according to rules.",
+        "name": "llSetLinkRenderMaterial",
+        "description": "If a prim exists in the link set at link, set material on face of that prim. This function will clear most PRIM_GLTF_* properties on the face, with the exceptions of repeats, offsets, and rotation_in_radians.\n\nIf face is ALL_SIDES then the function works on all sides.",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParamsFast",
-        "param": [
-            {
-                "name": "rules",
-                "description": "",
-                "type": "list"
-            }
-        ]
-    },
-    {
-        "name": "llSetLinkPrimitiveParams",
-        "description": "Sets the prims parameters according to rules.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParamsFast",
         "param": [
             {
                 "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
+                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag",
                 "type": "integer"
             },
             {
-                "name": "rules",
-                "description": "",
-                "type": "list"
-            }
-        ]
-    },
-    {
-        "name": "llSetLinkPrimitiveParamsFast",
-        "description": "Sets the prims parameters according to rules.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetLinkPrimitiveParamsFast",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
+                "name": "material",
+                "description": "a material in the inventory of the prim this script is in or a UUID of a material",
+                "type": "string"
             },
             {
-                "name": "rules",
-                "description": "",
-                "type": "list"
+                "name": "face",
+                "description": "face number or ALL_SIDES",
+                "type": "integer"
             }
         ]
     },
@@ -5497,7 +5592,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetLinkTextureAnim",
-        "description": "Animate the texture on the specified face/faces of the specified prim/prims by setting the texture scale and offset.  Identical to llSetTextureAnim except able to modify any prim in the link set.",
+        "description": "Animate the texture on the specified face/faces of the specified prim/prims by setting the texture scale and offset. Identical to llSetTextureAnim except able to modify any prim in the link set.\n\nIf face is ALL_SIDES then the function works on all sides.\nstart supports negative indexes.\nFrames are numbered from left to right, top to bottom, starting at 0.\nIf rate is negative, it has the same effect as using the REVERSE flag.\nIf length is 0, it is considered to be sizex*sizey if both are above 0, otherwise 1.",
         "returnType": "",
         "param": [
             {
@@ -5544,7 +5639,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetLocalRot",
-        "description": "Sets the rotation of a child prim relative to the root prim",
+        "description": "Sets the rotation of a child prim relative to the root prim.",
         "returnType": "",
         "param": [
             {
@@ -5568,7 +5663,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetObjectDesc",
-        "description": "Sets the prims description",
+        "description": "Sets the prims description.",
         "returnType": "",
         "param": [
             {
@@ -5580,7 +5675,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetObjectName",
-        "description": "Sets the prim's name according to the name parameter.",
+        "description": "Sets the prim's name according to the name parameter.\n\nIf this function is called from a child prim in a linked set, it will change the name of the child prim and not the root prim.",
         "returnType": "",
         "param": [
             {
@@ -5591,8 +5686,25 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llSetObjectPermMask",
+        "description": "Sets the given permission mask to the new value on the root object the task is attached to.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "mask",
+                "description": "MASK_* flag",
+                "type": "integer"
+            },
+            {
+                "name": "value",
+                "description": "bit-field, PERM_* flags",
+                "type": "integer"
+            }
+        ]
+    },
+    {
         "name": "llSetParcelMusicURL",
-        "description": "Sets the streaming audio URL for the parcel object is on",
+        "description": "Sets the streaming audio URL for the parcel object is on.\n\nThe object owner must also be the land owner. If the land is deeded to a group the object will need to be deeded to the same group for this function to work.",
         "returnType": "",
         "param": [
             {
@@ -5648,7 +5760,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetPos",
-        "description": "Moves the object or primitive towards pos without using physics.",
+        "description": "Moves the object or primitive towards pos without using physics.\n\nMovement is capped to 10m per call for unattached root prims.",
         "returnType": "",
         "param": [
             {
@@ -5671,46 +5783,9 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llSetLinkPrimitiveParams",
-        "description": "Sets the prims parameters according to rules.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetPrimitiveParams",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            },
-            {
-                "name": "rules",
-                "description": "",
-                "type": "list"
-            }
-        ]
-    },
-    {
-        "name": "llSetLinkPrimitiveParamsFast",
-        "description": "Sets the prims parameters according to rules.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetPrimitiveParams",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            },
-            {
-                "name": "rules",
-                "description": "",
-                "type": "list"
-            }
-        ]
-    },
-    {
         "name": "llSetPrimMediaParams",
         "description": "Set the media params for a particular face.\n\nReturns a status (an integer) that is a STATUS_* flag which details the success/failure of the operation(s).",
         "returnType": "integer",
-        "url": "https://wiki.secondlife.com/wiki/LlSetPrimMediaParams",
         "param": [
             {
                 "name": "face",
@@ -5726,7 +5801,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetRegionPos",
-        "description": "Tries to move the entire object so that the root prim is within 0.1m of position.\n\nReturns an integer boolean, TRUE if the object is successfully placed within 0.1 m of position, FALSE otherwise. See #Specification for details.",
+        "description": "Tries to move the entire object so that the root prim is within 0.1m of position.\n\nReturns an integer boolean, TRUE if the object is successfully placed within 0.1 m of position, FALSE otherwise. See #Specification for details.\n\nOnly if TRUE is returned does the object move, if FALSE is returned, the object does not change position.",
         "returnType": "integer",
         "param": [
             {
@@ -5749,6 +5824,23 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llSetRenderMaterial",
+        "description": "Sets the material of this prim's face. This function will clear most PRIM_GLTF_* properties on the face, with the exceptions of repeats, offsets, and rotation_in_radians.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "material",
+                "description": "a material in the inventory of the prim this script is in or a UUID of a material",
+                "type": "string"
+            },
+            {
+                "name": "face",
+                "description": "face number or ALL_SIDES",
+                "type": "integer"
+            }
+        ]
+    },
+    {
         "name": "llSetRot",
         "description": "Sets the rotation of the prim to rot.",
         "returnType": "",
@@ -5762,7 +5854,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetScale",
-        "description": "Sets the size of the prim according to size",
+        "description": "Sets the size of the prim according to size.\n\nThe components of size (x, y & z) each need to be in the range, if they are out of the range they are rounded to the nearest endpoint.",
         "returnType": "",
         "param": [
             {
@@ -5793,7 +5885,6 @@ export const Functions = new Directory([
         "name": "llSetSitText",
         "description": "Displays text rather than the default \"Sit Here\" in the right-click menu.",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetSitText",
         "param": [
             {
                 "name": "text",
@@ -5806,29 +5897,10 @@ export const Functions = new Directory([
         "name": "llSetSoundQueueing",
         "description": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetSoundQueueing",
         "param": [
             {
                 "name": "queue",
-                "description": "boolean, sound queuing:  TRUE enables,  FALSE (default) disables",
-                "type": "integer"
-            }
-        ]
-    },
-    {
-        "name": "llLinkSetSoundQueueing",
-        "description": "Set whether attached sounds wait for the current sound to finish. If queue is TRUE, queuing is enabled, if FALSE queuing is disabled. Sound queuing is disabled by default.",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlSetSoundQueueing",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            },
-            {
-                "name": "queue",
-                "description": "boolean, sound queuing:  TRUE enables,  FALSE (default) disables",
+                "description": "boolean, sound queuing: TRUE enables, FALSE (default) disables",
                 "type": "integer"
             }
         ]
@@ -5846,25 +5918,8 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llLinkSetSoundRadius",
-        "description": "Establishes a hard cut-off radius for audibility of scripted sounds (both attached and triggered).",
-        "returnType": "",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            },
-            {
-                "name": "radius",
-                "description": "in metersin meters",
-                "type": "float"
-            }
-        ]
-    },
-    {
         "name": "llSetStatus",
-        "description": "Sets the object status attributes indicated in the status} mask to value",
+        "description": "Sets the object status attributes indicated in the status} mask to value.",
         "returnType": "",
         "param": [
             {
@@ -5920,7 +5975,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetTextureAnim",
-        "description": "Animate the texture on the specified face/faces by setting the texture scale and offset.",
+        "description": "Animate the texture on the specified face/faces by setting the texture scale and offset.\n\nFrames are numbered from left to right, top to bottom, starting at 0.\nIf rate is negative, it has the same effect as using the Though if rate is negative and the REVERSE flag is used, they cancel each other out.",
         "returnType": "",
         "param": [
             {
@@ -5974,7 +6029,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetTorque",
-        "description": "Sets the torque of object (if the script is physical)",
+        "description": "Sets the torque of object (if the script is physical).",
         "returnType": "",
         "param": [
             {
@@ -5991,7 +6046,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetTouchText",
-        "description": "Displays text rather than the default \"Touch\" in the right-click menu",
+        "description": "Displays text rather than the default \"Touch\" in the right-click menu.\n\nThis is very similar to LlSetSitText.\nTo restore the default value, use an empty string for text.\nTo make it appear as if there is no text, use some combination of whitespace characters for text.",
         "returnType": "",
         "param": [
             {
@@ -6003,7 +6058,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetVehicleFlags",
-        "description": "Enabled the specified vehicle flags",
+        "description": "Enabled the specified vehicle flags.",
         "returnType": "",
         "param": [
             {
@@ -6078,7 +6133,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetVelocity",
-        "description": "Applies velocity to object",
+        "description": "Applies velocity to object\n\nInstantaneous velocity not dependent on object energy or mass.",
         "returnType": "",
         "param": [
             {
@@ -6095,7 +6150,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSHA1String",
-        "description": "Returns a string of 40 hex characters that is the  SHA-1 security hash of src.",
+        "description": "Returns a string of 40 hex characters that is the SHA-1 security hash of src.",
         "returnType": "string",
         "param": [
             {
@@ -6107,7 +6162,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSHA256String",
-        "description": "Returns a string of 64 hex characters that is the  SHA-256 security hash of src.",
+        "description": "Returns a string of 64 hex characters that is the SHA-256 security hash of src.",
         "returnType": "string",
         "param": [
             {
@@ -6136,7 +6191,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSignRSA",
-        "description": "Returns a string that is the  Base64-encoded  RSA signature of msg when using hash algorithm algorithm and secret key private_key.  Can be paired with llVerifyRSA to pass verifiable messages.",
+        "description": "Returns a string that is the Base64-encoded RSA signature of msg when using hash algorithm algorithm and secret key private_key. Can be paired with llVerifyRSA to pass verifiable messages.\n\nThis function supports sha1, sha224, sha256, sha384, sha512 for algorithm.",
         "returnType": "string",
         "param": [
             {
@@ -6170,7 +6225,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSitOnLink",
-        "description": "The avatar specified by agent_id is forced to sit on the sit target of the prim indicated by the link parameter.  If the specified link is already occupied, the simulator searches down the chain of prims in the link set looking for an available sit target.\n\nReturns an Integer ",
+        "description": "The avatar specified by agent_id is forced to sit on the sit target of the prim indicated by the link parameter.  If the specified link is already occupied, the simulator searches down the chain of prims in the link set looking for an available sit target.\n\nIf successful, this method returns 1.\n\nIf the function fails, it returns a negative number constant.\n\nLink constants that indicate a single prim may be used for the link parameter.  These are LINK_ROOT and LINK_THIS.  Other constants such as LINK_SET, LINK_CHILDREN, LINK_ALL_OTHERS will return an INVALID_LINK error.\n\n''This method must be called from an experience enabled script running on land that has enabled the experience key.''\nIf these conditions are not met this method returns a NOT_EXPERIENCE error.\n\nThe targeted avatar must also have accepted the experience.  If the user is not participating in the experience this method returns NO_EXPERIENCE_PERMISSION. If the avatar id can not be found or is not over land that has enabled the experience this method returns INVALID_AGENT.\n\nIf there are no valid sit targets remaining in the linkset this method returns NO_SIT_TARGET and no action is taken with the avatar.\n\nIf the avatar does not have access to the parcel containing the prim running this script, this call fails.",
         "returnType": "Integer",
         "param": [
             {
@@ -6187,7 +6242,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSitTarget",
-        "description": "Set the sit location for the prim. The sit location is relative to the prim's position and rotation.",
+        "description": "Set the sit location for the prim. The sit location is relative to the prim's position and rotation.\n\nIf offset == ZERO_VECTOR then the sit target is removed.",
         "returnType": "",
         "param": [
             {
@@ -6204,7 +6259,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSleep",
-        "description": "Puts the script to sleep for sec seconds. The script will not do anything during this time.",
+        "description": "Puts the script to sleep for sec seconds. The script will not do anything during this time.\n\nThe script will sleep at least until the next server-frame, which happen every (1/45 = ~0.02222) seconds under normal conditions.\n\nIf sec is zero or less, the script will not sleep at all.",
         "returnType": "",
         "param": [
             {
@@ -6215,8 +6270,47 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llSound",
+        "description": "Plays sound at volume and whether it should loop or not.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "sound",
+                "description": "a sound in the inventory of the prim this script is in or a UUID of a sound",
+                "type": "string"
+            },
+            {
+                "name": "volume",
+                "description": "between 0.0 (silent) and 1.0 (loud) (0.0 <= volume <= 1.0)",
+                "type": "float"
+            },
+            {
+                "name": "queue",
+                "description": "boolean, whether or not to queue the song (TRUE) or interrupt the playing song (FALSE).",
+                "type": "integer"
+            },
+            {
+                "name": "loop",
+                "description": "boolean, whether or not to loop the song.",
+                "type": "integer"
+            }
+        ]
+    },
+    {
+        "name": "llSoundPreload",
+        "description": "Preloads sound on viewers within range.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "sound",
+                "description": "a sound in the inventory of the prim this script is in or a UUID of a sound	",
+                "type": "string"
+            }
+        ]
+    },
+    {
         "name": "llSqrt",
-        "description": "Returns a float that is the square root of val.",
+        "description": "Returns a float that is the square root of val.\n\nFor imaginary results (val < 0.0), a Math Error is triggered under LSO , or 'NaN' (Not A Number) is returned under Mono",
         "returnType": "float",
         "param": [
             {
@@ -6264,7 +6358,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llStopAnimation",
-        "description": "Stop animation anim for agent that granted PERMISSION_TRIGGER_ANIMATION if the permission has not been revoked.",
+        "description": "Stop animation anim for agent that granted PERMISSION_TRIGGER_ANIMATION if the permission has not been revoked.\n\nTo run this function the script must request the PERMISSION_TRIGGER_ANIMATION permission with llRequestPermissions.",
         "returnType": "",
         "param": [
             {
@@ -6275,10 +6369,27 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llStopHover",
+        "description": "Stop hovering to a height.",
+        "returnType": "",
+        "param": []
+    },
+    {
+        "name": "llStopLookAt",
+        "description": "Stop causing object to point at a target.\n\nUse in conjunction llLookAt or llRotLookAt.",
+        "returnType": "",
+        "param": []
+    },
+    {
+        "name": "llStopMoveToTarget",
+        "description": "Stops critically damped motion.\n\nUse in conjunction with llMoveToTarget.\nTo stop rotation movement use llStopLookAt",
+        "returnType": "",
+        "param": []
+    },
+    {
         "name": "llStopObjectAnimation",
         "description": "Stop an animation for the current object.",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlStopObjectAnimation",
         "param": [
             {
                 "name": "anim",
@@ -6288,20 +6399,8 @@ export const Functions = new Directory([
         ]
     },
     {
-        "name": "llStopHover",
-        "description": "Stop hovering to a height",
-        "returnType": "",
-        "param": []
-    },
-    {
-        "name": "llStopLookAt",
-        "description": "Stop causing object to point at a target",
-        "returnType": "",
-        "param": []
-    },
-    {
-        "name": "llStopMoveToTarget",
-        "description": "Stops critically damped motion",
+        "name": "llStopPointAt",
+        "description": "Stop agent that owns object pointing.",
         "returnType": "",
         "param": []
     },
@@ -6309,21 +6408,7 @@ export const Functions = new Directory([
         "name": "llStopSound",
         "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
         "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlStopSound",
         "param": []
-    },
-    {
-        "name": "llLinkStopSound",
-        "description": "Stops the attached sound(s) currently playing, if they were started by llLoopSound",
-        "returnType": "",
-        "url": "https://wiki.secondlife.com/wiki/LlStopSound",
-        "param": [
-            {
-                "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
-                "type": "integer"
-            }
-        ]
     },
     {
         "name": "llStringLength",
@@ -6339,7 +6424,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llStringToBase64",
-        "description": "Returns the string Base64 representation of the str interpreted as an UTF-8 byte sequence",
+        "description": "Returns the string Base64 representation of the str interpreted as an UTF-8 byte sequence\n\nIf extra bits are needed to complete the last base64 symbol, those extra bits will be zero.\nTo go in the other direction, use llBase64ToString.",
         "returnType": "string",
         "param": [
             {
@@ -6368,7 +6453,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSubStringIndex",
-        "description": "Returns an integer that is the index of the first instance of pattern in source.",
+        "description": "Returns an integer that is the index of the first instance of pattern in source.\n\nIf pattern is not found in source, -1 is returned.\nThe index of the first character in the string is 0",
         "returnType": "integer",
         "param": [
             {
@@ -6384,8 +6469,20 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llTakeCamera",
+        "description": "This function is recognized by the compiler, but was never implemented in Second Life.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "avatar",
+                "description": "avatar UUID that is in the same region",
+                "type": "key"
+            }
+        ]
+    },
+    {
         "name": "llTakeControls",
-        "description": "Allows for intercepting of keyboard and mouse clicks, specifically those specified by controls, from the agent the script has permissions for.",
+        "description": "Allows for intercepting of keyboard and mouse clicks, specifically those specified by controls, from the agent the script has permissions for.\n\nIf accept is FALSE and pass_on is FALSE, the behavior is not intuitive.  In this case, the complement of the specified controls do not generate events and do not perform their normal functions. They are effectively disabled.  Certain control bits (e.g. CONTROL_ROT_LEFT) are also disabled when specified, in this case.\nIf accept is FALSE and pass_on is TRUE, then the specified controls do not generate events but perform their normal functions.\nIf accept is TRUE and pass_on is FALSE, then the specified controls generate events but do not perform their normal functions.\nIf accept is TRUE and pass_on is TRUE, then the specified controls generate events and perform their normal functions.",
         "returnType": "",
         "param": [
             {
@@ -6419,7 +6516,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTarget",
-        "description": "This function is to have the script know when it has reached a position.\n\nIt registers a position with a range that triggers at_target and not_at_target events continuously until unregistered.\n\nReturns a handle (an integer) to unregister the target with llTargetRemove.",
+        "description": "This function is to have the script know when it has reached a position.\nIt registers a position with a range that triggers at_target and not_at_target events continuously until unregistered.\n\nReturns a handle (an integer) to unregister the target with llTargetRemove.\nA similar function exists for rotations: llRotTarget\nThis function does not move the object, to do that use llSetPos or llMoveToTarget.",
         "returnType": "integer",
         "param": [
             {
@@ -6436,7 +6533,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTargetedEmail",
-        "description": "Sends an email to the owner (selected by target) of an object with subject and message.",
+        "description": "Sends an email to the owner (selected by target) of an object with subject and message.\n\nThe entire message (including the address, subject and other miscellaneous fields) can't be longer than 4096 bytes combined.",
         "returnType": "",
         "param": [
             {
@@ -6480,7 +6577,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTargetRemove",
-        "description": "Removes positional target handle registered with llTarget",
+        "description": "Removes positional target handle registered with llTarget.",
         "returnType": "",
         "param": [
             {
@@ -6492,7 +6589,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTeleportAgent",
-        "description": "Teleports an agent to a landmark stored in the object's inventory.",
+        "description": "Teleports an agent to a landmark stored in the object's inventory.\n\nIf landmark is an empty string, the avatar is teleported to the location position in the current region.\n\nIf the destination is in the current region, the avatar will land facing look_at as a position within that region. Otherwise, look_at is treated as a unit direction.",
         "returnType": "",
         "param": [
             {
@@ -6519,7 +6616,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTeleportAgentGlobalCoords",
-        "description": "Teleports an agent to region_coordinates within a region specified by global_coordinates.",
+        "description": "Teleports an agent to region_coordinates within a region specified by global_coordinates.\n\nA region's global coordinates can be retrieved using <code>llRequestSimulatorData(\"region name\", DATA_SIM_POS)</code>\n\nIf the destination is in the current region, the avatar will land facing look_at as a position within that region. Otherwise, look_at is treated as a unit direction.\n\nThe combination of llRequestSimulatorData and llTeleportAgentGlobalCoords allows agents to be teleported to regions by region name.",
         "returnType": "",
         "param": [
             {
@@ -6580,7 +6677,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llToLower",
-        "description": "Returns a string that is src with all lower-case letters",
+        "description": "Returns a string that is src with all lower-case letters.\n\nThe opposite is llToUpper.",
         "returnType": "string",
         "param": [
             {
@@ -6592,7 +6689,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llToUpper",
-        "description": "Returns a string that is src with all upper-case characters.",
+        "description": "Returns a string that is src with all upper-case characters.\n\nThe opposite is llToLower.",
         "returnType": "string",
         "param": [
             {
@@ -6604,7 +6701,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTransferLindenDollars",
-        "description": "Transfer amount of L$ money from script owner to destination avatar.\n\nReturns a key used in a matching transaction_result event for the success or failure of the transfer. If the transaction is successful, this key will show in the transaction history.",
+        "description": "Transfer amount of L$ money from script owner to destination avatar.\n\nReturns a key used in a matching transaction_result event for the success or failure of the transfer. If the transaction is successful, this key will show in the transaction history.\n\nIf you aren't going to use the return value or the resulting transaction_result event consider using llGiveMoney instead of this function.",
         "returnType": "key",
         "param": [
             {
@@ -6621,7 +6718,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTriggerSound",
-        "description": "Plays sound at volume, centered at but not attached to object.",
+        "description": "Plays sound at volume, centered at but not attached to object.\n\nIf the object moves the sound does not move with it.\nUse llPlaySound to play a sound attached to the object.",
         "returnType": "",
         "param": [
             {
@@ -6638,7 +6735,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTriggerSoundLimited",
-        "description": "Plays sound at volume, centered at but not attached to the object, limited to the box defined by vectors top_north_east and bottom_south_west",
+        "description": "Plays sound at volume, centered at but not attached to the object, limited to the box defined by vectors top_north_east and bottom_south_west.\n\nIf the object moves the sound does not move with it.<br/>Use llPlaySound to play a sound attached to the object.",
         "returnType": "",
         "param": [
             {
@@ -6677,7 +6774,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llUnSit",
-        "description": "The agent identified by id is forced to stand up if any of the following apply:",
+        "description": "The agent identified by id is forced to stand up if any of the following apply:\n# The agent is sitting on the scripted object\n# The agent is over land owned by the scripted object's owner and/or a group the owner has land rights for.",
         "returnType": "",
         "param": [
             {
@@ -6701,7 +6798,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llUpdateKeyValue",
-        "description": "Start an asynchronous transaction to update a key-value pair associated with the script's Experience with the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
+        "description": "Start an asynchronous transaction to update a key-value pair associated with the script's Experience with the given key (k) and value (v).\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.\n\nIf checked is set to TRUE then the update will only happen if original_value matches the current value in key-value store, otherwise the dataserver will return a failure along with the error XP_ERROR_RETRY_UPDATE. This can be used to create an in-use flag so that  can be achieved.\n\nAs of Jan 1, 2016 maximum bytes is 1011 for key and 4095 for value for both LSO and Mono scripts.\nUsing llUpdateKeyValue to update a key that does not exist will not generate XP_ERROR_KEY_NOT_FOUND. Instead, it will generate a new key with the specified value, as if you had used llCreateKeyValue.",
         "returnType": "key",
         "param": [
             {
@@ -6757,7 +6854,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llVecNorm",
-        "description": "Returns the vector that is vec normalized (a unit vector sharing the same direction as vec).",
+        "description": "Returns the vector that is vec normalized (a unit vector sharing the same direction as vec).\n\nIf vec is a ZERO_VECTOR, than the value returned is a ZERO_VECTOR.",
         "returnType": "vector",
         "param": [
             {
@@ -6769,7 +6866,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llVerifyRSA",
-        "description": "Returns an integer indicating whether the  RSA signature is valid for msg when using hash algorithm algorithm and public RSA key public_key.  Returns TRUE if the signature is verified, and FALSE otherwise.  Can be paired with llSignRSA to validate the authenticity of messages from other LSL scripts.",
+        "description": "Returns an integer indicating whether the RSA signature is valid for msg when using hash algorithm algorithm and public RSA key public_key.  Returns TRUE if the signature is verified, and FALSE otherwise.  Can be paired with llSignRSA to validate the authenticity of messages from other LSL scripts.\n\nThis function supports sha1, sha224, sha256, sha384, sha512 for algorithm.",
         "returnType": "integer",
         "param": [
             {
@@ -6796,7 +6893,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llVolumeDetect",
-        "description": "If detect is TRUE, VolumeDetect is enabled, physical object and avatars can pass through the object.",
+        "description": "If detect is TRUE, VolumeDetect is enabled, physical object and avatars can pass through the object.\n\nThis works much like Phantom, but unlike Phantom, VolumeDetect objects trigger collision_start and collision_end events when interpenetrating. Collision events will trigger in any script in the object.",
         "returnType": "",
         "param": [
             {
@@ -6830,7 +6927,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llWater",
-        "description": "Returns a float that is the water height below the prim's position + offset",
+        "description": "Returns a float that is the water height below the prim's position + offset.\n\nWater height is constant across each entire sim and is typically 20 meters but not always.",
         "returnType": "float",
         "param": [
             {
@@ -6871,7 +6968,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llXorBase64",
-        "description": "Correctly performs an exclusive or on two Base64 strings.\n\nReturns a string that is a Base64 XOR of str1 and str2.",
+        "description": "Correctly performs an exclusive or on two Base64 strings.\n\nReturns a string that is a Base64 XOR of str1 and str2.\n\nstr2 repeats if it is shorter than str1. If the inputs are not Base64 strings the result will be erratic.\nBe sure to read the Cryptography section before designing a cryptographic algorithm.",
         "returnType": "string",
         "param": [
             {
@@ -6882,6 +6979,52 @@ export const Functions = new Directory([
             {
                 "name": "str2",
                 "description": "Base64 string",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "llXorBase64Strings",
+        "description": "Returns a string that is a Base64 string of s1 xor'ed with s2.\n\ns2 repeats if it is shorter than s1. Retained for backwards compatibility.",
+        "returnType": "string",
+        "param": [
+            {
+                "name": "str1",
+                "description": "Base64 string",
+                "type": "string"
+            },
+            {
+                "name": "str2",
+                "description": "Base64 string",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "llXorBase64StringsCorrect",
+        "description": "Correctly performs an exclusive or on two Base 64 strings.Returns a string that is a Base64 XOR of str1 and str2.\n\nstr2 repeats if it is shorter than str1. If the inputs are not Base64 strings the result will be erratic.",
+        "returnType": "string",
+        "param": [
+            {
+                "name": "str1",
+                "description": "Base64 string",
+                "type": "string"
+            },
+            {
+                "name": "str2",
+                "description": "Base64 string",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "name": "strCapitalize",
+        "description": "Created by Peter Stindberg, this function will take a string as input and return the string with the first letter of each word capitalized and all the other letters in lowercase. <syntaxhighlight langReturns a string with each word capitalized.",
+        "returnType": "string",
+        "param": [
+            {
+                "name": "str",
+                "description": "Word or phrase that will be capitalized.",
                 "type": "string"
             }
         ]
