@@ -91,8 +91,8 @@ const provider: vscode.DocumentSemanticTokensProvider = {
 			// outputChannel.appendLine(e.text);
 		}
 		// console.log("provideDocumentSemanticTokens done");
-		// outputChannel.appendLine("provideDocumentSemanticTokens done");
-		return tokensBuilder.build();
+		if(!token.isCancellationRequested)
+			return tokensBuilder.build();
 	}
 };
 
