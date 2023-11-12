@@ -1,3 +1,4 @@
+*.cpuprofile
 .vscode/**
 **/*.ts
 **/*.map
@@ -10,4 +11,5 @@ server/**
 client/**
 client/node_modules/**
 !client/node_modules/antlr4/**
+!client/node_modules/vscode-languageclient/**
 !client/out
