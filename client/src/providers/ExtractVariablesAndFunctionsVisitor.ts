@@ -163,7 +163,11 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	}
 	llparse = (code: string) => {
 		return new Promise((resolve, reject) => {
-			this.worker = new Worker(__dirname + "/../out/lsl-diag.js", { workerData: code });
+			// prod
+			// this.worker = new Worker(__dirname + "/../mcpp.js", { workerData: code , }); //
+			this.worker = new Worker(__dirname + "/../out/lsl-diag.js", { workerData: code }); //
+			// dev
+			// this.worker = new Worker(__dirname + "/../lsl-diag.js", { workerData: code });
 			this.worker.on('message', (message) => {
 				this.tree = message;
 				this.SymbolsTree.tree = message["SymbolsTree"]["tree"];
