@@ -4,10 +4,6 @@ import LSLLexer from '../antlr4/LSLLexer';
 import LSLParser, { Compound_statementContext, DeclarationContext, Default_stateContext, EventContext, Function_parameterContext, Function_parametersContext, Global_functionContext, Global_variableContext, IdentifierContext, Jump_labelContext, LlstateContext, LlstatesContext, Lscript_programContext, StatementContext } from '../antlr4/LSLParser';
 import LSLVisitor, { } from '../antlr4/LSLParserVisitor';
 
-// import { Position, Range } from './common';
-import { encode } from 'punycode';
-
-
 
 export class Position {
 	row: number;
