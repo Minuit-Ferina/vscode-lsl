@@ -3,7 +3,7 @@
 The LSL extension adds language support for LSL secondlife scripting language to Visual Studio Code
 
 ## Functionality
-- Support LSL version 2023-11-07.6790647783
+- Support LSL version 2024-02-21.7995320426
 - Syntax hilighting 
 
 ## Completion sugestions
