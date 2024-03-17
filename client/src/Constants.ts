@@ -5,13 +5,13 @@ export const Constants = new Directory([
         "name": "ACTIVE",
         "type": "integer",
         "value": "0x2",
-        "description": "If it is contained in the result of llDetectedType(), it means it is physical tasks. (Physical objects & agents).\nIf it is used as an filter of llSensor() or llSensorRepeat(), it will search for physical objects that are moving or objects containing an active script. Thus, it is using SL server resources now."
+        "description": "If it is contained in the result of llDetectedType(), it means it is physical tasks. (Physical objects & agents)\n\nIf it is used as an filter of llSensor() or llSensorRepeat(), it will search for physical objects that are moving or objects containing an active script. Thus, it is using SL server resources now."
     },
     {
         "name": "AGENT",
         "type": "integer",
         "value": "0x1",
-        "description": "If it is contained in the result of llDetectedType, it means it is avatar.\nIf it is used as an filter of llSensor or llSensorRepeat, it will search for avatars legacy name. Use of this constant in this context is not recommended as AGENT_BY_LEGACY_NAME is more informative."
+        "description": "If it is contained in the result of llDetectedType, it means it is avatar.\nIf it is used as an filter of llSensor or llSensorRepeat, it will search for avatars by legacy name. Use of this constant in this context is not recommended as AGENT_BY_LEGACY_NAME is more informative."
     },
     {
         "name": "AGENT_ALWAYS_RUN",
@@ -569,7 +569,7 @@ export const Constants = new Directory([
         "name": "CHANGED_COLOR",
         "type": "integer",
         "value": "0x2",
-        "description": "Prim color or alpha parameters have changed"
+        "description": "Prim Blinn-Phong color or alpha parameters have changed"
     },
     {
         "name": "CHANGED_INVENTORY",
@@ -791,12 +791,6 @@ export const Constants = new Directory([
         "name": "CLICK_ACTION_SIT",
         "type": "integer",
         "value": "1",
-        "description": ""
-    },
-    {
-        "name": "CLICK_ACTION_TOUCH",
-        "type": "integer",
-        "value": "0",
         "description": ""
     },
     {
@@ -1247,7 +1241,7 @@ export const Constants = new Directory([
         "name": "HTTP_BODY_MAXLENGTH",
         "type": "integer",
         "value": "2",
-        "description": "Used with llHTTPRequest to set the maximum size the script will accept* for an HTTP body. The largest value this can be set to depends upon the VM that is being used."
+        "description": "Used with llHTTPRequest to set the maximum size the script will accept* for an HTTP body. The largest value this can be set to depends upon the VM that is being used.\n\nContent-Range Content-Range header] instead.\n\n* See caveats"
     },
     {
         "name": "HTTP_BODY_TRUNCATED",
@@ -1583,7 +1577,7 @@ export const Constants = new Directory([
         "name": "LIST_STAT_GEOMETRIC_MEAN",
         "type": "integer",
         "value": "9",
-        "description": "Returns the geometric mean of a list of numbers.\n<source lang"
+        "description": "Returns the geometric mean of a list of numbers.\n\nfloat geometric_mean = llListStatistics( LIST_STAT_GEOMETRIC_MEAN, numList );\n\nFor two numbers, a and b, the geometric mean is llSqrt(a*b). For a list of n numbers, the geometric mean is the n-th root of their product. It indicates the central tendency or typical value to expect. It only works for positive numbers.\n\nIn comparison, the arithmetic mean (known as the average) is the sum of the numbers divided by how many numbers there are."
     },
     {
         "name": "LIST_STAT_MAX",
@@ -1601,7 +1595,7 @@ export const Constants = new Directory([
         "name": "LIST_STAT_MEDIAN",
         "type": "integer",
         "value": "4",
-        "description": "Calculates the median number in the list.\n<source lang"
+        "description": "Calculates the median number in the list.\n\nfloat median = llListStatistics( LIST_STAT_MEDIAN, numList );\n\nThe median is the number for which half the values are less and half are greater. For example, the median of [1,1,1,2,1000,1000,1000] is 2, while the mean is 429.3."
     },
     {
         "name": "LIST_STAT_MIN",
@@ -1625,7 +1619,7 @@ export const Constants = new Directory([
         "name": "LIST_STAT_STD_DEV",
         "type": "integer",
         "value": "5",
-        "description": "Calculates the ''sample'' standard deviation of a list of numbers."
+        "description": "Calculates the sample standard deviation of a list of numbers.\n\nfloat sample_standard_deviation = llListStatistics( LIST_STAT_STD_DEV, numList );\n\nStandard deviation is a measure of how spread out the values are, and is defined as the square root of the average of the squares of the numbers:\ninteger count = (integer)llListStatistics( LIST_STAT_NUM_COUNT, numList );\nfloat standard_deviation = llSqrt( llListStatistics( LIST_STAT_SUM_SQUARES , numList ) ) / count;\n\nThe sample standard deviation is used when the list doesn't (or can't) include the entire set of numbers, like the mass of every prim in SL. The true standard deviation is therefore estimated by using the sample standard deviation, which is defined by,\ninteger count = (integer)llListStatistics( LIST_STAT_NUM_COUNT, numList );\nfloat sample_standard_deviation = llSqrt( llListStatistics( LIST_STAT_SUM_SQUARES , numList ) ) / (count - 1);"
     },
     {
         "name": "LIST_STAT_SUM",
@@ -1637,7 +1631,7 @@ export const Constants = new Directory([
         "name": "LIST_STAT_SUM_SQUARES",
         "type": "integer",
         "value": "7",
-        "description": "Calculates the sum of the squares of the numbers in a list.\n<source lang"
+        "description": "Calculates the sum of the squares of the numbers in a list.\nfloat sum_of_squares = llListStatistics( LIST_STAT_SUM_SQUARES, numList );\n\nThat is, for each number N_i in a list of k elements, it calculates N_1*N_1 + N_2*N_2 + ... + N_k * N_k."
     },
     {
         "name": "LOOP",
@@ -1871,7 +1865,7 @@ export const Constants = new Directory([
         "name": "OBJECT_SERVER_COST",
         "type": "integer",
         "value": "14",
-        "description": "This is a flag used with llGetObjectDetails to get the object cost of the object."
+        "description": "This is a flag used with llGetObjectDetails to get the cost of the object."
     },
     {
         "name": "OBJECT_STREAMING_COST",
@@ -2243,7 +2237,7 @@ export const Constants = new Directory([
         "name": "PASSIVE",
         "type": "integer",
         "value": "0x4",
-        "description": "If it is contained in the result of llDetectedType(), it means it is non-physical objects.\n\nIf it is used as an filter of llSensor() or llSensorRepeat(), it will search for non-scripted or script is inactive and non-physical or, if physical, not moving. Thus, it is not using SL server resources now."
+        "description": "If it is contained in the result of llDetectedType(), it means it is non-physical objects.\n\nIf it is used as an filter of llSensor() or llSensorRepeat(), it will search for non-scripted or script is inactive and non-physical or, if physical, not moving.\nThus, it is not using SL server resources now."
     },
     {
         "name": "PATROL_PAUSE_AT_WAYPOINTS",
@@ -2393,7 +2387,7 @@ export const Constants = new Directory([
         "name": "PRIM_ALLOW_UNSIT",
         "type": "integer",
         "value": "3",
-        "description": "When set on a prim that is running a script as part of an experience an avatar that is seated on the sit target and has agreed to participate in the experience will be unable to stand or select another prim to sit on.  The restriction remains in place until one of the following conditions is met:\n* PRIM_ALLOW_UNSIT is changed to TRUE\n* llUnSit( ) is called forcing the avatar to stand.\n* llSitOnLink( ) is called moving this avatar to a new sit target. \n* The avatar teleports or is teleported by the experience.\n* The agent signs off.\n* The agent disables the experience.\n* The prim the avatar is seated on is destroyed.\n* The agent is unseated for any reason.\n\nThis flag has no effect if encountered outside a valid experience. \n\nIf the linkset moves to a region that has not enabled the experience this value will be ignored and standing will behave as normal, without restriction.  If the linkset moves to a parcel that the avatar does not have access to, the avatar will be forced to stand and the unsit restriction will be removed.\n"
+        "description": "When set on a prim that is running a script as part of an experience an avatar that is seated on the sit target and has agreed to participate in the experience will be unable to stand or select another prim to sit on.  The restriction remains in place until one of the following conditions is met:\n* PRIM_ALLOW_UNSIT is changed to TRUE\n* llUnSit( ) is called forcing the avatar to stand.\n* llSitOnLink( ) is called moving this avatar to a new sit target. \n* The avatar teleports or is teleported by the experience.\n* The agent signs off.\n* The agent disables the experience.\n* The prim the avatar is seated on is destroyed.\n* The agent is unseated for any reason.\n\nThis flag has no effect on agents who had seated manually (i.e. not via llSitOnLink using experience permissions).\n\nIf the linkset moves to a region that has not enabled the experience this value will be ignored and standing will behave as normal, without restriction.  If the linkset moves to a parcel that the avatar does not have access to, the avatar will be forced to stand and the unsit restriction will be removed.\n"
     },
     {
         "name": "PRIM_ALPHA_MODE",
@@ -2543,7 +2537,7 @@ export const Constants = new Directory([
         "name": "PRIM_COLOR",
         "type": "integer",
         "value": "18",
-        "description": "Used to get or set the color and alpha of a prim's face."
+        "description": "Used to get or set the Blinn-Phong color and alpha of a prim's face."
     },
     {
         "name": "PRIM_DESC",
@@ -2621,7 +2615,7 @@ export const Constants = new Directory([
         "name": "PRIM_MATERIAL_LIGHT",
         "type": "integer",
         "value": "7",
-        "description": "This constant and it's underlying functionality is deprecated.\n Light is no longer a prim property, it is now a face property. The same functionality is reproduced with [ PRIM_FULLBRIGHT, ALL_SIDES, TRUE ]."
+        "description": "This constant and it's underlying functionality is deprecated.\nLight is no longer a prim property, it is now a face property. The same functionality is reproduced with [ PRIM_FULLBRIGHT, ALL_SIDES, TRUE ]."
     },
     {
         "name": "PRIM_MATERIAL_METAL",
@@ -2771,7 +2765,7 @@ export const Constants = new Directory([
         "name": "PRIM_NORMAL",
         "type": "integer",
         "value": "37",
-        "description": "Used to get or set the normal map texture settings of a prim's face."
+        "description": "Used to get or set the Blinn-Phong normal map texture settings of a prim's face."
     },
     {
         "name": "PRIM_OMEGA",
@@ -2860,7 +2854,7 @@ export const Constants = new Directory([
     {
         "name": "PRIM_RENDER_MATERIAL",
         "type": "integer",
-        "value": "43",
+        "value": "49",
         "description": "Used to get or set the material settings of a prim's face."
     },
     {
@@ -2963,7 +2957,7 @@ export const Constants = new Directory([
         "name": "PRIM_SIT_TARGET",
         "type": "integer",
         "value": "41",
-        "description": "The sit target, if any defined for this prim.  If the active value is 0 the sit target is deactivated. If it is nonzero the prim's sit target is set to the indicated offset and rotation. As with llLinkSitTarget(), these values are relative to the prim. However, unlike llLinkSitTarget() an offset of <0.0, 0.0, 0.0> may be explicitly set."
+        "description": "The sit target, if any defined for this prim. If the active value is 0 the sit target is deactivated. If it is nonzero the prim's sit target is set to the indicated offset and rotation. As with llLinkSitTarget(), these values are relative to the prim. However, unlike llLinkSitTarget() an offset of <0.0, 0.0, 0.0> may be explicitly set."
     },
     {
         "name": "PRIM_SIZE",
@@ -2981,7 +2975,7 @@ export const Constants = new Directory([
         "name": "PRIM_SPECULAR",
         "type": "integer",
         "value": "36",
-        "description": "Used to get or set the specular map texture settings of a prim's face."
+        "description": "Used to get or set the Blinn-Phong specular map texture settings of a prim's face."
     },
     {
         "name": "PRIM_TEMP_ON_REZ",
@@ -3017,7 +3011,7 @@ export const Constants = new Directory([
         "name": "PRIM_TEXTURE",
         "type": "integer",
         "value": "17",
-        "description": "Used to get or set the texture settings of a prim's face."
+        "description": "Used to get or set the Blinn-Phong diffuse texture settings of a prim's face."
     },
     {
         "name": "PRIM_TYPE",
@@ -3053,7 +3047,7 @@ export const Constants = new Directory([
         "name": "PRIM_TYPE_SCULPT",
         "type": "integer",
         "value": "7",
-        "description": "PRIM_TYPE_SCULPT is a parameter of PRIM_TYPE used to make a prim into a sculpty of specific shape and type.\n\nSculpted Prims: FAQ"
+        "description": "PRIM_TYPE_SCULPT is a parameter of PRIM_TYPE used to make a prim into a sculpty of specific shape and type."
     },
     {
         "name": "PRIM_TYPE_SPHERE",
@@ -3575,7 +3569,7 @@ export const Constants = new Directory([
         "name": "STRING_TRIM",
         "type": "integer",
         "value": "0x03",
-        "description": "Trim spaces off the beginning and the end. Equal to <source lang"
+        "description": "Trim spaces off the beginning and the end. Equal to STRING_TRIM_HEAD | STRING_TRIM_TAIL."
     },
     {
         "name": "STRING_TRIM_HEAD",
@@ -3755,7 +3749,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_BANKING_EFFICIENCY",
         "type": "integer",
         "value": "38",
-        "description": "Slider between -1.00 (leans out of turns), 0 (no banking) and +1.00 (leans into turns).  This parameter makes banking affect steering, not the other way around.  Use vehicle angular motors to bank the vehicle."
+        "description": "slider between -1.00 (leans out of turns), 0 (no banking) and +1.00 (leans into turns). This parameter makes banking affect steering, not the other way around. Use vehicle angular motors to bank the vehicle."
     },
     {
         "name": "VEHICLE_BANKING_MIX",

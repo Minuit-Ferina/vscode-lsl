@@ -1,4 +1,4 @@
-import {Directory} from './directory';
+import { Directory } from './directory';
 
 export const Events = new Directory([
     {
@@ -146,7 +146,7 @@ export const Events = new Directory([
     },
     {
         "name": "email",
-        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\nThe email queue is associated with the prim and any script in the prim can access it.\nThe prim's email address is its key with \"@lsl.secondlife.com\" appended, llGetKey() + \"@lsl.secondlife.com\".",
+        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\n\nThe email queue is associated with the prim and any script in the prim can access it.\nThe prim's email address is its key with \"@lsl.secondlife.com\" appended, llGetKey() + \"@lsl.secondlife.com\".",
         "returnType": "",
         "param": [
             {
@@ -178,7 +178,7 @@ export const Events = new Directory([
     },
     {
         "name": "experience_permissions",
-        "description": "The agent has approved an experience permissions request.  This may be through interaction with the experience permission dialog or the experience profile, or automatically if the agent has previously approved the experience.",
+        "description": "The agent has approved an experience permissions request. This may be through interaction with the experience permission dialog or the experience profile, or automatically if the agent has previously approved the experience.",
         "returnType": "",
         "param": [
             {
@@ -190,7 +190,7 @@ export const Events = new Directory([
     },
     {
         "name": "experience_permissions_denied",
-        "description": "The agent has denied experience permission.\nThis event may be generated in many cases:\n* In response to a call to llRequestExperiencePermissions if any of the following is true:\n** The agent does not respond to the experience permission dialog.  This will happen after a long delay if the agent is running a viewer which doesn't understand the request or if the agent has blocked the object.\n** The agent selects \"Block Experience\" in the experience permission dialog.\n** The agent has previously blocked the experience through another experience permission dialog or through the experience profile.\n** An attachment is asking for permission from an agent other than its owner.\n** The experience cannot run on the region because it is blocked or exceeds the maturity rating of the region.\n* The experience can no longer run:\n** The script has moved to a region where the experience cannot run because it is blocked or it exceeds the maturity rating of the region.\n** The script has moved to a parcel where it is blocked or not allowed.\n** The agent has blocked the experience from the experience profile.\n** The agent has moved to a parcel where the experience cannot run.",
+        "description": "The agent has denied experience permission.\n\nThis event may be generated in many cases:\n* In response to a call to llRequestExperiencePermissions if any of the following is true:\n** The agent does not respond to the experience permission dialog. This will happen after a long delay if the agent is running a viewer which doesn't understand the request or if the agent has blocked the object.\n** The agent selects \"Block Experience\" in the experience permission dialog.\n** The agent has previously blocked the experience through another experience permission dialog or through the experience profile.\n** An attachment is asking for permission from an agent other than its owner.\n** The experience cannot run on the region because it is blocked or exceeds the maturity rating of the region.\n* The experience can no longer run:\n** The script has moved to a region where the experience cannot run because it is blocked or it exceeds the maturity rating of the region.\n** The script has moved to a parcel where it is blocked or not allowed.\n** The agent has blocked the experience from the experience profile.\n** The agent has moved to a parcel where the experience cannot run.",
         "returnType": "",
         "param": [
             {
@@ -221,13 +221,8 @@ export const Events = new Directory([
                 "type": "integer"
             },
             {
-                "name": "button_edges",
-                "description": "bitfield of buttons that have changed",
-                "type": "integer"
-            },
-            {
                 "name": "axes",
-                "description": "list of axes values in range [-1, 1]",
+                "description": "list of axes float values in range [-1, 1]",
                 "type": "list"
             }
         ]
@@ -266,7 +261,7 @@ export const Events = new Directory([
             },
             {
                 "name": "status",
-                "description": "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes HTTP status code (like 404 or 200)",
+                "description": "HTTP status code (like 404 or 200)",
                 "type": "integer"
             },
             {
@@ -361,7 +356,7 @@ export const Events = new Directory([
             },
             {
                 "name": "value",
-                "description": "The new value of the pair. Empty string if pair was deleted.",
+                "description": "The new value of the pair. Empty string if pair was deleted or is password-protected (see llLinksetDataWriteProtected).",
                 "type": "string"
             }
         ]
@@ -453,8 +448,14 @@ export const Events = new Directory([
         ]
     },
     {
+        "name": "on_death",
+        "description": "This event is triggered on all attachments worn by an avatar when that avatar's health reaches 0.",
+        "returnType": "",
+        "param": []
+    },
+    {
         "name": "on_rez",
-        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\nstart_param is always zero when an object is not rezzed by llRezObject or llRezAtRoot.\nWhen an object is rezzed by llRezObject or llRezAtRoot, then start_param will be the value given as the last parameter of the rezzing command.\nstart_param is available at any subsequent time by calling llGetStartParameter (unless it has been overridden by llRemoteLoadScriptPin).",
+        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\n\nstart_param is always zero when an object is not rezzed by llRezObject or llRezAtRoot.\nWhen an object is rezzed by llRezObject or llRezAtRoot, then start_param will be the value given as the last parameter of the rezzing command.\nstart_param is available at any subsequent time by calling llGetStartParameter (unless it has been overridden by llRemoteLoadScriptPin).",
         "returnType": "",
         "param": [
             {
@@ -532,7 +533,7 @@ export const Events = new Directory([
     },
     {
         "name": "sensor",
-        "description": "Results from a call to either llSensor or llSensorRepeat.\nThe results are ordered from nearest to furthest.\nnum_detected is always greater than zero, the no_sensor event is triggered if no objects/avatars were found.",
+        "description": "Results from a call to either llSensor or llSensorRepeat.\n\nThe results are ordered from nearest to furthest.\nnum_detected is always greater than zero, the no_sensor event is triggered if no objects/avatars were found.",
         "returnType": "",
         "param": [
             {
