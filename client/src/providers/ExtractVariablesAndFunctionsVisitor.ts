@@ -121,6 +121,7 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	lexerRulesNames;
 
 	worker: Worker;
+	workerPromises: Array<any>;
 
 	chars;
 	lexer;
@@ -141,53 +142,78 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		this.lslerror = new lslerror;
 		this.isUptodate = false;
 		this.tokens = [];
+
+		this.worker = null;
+		this.workerPromises = [];
 	}
 
-	cancel(): Promise<boolean> {
-		const t = new Promise<boolean>((resolve, reject) => {
-			this.cancelPromise = resolve;
-			resolve(true);
-		});
+	async cancel() {
+		// const t = new Promise<boolean>((resolve, reject) => {
+		// 	this.cancelPromise = resolve;
+		// 	resolve(true);
+		// });
 		// this.cancelToken["isCancellationRequested"] = true;
 		// this.parser.state = 0;
 		// this.parser.reset();
-		return t;
+		if (this.worker) {
+			console.log("terminate worker from cancelToken");
+			await this.worker.terminate();
+			this.worker = null;
+		}
+		// return t;
 	}
-	execCancel() {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
-	}
-	llparse = (code: string) => {
+
+	async llparse(code: string) {
+		console.log("llparse");
+		const self = this.worker;
+
+		if (this.worker != null) {
+			await this.worker.terminate();
+			this.worker = null;
+		}
+
 		return new Promise((resolve, reject) => {
-			// prod
-			// this.worker = new Worker(__dirname + "/../mcpp.js", { workerData: code , }); //
-			this.worker = new Worker(__dirname + "/../out/lsl-diag.js", { workerData: code }); //
-			// dev
-			// this.worker = new Worker(__dirname + "/../lsl-diag.js", { workerData: code });
-			this.worker.on('message', (message) => {
-				this.tree = message;
-				this.SymbolsTree.tree = message["SymbolsTree"]["tree"];
-				this.documentSymboles = message["docsym"];
-				this.Symbols = message["symboles"];
-				this.tokens = message["tokens"];
-				this.lexerRulesNames = message["lexerRulesNames"];
-				this.isUptodate = true;
-				resolve(this);
-			});
-			this.worker.on('error', (err) => {
-				console.error(err);
-				reject();
-			});
-			this.worker.on('exit', () => {
-				resolve(this);
-			});
+			this.workerPromises.push({ resolve: resolve, reject: reject });
+
+			if (this.worker == null) {
+				// prod
+				// this.worker = new Worker(__dirname + "/../mcpp.js", { workerData: code , }); //
+				this.worker = new Worker(__dirname + "/../out/lsl-diag.js", { workerData: code }); //
+				// dev
+				// this.worker = new Worker(__dirname + "/../lsl-diag.js", { workerData: code });
+				this.worker.addListener('message', (message) => {
+					this.tree = message;
+					this.SymbolsTree.tree = message["SymbolsTree"]["tree"];
+					this.documentSymboles = message["docsym"];
+					this.Symbols = message["symboles"];
+					this.tokens = message["tokens"];
+					this.lexerRulesNames = message["lexerRulesNames"];
+					this.isUptodate = true;
+					console.log(self);
+					this.worker = null;
+					while (this.workerPromises.length) {
+						this.workerPromises.pop().resolve(this);
+					}
+				});
+				this.worker.on('error', (err) => {
+					console.error(err);
+					this.worker = null;
+					this.workerPromises.forEach(e => {
+						e.reject(this);
+					});
+				});
+				this.worker.on('exit', () => {
+					this.worker = null;
+					// this.workerPromises.forEach(e => {
+					// 	e.resolve(this);
+					// });
+				});
+			}
 		});
-
-	};
-
+	}
 	visitIdentifier = (ctx: IdentifierContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		const name = ctx.Identifier().getText();
 		const sym = new SymbolsNode(name, "identifier", "", ctx.start.line - 1, ctx.start.column,
 			ctx.start.line - 1, ctx.start.column + name.length);
@@ -197,8 +223,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return sym;
 	};
 	visitFunction_parameters = (ctx: Function_parametersContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		this.level++;
 
 		const sym = new SymbolsNode("", "function_parameters", "", ctx.start.line - 1, ctx.start.column,
@@ -217,8 +243,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitFunction_parameter = (ctx: Function_parameterContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		// const name = this.visit(ctx.name_type().identifier()) as vscode.DocumentSymbol;
 		const name = ctx.identifier().getText();
 		const type = ctx.typename().getText();
@@ -233,8 +259,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitGlobal_function = (ctx: Global_functionContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		let paramList;
 		let type = "";
 		const name = ctx.identifier().getText();
@@ -270,8 +296,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return sym;
 	};
 	visitCompound_statement = (ctx: Compound_statementContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 
 		const sym = new SymbolsNode("", "compound_statement", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
@@ -283,8 +309,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitStatement = (ctx: StatementContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		const sym = new SymbolsNode("", "statement", "", ctx.start.line - 1, ctx.start.column,
 			ctx.stop.line - 1, ctx.stop.column);
 
@@ -310,8 +336,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitGlobal_variable = (ctx: Global_variableContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		const name = ctx.identifier().getText();
 		const type = ctx.typename().getText();
 
@@ -324,8 +350,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitLscript_program = (ctx: Lscript_programContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		this.Symbols = [];
 		this.localSymbols = [];
 		this.localSymbols.push([]);
@@ -355,8 +381,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitDefault_state = (ctx: Default_stateContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 
 		const name = 'default';
 
@@ -383,8 +409,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return sym;
 	};
 	visitLlstate = (ctx: LlstateContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		// const t = [];
 
 		const name = ctx.Identifier().getText();
@@ -405,8 +431,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitDeclaration = (ctx: DeclarationContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		const name = ctx.Identifier().getText();
 		const type = ctx.typename().getText();
 
@@ -421,8 +447,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 	};
 
 	visitJump_label = (ctx: Jump_labelContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		const name = ctx.identifier().getText();
 		// const type = ctx.typename().getText();
 
@@ -439,8 +465,8 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 
 
 	visitEvent = (ctx: EventContext) => {
-		if (this.cancelToken["isCancellationRequested"])
-			throw ("cancel");
+		// if (this.cancelToken["isCancellationRequested"])
+		// throw ("cancel");
 		const name = ctx.Identifier().getText();
 		// let param = [];
 		// const childs = <any>this.visitChildren(ctx.compound_statement());
@@ -503,9 +529,9 @@ export class ExtractVariablesAndFunctionsVisitor extends LSLVisitor<SymbolsNode>
 		return out;
 	}
 
-	public getLocalSymbolesNode(code: string): Array<SymbolsNode> {
+	public async getLocalSymbolesNode(code: string): Promise<Array<SymbolsNode>> {
 		if (!this.isUptodate)
-			this.llparse(code);
+			await this.llparse(code);
 
 		// this.SymbolsTree.clear();
 		// this.visit(this.tree);
