@@ -3,7 +3,7 @@ import { Directory } from './directory';
 export const Functions = new Directory([
     {
         "name": "llAbs",
-        "description": "Returns an integer that is the positive version of val.\n\nThis function is similar to functions (e.g. abs) found in many other languages",
+        "description": "Returns an integer that is the positive version of val.\n\nThis function is similar to functions (e.g. abs) found in many other languages.",
         "returnType": "integer",
         "param": [
             {
@@ -15,7 +15,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAcos",
-        "description": "Returns a float that is the arccosine in radians of val\n\nThe returned value is in the range [0.0, PI]",
+        "description": "Returns a float that is the arccosine in radians of val\n\nThe returned value is in the range [0.0, PI].",
         "returnType": "float",
         "param": [
             {
@@ -55,6 +55,23 @@ export const Functions = new Directory([
             {
                 "name": "hours",
                 "description": "range [0.0, 144.0]",
+                "type": "float"
+            }
+        ]
+    },
+    {
+        "name": "llAdjustDamage",
+        "description": "The llAdjustDamage modifies the amount of damage that will be applied by the current on_damage event after it has completed processing.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "number",
+                "description": "The index of the damage event to be modified.",
+                "type": "integer"
+            },
+            {
+                "name": "new_damage",
+                "description": "A new damage value to be applied or distributed after on_damage processing.",
                 "type": "float"
             }
         ]
@@ -542,6 +559,28 @@ export const Functions = new Directory([
         ]
     },
     {
+        "name": "llDamage",
+        "description": "This function delivers damage to tasks and agent in the same region.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "target",
+                "description": "The key for the task or avatar that will receive damage.",
+                "type": "key"
+            },
+            {
+                "name": "damage",
+                "description": "The amount of damage to deliver to the targeted task or avatar.",
+                "type": "float"
+            },
+            {
+                "name": "damage_type",
+                "description": "The type of damage to deliver to the targeted task or avatar.",
+                "type": "integer"
+            }
+        ]
+    },
+    {
         "name": "llDataSizeKeyValue",
         "description": "Start an asynchronous transaction to request the used and total amount of data allocated for the Experience.\n\nReturns a handle (a key) that can be used to identify the corresponding dataserver event to determine if this command succeeded or failed and the results.",
         "returnType": "key",
@@ -614,6 +653,18 @@ export const Functions = new Directory([
         "description": "Detach object from avatar.\n\nTo run this function the script must request the PERMISSION_ATTACH permission with llRequestPermissions and it must be granted by the owner.\n\nThe detached object is no longer present in the sim. There is no lsl equivilent of the \"Drop\" command that moves an attachment onto the ground. Use llRezObject if you need similar behavior",
         "returnType": "",
         "param": []
+    },
+    {
+        "name": "llDetectedDamage",
+        "description": "Returns the list containing pending damage information.\n\nnumber does not support negative indexes.\nReturns an empty list if number does not relate to a valid damage source or if called from a handler other than on_damage",
+        "returnType": "list",
+        "param": [
+            {
+                "name": "number",
+                "description": "Index of detection information",
+                "type": "integer"
+            }
+        ]
     },
     {
         "name": "llDetectedGrab",
@@ -701,12 +752,12 @@ export const Functions = new Directory([
     },
     {
         "name": "llDetectedRezzer",
-        "description": "Returns a key that is the UUID of the object or avatar that rezzed the Detected object number.\n\nReturns an  if number does not correspond to a valid sensed object or avatar.",
+        "description": "Returns a key that is the UUID of the object or avatar that rezzed the detected object number.\n\nnumber does not support negative indexes.\n\nReturns an empty key if number does not correspond to a valid sensed object or avatar.",
         "returnType": "key",
         "param": [
             {
                 "name": "number",
-                "description": "",
+                "description": "Index of detection information",
                 "type": "integer"
             }
         ]
@@ -1199,7 +1250,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetCameraAspect",
-        "description": "Returns a float value for the current camera's aspect ratio (e.g. width/height) of the agent for which the task has permissions.",
+        "description": "Returns a float value for the current camera's aspect ratio (e.g. width/height) of the agent for which the task has permissions.\n\nTo run this function the script must request the PERMISSION_TRACK_CAMERA permission with llRequestPermissions.",
         "returnType": "float",
         "param": []
     },
@@ -1489,7 +1540,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetInventoryPermMask",
-        "description": "Returns a bit field (an integer) of the requested permission category for the inventory item",
+        "description": "Returns a bit field (an integer) of the requested permission category for the inventory item.",
         "returnType": "integer",
         "param": [
             {
@@ -1536,7 +1587,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetLinkKey",
-        "description": "Returns the key of the linked prim link",
+        "description": "Returns the key of the linked prim link.",
         "returnType": "key",
         "param": [
             {
@@ -1570,12 +1621,12 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetLinkName",
-        "description": "Returns a string that is the name of link in link set",
+        "description": "Returns a string that is the name of link in link set.",
         "returnType": "string",
         "param": [
             {
                 "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
+                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag",
                 "type": "integer"
             }
         ]
@@ -1593,7 +1644,7 @@ export const Functions = new Directory([
         "param": [
             {
                 "name": "link",
-                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag ",
+                "description": "Link number (0: unlinked, 1: root prim, >1: child prims and seated avatars) or a LINK_* flag",
                 "type": "integer"
             }
         ]
@@ -1682,7 +1733,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetMaxScaleFactor",
-        "description": "Returns a float that is the largest scaling factor that can be used with llScaleByFactor to resize the object.  This maximum is determined by the Linkability Rules and prim scale limits.",
+        "description": "Returns a float that is the largest scaling factor that can be used with llScaleByFactor to resize the object. This maximum is determined by the Linkability Rules and prim scale limits.",
         "returnType": "float",
         "param": []
     },
@@ -1746,7 +1797,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetNotecardLineSync",
-        "description": "Gets the line line of the notecard name from the dataserver immediately, provided it is cached, and without raising a dataserver event.\n\nline does not support negative indexes.\nReturns EOF if line is past the end of the notecard.",
+        "description": "Gets the line of the notecard name from the region's notecard cache immediately without raising a dataserver event.\n\nReturns the string containing the text of the requested line from the notecard.\n\nline does not support negative indexes.\nReturns EOF if line is past the end of the notecard.",
         "returnType": "string",
         "param": [
             {
@@ -1816,7 +1867,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetObjectLinkKey",
-        "description": "Returns the key of the linked prim link in the linkset identified by object_id",
+        "description": "Returns the key of the linked prim link in the linkset identified by object_id.",
         "returnType": "key",
         "param": [
             {
@@ -1833,7 +1884,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetObjectMass",
-        "description": "Returns a float that is the mass of id",
+        "description": "Returns a float that is the mass of id.",
         "returnType": "float",
         "param": [
             {
@@ -1938,7 +1989,7 @@ export const Functions = new Directory([
             },
             {
                 "name": "sim_wide",
-                "description": "TRUE treats all parcels owned by this parcel owner in the sim in a single maximum,  FALSE determines the max for the specified parcel",
+                "description": "TRUE treats all parcels owned by this parcel owner in the sim in a single maximum, FALSE determines the max for the specified parcel",
                 "type": "integer"
             }
         ]
@@ -1951,7 +2002,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetParcelPrimCount",
-        "description": "Returns an integer that is the total land impact of objects on the parcel at pos of the given category",
+        "description": "Returns an integer that is the total land impact of objects on the parcel at pos of the given category.",
         "returnType": "integer",
         "param": [
             {
@@ -1985,7 +2036,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetPermissions",
-        "description": "Returns an integer bitfield with the script permissions granted",
+        "description": "Returns an integer bitfield with the script permissions granted.",
         "returnType": "integer",
         "param": []
     },
@@ -2003,7 +2054,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetPos",
-        "description": "Returns the vector position of the task in region coordinates",
+        "description": "Returns the vector position of the task in region coordinates.",
         "returnType": "vector",
         "param": []
     },
@@ -2062,7 +2113,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetRegionFlags",
-        "description": "Returns an integer that is the region flags (REGION_FLAG_*) for the region the object is in.\n\nOnly a small number of flags are actually used; the rest (shown below in strike-through) are always zero.  In particular, it is not possible to detect the status of \"Allow Land Resell\", \"Allow Land Join/Divide\", or \"Block Land Show in Search\"; nor, obviously, it is possible for a script to detect that \"Disable Scripts\" has been set.",
+        "description": "Returns an integer that is the region flags (REGION_FLAG_*) for the region the object is in.\n\nOnly a small number of flags are actually used; the rest (shown below in strike-through) are always zero. In particular, it is not possible to detect the status of \"Allow Land Resell\", \"Allow Land Join/Divide\", or \"Block Land Show in Search\"; nor, obviously, it is possible for a script to detect that \"Disable Scripts\" has been set.",
         "returnType": "integer",
         "param": []
     },
@@ -2831,7 +2882,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLinkPlaySound",
-        "description": "Plays attached sound once at volume",
+        "description": "Plays attached sound once at volume.",
         "returnType": "",
         "param": [
             {
@@ -3348,7 +3399,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llListenControl",
-        "description": "Makes listen event callback handle active or inactive",
+        "description": "Makes listen event callback handle active or inactive.",
         "returnType": "",
         "param": [
             {
@@ -3365,7 +3416,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llListenRemove",
-        "description": "Removes listen event callback handle",
+        "description": "Removes listen event callback handle.",
         "returnType": "",
         "param": [
             {
@@ -3416,7 +3467,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llListFindStrided",
-        "description": "Returns the integer index of the first instance of test in src matching conditions.\n\nIf test matching range and stride conditions is not found in src, -1 is returned.\nThe length of test may be equal to or less than stride in order to generate a match.\nThe index of the first entry in the list is 0\nIf test is found at the last index in src the positive index is returned (5th entry of 5 returns 4).\nIf start or end is negative, it is counted from the end list. The last element in the list is -1, the first is -list_length",
+        "description": "Returns the integer index of the first instance of test in src matching conditions.\n\nIf test matching range and stride conditions is not found in src, -1 is returned.\nThe length of test may be equal to or less than stride in order to generate a match.\nThe index of the first entry in the list is 0\nIf test is found at the last index in src the positive index is returned (5th entry of 5 returns 4).\nIf start or end is negative, it is counted from the end list. The last element in the list is -1, the first is -list_length.",
         "returnType": "integer",
         "param": [
             {
@@ -3551,7 +3602,7 @@ export const Functions = new Directory([
             },
             {
                 "name": "stride_index",
-                "description": "The index within the stride to sort by. stride_index is 0-indexed. The first element is 0, second 1, etc. An index of 0 is functionally identical to using llListSort.",
+                "description": "The index within the stride to sort by. stride_index is 0-indexed. The first element is 0, second 1, etc. An index of 0 is functionally identical to using llListSort. Negative indexes count from the end of the stride, e.g. -1 means the last element in the stride.",
                 "type": "integer"
             },
             {
@@ -3648,7 +3699,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llLoopSound",
-        "description": "Plays attached sound looping indefinitely at volume",
+        "description": "Plays attached sound looping indefinitely at volume.",
         "returnType": "",
         "param": [
             {
@@ -3699,7 +3750,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMakeExplosion",
-        "description": "Make a round explosion of particles",
+        "description": "Make a round explosion of particles.",
         "returnType": "",
         "param": [
             {
@@ -3741,7 +3792,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMakeFire",
-        "description": "Make fire like particles",
+        "description": "Make fire like particles.",
         "returnType": "",
         "param": [
             {
@@ -3783,7 +3834,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMakeFountain",
-        "description": "Make a fountain of particles",
+        "description": "Make a fountain of particles.",
         "returnType": "",
         "param": [
             {
@@ -3835,7 +3886,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMakeSmoke",
-        "description": "Make smoke like particles",
+        "description": "Make smoke like particles.",
         "returnType": "",
         "param": [
             {
@@ -3877,7 +3928,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llManageEstateAccess",
-        "description": "Use to add or remove agents from the estate's agent access or ban lists or groups from the estate's group access list.Returns a boolean (an integer) TRUE if the call was successful; FALSE if throttled, invalid action, invalid or null id or object owner is not allowed to manage the estate.\n\nOnly works for objects owned by the Estate Owner or an Estate Manager. By default, the object owner is notified of every change made using this function.  But if the owner grants PERMISSION_SILENT_ESTATE_MANAGEMENT to the script, the owner will not be notified.",
+        "description": "Use to add or remove agents from the estate's agent access or ban lists or groups from the estate's group access list.Returns a boolean (an integer) TRUE if the call was successful; FALSE if throttled, invalid action, invalid or null id or object owner is not allowed to manage the estate.\n\nOnly works for objects owned by the Estate Owner or an Estate Manager. By default, the object owner is notified of every change made using this function. But if the owner grants PERMISSION_SILENT_ESTATE_MANAGEMENT to the script, the owner will not be notified.",
         "returnType": "integer",
         "param": [
             {
@@ -3894,7 +3945,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMapDestination",
-        "description": "Opens world map centered on simname with pos highlighted.\nOnly works for scripts attached to avatar, or during touch events.\n\n(NOTE: look_at currently does nothing)",
+        "description": "Opens world map centered on simname with pos highlighted.\nOnly works for scripts attached to avatar, or during touch events.\n\n(NOTE: look_at currently does nothing).",
         "returnType": "",
         "param": [
             {
@@ -4303,7 +4354,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPointAt",
-        "description": "Make agent that owns object point at pos",
+        "description": "Make agent that owns object point at pos.",
         "returnType": "",
         "param": [
             {
@@ -4312,7 +4363,9 @@ export const Functions = new Directory([
                 "type": "vector"
             }
         ],
-        "flags": ["deprecated"]
+        "flags": [
+            "deprecated"
+        ]
     },
     {
         "name": "llPow",
@@ -4333,7 +4386,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPreloadSound",
-        "description": "Preloads sound on viewers within range",
+        "description": "Preloads sound on viewers within range.",
         "returnType": "",
         "param": [
             {
@@ -4362,7 +4415,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPushObject",
-        "description": "Applies impulse and ang_impulse to object target",
+        "description": "Applies impulse and ang_impulse to object target.",
         "returnType": "",
         "param": [
             {
@@ -4404,7 +4457,9 @@ export const Functions = new Directory([
         "description": "Reloads the web page shown on the sides of the object.\n\nThis functions currently does nothing.",
         "returnType": "",
         "param": [],
-        "flags": ["deprecated"]
+        "flags": [
+            "deprecated"
+        ]
     },
     {
         "name": "llRegionSay",
@@ -4456,7 +4511,9 @@ export const Functions = new Directory([
                 "type": "key"
             }
         ],
-        "flags": ["deprecated"]
+        "flags": [
+            "deprecated"
+        ]
     },
     {
         "name": "llReleaseControls",
@@ -4478,7 +4535,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoteDataReply",
-        "description": "Send an XML-RPC reply on channel to message_id with payload of string sdata and integer idata",
+        "description": "Send an XML-RPC reply on channel to message_id with payload of string sdata and integer idata.",
         "returnType": "",
         "param": [
             {
@@ -4508,11 +4565,13 @@ export const Functions = new Directory([
         "description": "Used with XML-RPC. If an object using remote data channels changes regions, you must call this function to reregister the remote data channels.\n\nThis call is not needed if the prim does not change regions.",
         "returnType": "",
         "param": [],
-        "flags": ["deprecated"]
+        "flags": [
+            "deprecated"
+        ]
     },
     {
         "name": "llRemoteLoadScript",
-        "description": "Deprecated",
+        "description": "Deprecated.",
         "returnType": "",
         "param": [
             {
@@ -4536,7 +4595,9 @@ export const Functions = new Directory([
                 "type": "integer"
             }
         ],
-        "flags": ["deprecated"]
+        "flags": [
+            "deprecated"
+        ]
     },
     {
         "name": "llRemoteLoadScriptPin",
@@ -4572,7 +4633,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoveFromLandBanList",
-        "description": "Remove avatar from the land ban list",
+        "description": "Remove avatar from the land ban list.",
         "returnType": "",
         "param": [
             {
@@ -4596,7 +4657,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoveInventory",
-        "description": "Remove the named inventory item",
+        "description": "Remove the named inventory item.",
         "returnType": "",
         "param": [
             {
@@ -4608,7 +4669,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRemoveVehicleFlags",
-        "description": "Disable the specified vehicle flags",
+        "description": "Disable the specified vehicle flags.",
         "returnType": "",
         "param": [
             {
@@ -4799,7 +4860,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRequestURL",
-        "description": "Requests one HTTP:// URL for use by this script. The http_request event is triggered with the result of the request.\n\nReturns a handle (a key) used for identifying the result of the request in the http_request event",
+        "description": "Requests one HTTP:// URL for use by this script. The http_request event is triggered with the result of the request.\n\nReturns a handle (a key) used for identifying the result of the request in the http_request event.",
         "returnType": "key",
         "param": []
     },
@@ -4877,7 +4938,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReturnObjectsByID",
-        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.\n\nIf the return value is negative, it represents an error flag.",
+        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner. If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.\n\nIf the return value is negative, it represents an error flag.",
         "returnType": "integer",
         "param": [
             {
@@ -4889,7 +4950,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReturnObjectsByOwner",
-        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner.  If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.\n\nIf the return value is negative, it represents an error flag.",
+        "description": "If the script is owned by an agent, PERMISSION_RETURN_OBJECTS may be granted by the owner. If the script is owned by a group, this permission may be granted by an agent belonging to the group's \"Owners\" role.\n\nReturns an integer that is the number of objects successfully returned to their owners or an ERR_* flag.\n\nIf the return value is negative, it represents an error flag.",
         "returnType": "integer",
         "param": [
             {
@@ -5270,7 +5331,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSensor",
-        "description": "Performs a single scan for name and id with type within radius meters and arc radians of forward vector.\n\nScript execution continues immediately. When the scan is completed, a sensor or no_sensor event is put in the event queue.\n\nIf name and/or id are empty, they are ignored.\nIf id is an invalid key or NULL_KEY it is treated as empty.\nDepending upon which AGENT* flag is used determines the format requirements for name\n\nSee: llSensor for an excellent explanation of arc.",
+        "description": "Performs a single scan for name and id with type within radius meters and arc radians of forward vector.\n\nScript execution continues immediately. When the scan is completed, a sensor or no_sensor event is put in the event queue.\n\nIf name and/or id are empty, they are ignored.\nIf id is an invalid key or NULL_KEY it is treated as empty.\nDepending upon which AGENT* flag is used determines the format requirements for name.",
         "returnType": "",
         "param": [
             {
@@ -6047,7 +6108,9 @@ export const Functions = new Directory([
                 "type": "string"
             }
         ],
-        "flags": ["deprecated"]
+        "flags": [
+            "deprecated"
+        ]
     },
     {
         "name": "llSetRegionPos",
@@ -7058,7 +7121,7 @@ export const Functions = new Directory([
             },
             {
                 "name": "v",
-                "description": "The value for the key-value pair.  Maximum 2047 characters, or 4095 if using Mono.",
+                "description": "The value for the key-value pair. Maximum 2047 characters, or 4095 if using Mono.",
                 "type": "string"
             },
             {
@@ -7116,7 +7179,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llVerifyRSA",
-        "description": "Returns an integer indicating whether the RSA signature is valid for msg when using hash algorithm algorithm and public RSA key public_key.  Returns TRUE if the signature is verified, and FALSE otherwise.  Can be paired with llSignRSA to validate the authenticity of messages from other LSL scripts.\n\nThis function supports sha1, sha224, sha256, sha384, sha512 for algorithm.",
+        "description": "Returns an integer indicating whether the RSA signature is valid for msg when using hash algorithm algorithm and public RSA key public_key. Returns TRUE if the signature is verified, and FALSE otherwise. Can be paired with llSignRSA to validate the authenticity of messages from other LSL scripts.\n\nThis function supports sha1, sha224, sha256, sha384, sha512 for algorithm.",
         "returnType": "integer",
         "param": [
             {

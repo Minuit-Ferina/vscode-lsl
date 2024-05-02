@@ -448,6 +448,30 @@ export const Events = new Directory([
         ]
     },
     {
+        "name": "on_damage",
+        "description": "This event is triggered when damage has been inflicted on an avatar or task in the world but before damage has been applied or distributed.\n\nAll llDetected* functions that are normally available within a collision event are available while processing this event. Additionally the llDetectedDamage and llAdjustDamage methods may be called while processing this event.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "The number of damage events pending against the avatar or task.",
+                "type": "integer"
+            }
+        ]
+    },
+    {
+        "name": "final_damage",
+        "description": "This event is triggered after after all on_damage events in all scripts and attachments have processed and damage has been applied to the avatar or distributed to all seated avatars.\n\nAll llDetected* functions that are normally available within a collision event are available while processing this event. Additionally the llDetectedDamage methods may be called while processing this event.",
+        "returnType": "",
+        "param": [
+            {
+                "name": "num_detected",
+                "description": "The number of damage events applied to the avatar or task.",
+                "type": "integer"
+            }
+        ]
+    },
+    {
         "name": "on_death",
         "description": "This event is triggered on all attachments worn by an avatar when that avatar's health reaches 0.",
         "returnType": "",

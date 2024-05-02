@@ -29,7 +29,7 @@ export const Constants = new Directory([
         "name": "AGENT_AUTOMATED",
         "type": "integer",
         "value": "0x4000",
-        "description": "Identifies an avatar as having been registered with Linden Lab as an automated/scripted agent, i.e. a .\n\nRegistration is (currently) done via the user's control panel on the Scripted Agent Status tab.\n\n'Bots are ''not'' illegal in Second Life ''per se'', but, according to the new scripted agent privacy policy, failing to register a 'bot as such is indeed forbidden.\n\nAlso note that from the perspective of the grid, it matters not ''how'' the 'bot is implemented; do not assume any technology behind it, just because an avatar has been flagged as an 'automated agent'. The flag essentially reflects the user's (voluntary) self-identification as a 'bot, without the requirement of giving any explanation, and there are a handful of different ways to \"automate\" an agent.\n\nLinden Lab, at their discretion, and based on abuse reports or direct observation, ''may'' also flag an avatar as being an automated agent, which ''will'' set the AGENT_AUTOMATED bit as well. False positives can happen; feel free to file a ticket with Linden Lab's support if your avatar was erroneously flagged as an automated agent and you cannot change it from the SL control panel."
+        "description": "Identifies an avatar as having been registered with Linden Lab as an automated/scripted agent, i.e. a 'bot.\n\nRegistration is (currently) done via the user's control panel on the Scripted Agent Status tab.\n\n'Bots are not illegal in Second Life per se, but, according to the new scripted agent privacy policy, failing to register a 'bot as such is indeed forbidden.\n\nAlso note that from the perspective of the grid, it matters not how the 'bot is implemented; do not assume any technology behind it, just because an avatar has been flagged as an 'automated agent'. The flag essentially reflects the user's (voluntary) self-identification as a 'bot, without the requirement of giving any explanation, and there are a handful of different ways to \"automate\" an agent.\n\nLinden Lab, at their discretion, and based on abuse reports or direct observation, may also flag an avatar as being an automated agent, which will set the AGENT_AUTOMATED bit as well. False positives can happen; feel free to file a ticket with Linden Lab's support if your avatar was erroneously flagged as an automated agent and you cannot change it from the SL control panel."
     },
     {
         "name": "AGENT_AUTOPILOT",
@@ -800,10 +800,22 @@ export const Constants = new Directory([
         "description": ""
     },
     {
+        "name": "CLICK_ACTION_DISABLED",
+        "type": "integer",
+        "value": "8",
+        "description": ""
+    },
+    {
         "name": "CLICK_ACTION_ZOOM",
         "type": "integer",
         "value": "7",
         "description": ""
+    },
+    {
+        "name": "COMBAT_CHANNEL",
+        "type": "integer",
+        "value": "0x7FFFFFFE",
+        "description": "A channel reserved for combat related log events broadcast to the entire region."
     },
     {
         "name": "CONTENT_TYPE_ATOM",
@@ -1493,7 +1505,7 @@ export const Constants = new Directory([
         "name": "KFM_REVERSE",
         "type": "integer",
         "value": "3",
-        "description": "Specify the playback mode used in llSetKeyframedMotion.  It plays the frames in this order frameN, frameN-1 .. frame 2, frame 1. And stops after."
+        "description": "Specify the playback mode used in llSetKeyframedMotion. It plays the frames in this order frameN, frameN-1 .. frame 2, frame 1. And stops after."
     },
     {
         "name": "KFM_ROTATION",
@@ -1769,13 +1781,13 @@ export const Constants = new Directory([
         "name": "OBJECT_PHANTOM",
         "type": "integer",
         "value": "22",
-        "description": "This is a flag used with llGetObjectDetails to get the object's phantom attribute.\n\nIf the object being queried is an Avatar or Attachment,  is returned."
+        "description": "This is a flag used with llGetObjectDetails to get the object's phantom attribute.\n\nIf the object being queried is an Avatar or Attachment, is returned."
     },
     {
         "name": "OBJECT_PHYSICS",
         "type": "integer",
         "value": "21",
-        "description": "This is a flag used with llGetObjectDetails to get the object's physics attribute.\n\nIf the object being queried is an Avatar or Attachment,  is returned."
+        "description": "This is a flag used with llGetObjectDetails to get the object's physics attribute.\n\nIf the object being queried is an Avatar or Attachment, is returned."
     },
     {
         "name": "OBJECT_PHYSICS_COST",
@@ -1805,7 +1817,7 @@ export const Constants = new Directory([
         "name": "OBJECT_RENDER_WEIGHT",
         "type": "integer",
         "value": "24",
-        "description": "This is a flag used with llGetObjectDetails to get the Avatar_Rendering_Cost of an avatar, based on values reported by nearby viewers.  If no data is available, -1 is returned.  The maximum render weight stored by the simulator is 500000.  When called against an object, 0 is returned."
+        "description": "This is a flag used with llGetObjectDetails to get the Avatar_Rendering_Cost of an avatar, based on values reported by nearby viewers. If no data is available, -1 is returned. The maximum render weight stored by the simulator is 500000. When called against an object, 0 is returned."
     },
     {
         "name": "OBJECT_RETURN_PARCEL",
@@ -1847,7 +1859,7 @@ export const Constants = new Directory([
         "name": "OBJECT_SCRIPT_MEMORY",
         "type": "integer",
         "value": "11",
-        "description": "This is a flag used with llGetObjectDetails to get the amount of allocated memory in bytes.\n\nThis reports the maximum memory that all scripts in an object could use, not the actual amount of real memory currently used.  In particular, Mono scripts only use the amount of memory currently needed, not the maximum possible.  In practice, this makes the number reported a worst case scenario that will never normally be reached by most objects."
+        "description": "This is a flag used with llGetObjectDetails to get the amount of allocated memory in bytes.\n\nThis reports the maximum memory that all scripts in an object could use, not the actual amount of real memory currently used. In particular, Mono scripts only use the amount of memory currently needed, not the maximum possible. In practice, this makes the number reported a worst case scenario that will never normally be reached by most objects."
     },
     {
         "name": "OBJECT_SCRIPT_TIME",
@@ -1859,7 +1871,7 @@ export const Constants = new Directory([
         "name": "OBJECT_SELECT_COUNT",
         "type": "integer",
         "value": "37",
-        "description": "This is a flag used with llGetObjectDetails to get the total number of agents selecting any links in the object.\n\nIf id is an avatar, 0 is returned.\n"
+        "description": "This is a flag used with llGetObjectDetails to get the total number of agents selecting any links in the object.\n\nIf id is an avatar, 0 is returned."
     },
     {
         "name": "OBJECT_SERVER_COST",
@@ -2243,7 +2255,7 @@ export const Constants = new Directory([
         "name": "PATROL_PAUSE_AT_WAYPOINTS",
         "type": "integer",
         "value": "0",
-        "description": "Option parameter for llPatrolPoints function.  Can be set TRUE or FALSE (the default).\nWhen set TRUE, characters will slow down and momentarily pause at each waypoint.\nWhen set FALSE, characters will continue to move to the next waypoint at full speed, with no pause."
+        "description": "Option parameter for llPatrolPoints function. Can be set TRUE or FALSE (the default).\nWhen set TRUE, characters will slow down and momentarily pause at each waypoint.\nWhen set FALSE, characters will continue to move to the next waypoint at full speed, with no pause."
     },
     {
         "name": "PAY_DEFAULT",
@@ -2387,7 +2399,7 @@ export const Constants = new Directory([
         "name": "PRIM_ALLOW_UNSIT",
         "type": "integer",
         "value": "3",
-        "description": "When set on a prim that is running a script as part of an experience an avatar that is seated on the sit target and has agreed to participate in the experience will be unable to stand or select another prim to sit on.  The restriction remains in place until one of the following conditions is met:\n* PRIM_ALLOW_UNSIT is changed to TRUE\n* llUnSit( ) is called forcing the avatar to stand.\n* llSitOnLink( ) is called moving this avatar to a new sit target. \n* The avatar teleports or is teleported by the experience.\n* The agent signs off.\n* The agent disables the experience.\n* The prim the avatar is seated on is destroyed.\n* The agent is unseated for any reason.\n\nThis flag has no effect on agents who had seated manually (i.e. not via llSitOnLink using experience permissions).\n\nIf the linkset moves to a region that has not enabled the experience this value will be ignored and standing will behave as normal, without restriction.  If the linkset moves to a parcel that the avatar does not have access to, the avatar will be forced to stand and the unsit restriction will be removed.\n"
+        "description": "When set on a prim that is running a script as part of an experience an avatar that is seated on the sit target and has agreed to participate in the experience will be unable to stand or select another prim to sit on. The restriction remains in place until one of the following conditions is met:\n* PRIM_ALLOW_UNSIT is changed to TRUE\n* llUnSit( ) is called forcing the avatar to stand.\n* llSitOnLink( ) is called moving this avatar to a new sit target. \n* The avatar teleports or is teleported by the experience.\n* The agent signs off.\n* The agent disables the experience.\n* The prim the avatar is seated on is destroyed.\n* The agent is unseated for any reason.\n\nThis flag has no effect on agents who had seated manually (i.e. not via llSitOnLink using experience permissions).\n\nIf the linkset moves to a region that has not enabled the experience this value will be ignored and standing will behave as normal, without restriction. If the linkset moves to a parcel that the avatar does not have access to, the avatar will be forced to stand and the unsit restriction will be removed."
     },
     {
         "name": "PRIM_ALPHA_MODE",
@@ -2405,13 +2417,13 @@ export const Constants = new Directory([
         "name": "PRIM_ALPHA_MODE_EMISSIVE",
         "type": "integer",
         "value": "3",
-        "description": "Used with PRIM_ALPHA_MODE. Prims faces set to this type render with an emissivity corresponding to the opacity of each pixel of the diffuse texture.  The more opaque a pixel is, the brighter it renders under all lighting conditions.  A fully-opaque pixel will effectively render as 'full bright'."
+        "description": "Used with PRIM_ALPHA_MODE. Prims faces set to this type render with an emissivity corresponding to the opacity of each pixel of the diffuse texture. The more opaque a pixel is, the brighter it renders under all lighting conditions. A fully-opaque pixel will effectively render as 'full bright'."
     },
     {
         "name": "PRIM_ALPHA_MODE_MASK",
         "type": "integer",
         "value": "2",
-        "description": "Used with PRIM_ALPHA_MODE. Prims faces set to this type render as either completely opaque or completely transparent on a per-pixel basis.  Pixels which are less opaque than the specified mask_cutoff are rendered as completely transparent, and the rest are rendered as fully opaque."
+        "description": "Used with PRIM_ALPHA_MODE. Prims faces set to this type render as either completely opaque or completely transparent on a per-pixel basis. Pixels which are less opaque than the specified mask_cutoff are rendered as completely transparent, and the rest are rendered as fully opaque."
     },
     {
         "name": "PRIM_ALPHA_MODE_NONE",
@@ -2852,6 +2864,12 @@ export const Constants = new Directory([
         "description": "Used with PRIM_REFLECTION_PROBE. A reflection probe does not image avatars by default, otherwise it images avatars if this flag is set on the corresponding prim. Imaging avatars in reflection probes has a performance cost."
     },
     {
+        "name": "PRIM_REFLECTION_PROBE_MIRROR",
+        "type": "integer",
+        "value": "4",
+        "description": "Used with PRIM_REFLECTION_PROBE. When enabled, objects with low-roughness PBR materials objects act as a mirror. Note that mirrors do not reflect avatars unless PRIM_REFLECTION_PROBE_DYNAMIC is also set. Rendering mirrors has a performance cost."
+    },
+    {
         "name": "PRIM_RENDER_MATERIAL",
         "type": "integer",
         "value": "49",
@@ -2873,7 +2891,7 @@ export const Constants = new Directory([
         "name": "PRIM_SCRIPTED_SIT_ONLY",
         "type": "integer",
         "value": "40",
-        "description": "Agents may only be seated on this prim using llSitOnLink.  Attempts to do a manual sit will fail.  This flag applies even outside of an experience enabled region.\n\nIf any prim in a linkset has PRIM_SCRIPTED_SIT_ONLY set and no other prim in the linkset has a sit target then an avatar cannot manually sit on the object.\n\nIf some other prim in the linkset does have a sit target (that is not filled or marked PRIM_SCRIPTED_SIT_ONLY), the agent can sit on that prim"
+        "description": "Agents may only be seated on this prim using llSitOnLink. Attempts to do a manual sit will fail. This flag applies even outside of an experience enabled region.\n\nIf any prim in a linkset has PRIM_SCRIPTED_SIT_ONLY set and no other prim in the linkset has a sit target then an avatar cannot manually sit on the object.\n\nIf some other prim in the linkset does have a sit target (that is not filled or marked PRIM_SCRIPTED_SIT_ONLY), the agent can sit on that prim"
     },
     {
         "name": "PRIM_SCULPT_FLAG_ANIMESH",
@@ -3455,7 +3473,7 @@ export const Constants = new Directory([
         "name": "STATUS_BLOCK_GRAB_OBJECT",
         "type": "integer",
         "value": "0x400",
-        "description": "This status flag keeps the object from being moved by Grab. This flag applies to the entire linkset.  \n* To block grab moves of only the root prim or unlinked individual prims, use STATUS_BLOCK_GRAB.\n\nThis means when a user tries to grab an object with this flag enabled, they will be unable to manipulate the object."
+        "description": "This status flag keeps the object from being moved by Grab. This flag applies to the entire linkset. \n* To block grab moves of only the root prim or unlinked individual prims, use STATUS_BLOCK_GRAB.\n\nThis means when a user tries to grab an object with this flag enabled, they will be unable to manipulate the object."
     },
     {
         "name": "STATUS_BOUNDS_ERROR",
@@ -3773,7 +3791,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_FLAG_CAMERA_DECOUPLED",
         "type": "integer",
         "value": "0x200",
-        "description": "Makes mouselook camera rotate independently of the vehicle. By default the client mouselook camera will rotate about with the vehicle, however when this flag is set the camera direction is independent of the vehicle's rotation.    When this flag is set, the vehicle will automatically stop turning once it has aligned itself with the pilot's mouselook camera.  When this flag is not set, the vehicle will continuously try aligning itself with a moving target and will not stop turning until the pilot manually re-aligns their mouselook camera with the vehicle's forward axis."
+        "description": "Makes mouselook camera rotate independently of the vehicle. By default the client mouselook camera will rotate about with the vehicle, however when this flag is set the camera direction is independent of the vehicle's rotation. When this flag is set, the vehicle will automatically stop turning once it has aligned itself with the pilot's mouselook camera. When this flag is not set, the vehicle will continuously try aligning itself with a moving target and will not stop turning until the pilot manually re-aligns their mouselook camera with the vehicle's forward axis."
     },
     {
         "name": "VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT",
@@ -3857,13 +3875,13 @@ export const Constants = new Directory([
         "name": "VEHICLE_LINEAR_DEFLECTION_EFFICIENCY",
         "type": "integer",
         "value": "28",
-        "description": "Slider between 0 (no deflection) and 1 (maximum strength)"
+        "description": "Slider between 0 (no deflection) and 1 (maximum strength)."
     },
     {
         "name": "VEHICLE_LINEAR_DEFLECTION_TIMESCALE",
         "type": "integer",
         "value": "31",
-        "description": "Exponential timescale for the vehicle to redirect its velocity to its x-axis"
+        "description": "Exponential timescale for the vehicle to redirect its velocity to its x-axis."
     },
     {
         "name": "VEHICLE_LINEAR_FRICTION_TIMESCALE",
@@ -3875,7 +3893,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_LINEAR_MOTOR_DECAY_TIMESCALE",
         "type": "integer",
         "value": "31",
-        "description": "Exponential timescale (in seconds) for the linear motor's effectiveness to decay toward zero"
+        "description": "Exponential timescale (in seconds) for the linear motor's effectiveness to decay toward zero."
     },
     {
         "name": "VEHICLE_LINEAR_MOTOR_DIRECTION",
@@ -3893,7 +3911,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_LINEAR_MOTOR_TIMESCALE",
         "type": "integer",
         "value": "30",
-        "description": "Exponential timescale for the vehicle to achieve its full linear motor velocity"
+        "description": "Exponential timescale for the vehicle to achieve its full linear motor velocity."
     },
     {
         "name": "VEHICLE_REFERENCE_FRAME",
@@ -3929,7 +3947,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_TYPE_NONE",
         "type": "integer",
         "value": "0",
-        "description": "Turns off vehicle support"
+        "description": "Turns off vehicle support."
     },
     {
         "name": "VEHICLE_TYPE_SLED",
