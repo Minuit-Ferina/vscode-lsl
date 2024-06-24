@@ -1434,12 +1434,12 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetHealth",
-        "description": "Returns the current health of an avatar.",
+        "description": "Returns the current health of an avatar or object in the region.",
         "returnType": "float",
         "param": [
             {
-                "name": "agent_id",
-                "description": "The ID of an agent in the region.",
+                "name": "id",
+                "description": "The ID of an agent or object in the region.",
                 "type": "key"
             }
         ]
@@ -2247,6 +2247,12 @@ export const Functions = new Directory([
         "name": "llGetStartParameter",
         "description": "Returns an integer that is the script start/rez parameter.\n\n* If the script was loaded with llRemoteLoadScriptPin then that start parameter is returned.\n* If the containing object was rezzed by llRezObject or llRezAtRoot then the return is the on_rez parameter.\n* If the containing object was manually rezzed, by dragging from inventory, the start parameter is 0.",
         "returnType": "integer",
+        "param": []
+    },
+    {
+        "name": "llGetStartString",
+        "description": "Returns a string that was passed to the object on rez with llRezObjectWithParams.\n\n*If the containing object was manually rezzed, by dragging from inventory, the start string is blank.",
+        "returnType": "string",
         "param": []
     },
     {
@@ -5369,7 +5375,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSensorRepeat",
-        "description": "Performs a scan for name and id with type within range meters and arc radians of forward vector and repeats every rate seconds. The first scan is not performed until rate seconds have passed.\n\nScript execution continues immediately. Whenever a scan is completed, a sensor or no_sensor event is put in the event queue.\n\nIf name, id, and/or type are empty or 0, they are ignored.\nIf id is an invalid key or NULL_KEY it is treated as empty.\nDepending upon which AGENT* flag is used determines the format requirements for name\n\nSee: llSensor for an excellent explanation of arc.",
+        "description": "Performs a scan for name and id with type within range meters and arc radians of forward vector and repeats every rate seconds.\nThe first scan is not performed until rate seconds have passed.\n\nScript execution continues immediately. Whenever a scan is completed, a sensor or no_sensor event is put in the event queue.\n\nIf name, id, and/or type are empty or 0, they are ignored.\nIf id is an invalid key or NULL_KEY it is treated as empty.\nDepending upon which AGENT* flag is used determines the format requirements for name.",
         "returnType": "",
         "param": [
             {

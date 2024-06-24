@@ -815,7 +815,13 @@ export const Constants = new Directory([
         "name": "COMBAT_CHANNEL",
         "type": "integer",
         "value": "0x7FFFFFFE",
-        "description": "A channel reserved for combat related log events broadcast to the entire region."
+        "description": "A channel reserved for combat related log events broadcast to the entire region. System generated messages to this channel will be from COMBAT_LOG_ID."
+    },
+    {
+        "name": "COMBAT_LOG_ID",
+        "type": "string",
+        "value": "\"45e0fcfa-2268-4490-a51c-3e51bdfe80d1\"",
+        "description": "Messages from the region to the combat log will all be from this ID.\n\nScripts may filter llListen calls on this ID to receive only system generated combat log messages."
     },
     {
         "name": "CONTENT_TYPE_ATOM",
@@ -1680,6 +1686,12 @@ export const Constants = new Directory([
         "type": "integer",
         "value": "1",
         "description": ""
+    },
+    {
+        "name": "NAK",
+        "type": "string",
+        "value": "\\n\"+llChar(21)+\"\\n",
+        "description": "NAK is a value returned by the llGetNotecardLineSync function when the requested notecard data is not available due to the notecard not being in the region notecard cache. The value returned equals the characters with codes \"10, 21, 10\", which is to say the ASCII \"NAK\" character surrounded by two newline characters.\n\nIf the NAK response is encountered, the card can be fetched into the region notecard cache by using the llGetNotecardLine or llGetNumberOfNotecardLines functions. If the notecard doesn't exist at all, further llGetNotecardLineSync calls will continue returning NAK."
     },
     {
         "name": "NULL_KEY",
