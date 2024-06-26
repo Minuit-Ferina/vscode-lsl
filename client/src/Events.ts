@@ -146,12 +146,12 @@ export const Events = new Directory([
     },
     {
         "name": "email",
-        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\n\nThe email queue is associated with the prim and any script in the prim can access it.\nThe prim's email address is its key with \"@lsl.secondlife.com\" appended, llGetKey() + \"@lsl.secondlife.com\".",
+        "description": "Triggered as a result of calling llGetNextEmail where there is a matching email in the email queue.\nThe email queue is associated with the prim and any script in the prim can access it.\nThe prim's email address is its key with \"@lsl.secondlife.com\" appended, ''llGetKey() + \"@lsl.secondlife.com\"''.",
         "returnType": "",
         "param": [
             {
                 "name": "time",
-                "description": "In the (string)llGetUnixTime format",
+                "description": "In the ''(string)llGetUnixTime'' format",
                 "type": "string"
             },
             {
@@ -190,7 +190,7 @@ export const Events = new Directory([
     },
     {
         "name": "experience_permissions_denied",
-        "description": "The agent has denied experience permission.\n\nThis event may be generated in many cases:\n* In response to a call to llRequestExperiencePermissions if any of the following is true:\n** The agent does not respond to the experience permission dialog. This will happen after a long delay if the agent is running a viewer which doesn't understand the request or if the agent has blocked the object.\n** The agent selects \"Block Experience\" in the experience permission dialog.\n** The agent has previously blocked the experience through another experience permission dialog or through the experience profile.\n** An attachment is asking for permission from an agent other than its owner.\n** The experience cannot run on the region because it is blocked or exceeds the maturity rating of the region.\n* The experience can no longer run:\n** The script has moved to a region where the experience cannot run because it is blocked or it exceeds the maturity rating of the region.\n** The script has moved to a parcel where it is blocked or not allowed.\n** The agent has blocked the experience from the experience profile.\n** The agent has moved to a parcel where the experience cannot run.",
+        "description": "The agent has denied experience permission.\nThis event may be generated in many cases:\n* In response to a call to llRequestExperiencePermissions if any of the following is true:\n** The agent does not respond to the experience permission dialog. This will happen after a long delay if the agent is running a viewer which doesn't understand the request or if the agent has blocked the object.\n** The agent selects \"Block Experience\" in the experience permission dialog.\n** The agent has previously blocked the experience through another experience permission dialog or through the experience profile.\n** An attachment is asking for permission from an agent other than its owner.\n** The experience cannot run on the region because it is blocked or exceeds the maturity rating of the region.\n* The experience can no longer run:\n** The script has moved to a region where the experience cannot run because it is blocked or it exceeds the maturity rating of the region.\n** The script has moved to a parcel where it is blocked or not allowed.\n** The agent has blocked the experience from the experience profile.\n** The agent has moved to a parcel where the experience cannot run.",
         "returnType": "",
         "param": [
             {
@@ -200,7 +200,7 @@ export const Events = new Directory([
             },
             {
                 "name": "reason",
-                "description": "Reason for denial; one of the Experience Tools XP_ERROR_* errors flags.",
+                "description": "Reason for denial; one of the Experience Tools ''XP_ERROR_*'' errors flags.",
                 "type": "integer"
             }
         ]
@@ -239,7 +239,7 @@ export const Events = new Directory([
             },
             {
                 "name": "method",
-                "description": "\"GET\", \"POST\", \"PUT\", \"DELETE\", URL_REQUEST_GRANTED, URL_REQUEST_DENIED",
+                "description": "''\"GET\"'', ''\"POST\"'', ''\"PUT\"'', ''\"DELETE\"'', URL_REQUEST_GRANTED, URL_REQUEST_DENIED",
                 "type": "string"
             },
             {
@@ -314,7 +314,7 @@ export const Events = new Directory([
     },
     {
         "name": "link_message",
-        "description": "Triggered when the script receives a link message that was sent by a call to llMessageLinked. llMessageLinked is used to send messages from one script to another.\nid is often used as a second string field (in LSL the Typecasting between string and key types has no effect on the data contained. The sizes of str and id are only limited by available script memory.",
+        "description": "Triggered when the script receives a link message that was sent by a call to llMessageLinked. llMessageLinked is used to send messages from one script to another.\nid is often used as a second string field (in LSL the key type is implemented as a string with just custom operators). Typecasting between string and key types has no effect on the data contained. The sizes of str and id are only limited by available script memory.",
         "returnType": "",
         "param": [
             {
@@ -479,7 +479,7 @@ export const Events = new Directory([
     },
     {
         "name": "on_rez",
-        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\n\nstart_param is always zero when an object is not rezzed by llRezObject or llRezAtRoot.\nWhen an object is rezzed by llRezObject or llRezAtRoot, then start_param will be the value given as the last parameter of the rezzing command.\nstart_param is available at any subsequent time by calling llGetStartParameter (unless it has been overridden by llRemoteLoadScriptPin).",
+        "description": "Triggered when an object is rezzed (by script or by user). Also triggered in attachments when a user logs in, or when the object is attached from inventory.\nstart_param is always zero when an object is not rezzed by llRezObject or llRezAtRoot.\n\nWhen an object is rezzed by llRezObject or llRezAtRoot, then start_param will be the value given as the last parameter of the rezzing command.\n\nstart_param is available at any subsequent time by calling llGetStartParameter (unless it has been overridden by llRemoteLoadScriptPin).",
         "returnType": "",
         "param": [
             {
@@ -496,7 +496,7 @@ export const Events = new Directory([
         "param": [
             {
                 "name": "type",
-                "description": "A PU_*, it's the path event type",
+                "description": "A ''PU_*'', it's the path event type",
                 "type": "integer"
             },
             {
@@ -557,7 +557,7 @@ export const Events = new Directory([
     },
     {
         "name": "sensor",
-        "description": "Results from a call to either llSensor or llSensorRepeat.\n\nThe results are ordered from nearest to furthest.\nnum_detected is always greater than zero, the no_sensor event is triggered if no objects/avatars were found.",
+        "description": "Results from a call to either llSensor or llSensorRepeat.\nThe results are ordered from nearest to furthest.\n\nnum_detected is always greater than zero, the no_sensor event is triggered if no objects/avatars were found.",
         "returnType": "",
         "param": [
             {

@@ -29,7 +29,7 @@ export const Constants = new Directory([
         "name": "AGENT_AUTOMATED",
         "type": "integer",
         "value": "0x4000",
-        "description": "Identifies an avatar as having been registered with Linden Lab as an automated/scripted agent, i.e. a 'bot.\n\nRegistration is (currently) done via the user's control panel on the Scripted Agent Status tab.\n\n'Bots are not illegal in Second Life per se, but, according to the new scripted agent privacy policy, failing to register a 'bot as such is indeed forbidden.\n\nAlso note that from the perspective of the grid, it matters not how the 'bot is implemented; do not assume any technology behind it, just because an avatar has been flagged as an 'automated agent'. The flag essentially reflects the user's (voluntary) self-identification as a 'bot, without the requirement of giving any explanation, and there are a handful of different ways to \"automate\" an agent.\n\nLinden Lab, at their discretion, and based on abuse reports or direct observation, may also flag an avatar as being an automated agent, which will set the AGENT_AUTOMATED bit as well. False positives can happen; feel free to file a ticket with Linden Lab's support if your avatar was erroneously flagged as an automated agent and you cannot change it from the SL control panel."
+        "description": "Identifies an avatar as having been registered with Linden Lab as an automated/scripted agent, i.e. a 'bot.\n\nRegistration is (currently) done via the user's control panel on the Scripted Agent Status tab.\n\n'Bots are ''not'' illegal in Second Life ''per se'', but, according to the new scripted agent privacy policy, failing to register a 'bot as such is indeed forbidden.\n\nAlso note that from the perspective of the grid, it matters not ''how'' the 'bot is implemented; do not assume any technology behind it, just because an avatar has been flagged as an 'automated agent'. The flag essentially reflects the user's (voluntary) self-identification as a 'bot, without the requirement of giving any explanation, and there are a handful of different ways to \"automate\" an agent.\n\nLinden Lab, at their discretion, and based on abuse reports or direct observation, ''may'' also flag an avatar as being an automated agent, which ''will'' set the AGENT_AUTOMATED bit as well. False positives can happen; feel free to file a ticket with Linden Lab's support if your avatar was erroneously flagged as an automated agent and you cannot change it from the SL control panel."
     },
     {
         "name": "AGENT_AUTOPILOT",
@@ -59,7 +59,7 @@ export const Constants = new Directory([
         "name": "AGENT_BY_USERNAME",
         "type": "integer",
         "value": "0x10",
-        "description": "See Avatar Names"
+        "description": "See Avatar Names."
     },
     {
         "name": "AGENT_CROUCHING",
@@ -113,7 +113,7 @@ export const Constants = new Directory([
         "name": "AGENT_SCRIPTED",
         "type": "integer",
         "value": "0x0004",
-        "description": "Carrying scripted objects"
+        "description": "Carrying scripted objects."
     },
     {
         "name": "AGENT_SITTING",
@@ -287,7 +287,7 @@ export const Constants = new Directory([
         "name": "ATTACH_LEAR",
         "type": "integer",
         "value": "13",
-        "description": "Left ear"
+        "description": "Left ear."
     },
     {
         "name": "ATTACH_LEFT_PEC",
@@ -323,19 +323,19 @@ export const Constants = new Directory([
         "name": "ATTACH_LHIP",
         "type": "integer",
         "value": "25",
-        "description": "Left Hip"
+        "description": "Left Hip."
     },
     {
         "name": "ATTACH_LLARM",
         "type": "integer",
         "value": "21",
-        "description": "Lower Left Arm"
+        "description": "Lower Left Arm."
     },
     {
         "name": "ATTACH_LLLEG",
         "type": "integer",
         "value": "27",
-        "description": "Left lower leg"
+        "description": "Left lower leg."
     },
     {
         "name": "ATTACH_LSHOULDER",
@@ -347,13 +347,13 @@ export const Constants = new Directory([
         "name": "ATTACH_LUARM",
         "type": "integer",
         "value": "20",
-        "description": "Left Upper Arm"
+        "description": "Left Upper Arm."
     },
     {
         "name": "ATTACH_LULEG",
         "type": "integer",
         "value": "26",
-        "description": "Left Upper Leg"
+        "description": "Left Upper Leg."
     },
     {
         "name": "ATTACH_LWING",
@@ -389,7 +389,7 @@ export const Constants = new Directory([
         "name": "ATTACH_REAR",
         "type": "integer",
         "value": "14",
-        "description": "Right ear"
+        "description": "Right ear."
     },
     {
         "name": "ATTACH_REYE",
@@ -431,7 +431,7 @@ export const Constants = new Directory([
         "name": "ATTACH_RLARM",
         "type": "integer",
         "value": "19",
-        "description": "Right lower arm"
+        "description": "Right lower arm."
     },
     {
         "name": "ATTACH_RLLEG",
@@ -449,13 +449,13 @@ export const Constants = new Directory([
         "name": "ATTACH_RUARM",
         "type": "integer",
         "value": "18",
-        "description": "Right upper arm"
+        "description": "Right upper arm."
     },
     {
         "name": "ATTACH_RULEG",
         "type": "integer",
         "value": "23",
-        "description": "Right upper leg"
+        "description": "Right upper leg."
     },
     {
         "name": "ATTACH_RWING",
@@ -569,7 +569,7 @@ export const Constants = new Directory([
         "name": "CHANGED_COLOR",
         "type": "integer",
         "value": "0x2",
-        "description": "Prim Blinn-Phong color or alpha parameters have changed"
+        "description": "Prim Blinn-Phong color or alpha parameters have changed."
     },
     {
         "name": "CHANGED_INVENTORY",
@@ -593,7 +593,7 @@ export const Constants = new Directory([
         "name": "CHANGED_OWNER",
         "type": "integer",
         "value": "0x80",
-        "description": "The object has changed owners. This event occurs in the original object when a user takes it or takes a copy of it or when the owner deeds it to a group. The event occurs in the new object when it is first rezzed. \n\nCounter-intuitively, this event also occurs in the ''original'' object when it is purchased or a copy of it is purchased (although the original object does ''not'' in fact change owner). The event does not occur in the original object when its contents are purchased."
+        "description": "The object has changed owners. This event occurs in the original object when a user takes it or takes a copy of it or when the owner deeds it to a group. The event occurs in the new object when it is first rezzed.\n\nCounter-intuitively, this event also occurs in the ''original'' object when it is purchased or a copy of it is purchased (although the original object does ''not'' in fact change owner). The event does not occur in the original object when its contents are purchased."
     },
     {
         "name": "CHANGED_REGION",
@@ -635,7 +635,7 @@ export const Constants = new Directory([
         "name": "CHANGED_TEXTURE",
         "type": "integer",
         "value": "0x10",
-        "description": "Prim texture parameters (shine/bump setting, repeats, flip, rotation, or offset) have changed. \n\nTransparency or color changes trigger a CHANGED_COLOR event not a CHANGED_TEXTURE event."
+        "description": "Prim texture parameters (shine/bump setting, repeats, flip, rotation, or offset) have changed.\n\nTransparency or color changes trigger a CHANGED_COLOR event not a CHANGED_TEXTURE event."
     },
     {
         "name": "CHARACTER_ACCOUNT_FOR_SKIPPED_FRAMES",
@@ -713,7 +713,7 @@ export const Constants = new Directory([
         "name": "CHARACTER_TYPE",
         "type": "integer",
         "value": "6",
-        "description": "Used in combination with one of the character type flags. The default is CHARACTER_TYPE_NONE, other options are CHARACTER_TYPE_A, CHARACTER_TYPE_B, CHARACTER_TYPE_C and CHARACTER_TYPE_D. Note that the character type is not used to describe the behavior of the Pathfinding object but is used to describe the kind of surface and terrain that it prefers to travel. For example, a cow designed for a field should use character type B, but sheep designed to be herded along a road should use character type C.\nllCreateCharacter"
+        "description": "Used in combination with one of the character type flags. The default is CHARACTER_TYPE_NONE, other options are CHARACTER_TYPE_A, CHARACTER_TYPE_B, CHARACTER_TYPE_C and CHARACTER_TYPE_D. Note that the character type is not used to describe the behavior of the Pathfinding object but is used to describe the kind of surface and terrain that it prefers to travel. For example, a cow designed for a field should use character type B, but sheep designed to be herded along a road should use character type C."
     },
     {
         "name": "CHARACTER_TYPE_A",
@@ -827,55 +827,55 @@ export const Constants = new Directory([
         "name": "CONTENT_TYPE_ATOM",
         "type": "integer",
         "value": "4",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"application/atom+xml\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"application/atom+xml\"''."
     },
     {
         "name": "CONTENT_TYPE_FORM",
         "type": "integer",
         "value": "7",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"application/x-www-form-urlencoded\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"application/x-www-form-urlencoded\"''."
     },
     {
         "name": "CONTENT_TYPE_HTML",
         "type": "integer",
         "value": "1",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"text/html\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"text/html\"''."
     },
     {
         "name": "CONTENT_TYPE_JSON",
         "type": "integer",
         "value": "5",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"application/json\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"application/json\"''."
     },
     {
         "name": "CONTENT_TYPE_LLSD",
         "type": "integer",
         "value": "6",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"application/llsd+xml\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"application/llsd+xml\"'' (Linden Lab Structured Data)."
     },
     {
         "name": "CONTENT_TYPE_RSS",
         "type": "integer",
         "value": "8",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"application/rss+xml\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"application/rss+xml\"''."
     },
     {
         "name": "CONTENT_TYPE_TEXT",
         "type": "integer",
         "value": "0",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"text/plain\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"text/plain\"''."
     },
     {
         "name": "CONTENT_TYPE_XHTML",
         "type": "integer",
         "value": "3",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"application/xhtml+xml\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"application/xhtml+xml\"''."
     },
     {
         "name": "CONTENT_TYPE_XML",
         "type": "integer",
         "value": "2",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse to \"application/xml\"."
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse to ''\"application/xml\"''."
     },
     {
         "name": "CONTROL_BACK",
@@ -947,7 +947,7 @@ export const Constants = new Directory([
         "name": "DATA_NAME",
         "type": "integer",
         "value": "2",
-        "description": "Used with llRequestAgentData to return a string containing the avatars Name"
+        "description": "Used with llRequestAgentData to return a string containing the avatars legacy name.\n\n* For legacy accounts (those with a first and last name). The format is \"FirstName LastName\".\n* For modern accounts (those with only a first name). The format is \"FirstName Resident\"."
     },
     {
         "name": "DATA_ONLINE",
@@ -971,19 +971,19 @@ export const Constants = new Directory([
         "name": "DATA_SIM_POS",
         "type": "integer",
         "value": "5",
-        "description": "returns vector in global coordinates"
+        "description": "returns vector in global coordinates."
     },
     {
         "name": "DATA_SIM_RATING",
         "type": "integer",
         "value": "7",
-        "description": "returns string simulator rating \"PG\", \"MATURE\", \"ADULT\" or \"UNKNOWN\""
+        "description": "returns string simulator rating \"PG\", \"MATURE\", \"ADULT\" or \"UNKNOWN\"."
     },
     {
         "name": "DATA_SIM_STATUS",
         "type": "integer",
         "value": "6",
-        "description": "Returns one of these strings.\n* \"up\": simulator currently up and running\n* \"down\": simulator currently down\n* \"starting\": simulator currently starting\n* \"stopping\": simulator currently stopping\n* \"crashed\": simulator has crashed\n* \"unknown\": simulator status unknown or unknown simulator"
+        "description": "Returns one of these strings.\n* \"up\": simulator currently up and running\n* \"down\": simulator currently down\n* \"starting\": simulator currently starting\n* \"stopping\": simulator currently stopping\n* \"crashed\": simulator has crashed\n* \"unknown\": simulator status unknown or unknown simulator."
     },
     {
         "name": "DEBUG_CHANNEL",
@@ -1000,8 +1000,8 @@ export const Constants = new Directory([
     {
         "name": "EOF",
         "type": "string",
-        "value": "\\n\\n\\n",
-        "description": "EOF is a value returned by the dataserver event, as a result of a call to llGetNotecardLine, specifically when the requested line is past the end of the notecard. The value returned equals \"\\n\\n\\n\", which is to say, three newline characters (0x0a).\n \nEssentially, it is used to let you know when you have finished reading information (usually user configurable parameters) from a notecard, and are ready to move onto the next stage or state of the script."
+        "value": "\"\\n\\n\\n\"",
+        "description": "EOF is a value returned by the dataserver event, as a result of a call to llGetNotecardLine, specifically when the requested line is past the end of the notecard. The value returned equals \"\\n\\n\\n\", which is to say, three newline characters (0x0a).\n\nEssentially, it is used to let you know when you have finished reading information (usually user configurable parameters) from a notecard, and are ready to move onto the next stage or state of the script."
     },
     {
         "name": "ERR_GENERIC",
@@ -1259,13 +1259,13 @@ export const Constants = new Directory([
         "name": "HTTP_BODY_MAXLENGTH",
         "type": "integer",
         "value": "2",
-        "description": "Used with llHTTPRequest to set the maximum size the script will accept* for an HTTP body. The largest value this can be set to depends upon the VM that is being used.\n\nContent-Range Content-Range header] instead.\n\n* See caveats"
+        "description": "Used with llHTTPRequest to set the maximum size the script will accept* for an HTTP body. The largest value this can be set to depends upon the VM that is being used.\n\n* See caveats."
     },
     {
         "name": "HTTP_BODY_TRUNCATED",
         "type": "integer",
         "value": "0",
-        "description": "Truncation point in bytes"
+        "description": "Truncation point in bytes."
     },
     {
         "name": "HTTP_CUSTOM_HEADER",
@@ -1463,7 +1463,7 @@ export const Constants = new Directory([
         "name": "KFM_CMD_PLAY",
         "type": "integer",
         "value": "0",
-        "description": "Command used in the options parameter llSetKeyframedMotion .Resumes the animation previously stopped by KFM_CMD_STOP or KFM_CMD_PAUSE"
+        "description": "Command used in the options parameter llSetKeyframedMotion .Resumes the animation previously stopped by KFM_CMD_STOP or KFM_CMD_PAUSE."
     },
     {
         "name": "KFM_CMD_STOP",
@@ -1493,7 +1493,7 @@ export const Constants = new Directory([
         "name": "KFM_LOOP",
         "type": "integer",
         "value": "1",
-        "description": "specify the playback mode used in llSetKeyframedMotion : will play the frames in the order number 1, number 2 ... number N, returns to the intitial position, plays number 1, nummber 2 .."
+        "description": "Specify the playback mode used in llSetKeyframedMotion : will play the frames in the order number 1, number 2 ... number N, returns to the intitial position, plays number 1, nummber 2."
     },
     {
         "name": "KFM_MODE",
@@ -1505,7 +1505,7 @@ export const Constants = new Directory([
         "name": "KFM_PING_PONG",
         "type": "integer",
         "value": "2",
-        "description": "Specify the playback mode used in llSetKeyframedMotion"
+        "description": "Specify the playback mode used in llSetKeyframedMotion."
     },
     {
         "name": "KFM_REVERSE",
@@ -1517,13 +1517,13 @@ export const Constants = new Directory([
         "name": "KFM_ROTATION",
         "type": "integer",
         "value": "0x1",
-        "description": "Specifies the type of data in the list of moves for llSetKeyframedMotion"
+        "description": "Specifies the type of data in the list of moves for llSetKeyframedMotion."
     },
     {
         "name": "KFM_TRANSLATION",
         "type": "integer",
         "value": "0x2",
-        "description": "Specifies the type of data in the list of moves for the function llSetKeyframedMotion"
+        "description": "Specifies the type of data in the list of moves for the function llSetKeyframedMotion."
     },
     {
         "name": "LAND_LEVEL",
@@ -1541,7 +1541,7 @@ export const Constants = new Directory([
         "name": "LAND_NOISE",
         "type": "integer",
         "value": "4",
-        "description": "Randomize the land - makes it rough"
+        "description": "Randomize the land - makes it rough."
     },
     {
         "name": "LAND_RAISE",
@@ -1631,7 +1631,7 @@ export const Constants = new Directory([
         "name": "LIST_STAT_RANGE",
         "type": "integer",
         "value": "0",
-        "description": "Calculates the range of the list. (max - min)"
+        "description": "Calculates the range of the list. (max - min)."
     },
     {
         "name": "LIST_STAT_STD_DEV",
@@ -1690,7 +1690,7 @@ export const Constants = new Directory([
     {
         "name": "NAK",
         "type": "string",
-        "value": "\\n\"+llChar(21)+\"\\n",
+        "value": "\"\\n\"+llChar(21)+\"\\n\"",
         "description": "NAK is a value returned by the llGetNotecardLineSync function when the requested notecard data is not available due to the notecard not being in the region notecard cache. The value returned equals the characters with codes \"10, 21, 10\", which is to say the ASCII \"NAK\" character surrounded by two newline characters.\n\nIf the NAK response is encountered, the card can be fetched into the region notecard cache by using the llGetNotecardLine or llGetNumberOfNotecardLines functions. If the notecard doesn't exist at all, further llGetNotecardLineSync calls will continue returning NAK."
     },
     {
@@ -1721,7 +1721,7 @@ export const Constants = new Directory([
         "name": "OBJECT_CHARACTER_TIME",
         "type": "integer",
         "value": "17",
-        "description": "This is a flag used with llGetObjectDetails to get the average CPU time (in seconds) used by the object for navigation, if the object is a pathfinding character. See Viewerhelp:Pathfinding_characters"
+        "description": "This is a flag used with llGetObjectDetails to get the average CPU time (in seconds) used by the object for navigation, if the object is a pathfinding character. See Viewerhelp:Pathfinding_characters."
     },
     {
         "name": "OBJECT_CLICK_ACTION",
@@ -1757,7 +1757,7 @@ export const Constants = new Directory([
         "name": "OBJECT_HOVER_HEIGHT",
         "type": "integer",
         "value": "25",
-        "description": "This is a flag used with hover height of the avatar.\n\nIf id is not an avatar, 0.0 is returned. Normal values are in the range [-2.0, 2.0] with a default of 0.0.\n\nThis value does ''not'' reflect the avatar shape's \"Hover\" slider, only the dynamic viewer setting (right-click on your avatar and pick \"Hover Height\")."
+        "description": "This is a flag used with llGetObjectDetails to get the hover height of the avatar.\n\nIf id is not an avatar, 0.0 is returned. Normal values are in the range [-2.0, 2.0] with a default of 0.0.\n\nThis value does ''not'' reflect the avatar shape's \"Hover\" slider, only the dynamic viewer setting (right-click on your avatar and pick \"Hover Height\")."
     },
     {
         "name": "OBJECT_LAST_OWNER_ID",
@@ -1793,13 +1793,13 @@ export const Constants = new Directory([
         "name": "OBJECT_PHANTOM",
         "type": "integer",
         "value": "22",
-        "description": "This is a flag used with llGetObjectDetails to get the object's phantom attribute.\n\nIf the object being queried is an Avatar or Attachment, is returned."
+        "description": "This is a flag used with llGetObjectDetails to get the object's phantom attribute.\n\nIf the object being queried is an avatar or attachment, 0 is returned."
     },
     {
         "name": "OBJECT_PHYSICS",
         "type": "integer",
         "value": "21",
-        "description": "This is a flag used with llGetObjectDetails to get the object's physics attribute.\n\nIf the object being queried is an Avatar or Attachment, is returned."
+        "description": "This is a flag used with llGetObjectDetails to get the object's physics attribute.\n\nIf the object being queried is an avatar or attachment, 0 is returned."
     },
     {
         "name": "OBJECT_PHYSICS_COST",
@@ -1889,7 +1889,7 @@ export const Constants = new Directory([
         "name": "OBJECT_SERVER_COST",
         "type": "integer",
         "value": "14",
-        "description": "This is a flag used with llGetObjectDetails to get the cost of the object."
+        "description": "This is a flag used with llGetObjectDetails to get the object cost of the object."
     },
     {
         "name": "OBJECT_STREAMING_COST",
@@ -1907,7 +1907,7 @@ export const Constants = new Directory([
         "name": "OBJECT_TOTAL_INVENTORY_COUNT",
         "type": "integer",
         "value": "31",
-        "description": "This is a flag used with inventory items."
+        "description": "This is a flag used with llGetObjectDetails to get the object's total number of inventory items."
     },
     {
         "name": "OBJECT_TOTAL_SCRIPT_COUNT",
@@ -1997,19 +1997,19 @@ export const Constants = new Directory([
         "name": "PARCEL_COUNT_SELECTED",
         "type": "integer",
         "value": "4",
-        "description": "Used with llGetParcelPrimCount to get the total land impact of all objects selected or Sit on."
+        "description": "Used with llGetParcelPrimCount to get the total land impact of all objects selected or sat on."
     },
     {
         "name": "PARCEL_COUNT_TEMP",
         "type": "integer",
         "value": "5",
-        "description": "Used with llGetParcelPrimCount to get the total land impact of Temporary objects."
+        "description": "Used with llGetParcelPrimCount to get the total land impact of temporary objects."
     },
     {
         "name": "PARCEL_COUNT_TOTAL",
         "type": "integer",
         "value": "0",
-        "description": "Used with llGetParcelPrimCount to return total object land impact used on the parcel(s). Does not include Temporary objects."
+        "description": "Used with llGetParcelPrimCount to return total object land impact used on the parcel(s). Does not include temporary objects."
     },
     {
         "name": "PARCEL_DETAILS_AREA",
@@ -2183,7 +2183,7 @@ export const Constants = new Directory([
         "name": "PARCEL_MEDIA_COMMAND_LOOP_SET",
         "type": "integer",
         "value": "13",
-        "description": "Use this to get or set the parcel's media loop duration. It may not be functional. See for detail."
+        "description": "Use this to get or set the parcel's media loop duration. It may not be functional. See VWR-19712 for detail."
     },
     {
         "name": "PARCEL_MEDIA_COMMAND_PAUSE",
@@ -2261,7 +2261,7 @@ export const Constants = new Directory([
         "name": "PASSIVE",
         "type": "integer",
         "value": "0x4",
-        "description": "If it is contained in the result of llDetectedType(), it means it is non-physical objects.\n\nIf it is used as an filter of llSensor() or llSensorRepeat(), it will search for non-scripted or script is inactive and non-physical or, if physical, not moving.\nThus, it is not using SL server resources now."
+        "description": "If it is contained in the result of llDetectedType(), it means it is non-physical objects.\n\nIf it is used as an filter of llSensor() or llSensorRepeat(), it will search for non-scripted or script is inactive and non-physical or, if physical, not moving. Thus, it is not using SL server resources now."
     },
     {
         "name": "PATROL_PAUSE_AT_WAYPOINTS",
@@ -2393,7 +2393,7 @@ export const Constants = new Directory([
         "name": "PI",
         "type": "float",
         "value": "3.1415926535897932384626433832795f",
-        "description": ". The number of radians in a half circle."
+        "description": "Pi. The number of radians in a half circle."
     },
     {
         "name": "PI_BY_TWO",
@@ -2411,7 +2411,7 @@ export const Constants = new Directory([
         "name": "PRIM_ALLOW_UNSIT",
         "type": "integer",
         "value": "3",
-        "description": "When set on a prim that is running a script as part of an experience an avatar that is seated on the sit target and has agreed to participate in the experience will be unable to stand or select another prim to sit on. The restriction remains in place until one of the following conditions is met:\n* PRIM_ALLOW_UNSIT is changed to TRUE\n* llUnSit( ) is called forcing the avatar to stand.\n* llSitOnLink( ) is called moving this avatar to a new sit target. \n* The avatar teleports or is teleported by the experience.\n* The agent signs off.\n* The agent disables the experience.\n* The prim the avatar is seated on is destroyed.\n* The agent is unseated for any reason.\n\nThis flag has no effect on agents who had seated manually (i.e. not via llSitOnLink using experience permissions).\n\nIf the linkset moves to a region that has not enabled the experience this value will be ignored and standing will behave as normal, without restriction. If the linkset moves to a parcel that the avatar does not have access to, the avatar will be forced to stand and the unsit restriction will be removed."
+        "description": "When set on a prim that is running a script as part of an experience an avatar that is seated on the sit target and has agreed to participate in the experience will be unable to stand or select another prim to sit on. The restriction remains in place until one of the following conditions is met:\n* PRIM_ALLOW_UNSIT is changed to TRUE\n* llUnSit( ) is called forcing the avatar to stand.\n* llSitOnLink( ) is called moving this avatar to a new sit target.\n* The avatar teleports or is teleported by the experience.\n* The agent signs off.\n* The agent disables the experience.\n* The prim the avatar is seated on is destroyed.\n* The agent is unseated for any reason.\n\nThis flag has no effect on agents who had seated manually (i.e. not via llSitOnLink using experience permissions).\n\nIf the linkset moves to a region that has not enabled the experience this value will be ignored and standing will behave as normal, without restriction. If the linkset moves to a parcel that the avatar does not have access to, the avatar will be forced to stand and the unsit restriction will be removed."
     },
     {
         "name": "PRIM_ALPHA_MODE",
@@ -2513,7 +2513,7 @@ export const Constants = new Directory([
         "name": "PRIM_BUMP_SHINY",
         "type": "integer",
         "value": "19",
-        "description": "Used to get or set the Bump Mapping and shiny settings of the prim's face.\nbumpshiny"
+        "description": "Used to get or set the Bump Mapping and shiny settings of the prim's face."
     },
     {
         "name": "PRIM_BUMP_SIDING",
@@ -2621,7 +2621,7 @@ export const Constants = new Directory([
         "name": "PRIM_MATERIAL",
         "type": "integer",
         "value": "2",
-        "description": "Sets the prim material. Material does not affect mass, but does affect friction, bounce (elasticity), and collision sound. On a wood incline of 33 degrees, the example script below gave the following results:\n\n class"
+        "description": "Sets the prim material. Material does not affect mass, but does affect friction, bounce (elasticity), and collision sound. On a wood incline of 33 degrees, the example script below gave the following results:\n\n class."
     },
     {
         "name": "PRIM_MATERIAL_FLESH",
@@ -2633,13 +2633,13 @@ export const Constants = new Directory([
         "name": "PRIM_MATERIAL_GLASS",
         "type": "integer",
         "value": "2",
-        "description": "Very low friction"
+        "description": "Very low friction."
     },
     {
         "name": "PRIM_MATERIAL_LIGHT",
         "type": "integer",
         "value": "7",
-        "description": "This constant and it's underlying functionality is deprecated.\nLight is no longer a prim property, it is now a face property. The same functionality is reproduced with [ PRIM_FULLBRIGHT, ALL_SIDES, TRUE ]."
+        "description": "This constant and it's underlying functionality is deprecated.\nLight is no longer a prim property, it is now a face property. The same functionality is reproduced with ''[ PRIM_FULLBRIGHT, ALL_SIDES, TRUE ]''."
     },
     {
         "name": "PRIM_MATERIAL_METAL",
@@ -2801,31 +2801,31 @@ export const Constants = new Directory([
         "name": "PRIM_PHANTOM",
         "type": "integer",
         "value": "5",
-        "description": "Used to get or set the object's phantom Status."
+        "description": "Used to get or set the object's phantom status."
     },
     {
         "name": "PRIM_PHYSICS",
         "type": "integer",
         "value": "3",
-        "description": "Used to get or set the object's physics Status. When enabled the object responds to SL physics."
+        "description": "Used to get or set the object's physics status. When enabled the object responds to SL physics."
     },
     {
         "name": "PRIM_PHYSICS_SHAPE_CONVEX",
         "type": "integer",
         "value": "2",
-        "description": "Used with PRIM_PHYSICS_SHAPE_TYPE. Prims of this type use the convex hull of the prim shape for physics (this is the default for mesh objects)"
+        "description": "Used with PRIM_PHYSICS_SHAPE_TYPE. Prims of this type use the convex hull of the prim shape for physics (this is the default for mesh objects)."
     },
     {
         "name": "PRIM_PHYSICS_SHAPE_NONE",
         "type": "integer",
         "value": "1",
-        "description": "Used with PRIM_PHYSICS_SHAPE_TYPE. Prims of this type are ignored by the physics engine. Read more details on PRIM_PHYSICS_SHAPE_TYPE"
+        "description": "Used with PRIM_PHYSICS_SHAPE_TYPE. Prims of this type are ignored by the physics engine. Read more details on PRIM_PHYSICS_SHAPE_TYPE."
     },
     {
         "name": "PRIM_PHYSICS_SHAPE_PRIM",
         "type": "integer",
         "value": "0",
-        "description": "Used with PRIM_PHYSICS_SHAPE_TYPE. Prims of this type use the normal prim shape for physics (this is the default for all non-mesh objects)"
+        "description": "Used with PRIM_PHYSICS_SHAPE_TYPE. Prims of this type use the normal prim shape for physics (this is the default for all non-mesh objects)."
     },
     {
         "name": "PRIM_PHYSICS_SHAPE_TYPE",
@@ -2837,7 +2837,7 @@ export const Constants = new Directory([
         "name": "PRIM_POINT_LIGHT",
         "type": "integer",
         "value": "23",
-        "description": "PRIM_POINT_LIGHT is used to configure the point light configuration of the prim"
+        "description": "PRIM_POINT_LIGHT is used to configure the point light configuration of the prim."
     },
     {
         "name": "PRIM_POS_LOCAL",
@@ -2903,7 +2903,7 @@ export const Constants = new Directory([
         "name": "PRIM_SCRIPTED_SIT_ONLY",
         "type": "integer",
         "value": "40",
-        "description": "Agents may only be seated on this prim using llSitOnLink. Attempts to do a manual sit will fail. This flag applies even outside of an experience enabled region.\n\nIf any prim in a linkset has PRIM_SCRIPTED_SIT_ONLY set and no other prim in the linkset has a sit target then an avatar cannot manually sit on the object.\n\nIf some other prim in the linkset does have a sit target (that is not filled or marked PRIM_SCRIPTED_SIT_ONLY), the agent can sit on that prim"
+        "description": "Agents may only be seated on this prim using llSitOnLink. Attempts to do a manual sit will fail. This flag applies even outside of an experience enabled region.\n\nIf any prim in a linkset has PRIM_SCRIPTED_SIT_ONLY set and no other prim in the linkset has a sit target then an avatar cannot manually sit on the object.\n\nIf some other prim in the linkset does have a sit target (that is not filled or marked PRIM_SCRIPTED_SIT_ONLY), the agent can sit on that prim."
     },
     {
         "name": "PRIM_SCULPT_FLAG_ANIMESH",
@@ -2939,25 +2939,25 @@ export const Constants = new Directory([
         "name": "PRIM_SCULPT_TYPE_MESH",
         "type": "integer",
         "value": "5",
-        "description": "When used in conjunction with a Mesh object produced."
+        "description": "When used in conjunction with PRIM_TYPE_SCULPT a Mesh object produced."
     },
     {
         "name": "PRIM_SCULPT_TYPE_PLANE",
         "type": "integer",
         "value": "3",
-        "description": "When used in conjunction with a plane type sculpty is produced. No stitching or converging is performed."
+        "description": "When used in conjunction with PRIM_TYPE_SCULPT a plane type sculpty is produced. No stitching or converging is performed."
     },
     {
         "name": "PRIM_SCULPT_TYPE_SPHERE",
         "type": "integer",
         "value": "1",
-        "description": "When used in conjunction with a sphere type sculpty is produced. It does this by stitching the left side to right then separately converging the top & bottom."
+        "description": "When used in conjunction with PRIM_TYPE_SCULPT a sphere type sculpty is produced. It does this by stitching the left side to right then separately converging the top & bottom."
     },
     {
         "name": "PRIM_SCULPT_TYPE_TORUS",
         "type": "integer",
         "value": "2",
-        "description": "When used in conjunction with a torus type sculpty is produced. It does this by stitching the top to bottom and the left side to right."
+        "description": "When used in conjunction with PRIM_TYPE_SCULPT a torus type sculpty is produced. It does this by stitching the top to bottom and the left side to right."
     },
     {
         "name": "PRIM_SHINY_HIGH",
@@ -3479,13 +3479,13 @@ export const Constants = new Directory([
         "name": "STATUS_BLOCK_GRAB",
         "type": "integer",
         "value": "0x40",
-        "description": "This status flag keeps the object from being moved by Grab. It will only block grab moves of unlinked prims or the root of a linkset.\n*To block grab moves of an entire linkset use STATUS_BLOCK_GRAB_OBJECT\n\nThis means when a user tries to grab an object with this flag enabled, they will be unable to manipulate the object."
+        "description": "This status flag keeps the object from being moved by grabs. It will only block grab moves of unlinked prims or the root of a linkset.\n*To block grab moves of an entire linkset use STATUS_BLOCK_GRAB_OBJECT\n\nThis means when a user tries to grab an object with this flag enabled, they will be unable to manipulate the object."
     },
     {
         "name": "STATUS_BLOCK_GRAB_OBJECT",
         "type": "integer",
         "value": "0x400",
-        "description": "This status flag keeps the object from being moved by Grab. This flag applies to the entire linkset. \n* To block grab moves of only the root prim or unlinked individual prims, use STATUS_BLOCK_GRAB.\n\nThis means when a user tries to grab an object with this flag enabled, they will be unable to manipulate the object."
+        "description": "This status flag keeps the object from being moved by grabs. This flag applies to the entire linkset.\n* To block grab moves of only the root prim or unlinked individual prims, use STATUS_BLOCK_GRAB.\n\nThis means when a user tries to grab an object with this flag enabled, they will be unable to manipulate the object."
     },
     {
         "name": "STATUS_BOUNDS_ERROR",
@@ -3497,7 +3497,7 @@ export const Constants = new Directory([
         "name": "STATUS_CAST_SHADOWS",
         "type": "integer",
         "value": "0x200",
-        "description": "This status flag would set an object's ability to cast shadows.\n\nThere is no client support for this feature. 2011-07-18#msg_44"
+        "description": "This status flag would set an object's ability to cast shadows.\n\nThere is no client support for this feature."
     },
     {
         "name": "STATUS_DIE_AT_EDGE",
@@ -3581,7 +3581,7 @@ export const Constants = new Directory([
         "name": "STATUS_SANDBOX",
         "type": "integer",
         "value": "0x20",
-        "description": "This status flag keeps the object from getting away.\n\nIt causes the object to be unable to leave the sim or move more than 10 meters from the location where the flag was set.\n\nIf the object tries to leave the sim or move more than 10 meters it ceases to be physical and throws a \"Hit Sandbox Limit\" Error."
+        "description": "This status flag keeps the object from getting away.\n\nIt causes the object to be unable to leave the sim or move more than 10 meters from the location where the flag was set.\n\nIf the object tries to leave the sim or move more than 10 meters it ceases to be physical and throws a \"Hit Sandbox Limit\" error."
     },
     {
         "name": "STATUS_TYPE_MISMATCH",
@@ -3599,37 +3599,37 @@ export const Constants = new Directory([
         "name": "STRING_TRIM",
         "type": "integer",
         "value": "0x03",
-        "description": "Trim spaces off the beginning and the end. Equal to STRING_TRIM_HEAD | STRING_TRIM_TAIL."
+        "description": "Trim spaces off the beginning and the end. Equal to ''STRING_TRIM_HEAD | STRING_TRIM_TAIL''."
     },
     {
         "name": "STRING_TRIM_HEAD",
         "type": "integer",
         "value": "0x01",
-        "description": "Trim spaces off the beginning"
+        "description": "Trim spaces off the beginning."
     },
     {
         "name": "STRING_TRIM_TAIL",
         "type": "integer",
         "value": "0x02",
-        "description": "Trim spaces off the end"
+        "description": "Trim spaces off the end."
     },
     {
         "name": "TARGETED_EMAIL_OBJECT_OWNER",
         "type": "integer",
         "value": "2",
-        "description": "Causes the message to be sent to the owner of the calling object"
+        "description": "Causes the message to be sent to the owner of the calling object."
     },
     {
         "name": "TEXTURE_BLANK",
         "type": "string",
         "value": "\"5748decc-f629-461c-9a36-a35a221fe21f\"",
-        "description": "UUID for the \"Blank\" texture"
+        "description": "UUID for the \"Blank\" texture."
     },
     {
         "name": "TEXTURE_MEDIA",
         "type": "string",
         "value": "\"8b5fec65-8d8d-9dc5-cda8-8fdf2716e361\"",
-        "description": "UUID for the \"Default Media\" texture"
+        "description": "UUID for the \"Default Media\" texture."
     },
     {
         "name": "TEXTURE_PLYWOOD",
@@ -3653,7 +3653,7 @@ export const Constants = new Directory([
         "name": "TOUCH_INVALID_FACE",
         "type": "integer",
         "value": "0xFFFFFFFF",
-        "description": "Returned by touch position is not valid.\n\nSpecifically when...\n* The avatar's viewer does not support face touch detection.\n* The touch has moved off the surface of the prim.\n* The triggering event is not a touch event."
+        "description": "Returned by llDetectedTouchFace when the touch position is not valid.\n\nSpecifically when...\n* The avatar's viewer does not support face touch detection.\n* The touch has moved off the surface of the prim.\n* The triggering event is not a touch event."
     },
     {
         "name": "TOUCH_INVALID_TEXCOORD",
@@ -3743,37 +3743,37 @@ export const Constants = new Directory([
         "name": "VEHICLE_ANGULAR_DEFLECTION_EFFICIENCY",
         "type": "integer",
         "value": "32",
-        "description": "Slider between 0 (no deflection) and 1 (maximum strength)"
+        "description": "Slider between 0 (no deflection) and 1 (maximum strength)."
     },
     {
         "name": "VEHICLE_ANGULAR_DEFLECTION_TIMESCALE",
         "type": "integer",
         "value": "33",
-        "description": "Exponential timescale for the vehicle to achieve full angular deflection"
+        "description": "Exponential timescale for the vehicle to achieve full angular deflection."
     },
     {
         "name": "VEHICLE_ANGULAR_FRICTION_TIMESCALE",
         "type": "integer",
         "value": "17",
-        "description": "Vector of timescales for exponential decay of angular velocity about the three vehicle axes"
+        "description": "Vector of timescales for exponential decay of angular velocity about the three vehicle axes."
     },
     {
         "name": "VEHICLE_ANGULAR_MOTOR_DECAY_TIMESCALE",
         "type": "integer",
         "value": "35",
-        "description": "Exponential timescale (in seconds) for the angular motor's effectiveness to decay toward zero"
+        "description": "Exponential timescale (in seconds) for the angular motor's effectiveness to decay toward zero."
     },
     {
         "name": "VEHICLE_ANGULAR_MOTOR_DIRECTION",
         "type": "integer",
         "value": "19",
-        "description": "Vector of angular velocity (in radian/second) that the vehicle will try to achieve"
+        "description": "Vector of angular velocity (in radian/second) that the vehicle will try to achieve."
     },
     {
         "name": "VEHICLE_ANGULAR_MOTOR_TIMESCALE",
         "type": "integer",
         "value": "34",
-        "description": "Exponential timescale for the angular motor to achieve full power"
+        "description": "Exponential timescale for the angular motor to achieve full power."
     },
     {
         "name": "VEHICLE_BANKING_EFFICIENCY",
@@ -3785,19 +3785,19 @@ export const Constants = new Directory([
         "name": "VEHICLE_BANKING_MIX",
         "type": "integer",
         "value": "39",
-        "description": "Slider between 0 (static banking) and 1 (dynamic banking)"
+        "description": "Slider between 0 (static banking) and 1 (dynamic banking)."
     },
     {
         "name": "VEHICLE_BANKING_TIMESCALE",
         "type": "integer",
         "value": "40",
-        "description": "Exponential timescale for the banking behaviour to take full effect"
+        "description": "Exponential timescale for the banking behaviour to take full effect."
     },
     {
         "name": "VEHICLE_BUOYANCY",
         "type": "integer",
         "value": "27",
-        "description": "Slider between -1 (double gravity) and 1 (full anti-gravity)"
+        "description": "Slider between -1 (double gravity) and 1 (full anti-gravity)."
     },
     {
         "name": "VEHICLE_FLAG_CAMERA_DECOUPLED",
@@ -3809,13 +3809,13 @@ export const Constants = new Directory([
         "name": "VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT",
         "type": "integer",
         "value": "0x010",
-        "description": "Hover at global height instead of height above ground or water. \n\nIf you wanted to make a boat you should set the VEHICLE_FLAG_HOVER_WATER_ONLY flag, or if you wanted to drive a hover tank under water you would use the VEHICLE_FLAG_HOVER_TERRAIN_ONLY flag instead. Finally, if you wanted to make a submarine or a balloon you would use the VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT. \n\nThe vehicle flags are independent of each other and that setting two contradictory flags will have undefined behavior. The flags are set using the script call llSetVehicleFlags."
+        "description": "Hover at global height instead of height above ground or water.\n\nIf you wanted to make a boat you should set the VEHICLE_FLAG_HOVER_WATER_ONLY flag, or if you wanted to drive a hover tank under water you would use the VEHICLE_FLAG_HOVER_TERRAIN_ONLY flag instead. Finally, if you wanted to make a submarine or a balloon you would use the VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT.\n\nThe vehicle flags are independent of each other and that setting two contradictory flags will have undefined behavior. The flags are set using the script call llSetVehicleFlags."
     },
     {
         "name": "VEHICLE_FLAG_HOVER_TERRAIN_ONLY",
         "type": "integer",
         "value": "0x008",
-        "description": "Makes the vehicle float over land.\n\nIf you wanted to make a boat you should set the VEHICLE_FLAG_HOVER_WATER_ONLY flag, or if you wanted to drive a hover tank under water you would use the VEHICLE_FLAG_HOVER_TERRAIN_ONLY flag instead. Finally, if you wanted to make a submarine or a balloon you would use the VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT. \n\nThe vehicle flags are independent of each other and that setting two contradictory flags will have undefined behavior. The flags are set using the script call llSetVehicleFlags."
+        "description": "Makes the vehicle float over land.\n\nIf you wanted to make a boat you should set the VEHICLE_FLAG_HOVER_WATER_ONLY flag, or if you wanted to drive a hover tank under water you would use the VEHICLE_FLAG_HOVER_TERRAIN_ONLY flag instead. Finally, if you wanted to make a submarine or a balloon you would use the VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT.\n\nThe vehicle flags are independent of each other and that setting two contradictory flags will have undefined behavior. The flags are set using the script call llSetVehicleFlags."
     },
     {
         "name": "VEHICLE_FLAG_HOVER_UP_ONLY",
@@ -3827,7 +3827,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_FLAG_HOVER_WATER_ONLY",
         "type": "integer",
         "value": "0x004",
-        "description": "Makes the vehicle over water.\n\nIf you wanted to make a boat you should set the VEHICLE_FLAG_HOVER_WATER_ONLY flag, or if you wanted to drive a hover tank under water you would use the VEHICLE_FLAG_HOVER_TERRAIN_ONLY flag instead. Finally, if you wanted to make a submarine or a balloon you would use the VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT. \n\nThe vehicle flags are independent of each other and that setting two contradictory flags will have undefined behavior. The flags are set using the script call llSetVehicleFlags."
+        "description": "Makes the vehicle over water.\n\nIf you wanted to make a boat you should set the VEHICLE_FLAG_HOVER_WATER_ONLY flag, or if you wanted to drive a hover tank under water you would use the VEHICLE_FLAG_HOVER_TERRAIN_ONLY flag instead. Finally, if you wanted to make a submarine or a balloon you would use the VEHICLE_FLAG_HOVER_GLOBAL_HEIGHT.\n\nThe vehicle flags are independent of each other and that setting two contradictory flags will have undefined behavior. The flags are set using the script call llSetVehicleFlags."
     },
     {
         "name": "VEHICLE_FLAG_LIMIT_MOTOR_UP",
@@ -3869,7 +3869,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_HOVER_EFFICIENCY",
         "type": "integer",
         "value": "25",
-        "description": "Slider between 0 (bouncy) and 1 (critically damped) hover behaviour"
+        "description": "Slider between 0 (bouncy) and 1 (critically damped) hover behaviour."
     },
     {
         "name": "VEHICLE_HOVER_HEIGHT",
@@ -3881,7 +3881,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_HOVER_TIMESCALE",
         "type": "integer",
         "value": "26",
-        "description": "Period of time (in seconds) for the vehicle to achieve its hover height"
+        "description": "Period of time (in seconds) for the vehicle to achieve its hover height."
     },
     {
         "name": "VEHICLE_LINEAR_DEFLECTION_EFFICIENCY",
@@ -3899,7 +3899,7 @@ export const Constants = new Directory([
         "name": "VEHICLE_LINEAR_FRICTION_TIMESCALE",
         "type": "integer",
         "value": "16",
-        "description": "Vector of timescales for exponential decay of linear velocity about the three vehicle axes"
+        "description": "Vector of timescales for exponential decay of linear velocity about the three vehicle axes."
     },
     {
         "name": "VEHICLE_LINEAR_MOTOR_DECAY_TIMESCALE",

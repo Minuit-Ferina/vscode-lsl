@@ -3,7 +3,7 @@ import { Directory } from './directory';
 export const Functions = new Directory([
     {
         "name": "llAbs",
-        "description": "Returns an integer that is the positive version of val.\n\nThis function is similar to functions (e.g. abs) found in many other languages.",
+        "description": "Returns an integer that is the positive version of val.",
         "returnType": "integer",
         "param": [
             {
@@ -15,7 +15,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAcos",
-        "description": "Returns a float that is the arccosine in radians of val\n\nThe returned value is in the range [0.0, PI].",
+        "description": "Returns a float that is the arccosine in radians of val\n\nThe returned value is in the range [0.0, PI], or NaN signifying a complex result when the parameter is out of range.",
         "returnType": "float",
         "param": [
             {
@@ -131,7 +131,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llApplyImpulse",
-        "description": "Applies impulse to object\n\nInstantaneous impulse. llSetForce has continuous push. \"Instantaneous\" seems to mean a one second impulse.\n\nThis function actually expects momentum to be expressed in Lindograms * meters per second.\n\nSee below for an example script to accelerate an object to a specific velocity. (Alternately, use llSetVelocity)",
+        "description": "Applies impulse to object\n\nInstantaneous impulse. llSetForce has continuous push. \"Instantaneous\" seems to mean a one second impulse.\n\nThis function actually expects momentum to be expressed in Lindograms * meters per second.\n\nSee below for an example script to accelerate an object to a specific velocity. (Alternately, use llSetVelocity).",
         "returnType": "",
         "param": [
             {
@@ -165,7 +165,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llAsin",
-        "description": "Returns a float that is the arcsine in radians of val\n\nThe returned value is in the range [-PI_BY_TWO, PI_BY_TWO]",
+        "description": "Returns a float that is the arcsine in radians of val\n\nThe returned value is in the range [-PI_BY_TWO, PI_BY_TWO], or NaN signifying a complex result when the parameter is out of range.",
         "returnType": "float",
         "param": [
             {
@@ -339,7 +339,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCeil",
-        "description": "Returns an integer that is the integer value of val rounded towards positive infinity (return >= val).",
+        "description": "Returns an integer that is the integer value of val rounded towards positive infinity ''(return >= val)''.",
         "returnType": "integer",
         "param": [
             {
@@ -461,7 +461,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llCollisionSprite",
-        "description": "Suppress default collision sprites, replace default impact sprite with impact_sprite\n\nTo suppress the collision sprite all together, just use an empty string as the value for impact_sprite",
+        "description": "Suppress default collision sprites, replace default impact sprite with impact_sprite\n\nTo suppress the collision sprite all together, just use an empty string as the value for impact_sprite.",
         "returnType": "",
         "param": [
             {
@@ -644,6 +644,23 @@ export const Functions = new Directory([
             {
                 "name": "end",
                 "description": "end index",
+                "type": "integer"
+            }
+        ]
+    },
+    {
+        "name": "llDerezObject",
+        "description": "Derezzes an object previously rezzed from within the object containing the script.\n\nReturns a integer Returns success or failure.",
+        "returnType": "integer",
+        "param": [
+            {
+                "name": "id",
+                "description": "The ID of an object in the region.",
+                "type": "key"
+            },
+            {
+                "name": "flag",
+                "description": "Deletion options.",
                 "type": "integer"
             }
         ]
@@ -1024,7 +1041,7 @@ export const Functions = new Directory([
             },
             {
                 "name": "options",
-                "description": "CHARACTER_CMD_*",
+                "description": "''CHARACTER_CMD_*''",
                 "type": "list"
             }
         ]
@@ -1065,7 +1082,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llFloor",
-        "description": "Returns an integer that is the integer value of val rounded towards negative infinity (return <= val).",
+        "description": "Returns an integer that is the integer value of val rounded towards negative infinity ''(return <= val)''.",
         "returnType": "integer",
         "param": [
             {
@@ -1137,7 +1154,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetAgentList",
-        "description": "Requests a list of agents currently in the region, limited by the scope parameter.\n\nReturns a list [key id0, key id1, ..., key idn] or [string error_msg] - returns avatar keys for all agents in the region limited to the area(s) specified by scope",
+        "description": "Requests a list of agents currently in the region, limited by the scope parameter.\n\nReturns a list ''key id0, key id1, ..., key idn]'' or ''string error_msg]'' - returns avatar keys for all agents in the region limited to the area(s) specified by scope.",
         "returnType": "list",
         "param": [
             {
@@ -1238,7 +1255,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetBoundingBox",
-        "description": "Returns a list that is the bounding box of object relative to its root prim, in local coordinates.\nFormat: [ (vector) min_corner, (vector) max_corner ]\n\nThe bounding box is for the entire link set, not just the requested prim.\nReturns an empty list ([]) if object is not found.",
+        "description": "Returns a list that is the bounding box of object relative to its root prim, in local coordinates.\nFormat: ''[ (vector) min_corner, (vector) max_corner ]''\n\nThe bounding box is for the entire link set, not just the requested prim.\nReturns an empty list (''[]'') if object is not found.",
         "returnType": "list",
         "param": [
             {
@@ -1315,7 +1332,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetDate",
-        "description": "Returns a string that is the current date in the UTC time zone in the format \"YYYY-MM-DD\".\n\nIf you wish to know the time as well use: llGetTimestamp which uses the format",
+        "description": "Returns a string that is the current date in the UTC time zone in the format \"YYYY-MM-DD\".\n\nIf you wish to know the time as well use: llGetTimestamp which uses the format \"YYYY-MM-DDThh:mm:ss.ff..fZ\".",
         "returnType": "string",
         "param": []
     },
@@ -1357,7 +1374,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetEnergy",
-        "description": "Returns a float that is how much energy is in the object as a percentage of maximum",
+        "description": "Returns a float that is how much energy is in the object as a percentage of maximum.",
         "returnType": "float",
         "param": []
     },
@@ -1380,7 +1397,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetExperienceDetails",
-        "description": "Returns a list of details about the experience. This list has 6 components: [string experience_name, key owner_id, key experience_id, integer state, string state_message, key group_id]\n\nIf experience_id is NULL_KEY, then information about the script's experience is returned. In this situation, if the script isn't associated with an experience, an empty list is returned.",
+        "description": "Returns a list of details about the experience. This list has 6 components: ''[string experience_name, key owner_id, key experience_id, integer state, string state_message, key group_id]''\n\nIf experience_id is NULL_KEY, then information about the script's experience is returned. In this situation, if the script isn't associated with an experience, an empty list is returned.",
         "returnType": "list",
         "param": [
             {
@@ -1404,7 +1421,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetForce",
-        "description": "Returns a vector that is the force (if the script is physical)",
+        "description": "Returns a vector that is the force (if the script is physical).",
         "returnType": "vector",
         "param": []
     },
@@ -1428,7 +1445,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetGMTclock",
-        "description": "Returns a float that is the time in seconds since midnight GMT. Value appears to be truncated to the second.\n\nFor SL time, which is the same as California time, use llGetWallclock",
+        "description": "Returns a float that is the time in seconds since midnight GMT. Value appears to be truncated to the second.\n\nFor SL time, which is the same as California time, use llGetWallclock.",
         "returnType": "float",
         "param": []
     },
@@ -1446,7 +1463,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetHTTPHeader",
-        "description": "Returns a string that is the value for header for request_id.\n\nReturns an empty string if the header is not found, if the request_id is not a valid key received through the http_request event, or if the headers can no longer be accessed. Headers can only be accessed before llHTTPResponse is called and with-in the first 30&nbsp;seconds after the http_request event is queued.",
+        "description": "Returns a string that is the value for header for request_id.\n\nReturns an empty string if the header is not found, if the request_id is not a valid key received through the http_request event, or if the headers can no longer be accessed. Headers can only be accessed before llHTTPResponse is called and with-in the first 30 seconds after the http_request event is queued.",
         "returnType": "string",
         "param": [
             {
@@ -1633,7 +1650,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetLinkNumber",
-        "description": "Returns an integer that is the link number of the prim containing the script.\n\n0 means the prim is not linked, 1 the prim is the root, 2 the prim is the first child, etc. Links are numbered in the reverse order in which they were linked -- if you select a box, a sphere and a cylinder in that order, then link them, the cylinder is 1, the sphere is 2 and the box is 3. The last selected prim has the lowest link number.",
+        "description": "Returns an integer that is the link number of the prim containing the script.\n\n''0'' means the prim is not linked, ''1'' the prim is the root, ''2'' the prim is the first child, etc. Links are numbered in the reverse order in which they were linked -- if you select a box, a sphere and a cylinder in that order, then link them, the cylinder is 1, the sphere is 2 and the box is 3. The last selected prim has the lowest link number.",
         "returnType": "integer",
         "param": []
     },
@@ -1838,7 +1855,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetObjectAnimationNames",
-        "description": "Returns a list of names of animations playing in the current object",
+        "description": "Returns a list of names of animations playing in the current object.",
         "returnType": "list",
         "param": []
     },
@@ -1914,7 +1931,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetObjectPrimCount",
-        "description": "Returns an integer that is the total number of prims in the object that contains prim.\n\nAvatars sitting on the object are not counted is not a prim.",
+        "description": "Returns an integer that is the total number of prims in the object that contains prim.\n\nAvatars sitting on the object are not counted. Zero is returned if prim: (A) is not found, (B) is part of an attachment, or (C) is not a prim.",
         "returnType": "integer",
         "param": [
             {
@@ -1938,7 +1955,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetOwnerKey",
-        "description": "Returns a key that is the owner of prim id",
+        "description": "Returns a key that is the owner of prim id.",
         "returnType": "key",
         "param": [
             {
@@ -1950,7 +1967,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetParcelDetails",
-        "description": "Returns a list that is the parcel details specified in params (in the same order) for the parcel at pos.\n\nBoth x and y components of pos are clamped to the range [0.0, 256.0] component is ignored.",
+        "description": "Returns a list that is the parcel details specified in params (in the same order) for the parcel at pos.\n\nBoth x and y components of pos are clamped to the range [0.0, 256.0], the z component is ignored.",
         "returnType": "list",
         "param": [
             {
@@ -2024,7 +2041,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetParcelPrimOwners",
-        "description": "Returns a list of all residents and groups who own objects on the parcel at pos and with individual land impact used.\n\nThe list is formatted as [ key ownerKey1, integer agentImpact1, key ownerKey2, integer agentImpact2, ... ], and sorted by agent/group key with a maximum of 100 strides.\n\nRequires owner-like permissions for the parcel.",
+        "description": "Returns a list of all residents and groups who own objects on the parcel at pos and with individual land impact used.\n\nThe list is formatted as ''[ key ownerKey1, integer agentImpact1, key ownerKey2, integer agentImpact2, ... ]'', and sorted by agent/group key with a maximum of 100 strides.\n\nRequires owner-like permissions for the parcel.",
         "returnType": "list",
         "param": [
             {
@@ -2048,7 +2065,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetPhysicsMaterial",
-        "description": "Used to get the physical characteristics of an object.\n\nReturns a list in the form [ float gravity_multiplier, float restitution, float friction, float density ]\n\nThe default values for friction and restitution depend upon the material type.",
+        "description": "Used to get the physical characteristics of an object.Returns a list in the form '' float gravity_multiplier, float restitution, float friction, float density ]''\n\nThe default values for friction and restitution depend upon the material type.",
         "returnType": "list",
         "param": []
     },
@@ -2137,7 +2154,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetRegionName",
-        "description": "Returns a string that is the current region name",
+        "description": "Returns a string that is the current region name.",
         "returnType": "string",
         "param": []
     },
@@ -2179,7 +2196,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetRootPosition",
-        "description": "Returns a vector that is the region position of the root object of the object script is attached to",
+        "description": "Returns a vector that is the region position of the root object of the object script is attached to.",
         "returnType": "vector",
         "param": []
     },
@@ -2233,7 +2250,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetSimulatorHostname",
-        "description": "Returns a string that is the hostname of the machine the script is running on (same as string in viewer Help dialog)",
+        "description": "Returns a string that is the hostname of the machine the script is running on (same as string in viewer Help dialog).",
         "returnType": "string",
         "param": []
     },
@@ -2257,7 +2274,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetStaticPath",
-        "description": "Returns a list of position vectors indicating pathfinding waypoints between positions at start and end, for a character of a given radius. The waypoints this function returns are for the 'static' nav mesh, meaning that objects set to \"movable obstacle\" or \"movable phantom\" are ignored.\n\nThis function can be used from attachments and other non-character objects. It can also be used in any region, even if dynamic pathfinding is disabled.\n\nThe list also always contains an integer in the last element, which is a status code indicating the outcome of the path query:\n* If llGetStaticPath() finds a path, it will return waypoint vectors and will return a status code of 0, for success\n* If llGetStaticPath() cannot find a path for some reason, it only returns the status code, indicating the sort of error. The error codes correspond to the constants in path_update (e.g. PU_FAILURE_INVALID_START is returned if the start vector is not near the nav mesh)",
+        "description": "Returns a list of position vectors indicating pathfinding waypoints between positions at start and end, for a character of a given radius. The waypoints this function returns are for the 'static' nav mesh, meaning that objects set to \"movable obstacle\" or \"movable phantom\" are ignored.\n\nThis function can be used from attachments and other non-character objects. It can also be used in any region, even if dynamic pathfinding is disabled.\n\nThe list also always contains an integer in the last element, which is a status code indicating the outcome of the path query:\n* If llGetStaticPath() finds a path, it will return waypoint vectors and will return a status code of 0, for success\n* If llGetStaticPath() cannot find a path for some reason, it only returns the status code, indicating the sort of error. The error codes correspond to the constants in path_update (e.g. PU_FAILURE_INVALID_START is returned if the start vector is not near the nav mesh).",
         "returnType": "list",
         "param": [
             {
@@ -2354,7 +2371,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetTextureRot",
-        "description": "Returns a float that is the texture rotation, expressed as an angle, on face",
+        "description": "Returns a float that is the texture rotation, expressed as an angle, on face.",
         "returnType": "float",
         "param": [
             {
@@ -2396,7 +2413,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetTorque",
-        "description": "Returns a vector that is the torque (if the script is physical)",
+        "description": "Returns a vector that is the torque (if the script is physical).",
         "returnType": "vector",
         "param": []
     },
@@ -2426,7 +2443,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetVel",
-        "description": "Returns a vector that is the velocity of the object.\n\nSpeed is the magnitude of the velocity. Speed is measured in meter per second.\nVelocity reported is relative to the global coordinate frame (the object rotation has no affect on this functions output).\nFor physic objects, velocity is the velocity of its center of mass llGetCenterOfMass. ( When the object has some torque and has not force, position of the object moves ( it turns ), but its center of mass is unchanged, so the velocity is null )",
+        "description": "Returns a vector that is the velocity of the object.\n\nSpeed is the magnitude of the velocity. Speed is measured in meter per second.\nVelocity reported is relative to the global coordinate frame (the object rotation has no affect on this functions output).\nFor physic objects, velocity is the velocity of its center of mass llGetCenterOfMass. ( When the object has some torque and has not force, position of the object moves ( it turns ), but its center of mass is unchanged, so the velocity is null ).",
         "returnType": "vector",
         "param": []
     },
@@ -2449,7 +2466,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGetWallclock",
-        "description": "Returns a float that is the time in seconds since midnight Pacific time (PST/PDT), truncated to whole seconds. That is the same as the time of day in SLT expressed as seconds.\n\nFor GMT use llGetGMTclock",
+        "description": "Returns a float that is the time in seconds since midnight Pacific time (PST/PDT), truncated to whole seconds. That is the same as the time of day in SLT expressed as seconds.\n\nFor GMT use llGetGMTclock.",
         "returnType": "float",
         "param": []
     },
@@ -2528,7 +2545,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGround",
-        "description": "Returns a float that is the ground height directly below the prim position + offset",
+        "description": "Returns a float that is the ground height directly below the prim position + offset.",
         "returnType": "float",
         "param": [
             {
@@ -2564,7 +2581,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGroundRepel",
-        "description": "Critically damps to height if within height * 0.5 of ground or water level (which ever is higher).\n\nDo not use with vehicles.",
+        "description": "Critically damps to height if within ''height * 0.5'' of ground or water level (which ever is higher).\n\nDo not use with vehicles.",
         "returnType": "",
         "param": [
             {
@@ -2586,7 +2603,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llGroundSlope",
-        "description": "Returns a vector that is the ground slope below the object position + offset",
+        "description": "Returns a vector that is the ground slope below the object position + offset.",
         "returnType": "vector",
         "param": [
             {
@@ -2715,7 +2732,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llIntegerToBase64",
-        "description": "Returns a string that is a Base64 big endian encode of number",
+        "description": "Returns a string that is a Base64 big endian encode of number.",
         "returnType": "string",
         "param": [
             {
@@ -3166,7 +3183,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llList2CSV",
-        "description": "Returns a string of comma separated values taken in order from src.\n\nMore precisely the values are separated with a comma and a space (\", \").\n\nThis function's functionality is equivalent to llDumpList2String(src, \", \");\n\nThe result of this function is more or less the CSV format, but it does not conform in all its details.\n\nTo reverse the process use llCSV2List. But see the Caveat.",
+        "description": "Returns a string of comma separated values taken in order from src.\n\nMore precisely the values are separated with a comma and a space (\", \").\n\nThis function's functionality is equivalent to ''llDumpList2String(src, \", \");''\n\nThe result of this function is more or less the CSV format, but it does not conform in all its details.\n\nTo reverse the process use llCSV2List. But see the Caveat.",
         "returnType": "string",
         "param": [
             {
@@ -3973,7 +3990,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMD5String",
-        "description": "Returns a string of 32 hex characters that is the MD5 checksum of src with a salt of \":\"+nonce.",
+        "description": "Returns a string of 32 hex characters that is the MD5 checksum of src with a salt of ''\":\"+nonce''.",
         "returnType": "string",
         "param": [
             {
@@ -4046,7 +4063,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llModPow",
-        "description": "Returns an integer that is a raised to the b power, mod c. ( (a**b)%c )",
+        "description": "Returns an integer that is a raised to the b power, mod c. ( (a**b)%c ).",
         "returnType": "integer",
         "param": [
             {
@@ -4068,7 +4085,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llMoveToTarget",
-        "description": "Critically damp to target in tau seconds (if the script is physical)\n\nTo stop the object from maintaining the target positions use llStopMoveToTarget\nTo change the rotation in the same manner use llLookAt or llRotLookAt.",
+        "description": "Critically damp to target in tau seconds (if the script is physical)\n\nTo stop the object from maintaining the target positions use llStopMoveToTarget\n\nTo change the rotation in the same manner use llLookAt or llRotLookAt.",
         "returnType": "",
         "param": [
             {
@@ -4326,7 +4343,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llPlaySound",
-        "description": "Plays attached sound once at volume",
+        "description": "Plays attached sound once at volume.",
         "returnType": "",
         "param": [
             {
@@ -4709,7 +4726,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llReplaceEnvironment",
-        "description": "The llReplaceEnvironment function replaces the environment in a parcel or a region. Either for a single elevation track or the entire environment. The owner of the script must have permission to edit the environment on the destination parcel, or be an estate manage in the case of an entire region. In most cases errors are reported as a return value from the function (see table below). However, issues with the environment assets may be reported in the debug chat.",
+        "description": "The llReplaceEnvironment function replaces the environment in a parcel or a region. Either for a single elevation track or the entire environment. The owner of the script must have permission to edit the environment on the destination parcel, or be an estate manage in the case of an entire region.\nIn most cases errors are reported as a return value from the function (see table below). However, issues with the environment assets may be reported in the debug chat.",
         "returnType": "Integer",
         "param": [
             {
@@ -5102,7 +5119,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRot2Left",
-        "description": "Computes the orientation of the local y-axis relative to the parent (i.e. relative to the root prim or the world).\n\nReturns a vector that is the left vector defined by q, i.e. a unit vector pointing in the local positive Y direction",
+        "description": "Computes the orientation of the local y-axis relative to the parent (i.e. relative to the root prim or the world).\n\nReturns a vector that is the left vector defined by q, i.e. a unit vector pointing in the local positive Y direction.",
         "returnType": "vector",
         "param": [
             {
@@ -5114,7 +5131,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRot2Up",
-        "description": "Computes the orientation of the local z-axis relative to the parent (i.e. the root prim or the world).\n\nReturns a vector that is the up vector defined by q, i.e. a unit vector pointing in the positive Z direction",
+        "description": "Computes the orientation of the local z-axis relative to the parent (i.e. the root prim or the world).\n\nReturns a vector that is the up vector defined by q, i.e. a unit vector pointing in the positive Z direction.",
         "returnType": "vector",
         "param": [
             {
@@ -5126,7 +5143,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRotateTexture",
-        "description": "Sets the texture rotation of the chosen face to angle.\n\nIf face is ALL_SIDES then the function works on all sides.",
+        "description": "Sets the texture rotation of the chosen face to angle.",
         "returnType": "",
         "param": [
             {
@@ -5143,7 +5160,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRotBetween",
-        "description": "Returns a rotation that is the shortest rotation between the direction start and the direction end",
+        "description": "Returns a rotation that is the shortest rotation between the ''direction'' start and the ''direction'' end.",
         "returnType": "rotation",
         "param": [
             {
@@ -5199,7 +5216,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llRotTargetRemove",
-        "description": "Removes rotational target handle registered with llRotTarget",
+        "description": "Removes rotational target handle registered with llRotTarget.",
         "returnType": "",
         "param": [
             {
@@ -5235,7 +5252,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSay",
-        "description": "Says the text supplied in string msg on channel supplied in integer channel. The message can be heard 20m away, usually (see caveats)",
+        "description": "Says the text supplied in string msg on channel supplied in integer channel. The message can be heard 20m away, usually (see caveats).",
         "returnType": "",
         "param": [
             {
@@ -5412,7 +5429,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetAgentEnvironment",
-        "description": "This function sets environment values for an individual agent in an experience. The changes to the environment persist until the agent moves to a new region or llSetAgentEnvironment is called for an agent with an empty list. Passing an empty list in params will strip all environmental settings applied to this agent as part of the experience",
+        "description": "This function sets environment values for an individual agent in an experience. The changes to the environment persist until the agent moves to a new region or llSetAgentEnvironment is called for an agent with an empty list. Passing an empty list in params will strip all environmental settings applied to this agent as part of the experience.",
         "returnType": "",
         "param": [
             {
@@ -5485,7 +5502,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetBuoyancy",
-        "description": "Sets the buoyancy of the task or object. Requires physics to be enabled.\n\nA buoyancy value of 0.0 disables the effect\nwhen buoyancy is < 1.0, the object sinks\nwhen buoyancy equals 1.0 it floats\nwhen buoyancy is > 1.0 the object rises",
+        "description": "Sets the buoyancy of the task or object. Requires physics to be enabled.\n\nA buoyancy value of 0.0 disables the effect\nwhen buoyancy is < 1.0, the object sinks\nwhen buoyancy equals 1.0 it floats\nwhen buoyancy is > 1.0 the object rises.",
         "returnType": "",
         "param": [
             {
@@ -5562,7 +5579,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetContentType",
-        "description": "Sets the Internet media type \"Content-Type\" header of any subsequent LSL HTTP server response via llHTTPResponse.",
+        "description": "Sets the Internet media type ''\"Content-Type\"'' header of any subsequent LSL HTTP server response via llHTTPResponse.",
         "returnType": "",
         "param": [
             {
@@ -5625,7 +5642,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetForceAndTorque",
-        "description": "Sets the force and torque of object (if the script is physical)",
+        "description": "Sets the force and torque of object (if the script is physical).",
         "returnType": "",
         "param": [
             {
@@ -5691,7 +5708,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetKeyframedMotion",
-        "description": "Specify a list of positions, orientations, and timings to be followed by an object. The object will be smoothly moved between those keyframes by the simulator.\n\nCollisions with other nonphysical or keyframed objects will be ignored (no script events will fire and collision processing will not occur). Collisions with physical objects will be computed and reported, but the keyframed object will be unaffected by those collisions. (The physical object will be affected, however.)",
+        "description": "Specify a list of positions, orientations, and timings to be followed by an object. The object will be smoothly moved between those keyframes by the simulator.\n\nCollisions with other nonphysical or keyframed objects will be ignored (no script events will fire and collision processing will not occur). Collisions with physical objects will be computed and reported, but the keyframed object will be unaffected by those collisions. (The physical object will be affected, however.).",
         "returnType": "",
         "param": [
             {
@@ -5938,7 +5955,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetLocalRot",
-        "description": "Sets the rotation of a child prim relative to the root prim",
+        "description": "Sets the rotation of a child prim relative to the root prim.",
         "returnType": "",
         "param": [
             {
@@ -5962,7 +5979,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetObjectDesc",
-        "description": "Sets the prims description",
+        "description": "Sets the prims description.",
         "returnType": "",
         "param": [
             {
@@ -6238,7 +6255,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetStatus",
-        "description": "Sets the object status attributes indicated in the status} mask to value",
+        "description": "Sets the object status attributes indicated in the status} mask to value.",
         "returnType": "",
         "param": [
             {
@@ -6348,7 +6365,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetTorque",
-        "description": "Sets the torque of object (if the script is physical)",
+        "description": "Sets the torque of object (if the script is physical).",
         "returnType": "",
         "param": [
             {
@@ -6377,7 +6394,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSetVehicleFlags",
-        "description": "Enabled the specified vehicle flags",
+        "description": "Enabled the specified vehicle flags.",
         "returnType": "",
         "param": [
             {
@@ -6544,7 +6561,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSitOnLink",
-        "description": "The avatar specified by agent_id is forced to sit on the sit target of the prim indicated by the link parameter. If the specified link is already occupied, the simulator searches down the chain of prims in the link set looking for an available sit target.\n\nIf successful, this method returns 1.\n\nIf the function fails, it returns a negative number constant.\n\nLink constants that indicate a single prim may be used for the link parameter. These are LINK_ROOT and LINK_THIS. Other constants such as LINK_SET, LINK_CHILDREN, LINK_ALL_OTHERS will return an INVALID_LINK error.\n\nThis method must be called from an experience enabled script running on land that has enabled the experience key. If these conditions are not met this method returns a NOT_EXPERIENCE error.\n\nThe targeted avatar must also have accepted the experience. If the user is not participating in the experience this method returns NO_EXPERIENCE_PERMISSION. If the avatar id can not be found or is not over land that has enabled the experience this method returns INVALID_AGENT.\n\nIf there are no valid sit targets remaining in the linkset this method returns NO_SIT_TARGET and no action is taken with the avatar.\n\nIf the avatar does not have access to the parcel containing the prim running this script, this call fails.",
+        "description": "The avatar specified by agent_id is forced to sit on the sit target of the prim indicated by the link parameter. If the specified link is already occupied, the simulator searches down the chain of prims in the link set looking for an available sit target.\n\nIf successful, this method returns 1.\n\nIf the function fails, it returns a negative number constant.\n\nLink constants that indicate a single prim may be used for the link parameter. These are LINK_ROOT and LINK_THIS. Other constants such as LINK_SET, LINK_CHILDREN, LINK_ALL_OTHERS will return an INVALID_LINK error.\n\n''This method must be called from an experience enabled script running on land that has enabled the experience key.'' If these conditions are not met this method returns a NOT_EXPERIENCE error.\n\nThe targeted avatar must also have accepted the experience. If the user is not participating in the experience this method returns NO_EXPERIENCE_PERMISSION. If the avatar id can not be found or is not over land that has enabled the experience this method returns INVALID_AGENT.\n\nIf there are no valid sit targets remaining in the linkset this method returns NO_SIT_TARGET and no action is taken with the avatar.\n\nIf the avatar does not have access to the parcel containing the prim running this script, this call fails.",
         "returnType": "Integer",
         "param": [
             {
@@ -6629,7 +6646,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSqrt",
-        "description": "Returns a float that is the square root of val.\n\nFor imaginary results (val < 0.0), a Math Error is triggered under LSO, or 'NaN' (Not A Number) is returned under Mono",
+        "description": "Returns a float that is the square root of val.\n\nFor imaginary results (val < 0.0), a Math Error is triggered under LSO, or 'NaN' (Not A Number) is returned under Mono.",
         "returnType": "float",
         "param": [
             {
@@ -6689,7 +6706,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llStopHover",
-        "description": "Stop hovering to a height",
+        "description": "Stop hovering to a height.",
         "returnType": "",
         "param": []
     },
@@ -6719,7 +6736,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llStopPointAt",
-        "description": "Stop agent that owns object pointing",
+        "description": "Stop agent that owns object pointing.",
         "returnType": "",
         "param": []
     },
@@ -6772,7 +6789,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llSubStringIndex",
-        "description": "Returns an integer that is the index of the first instance of pattern in source.\n\nIf pattern is not found in source, -1 is returned.\nThe index of the first character in the string is 0",
+        "description": "Returns an integer that is the index of the first instance of pattern in source.\n\nIf pattern is not found in source, -1 is returned.\nThe index of the first character in the string is 0.",
         "returnType": "integer",
         "param": [
             {
@@ -6874,7 +6891,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTargetOmega",
-        "description": "Rotates the object/prim around axis at a rate of spinrate * llVecMag(axis) in radians per second with strength gain.",
+        "description": "Rotates the object/prim around axis at a rate of ''spinrate * llVecMag(axis)'' in radians per second with strength gain.",
         "returnType": "",
         "param": [
             {
@@ -6896,7 +6913,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llTargetRemove",
-        "description": "Removes positional target handle registered with llTarget",
+        "description": "Removes positional target handle registered with llTarget.",
         "returnType": "",
         "param": [
             {
@@ -7105,7 +7122,7 @@ export const Functions = new Directory([
     },
     {
         "name": "llUpdateCharacter",
-        "description": "Updates settings for a character",
+        "description": "Updates settings for a character.",
         "returnType": "",
         "param": [
             {
